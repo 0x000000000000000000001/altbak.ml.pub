@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -e
+cd "$(dirname "$0")/../.."
+
+mkdir -p bak/php/output bak/php/spago
+rm -rf output .spago spago.yaml spago.lock
+ln -s bak/php/output output
+ln -s bak/php/spago .spago
+ln -s bak/php/spago.yaml spago.yaml
+touch bak/php/spago.lock && ln -s bak/php/spago.lock spago.lock
+
+# Note: phpurs is expected to be installed globally via `npm link`
+echo "Compiling via phpurs (expect this to fail if features are missing)..."
+npx spago build --backend-args "--main App --ffi bak/php/ffi" || echo "Compilation failed, but that's expected for now!"
+
+echo "=== Native PHP ==="
+if [ -f "output/main.php" ]; then
+    php bin/php/composer.phar update -d output
+    echo "<?php require __DIR__ . '/vendor/autoload.php'; require 'main.php';" > output/run.php
+    time php -d xdebug.mode=off output/run.php
+else
+    echo "No output/main.php generated."
+fi

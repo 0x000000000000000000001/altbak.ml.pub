@@ -1,0 +1,15 @@
+.DS_Store
+node_modules/
+bower_components/
+.pulp-cache/
+generated-docs/
+.psc-package/
+.psc*
+.purs*
+.psa*
+.agents/
+.vscode/
+vendor/
+composer.lock
+composer.json
+.composer-spago.json

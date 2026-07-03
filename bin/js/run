@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -e
+cd "$(dirname "$0")/../.."
+
+mkdir -p bak/js/output bak/js/spago
+rm -rf output .spago spago.yaml spago.lock
+ln -s bak/js/output output
+ln -s bak/js/spago .spago
+ln -s bak/js/spago.yaml spago.yaml
+touch bak/js/spago.lock && ln -s bak/js/spago.lock spago.lock
+npx spago build > /dev/null 2>&1
+
+echo "=== Native Node V8 ==="
+time node -e "import('./output/App/index.js').then(m => m.main())"

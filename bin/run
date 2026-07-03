@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -e
+cd "$(dirname "$0")/.."
+
+echo "================================"
+echo "    Running all backends...     "
+echo "================================"
+
+echo ""
+./bin/js/run
+
+echo ""
+./bin/es/run
+
+echo ""
+./bin/scm/run
+
+echo ""
+./bin/erl/run
+
+echo ""
+./bin/php/run
