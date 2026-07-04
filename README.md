@@ -31,7 +31,7 @@ sys  0m0.376s | sys  0m0.398s  | sys  0m0.016s        | sys  0m0.062s | sys  0m0
 
 > [!WARNING]
 > **About the PHP results**
-> Please note that the `phpurs` backend is a brand new, completely experimental, and "homemade" compiler built entirely from scratch for this repository. Its execution time is not yet representative of PHP's actual performance limit, as the compiler is still immature and actively undergoing optimization. Still a WIP!
+> Please note that the `phpurs` backend is a brand new, completely experimental, and "homemade" compiler built entirely from scratch for this repository. Its execution time is not yet representative of PHP's actual performance limit, as the compiler is still immature and actively undergoing optimization. Still a WIP! However, it's worth noting the spectacular progress: the initial unoptimized benchmark was taking over **1 minute and 30 seconds**! Step by step, it's getting better and better.
 
 
 > [!NOTE]
