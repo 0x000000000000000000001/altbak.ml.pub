@@ -40,6 +40,15 @@ require_once __DIR__ . '/../Data.Unfoldable/index.php';
 require_once __DIR__ . '/../Data.Unfoldable1/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -94,14 +103,14 @@ $Data_List_Lazy_Types_List = (function() {
 })();
 
 // Data_List_Lazy_Types_Nil
-$Data_List_Lazy_Types_Nil = (object)["tag" => "Nil", "values" => []];
+$Data_List_Lazy_Types_Nil = new Phpurs_Data0("Nil");
 
 // Data_List_Lazy_Types_Cons
 $Data_List_Lazy_Types_Cons = (function() {
   $__fn = function($value0, $value1 = null) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
-    $__res = (object)["tag" => "Cons", "values" => [$value0, $value1]];
+    $__res = new Phpurs_Data2("Cons", $value0, $value1);
   return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
@@ -166,8 +175,8 @@ $go = (function() use ($ys) {
 return ($GLOBALS['Data_List_Lazy_Types_step'])($ys);
 } else {
 if ((($__case_0)->tag === "Cons")) {
-$x = ($__case_0)->values[0];
-$xs__prime__ = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs__prime__ = ($__case_0)->v1;
 return ($GLOBALS['Data_List_Lazy_Types_Cons'])($x, ($GLOBALS['Data_Semigroup_append'])($GLOBALS['Data_List_Lazy_Types_semigroupList'], $xs__prime__, $ys));
 } else {
 throw new \Exception("Pattern match failure");
@@ -228,8 +237,8 @@ $go = (function() use ($f) {
 return $GLOBALS['Data_List_Lazy_Types_Nil'];
 } else {
 if ((($__case_0)->tag === "Cons")) {
-$x = ($__case_0)->values[0];
-$xs__prime__ = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs__prime__ = ($__case_0)->v1;
 return ($GLOBALS['Data_List_Lazy_Types_Cons'])(($f)($x), ($GLOBALS['Data_Functor_map'])($GLOBALS['Data_List_Lazy_Types_functorList'], $f, $xs__prime__));
 } else {
 throw new \Exception("Pattern match failure");
@@ -296,10 +305,10 @@ if (((($__case_0)->tag === "Nil") && (($__case_1)->tag === "Nil"))) {
 return true;
 } else {
 if (((($__case_0)->tag === "Cons") && (($__case_1)->tag === "Cons"))) {
-$x = ($__case_0)->values[0];
-$xs__prime__ = ($__case_0)->values[1];
-$y = ($__case_1)->values[0];
-$ys__prime__ = ($__case_1)->values[1];
+$x = ($__case_0)->v0;
+$xs__prime__ = ($__case_0)->v1;
+$y = ($__case_1)->v0;
+$ys__prime__ = ($__case_1)->v1;
 return "/* Unsupported: Guards not supported */";
 } else {
 if (true) {
@@ -411,10 +420,10 @@ if ((($__case_1)->tag === "Nil")) {
 return $GLOBALS['Data_Ordering_GT'];
 } else {
 if (((($__case_0)->tag === "Cons") && (($__case_1)->tag === "Cons"))) {
-$x = ($__case_0)->values[0];
-$xs__prime__ = ($__case_0)->values[1];
-$y = ($__case_1)->values[0];
-$ys__prime__ = ($__case_1)->values[1];
+$x = ($__case_0)->v0;
+$xs__prime__ = ($__case_0)->v1;
+$y = ($__case_1)->v0;
+$ys__prime__ = ($__case_1)->v1;
 $v2 = ($compare)($x, $y);
 $__case_0 = $v2;
 if ((($__case_0)->tag === "EQ")) {
@@ -581,8 +590,8 @@ if ((($__case_0)->tag === "Nil")) {
 return $b;
 } else {
 if ((($__case_0)->tag === "Cons")) {
-$hd = ($__case_0)->values[0];
-$tl = ($__case_0)->values[1];
+$hd = ($__case_0)->v0;
+$tl = ($__case_0)->v1;
 $__tco_tmp_0 = ($op)($b, $hd);
 $__tco_tmp_1 = $tl;
 $b = $__tco_tmp_0;
@@ -679,7 +688,7 @@ throw new \Exception("Pattern match failure");
 return $GLOBALS['Data_List_Lazy_Types_nil'];
 } else {
 if ((($__case_0)->tag === "Cons")) {
-$as = ($__case_0)->values[1];
+$as = ($__case_0)->v1;
 return ($GLOBALS['Data_List_Lazy_Types_cons'])(($f)($l), (($GLOBALS['Data_List_Lazy_Types_foldr'])($go, (object)["val" => $GLOBALS['Data_List_Lazy_Types_nil'], "acc" => $GLOBALS['Data_List_Lazy_Types_nil']], $as))->val);
 } else {
 throw new \Exception("Pattern match failure");
@@ -744,7 +753,7 @@ throw new \Exception("Pattern match failure");
 $v1 = ($GLOBALS['Data_Lazy_force'])($nel);
 $__case_0 = $v1;
 if ((($__case_0)->tag === "NonEmpty")) {
-$as = ($__case_0)->values[1];
+$as = ($__case_0)->v1;
 return ($GLOBALS['Data_List_Lazy_Types_NonEmptyList'])(($GLOBALS['Data_Lazy_defer'])((function() use ($f1, $w, $go, $as) {
   $__fn = function($v2) use ($f1, $w, $go, $as, &$__fn) {
   $__num = func_num_args();
@@ -868,8 +877,8 @@ if ((($__case_0)->tag === "Nil")) {
 $__case_res_0 = "";
 } else {
 if ((($__case_0)->tag === "Cons")) {
-$x = ($__case_0)->values[0];
-$xs__prime__ = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs__prime__ = ($__case_0)->v1;
 $__case_res_0 = ($GLOBALS['Data_List_Lazy_Types_append'])(($show)($x), ($GLOBALS['Data_List_Lazy_Types_foldl1'])((function() use ($show) {
   $__fn = function($shown, $x__prime__ = null) use ($show, &$__fn) {
   $__num = func_num_args();
@@ -936,8 +945,8 @@ $show1 = ($GLOBALS['Data_Show_show'])(($GLOBALS['Data_List_Lazy_Types_showList']
 return "Nil";
 } else {
 if ((($__case_0)->tag === "Cons")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 return ($GLOBALS['Data_List_Lazy_Types_append'])("(", ($GLOBALS['Data_List_Lazy_Types_append'])(($show)($x), ($GLOBALS['Data_List_Lazy_Types_append'])(" : ", ($GLOBALS['Data_List_Lazy_Types_append'])(($show1)($xs), ")"))));
 } else {
 throw new \Exception("Pattern match failure");
@@ -964,8 +973,8 @@ $Data_List_Lazy_Types_foldableWithIndexList = ($GLOBALS['Data_FoldableWithIndex_
   $__body = function($v1) {
     $__case_0 = $v1;
     if ((($__case_0)->tag === "Tuple")) {
-$i = ($__case_0)->values[0];
-$acc = ($__case_0)->values[1];
+$i = ($__case_0)->v0;
+$acc = ($__case_0)->v1;
 return (function() use ($i, $acc) {
   $__fn = function($a) use ($i, $acc, &$__fn) {
   $__num = func_num_args();
@@ -990,14 +999,14 @@ throw new \Exception("Pattern match failure");
     $v = ($rev)(($GLOBALS['Data_Tuple_Tuple'])(0, $GLOBALS['Data_List_Lazy_Types_nil']), $xs);
     $__case_0 = $v;
     if ((($__case_0)->tag === "Tuple")) {
-$len = ($__case_0)->values[0];
-$revList = ($__case_0)->values[1];
+$len = ($__case_0)->v0;
+$revList = ($__case_0)->v1;
 return ($GLOBALS['Data_Tuple_snd'])(($GLOBALS['Data_List_Lazy_Types_foldl1'])((function() use ($f) {
   $__body = function($v1) use ($f) {
     $__case_0 = $v1;
     if ((($__case_0)->tag === "Tuple")) {
-$i = ($__case_0)->values[0];
-$b__prime__ = ($__case_0)->values[1];
+$i = ($__case_0)->v0;
+$b__prime__ = ($__case_0)->v1;
 return (function() use ($i, $f, $b__prime__) {
   $__fn = function($a) use ($i, $f, $b__prime__, &$__fn) {
   $__num = func_num_args();
@@ -1038,8 +1047,8 @@ throw new \Exception("Pattern match failure");
   $__body = function($v) use ($f) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Tuple")) {
-$i = ($__case_0)->values[0];
-$b = ($__case_0)->values[1];
+$i = ($__case_0)->v0;
+$b = ($__case_0)->v1;
 return (function() use ($i, $f, $b) {
   $__fn = function($a) use ($i, $f, $b, &$__fn) {
   $__num = func_num_args();
@@ -1275,8 +1284,8 @@ return ($GLOBALS['Data_List_Lazy_Types_defer'])((function() use ($nel) {
     $v2 = ($GLOBALS['Data_Lazy_force'])($nel);
     $__case_0 = $v2;
     if ((($__case_0)->tag === "NonEmpty")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 return ($GLOBALS['Data_List_Lazy_Types_cons'])($x, $xs);
 } else {
 throw new \Exception("Pattern match failure");
@@ -1314,8 +1323,8 @@ $as__prime__1 = $__case_1;
 $v1 = ($GLOBALS['Data_Lazy_force'])($neas);
 $__case_0 = $v1;
 if ((($__case_0)->tag === "NonEmpty")) {
-$a = ($__case_0)->values[0];
-$as = ($__case_0)->values[1];
+$a = ($__case_0)->v0;
+$as = ($__case_0)->v1;
 return ($GLOBALS['Data_List_Lazy_Types_NonEmptyList'])(($GLOBALS['Data_Lazy_defer'])((function() use ($a, $as, $as__prime__1) {
   $__fn = function($v2) use ($a, $as, $as__prime__1, &$__fn) {
   $__num = func_num_args();
@@ -1652,13 +1661,13 @@ return ($GLOBALS['Data_List_Lazy_Types_defer'])((function() use ($f, $b, &$go) {
   $__body = function($v) use ($f, $b, &$go) {
     $v1 = ($f)($b);
     $__case_0 = $v1;
-    if (((($__case_0)->tag === "Tuple") && ((($__case_0)->values[1])->tag === "Just"))) {
-$a = ($__case_0)->values[0];
-$b__prime__ = (($__case_0)->values[1])->values[0];
+    if (((($__case_0)->tag === "Tuple") && ((($__case_0)->v1)->tag === "Just"))) {
+$a = ($__case_0)->v0;
+$b__prime__ = (($__case_0)->v1)->v0;
 return ($GLOBALS['Data_List_Lazy_Types_cons'])($a, ($go)($f, $b__prime__));
 } else {
-if (((($__case_0)->tag === "Tuple") && ((($__case_0)->values[1])->tag === "Nothing"))) {
-$a = ($__case_0)->values[0];
+if (((($__case_0)->tag === "Tuple") && ((($__case_0)->v1)->tag === "Nothing"))) {
+$a = ($__case_0)->v0;
 return ($GLOBALS['Data_List_Lazy_Types_cons'])($a, $GLOBALS['Data_List_Lazy_Types_nil']);
 } else {
 throw new \Exception("Pattern match failure");
@@ -1694,9 +1703,9 @@ return ($GLOBALS['Data_List_Lazy_Types_defer'])((function() use ($f, $b, &$go) {
     if ((($__case_0)->tag === "Nothing")) {
 return $GLOBALS['Data_List_Lazy_Types_nil'];
 } else {
-if (((($__case_0)->tag === "Just") && ((($__case_0)->values[0])->tag === "Tuple"))) {
-$a = (($__case_0)->values[0])->values[0];
-$b__prime__ = (($__case_0)->values[0])->values[1];
+if (((($__case_0)->tag === "Just") && ((($__case_0)->v0)->tag === "Tuple"))) {
+$a = (($__case_0)->v0)->v0;
+$b__prime__ = (($__case_0)->v0)->v1;
 return ($GLOBALS['Data_List_Lazy_Types_cons'])($a, ($go)($f, $b__prime__));
 } else {
 throw new \Exception("Pattern match failure");
@@ -1808,8 +1817,8 @@ $go = (function() use ($f) {
 return $GLOBALS['Data_List_Lazy_Types_Nil'];
 } else {
 if ((($__case_0)->tag === "Cons")) {
-$x = ($__case_0)->values[0];
-$xs__prime__ = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs__prime__ = ($__case_0)->v1;
 return ($GLOBALS['Data_List_Lazy_Types_step'])(($GLOBALS['Data_List_Lazy_Types_append1'])(($f)($x), ($GLOBALS['Control_Bind_bind'])($GLOBALS['Data_List_Lazy_Types_bindList'], $xs__prime__, $f)));
 } else {
 throw new \Exception("Pattern match failure");
@@ -1887,10 +1896,10 @@ $v3 = ($GLOBALS['Data_Lazy_force'])($nefs);
 $__case_0 = $v3;
 $__case_1 = $v2;
 if (((($__case_0)->tag === "NonEmpty") && (($__case_1)->tag === "NonEmpty"))) {
-$f = ($__case_0)->values[0];
-$fs = ($__case_0)->values[1];
-$a = ($__case_1)->values[0];
-$as = ($__case_1)->values[1];
+$f = ($__case_0)->v0;
+$fs = ($__case_0)->v1;
+$a = ($__case_1)->v0;
+$as = ($__case_1)->v1;
 return ($GLOBALS['Data_List_Lazy_Types_NonEmptyList'])(($GLOBALS['Data_Lazy_defer'])((function() use ($f, $a, $fs, $as) {
   $__fn = function($v4) use ($f, $a, $fs, $as, &$__fn) {
   $__num = func_num_args();
@@ -1935,13 +1944,13 @@ $f1 = $__case_1;
 $v1 = ($GLOBALS['Data_Lazy_force'])($nel);
 $__case_0 = $v1;
 if ((($__case_0)->tag === "NonEmpty")) {
-$a = ($__case_0)->values[0];
-$as = ($__case_0)->values[1];
+$a = ($__case_0)->v0;
+$as = ($__case_0)->v1;
 $v2 = ($GLOBALS['Data_Lazy_force'])(($GLOBALS['Data_List_Lazy_Types_unwrap'])(($f1)($a)));
 $__case_0 = $v2;
 if ((($__case_0)->tag === "NonEmpty")) {
-$b = ($__case_0)->values[0];
-$bs = ($__case_0)->values[1];
+$b = ($__case_0)->v0;
+$bs = ($__case_0)->v1;
 return ($GLOBALS['Data_List_Lazy_Types_NonEmptyList'])(($GLOBALS['Data_Lazy_defer'])((function() use ($b, $bs, $as, $f1) {
   $__fn = function($v3) use ($b, $bs, $as, $f1, &$__fn) {
   $__num = func_num_args();

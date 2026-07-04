@@ -31,6 +31,15 @@ require_once __DIR__ . '/../Data.Unit/index.php';
 require_once __DIR__ . '/../Effect.Class/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -225,8 +234,8 @@ return ($GLOBALS['Control_Monad_State_Trans_StateT'])((function() use ($map, $f1
   $__body = function($v1) use ($f1) {
     $__case_0 = $v1;
     if ((($__case_0)->tag === "Tuple")) {
-$b = ($__case_0)->values[0];
-$s__prime__ = ($__case_0)->values[1];
+$b = ($__case_0)->v0;
+$s__prime__ = ($__case_0)->v1;
 return ($GLOBALS['Data_Tuple_Tuple'])(($f1)($b), $s__prime__);
 } else {
 throw new \Exception("Pattern match failure");
@@ -375,8 +384,8 @@ return ($GLOBALS['Control_Monad_State_Trans_StateT'])((function() use ($bind, $x
   $__body = function($v1) use ($f1) {
     $__case_0 = $v1;
     if ((($__case_0)->tag === "Tuple")) {
-$v2 = ($__case_0)->values[0];
-$s__prime__ = ($__case_0)->values[1];
+$v2 = ($__case_0)->v0;
+$s__prime__ = ($__case_0)->v1;
 $v3 = ($f1)($v2);
 $__case_0 = $v3;
 if (true) {
@@ -661,8 +670,8 @@ $f__prime__ = (function() use ($f, $bind, $pure) {
   $__body = function($v) use ($f, $bind, $pure) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Tuple")) {
-$a__prime__ = ($__case_0)->values[0];
-$s = ($__case_0)->values[1];
+$a__prime__ = ($__case_0)->v0;
+$s = ($__case_0)->v1;
 $v1 = ($f)($a__prime__);
 $__case_0 = $v1;
 if (true) {
@@ -671,16 +680,16 @@ return ($bind)(($st)($s), (function() use ($pure) {
   $__body = function($v2) use ($pure) {
     $__case_0 = $v2;
     if ((($__case_0)->tag === "Tuple")) {
-$m = ($__case_0)->values[0];
-$s1 = ($__case_0)->values[1];
+$m = ($__case_0)->v0;
+$s1 = ($__case_0)->v1;
 $__case_0 = $m;
 $__case_res_0 = null;
 if ((($__case_0)->tag === "Loop")) {
-$x = ($__case_0)->values[0];
+$x = ($__case_0)->v0;
 $__case_res_0 = ($GLOBALS['Control_Monad_Rec_Class_Loop'])(($GLOBALS['Data_Tuple_Tuple'])($x, $s1));
 } else {
 if ((($__case_0)->tag === "Done")) {
-$y = ($__case_0)->values[0];
+$y = ($__case_0)->v0;
 $__case_res_0 = ($GLOBALS['Control_Monad_Rec_Class_Done'])(($GLOBALS['Data_Tuple_Tuple'])($y, $s1));
 } else {
 throw new \Exception("Pattern match failure");
@@ -824,10 +833,10 @@ $m__prime__ = $__case_0;
 return ($bind)(($listen)(($m__prime__)($s)), (function() use ($pure) {
   $__body = function($v) use ($pure) {
     $__case_0 = $v;
-    if (((($__case_0)->tag === "Tuple") && ((($__case_0)->values[0])->tag === "Tuple"))) {
-$a = (($__case_0)->values[0])->values[0];
-$s__prime__ = (($__case_0)->values[0])->values[1];
-$w = ($__case_0)->values[1];
+    if (((($__case_0)->tag === "Tuple") && ((($__case_0)->v0)->tag === "Tuple"))) {
+$a = (($__case_0)->v0)->v0;
+$s__prime__ = (($__case_0)->v0)->v1;
+$w = ($__case_0)->v1;
 return ($pure)(($GLOBALS['Data_Tuple_Tuple'])(($GLOBALS['Data_Tuple_Tuple'])($a, $w), $s__prime__));
 } else {
 throw new \Exception("Pattern match failure");
@@ -871,10 +880,10 @@ $m__prime__ = $__case_0;
 $__case_res_0 = ($bind)(($m__prime__)($s), (function() use ($pure) {
   $__body = function($v) use ($pure) {
     $__case_0 = $v;
-    if (((($__case_0)->tag === "Tuple") && ((($__case_0)->values[0])->tag === "Tuple"))) {
-$a = (($__case_0)->values[0])->values[0];
-$f = (($__case_0)->values[0])->values[1];
-$s__prime__ = ($__case_0)->values[1];
+    if (((($__case_0)->tag === "Tuple") && ((($__case_0)->v0)->tag === "Tuple"))) {
+$a = (($__case_0)->v0)->v0;
+$f = (($__case_0)->v0)->v1;
+$s__prime__ = ($__case_0)->v1;
 return ($pure)(($GLOBALS['Data_Tuple_Tuple'])(($GLOBALS['Data_Tuple_Tuple'])($a, $s__prime__), $f));
 } else {
 throw new \Exception("Pattern match failure");

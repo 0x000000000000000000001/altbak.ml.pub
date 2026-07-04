@@ -15,6 +15,15 @@ require_once __DIR__ . '/../Effect/index.php';
 require_once __DIR__ . '/../Effect.Exception/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -121,7 +130,7 @@ $f = $__case_1;
 return ($f)($GLOBALS['Data_Unit_unit']);
 } else {
 if ((($__case_0)->tag === "Just")) {
-$a = ($__case_0)->values[0];
+$a = ($__case_0)->v0;
 return ($GLOBALS['Data_Maybe_Just'])($a);
 } else {
 throw new \Exception("Pattern match failure");
@@ -151,12 +160,12 @@ $Control_Monad_Error_Class_monadErrorEither = ($GLOBALS['Control_Monad_Error_Cla
     $__case_0 = $v;
     $__case_1 = $v1;
     if ((($__case_0)->tag === "Left")) {
-$e = ($__case_0)->values[0];
+$e = ($__case_0)->v0;
 $h = $__case_1;
 return ($h)($e);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$x = ($__case_0)->values[0];
+$x = ($__case_0)->v0;
 return ($GLOBALS['Data_Either_Right'])($x);
 } else {
 throw new \Exception("Pattern match failure");
@@ -262,7 +271,7 @@ $handle = (function() use ($p, $throwError1, $handler) {
 return ($throwError1)($e);
 } else {
 if ((($__case_0)->tag === "Just")) {
-$b = ($__case_0)->values[0];
+$b = ($__case_0)->v0;
 return ($handler)($b);
 } else {
 throw new \Exception("Pattern match failure");

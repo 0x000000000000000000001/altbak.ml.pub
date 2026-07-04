@@ -22,6 +22,15 @@ require_once __DIR__ . '/../Data.Tuple/index.php';
 require_once __DIR__ . '/../Data.Unit/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -82,7 +91,7 @@ $Data_Semigroup_Foldable_FoldRight1 = (function() {
   $__fn = function($value0, $value1 = null) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
-    $__res = (object)["tag" => "FoldRight1", "values" => [$value0, $value1]];
+    $__res = new Phpurs_Data2("FoldRight1", $value0, $value1);
   return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
@@ -174,8 +183,8 @@ $Data_Semigroup_Foldable_runFoldRight1 = (function() {
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "FoldRight1")) {
-$f = ($__case_0)->values[0];
-$a = ($__case_0)->values[1];
+$f = ($__case_0)->v0;
+$a = ($__case_0)->v1;
 return ($f)($a);
 } else {
 throw new \Exception("Pattern match failure");
@@ -360,7 +369,7 @@ $Data_Semigroup_Foldable_foldableTuple = ($GLOBALS['Data_Semigroup_Foldable_Fold
     $__case_1 = $v;
     if ((($__case_1)->tag === "Tuple")) {
 $f1 = $__case_0;
-$x = ($__case_1)->values[1];
+$x = ($__case_1)->v1;
 return ($f1)($x);
 } else {
 throw new \Exception("Pattern match failure");
@@ -378,7 +387,7 @@ throw new \Exception("Pattern match failure");
     $__case_0 = $v;
     $__case_1 = $v1;
     if ((($__case_1)->tag === "Tuple")) {
-$x = ($__case_1)->values[1];
+$x = ($__case_1)->v1;
 return $x;
 } else {
 throw new \Exception("Pattern match failure");
@@ -396,7 +405,7 @@ throw new \Exception("Pattern match failure");
     $__case_0 = $v;
     $__case_1 = $v1;
     if ((($__case_1)->tag === "Tuple")) {
-$x = ($__case_1)->values[1];
+$x = ($__case_1)->v1;
 return $x;
 } else {
 throw new \Exception("Pattern match failure");
@@ -623,10 +632,10 @@ $Data_Semigroup_Foldable_foldRight1Semigroup = ($GLOBALS['Data_Semigroup_Semigro
     $__case_0 = $v;
     $__case_1 = $v1;
     if (((($__case_0)->tag === "FoldRight1") && (($__case_1)->tag === "FoldRight1"))) {
-$lf = ($__case_0)->values[0];
-$lr = ($__case_0)->values[1];
-$rf = ($__case_1)->values[0];
-$rr = ($__case_1)->values[1];
+$lf = ($__case_0)->v0;
+$lr = ($__case_0)->v1;
+$rf = ($__case_1)->v0;
+$rr = ($__case_1)->v1;
 return ($GLOBALS['Data_Semigroup_Foldable_FoldRight1'])((function() use ($lf, $lr, $rf) {
   $__fn = function($a, $f = null) use ($lf, $lr, $rf, &$__fn) {
   $__num = func_num_args();

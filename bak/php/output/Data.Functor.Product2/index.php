@@ -16,6 +16,15 @@ require_once __DIR__ . '/../Data.Semigroup/index.php';
 require_once __DIR__ . '/../Data.Show/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -42,7 +51,7 @@ $Data_Functor_Product2_Product2 = (function() {
   $__fn = function($value0, $value1 = null) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
-    $__res = (object)["tag" => "Product2", "values" => [$value0, $value1]];
+    $__res = new Phpurs_Data2("Product2", $value0, $value1);
   return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
@@ -63,8 +72,8 @@ $show1 = ($GLOBALS['Data_Show_show'])($dictShow1);
   $__body = function($v) use ($show, $show1) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Product2")) {
-$x = ($__case_0)->values[0];
-$y = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$y = ($__case_0)->v1;
 return ($GLOBALS['Data_Functor_Product2_append'])("(Product2 ", ($GLOBALS['Data_Functor_Product2_append'])(($show)($x), ($GLOBALS['Data_Functor_Product2_append'])(" ", ($GLOBALS['Data_Functor_Product2_append'])(($show1)($y), ")"))));
 } else {
 throw new \Exception("Pattern match failure");
@@ -106,8 +115,8 @@ $dimap1 = ($GLOBALS['Data_Profunctor_dimap'])($dictProfunctor1);
     if ((($__case_2)->tag === "Product2")) {
 $f1 = $__case_0;
 $g1 = $__case_1;
-$x = ($__case_2)->values[0];
-$y = ($__case_2)->values[1];
+$x = ($__case_2)->v0;
+$y = ($__case_2)->v1;
 return ($GLOBALS['Data_Functor_Product2_Product2'])(($dimap)($f1, $g1, $x), ($dimap1)($f1, $g1, $y));
 } else {
 throw new \Exception("Pattern match failure");
@@ -147,8 +156,8 @@ $map1 = ($GLOBALS['Data_Functor_map'])($dictFunctor1);
     $__case_1 = $v;
     if ((($__case_1)->tag === "Product2")) {
 $f1 = $__case_0;
-$x = ($__case_1)->values[0];
-$y = ($__case_1)->values[1];
+$x = ($__case_1)->v0;
+$y = ($__case_1)->v1;
 return ($GLOBALS['Data_Functor_Product2_Product2'])(($map)($f1, $x), ($map1)($f1, $y));
 } else {
 throw new \Exception("Pattern match failure");
@@ -187,10 +196,10 @@ $eq1 = ($GLOBALS['Data_Eq_eq'])($dictEq1);
     $__case_0 = $x;
     $__case_1 = $y;
     if (((($__case_0)->tag === "Product2") && (($__case_1)->tag === "Product2"))) {
-$l = ($__case_0)->values[0];
-$l1 = ($__case_0)->values[1];
-$r = ($__case_1)->values[0];
-$r1 = ($__case_1)->values[1];
+$l = ($__case_0)->v0;
+$l1 = ($__case_0)->v1;
+$r = ($__case_1)->v0;
+$r1 = ($__case_1)->v1;
 return ($GLOBALS['Data_Functor_Product2_conj'])(($eq)($l, $r), ($eq1)($l1, $r1));
 } else {
 throw new \Exception("Pattern match failure");
@@ -231,10 +240,10 @@ $eqProduct22 = ($eqProduct21)((($dictOrd1)->Eq0)($GLOBALS['Prim_undefined']));
     $__case_0 = $x;
     $__case_1 = $y;
     if (((($__case_0)->tag === "Product2") && (($__case_1)->tag === "Product2"))) {
-$l = ($__case_0)->values[0];
-$l1 = ($__case_0)->values[1];
-$r = ($__case_1)->values[0];
-$r1 = ($__case_1)->values[1];
+$l = ($__case_0)->v0;
+$l1 = ($__case_0)->v1;
+$r = ($__case_1)->v0;
+$r1 = ($__case_1)->v1;
 $v = ($compare)($l, $r);
 $__case_0 = $v;
 if ((($__case_0)->tag === "LT")) {
@@ -298,8 +307,8 @@ $bimap1 = ($GLOBALS['Data_Bifunctor_bimap'])($dictBifunctor1);
     if ((($__case_2)->tag === "Product2")) {
 $f1 = $__case_0;
 $g1 = $__case_1;
-$x = ($__case_2)->values[0];
-$y = ($__case_2)->values[1];
+$x = ($__case_2)->v0;
+$y = ($__case_2)->v1;
 return ($GLOBALS['Data_Functor_Product2_Product2'])(($bimap)($f1, $g1, $x), ($bimap1)($f1, $g1, $y));
 } else {
 throw new \Exception("Pattern match failure");
@@ -340,10 +349,10 @@ $bifunctorProduct22 = ($bifunctorProduct21)((($dictBiapply1)->Bifunctor0)($GLOBA
     $__case_0 = $v;
     $__case_1 = $v1;
     if (((($__case_0)->tag === "Product2") && (($__case_1)->tag === "Product2"))) {
-$w = ($__case_0)->values[0];
-$x = ($__case_0)->values[1];
-$y = ($__case_1)->values[0];
-$z = ($__case_1)->values[1];
+$w = ($__case_0)->v0;
+$x = ($__case_0)->v1;
+$y = ($__case_1)->v0;
+$z = ($__case_1)->v1;
 return ($GLOBALS['Data_Functor_Product2_Product2'])(($biapply)($w, $y), ($biapply1)($x, $z));
 } else {
 throw new \Exception("Pattern match failure");

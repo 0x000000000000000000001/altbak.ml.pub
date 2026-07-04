@@ -17,6 +17,15 @@ require_once __DIR__ . '/../Data.Semigroup/index.php';
 require_once __DIR__ . '/../Data.Show/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -67,11 +76,11 @@ $show1 = ($GLOBALS['Data_Show_show'])($dictShow1);
   $__body = function($v) use ($show, $show1) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Left")) {
-$fa = ($__case_0)->values[0];
+$fa = ($__case_0)->v0;
 return ($GLOBALS['Data_Functor_Coproduct_append'])("(left ", ($GLOBALS['Data_Functor_Coproduct_append'])(($show)($fa), ")"));
 } else {
 if ((($__case_0)->tag === "Right")) {
-$ga = ($__case_0)->values[0];
+$ga = ($__case_0)->v0;
 return ($GLOBALS['Data_Functor_Coproduct_append'])("(right ", ($GLOBALS['Data_Functor_Coproduct_append'])(($show1)($ga), ")"));
 } else {
 throw new \Exception("Pattern match failure");
@@ -195,13 +204,13 @@ $y = $__case_1;
 $__case_0 = $x;
 $__case_1 = $y;
 if (((($__case_0)->tag === "Left") && (($__case_1)->tag === "Left"))) {
-$fa = ($__case_0)->values[0];
-$ga = ($__case_1)->values[0];
+$fa = ($__case_0)->v0;
+$ga = ($__case_1)->v0;
 return ($eq12)($fa, $ga);
 } else {
 if (((($__case_0)->tag === "Right") && (($__case_1)->tag === "Right"))) {
-$fa = ($__case_0)->values[0];
-$ga = ($__case_1)->values[0];
+$fa = ($__case_0)->v0;
+$ga = ($__case_1)->v0;
 return ($eq13)($fa, $ga);
 } else {
 if (true) {
@@ -294,8 +303,8 @@ $y = $__case_1;
 $__case_0 = $x;
 $__case_1 = $y;
 if (((($__case_0)->tag === "Left") && (($__case_1)->tag === "Left"))) {
-$fa = ($__case_0)->values[0];
-$ga = ($__case_1)->values[0];
+$fa = ($__case_0)->v0;
+$ga = ($__case_1)->v0;
 return ($compare12)($fa, $ga);
 } else {
 if ((($__case_0)->tag === "Left")) {
@@ -305,8 +314,8 @@ if ((($__case_1)->tag === "Left")) {
 return $GLOBALS['Data_Ordering_GT'];
 } else {
 if (((($__case_0)->tag === "Right") && (($__case_1)->tag === "Right"))) {
-$fa = ($__case_0)->values[0];
-$ga = ($__case_1)->values[0];
+$fa = ($__case_0)->v0;
+$ga = ($__case_1)->v0;
 return ($compare13)($fa, $ga);
 } else {
 throw new \Exception("Pattern match failure");
@@ -395,12 +404,12 @@ $Data_Functor_Coproduct_coproduct = (function() {
     $__case_2 = $v2;
     if ((($__case_2)->tag === "Left")) {
 $f = $__case_0;
-$a = ($__case_2)->values[0];
+$a = ($__case_2)->v0;
 return ($f)($a);
 } else {
 if ((($__case_2)->tag === "Right")) {
 $g = $__case_1;
-$b = ($__case_2)->values[0];
+$b = ($__case_2)->v0;
 return ($g)($b);
 } else {
 throw new \Exception("Pattern match failure");

@@ -27,6 +27,15 @@ require_once __DIR__ . '/../Data.Tuple/index.php';
 require_once __DIR__ . '/../Partial.Unsafe/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -158,7 +167,7 @@ $Data_Time_Time = (function() {
   $__fn = function($value0, $value1 = null, $value2 = null, $value3 = null) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 4) return phpurs_curry_fallback($__fn, func_get_args(), 4);
-    $__res = (object)["tag" => "Time", "values" => [$value0, $value1, $value2, $value3]];
+    $__res = new Phpurs_Data4("Time", $value0, $value1, $value2, $value3);
   return $__num > 4 ? $__res(...array_slice(func_get_args(), 4)) : $__res;
   };
   return $__fn;
@@ -169,10 +178,10 @@ $Data_Time_showTime = ($GLOBALS['Data_Show_Show__dollar__Dict'])((object)["show"
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Time")) {
-$h = ($__case_0)->values[0];
-$m = ($__case_0)->values[1];
-$s = ($__case_0)->values[2];
-$ms = ($__case_0)->values[3];
+$h = ($__case_0)->v0;
+$m = ($__case_0)->v1;
+$s = ($__case_0)->v2;
+$ms = ($__case_0)->v3;
 return ($GLOBALS['Data_Time_append'])("(Time ", ($GLOBALS['Data_Time_append'])(($GLOBALS['Data_Time_show'])($h), ($GLOBALS['Data_Time_append'])(" ", ($GLOBALS['Data_Time_append'])(($GLOBALS['Data_Time_show1'])($m), ($GLOBALS['Data_Time_append'])(" ", ($GLOBALS['Data_Time_append'])(($GLOBALS['Data_Time_show2'])($s), ($GLOBALS['Data_Time_append'])(" ", ($GLOBALS['Data_Time_append'])(($GLOBALS['Data_Time_show3'])($ms), ")"))))))));
 } else {
 throw new \Exception("Pattern match failure");
@@ -194,9 +203,9 @@ $Data_Time_setSecond = (function() {
     $__case_1 = $v;
     if ((($__case_1)->tag === "Time")) {
 $s1 = $__case_0;
-$h = ($__case_1)->values[0];
-$m = ($__case_1)->values[1];
-$ms = ($__case_1)->values[3];
+$h = ($__case_1)->v0;
+$m = ($__case_1)->v1;
+$ms = ($__case_1)->v3;
 return ($GLOBALS['Data_Time_Time'])($h, $m, $s1, $ms);
 } else {
 throw new \Exception("Pattern match failure");
@@ -218,9 +227,9 @@ $Data_Time_setMinute = (function() {
     $__case_1 = $v;
     if ((($__case_1)->tag === "Time")) {
 $m1 = $__case_0;
-$h = ($__case_1)->values[0];
-$s = ($__case_1)->values[2];
-$ms = ($__case_1)->values[3];
+$h = ($__case_1)->v0;
+$s = ($__case_1)->v2;
+$ms = ($__case_1)->v3;
 return ($GLOBALS['Data_Time_Time'])($h, $m1, $s, $ms);
 } else {
 throw new \Exception("Pattern match failure");
@@ -242,9 +251,9 @@ $Data_Time_setMillisecond = (function() {
     $__case_1 = $v;
     if ((($__case_1)->tag === "Time")) {
 $ms1 = $__case_0;
-$h = ($__case_1)->values[0];
-$m = ($__case_1)->values[1];
-$s = ($__case_1)->values[2];
+$h = ($__case_1)->v0;
+$m = ($__case_1)->v1;
+$s = ($__case_1)->v2;
 return ($GLOBALS['Data_Time_Time'])($h, $m, $s, $ms1);
 } else {
 throw new \Exception("Pattern match failure");
@@ -266,9 +275,9 @@ $Data_Time_setHour = (function() {
     $__case_1 = $v;
     if ((($__case_1)->tag === "Time")) {
 $h1 = $__case_0;
-$m = ($__case_1)->values[1];
-$s = ($__case_1)->values[2];
-$ms = ($__case_1)->values[3];
+$m = ($__case_1)->v1;
+$s = ($__case_1)->v2;
+$ms = ($__case_1)->v3;
 return ($GLOBALS['Data_Time_Time'])($h1, $m, $s, $ms);
 } else {
 throw new \Exception("Pattern match failure");
@@ -288,7 +297,7 @@ $Data_Time_second = (function() {
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Time")) {
-$s = ($__case_0)->values[2];
+$s = ($__case_0)->v2;
 return $s;
 } else {
 throw new \Exception("Pattern match failure");
@@ -308,7 +317,7 @@ $Data_Time_minute = (function() {
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Time")) {
-$m = ($__case_0)->values[1];
+$m = ($__case_0)->v1;
 return $m;
 } else {
 throw new \Exception("Pattern match failure");
@@ -328,7 +337,7 @@ $Data_Time_millisecond = (function() {
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Time")) {
-$ms = ($__case_0)->values[3];
+$ms = ($__case_0)->v3;
 return $ms;
 } else {
 throw new \Exception("Pattern match failure");
@@ -383,7 +392,7 @@ $Data_Time_hour = (function() {
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Time")) {
-$h = ($__case_0)->values[0];
+$h = ($__case_0)->v0;
 return $h;
 } else {
 throw new \Exception("Pattern match failure");
@@ -415,14 +424,14 @@ $Data_Time_eqTime = ($GLOBALS['Data_Eq_Eq__dollar__Dict'])((object)["eq" => (fun
     $__case_0 = $x;
     $__case_1 = $y;
     if (((($__case_0)->tag === "Time") && (($__case_1)->tag === "Time"))) {
-$l = ($__case_0)->values[0];
-$l1 = ($__case_0)->values[1];
-$l2 = ($__case_0)->values[2];
-$l3 = ($__case_0)->values[3];
-$r = ($__case_1)->values[0];
-$r1 = ($__case_1)->values[1];
-$r2 = ($__case_1)->values[2];
-$r3 = ($__case_1)->values[3];
+$l = ($__case_0)->v0;
+$l1 = ($__case_0)->v1;
+$l2 = ($__case_0)->v2;
+$l3 = ($__case_0)->v3;
+$r = ($__case_1)->v0;
+$r1 = ($__case_1)->v1;
+$r2 = ($__case_1)->v2;
+$r3 = ($__case_1)->v3;
 return ($GLOBALS['Data_Time_conj'])(($GLOBALS['Data_Time_conj'])(($GLOBALS['Data_Time_conj'])(($GLOBALS['Data_Time_eq'])($l, $r), ($GLOBALS['Data_Time_eq1'])($l1, $r1)), ($GLOBALS['Data_Time_eq2'])($l2, $r2)), ($GLOBALS['Data_Time_eq3'])($l3, $r3));
 } else {
 throw new \Exception("Pattern match failure");
@@ -443,14 +452,14 @@ $Data_Time_ordTime = ($GLOBALS['Data_Ord_Ord__dollar__Dict'])((object)["compare"
     $__case_0 = $x;
     $__case_1 = $y;
     if (((($__case_0)->tag === "Time") && (($__case_1)->tag === "Time"))) {
-$l = ($__case_0)->values[0];
-$l1 = ($__case_0)->values[1];
-$l2 = ($__case_0)->values[2];
-$l3 = ($__case_0)->values[3];
-$r = ($__case_1)->values[0];
-$r1 = ($__case_1)->values[1];
-$r2 = ($__case_1)->values[2];
-$r3 = ($__case_1)->values[3];
+$l = ($__case_0)->v0;
+$l1 = ($__case_0)->v1;
+$l2 = ($__case_0)->v2;
+$l3 = ($__case_0)->v3;
+$r = ($__case_1)->v0;
+$r1 = ($__case_1)->v1;
+$r2 = ($__case_1)->v2;
+$r3 = ($__case_1)->v3;
 $v = ($GLOBALS['Data_Time_compare'])($l, $r);
 $__case_0 = $v;
 if ((($__case_0)->tag === "LT")) {

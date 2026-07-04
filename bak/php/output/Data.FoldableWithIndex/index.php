@@ -34,6 +34,15 @@ require_once __DIR__ . '/../Data.Tuple/index.php';
 require_once __DIR__ . '/../Data.Unit/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -300,7 +309,7 @@ $Data_FoldableWithIndex_foldableWithIndexTuple = ($GLOBALS['Data_FoldableWithInd
     if ((($__case_2)->tag === "Tuple")) {
 $f1 = $__case_0;
 $z1 = $__case_1;
-$x = ($__case_2)->values[1];
+$x = ($__case_2)->v1;
 return ($f1)($GLOBALS['Data_Unit_unit'], $x, $z1);
 } else {
 throw new \Exception("Pattern match failure");
@@ -321,7 +330,7 @@ throw new \Exception("Pattern match failure");
     if ((($__case_2)->tag === "Tuple")) {
 $f1 = $__case_0;
 $z1 = $__case_1;
-$x = ($__case_2)->values[1];
+$x = ($__case_2)->v1;
 return ($f1)($GLOBALS['Data_Unit_unit'], $z1, $x);
 } else {
 throw new \Exception("Pattern match failure");
@@ -340,7 +349,7 @@ throw new \Exception("Pattern match failure");
     $__case_1 = $v;
     if ((($__case_1)->tag === "Tuple")) {
 $f1 = $__case_0;
-$x = ($__case_1)->values[1];
+$x = ($__case_1)->v1;
 return ($f1)($GLOBALS['Data_Unit_unit'], $x);
 } else {
 throw new \Exception("Pattern match failure");
@@ -624,7 +633,7 @@ return $z;
 if ((($__case_2)->tag === "Right")) {
 $f = $__case_0;
 $z = $__case_1;
-$x = ($__case_2)->values[0];
+$x = ($__case_2)->v0;
 return ($f)($GLOBALS['Data_Unit_unit'], $x, $z);
 } else {
 throw new \Exception("Pattern match failure");
@@ -650,7 +659,7 @@ return $z;
 if ((($__case_2)->tag === "Right")) {
 $f = $__case_0;
 $z = $__case_1;
-$x = ($__case_2)->values[0];
+$x = ($__case_2)->v0;
 return ($f)($GLOBALS['Data_Unit_unit'], $z, $x);
 } else {
 throw new \Exception("Pattern match failure");
@@ -678,7 +687,7 @@ return $mempty;
 } else {
 if ((($__case_1)->tag === "Right")) {
 $f = $__case_0;
-$x = ($__case_1)->values[0];
+$x = ($__case_1)->v0;
 return ($f)($GLOBALS['Data_Unit_unit'], $x);
 } else {
 throw new \Exception("Pattern match failure");
@@ -1011,8 +1020,8 @@ $Data_FoldableWithIndex_foldableWithIndexArray = ($GLOBALS['Data_FoldableWithInd
   $__body = function($v) use ($f) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Tuple")) {
-$i = ($__case_0)->values[0];
-$x = ($__case_0)->values[1];
+$i = ($__case_0)->v0;
+$x = ($__case_0)->v1;
 return (function() use ($f, $i, $x) {
   $__fn = function($y) use ($f, $i, $x, &$__fn) {
   $__num = func_num_args();
@@ -1045,8 +1054,8 @@ throw new \Exception("Pattern match failure");
   $__body = function($y, $v) use ($f) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Tuple")) {
-$i = ($__case_0)->values[0];
-$x = ($__case_0)->values[1];
+$i = ($__case_0)->v0;
+$x = ($__case_0)->v1;
 return ($f)($i, $y, $x);
 } else {
 throw new \Exception("Pattern match failure");
@@ -1440,8 +1449,8 @@ $foldableProduct1 = ($foldableProduct)((($dictFoldableWithIndex1)->Foldable0)($G
     if ((($__case_2)->tag === "Tuple")) {
 $f1 = $__case_0;
 $z1 = $__case_1;
-$fa = ($__case_2)->values[0];
-$ga = ($__case_2)->values[1];
+$fa = ($__case_2)->v0;
+$ga = ($__case_2)->v1;
 return ($foldrWithIndex1)(($GLOBALS['Data_FoldableWithIndex_compose'])($f1, $GLOBALS['Data_Either_Left']), ($foldrWithIndex2)(($GLOBALS['Data_FoldableWithIndex_compose'])($f1, $GLOBALS['Data_Either_Right']), $z1, $ga), $fa);
 } else {
 throw new \Exception("Pattern match failure");
@@ -1462,8 +1471,8 @@ throw new \Exception("Pattern match failure");
     if ((($__case_2)->tag === "Tuple")) {
 $f1 = $__case_0;
 $z1 = $__case_1;
-$fa = ($__case_2)->values[0];
-$ga = ($__case_2)->values[1];
+$fa = ($__case_2)->v0;
+$ga = ($__case_2)->v1;
 return ($foldlWithIndex2)(($GLOBALS['Data_FoldableWithIndex_compose'])($f1, $GLOBALS['Data_Either_Right']), ($foldlWithIndex1)(($GLOBALS['Data_FoldableWithIndex_compose'])($f1, $GLOBALS['Data_Either_Left']), $z1, $fa), $ga);
 } else {
 throw new \Exception("Pattern match failure");
@@ -1489,8 +1498,8 @@ $foldMapWithIndex4 = ($foldMapWithIndex2)($dictMonoid);
     $__case_1 = $v;
     if ((($__case_1)->tag === "Tuple")) {
 $f1 = $__case_0;
-$fa = ($__case_1)->values[0];
-$ga = ($__case_1)->values[1];
+$fa = ($__case_1)->v0;
+$ga = ($__case_1)->v1;
 return ($append)(($foldMapWithIndex3)(($GLOBALS['Data_FoldableWithIndex_compose'])($f1, $GLOBALS['Data_Either_Left']), $fa), ($foldMapWithIndex4)(($GLOBALS['Data_FoldableWithIndex_compose'])($f1, $GLOBALS['Data_Either_Right']), $ga));
 } else {
 throw new \Exception("Pattern match failure");

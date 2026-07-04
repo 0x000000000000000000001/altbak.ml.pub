@@ -35,6 +35,15 @@ require_once __DIR__ . '/../Data.Tuple/index.php';
 require_once __DIR__ . '/../Data.Unfoldable/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -162,10 +171,10 @@ if ((($__case_1)->tag === "Nil")) {
 return $GLOBALS['Data_List_Lazy_Types_Nil'];
 } else {
 if (((($__case_0)->tag === "Cons") && (($__case_1)->tag === "Cons"))) {
-$a = ($__case_0)->values[0];
-$as = ($__case_0)->values[1];
-$b = ($__case_1)->values[0];
-$bs = ($__case_1)->values[1];
+$a = ($__case_0)->v0;
+$as = ($__case_0)->v1;
+$b = ($__case_1)->v0;
+$bs = ($__case_1)->v1;
 return ($GLOBALS['Data_List_Lazy_Types_Cons'])(($f)($a, $b), ($GLOBALS['Data_List_Lazy_zipWith'])($f, $as, $bs));
 } else {
 throw new \Exception("Pattern match failure");
@@ -226,13 +235,13 @@ $go = (function() use ($x) {
 return $GLOBALS['Data_List_Lazy_Types_Nil'];
 } else {
 if ((($__case_0 === 0) && (($__case_1)->tag === "Cons"))) {
-$ys = ($__case_1)->values[1];
+$ys = ($__case_1)->v1;
 return ($GLOBALS['Data_List_Lazy_Types_Cons'])($x, $ys);
 } else {
 if ((($__case_1)->tag === "Cons")) {
 $n__prime__ = $__case_0;
-$y = ($__case_1)->values[0];
-$ys = ($__case_1)->values[1];
+$y = ($__case_1)->v0;
+$ys = ($__case_1)->v1;
 return ($GLOBALS['Data_List_Lazy_Types_Cons'])($y, ($GLOBALS['Data_List_Lazy_updateAt'])(($GLOBALS['Data_List_Lazy_sub'])($n__prime__, 1), $x, $ys));
 } else {
 throw new \Exception("Pattern match failure");
@@ -261,14 +270,14 @@ $Data_List_Lazy_unzip = ($GLOBALS['Data_List_Lazy_foldr'])((function() {
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Tuple")) {
-$a = ($__case_0)->values[0];
-$b = ($__case_0)->values[1];
+$a = ($__case_0)->v0;
+$b = ($__case_0)->v1;
 return (function() use ($a, $b) {
   $__body = function($v1) use ($a, $b) {
     $__case_0 = $v1;
     if ((($__case_0)->tag === "Tuple")) {
-$as = ($__case_0)->values[0];
-$bs = ($__case_0)->values[1];
+$as = ($__case_0)->v0;
+$bs = ($__case_0)->v1;
 return ($GLOBALS['Data_Tuple_Tuple'])(($GLOBALS['Data_List_Lazy_Types_cons'])($a, $as), ($GLOBALS['Data_List_Lazy_Types_cons'])($b, $bs));
 } else {
 throw new \Exception("Pattern match failure");
@@ -304,8 +313,8 @@ $Data_List_Lazy_uncons = (function() {
 return $GLOBALS['Data_Maybe_Nothing'];
 } else {
 if ((($__case_0)->tag === "Cons")) {
-$x = ($__case_0)->values[0];
-$xs__prime__ = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs__prime__ = ($__case_0)->v1;
 return ($GLOBALS['Data_Maybe_Just'])((object)["head" => $x, "tail" => $xs__prime__]);
 } else {
 throw new \Exception("Pattern match failure");
@@ -358,8 +367,8 @@ $go = (function() {
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Cons")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 return "/* Unsupported: Guards not supported */";
 } else {
 if (true) {
@@ -400,8 +409,8 @@ return $GLOBALS['Data_List_Lazy_Types_Nil'];
 } else {
 if ((($__case_1)->tag === "Cons")) {
 $n__prime__ = $__case_0;
-$x = ($__case_1)->values[0];
-$xs = ($__case_1)->values[1];
+$x = ($__case_1)->v0;
+$xs = ($__case_1)->v1;
 return ($GLOBALS['Data_List_Lazy_Types_Cons'])($x, ($GLOBALS['Data_List_Lazy_take'])(($GLOBALS['Data_List_Lazy_sub'])($n__prime__, 1), $xs));
 } else {
 throw new \Exception("Pattern match failure");
@@ -473,13 +482,13 @@ $go = (function() {
 return ($GLOBALS['Data_Maybe_Just'])(($GLOBALS['Control_Monad_Rec_Class_Done'])($input));
 } else {
 if ((($__case_0)->tag === "Cons")) {
-$p = ($__case_0)->values[0];
-$ps = ($__case_0)->values[1];
+$p = ($__case_0)->v0;
+$ps = ($__case_0)->v1;
 $v2 = ($GLOBALS['Data_List_Lazy_Types_step'])($input);
 $__case_0 = $v2;
 if ((($__case_0)->tag === "Cons")) {
-$i = ($__case_0)->values[0];
-$is = ($__case_0)->values[1];
+$i = ($__case_0)->v0;
+$is = ($__case_0)->v1;
 return "/* Unsupported: Guards not supported */";
 } else {
 if (true) {
@@ -527,9 +536,9 @@ $Data_List_Lazy_span = (function() {
 while (true) {
 $v = ($GLOBALS['Data_List_Lazy_uncons'])($xs);
 $__case_0 = $v;
-if (((($__case_0)->tag === "Just") && (is_object)(($__case_0)->values[0]))) {
-$x = (($__case_0)->values[0])->head;
-$xs__prime__ = (($__case_0)->values[0])->tail;
+if (((($__case_0)->tag === "Just") && (is_object)(($__case_0)->v0))) {
+$x = (($__case_0)->v0)->head;
+$xs__prime__ = (($__case_0)->v0)->tail;
 return "/* Unsupported: Guards not supported */";
 } else {
 if (true) {
@@ -609,8 +618,8 @@ $go = (function() use ($f, $acc) {
 return $GLOBALS['Data_List_Lazy_Types_Nil'];
 } else {
 if ((($__case_0)->tag === "Cons")) {
-$x = ($__case_0)->values[0];
-$xs__prime__ = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs__prime__ = ($__case_0)->v1;
 $acc__prime__ = ($f)($acc, $x);
 return ($GLOBALS['Data_List_Lazy_Types_Cons'])($acc__prime__, ($GLOBALS['Data_List_Lazy_scanlLazy'])($f, $acc__prime__, $xs__prime__));
 } else {
@@ -801,8 +810,8 @@ return $GLOBALS['Data_List_Lazy_Types_Nil'];
 } else {
 if ((($__case_1)->tag === "Cons")) {
 $s = $__case_0;
-$a = ($__case_1)->values[0];
-$as = ($__case_1)->values[1];
+$a = ($__case_1)->v0;
+$as = ($__case_1)->v1;
 $v2 = ($GLOBALS['Data_List_Internal_insertAndLookupBy'])($p, $a, $s);
 $__case_0 = $v2;
 if ((is_object)($__case_0)) {
@@ -895,8 +904,8 @@ if ((($__case_0)->tag === "Nil")) {
 return $GLOBALS['Data_List_Lazy_Types_Nil'];
 } else {
 if ((($__case_0)->tag === "Cons")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 $v1 = ($f)($x);
 $__case_0 = $v1;
 if ((($__case_0)->tag === "Nothing")) {
@@ -905,7 +914,7 @@ $v = $__tco_tmp_0;
 continue;
 } else {
 if ((($__case_0)->tag === "Just")) {
-$y = ($__case_0)->values[0];
+$y = ($__case_0)->v0;
 return ($GLOBALS['Data_List_Lazy_Types_Cons'])($y, ($GLOBALS['Data_List_Lazy_mapMaybe'])($f, $xs));
 } else {
 throw new \Exception("Pattern match failure");
@@ -1013,8 +1022,8 @@ $Data_List_Lazy_last = ($go = (function() {
 while (true) {
 $__case_0 = $v;
 if ((($__case_0)->tag === "Cons")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 return "/* Unsupported: Guards not supported */";
 } else {
 if (true) {
@@ -1075,8 +1084,8 @@ $go = (function() use ($x, $n) {
 return ($GLOBALS['Data_List_Lazy_Types_Cons'])($x, $GLOBALS['Data_List_Lazy_Types_nil']);
 } else {
 if ((($__case_0)->tag === "Cons")) {
-$y = ($__case_0)->values[0];
-$ys = ($__case_0)->values[1];
+$y = ($__case_0)->v0;
+$ys = ($__case_0)->v1;
 return ($GLOBALS['Data_List_Lazy_Types_Cons'])($y, ($GLOBALS['Data_List_Lazy_insertAt'])(($GLOBALS['Data_List_Lazy_sub'])($n, 1), $x, $ys));
 } else {
 throw new \Exception("Pattern match failure");
@@ -1111,8 +1120,8 @@ $Data_List_Lazy_init = ($go = (function() {
 while (true) {
 $__case_0 = $v;
 if ((($__case_0)->tag === "Cons")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 return "/* Unsupported: Guards not supported */";
 } else {
 if (true) {
@@ -1145,11 +1154,11 @@ if ((($__case_0)->tag === "Nil")) {
 return $GLOBALS['Data_Maybe_Nothing'];
 } else {
 if (((($__case_0)->tag === "Cons") && ($__case_1 === 0))) {
-$a = ($__case_0)->values[0];
+$a = ($__case_0)->v0;
 return ($GLOBALS['Data_Maybe_Just'])($a);
 } else {
 if ((($__case_0)->tag === "Cons")) {
-$as = ($__case_0)->values[1];
+$as = ($__case_0)->v1;
 $i = $__case_1;
 $__tco_tmp_0 = ($GLOBALS['Data_List_Lazy_Types_step'])($as);
 $__tco_tmp_1 = ($GLOBALS['Data_List_Lazy_sub'])($i, 1);
@@ -1203,9 +1212,9 @@ $__case_0 = $v;
 if ((($__case_0)->tag === "Nothing")) {
 return $xs;
 } else {
-if (((($__case_0)->tag === "Just") && (is_object)(($__case_0)->values[0]))) {
-$h = (($__case_0)->values[0])->head;
-$xss = (($__case_0)->values[0])->tail;
+if (((($__case_0)->tag === "Just") && (is_object)(($__case_0)->v0))) {
+$h = (($__case_0)->v0)->head;
+$xss = (($__case_0)->v0)->tail;
 $v1 = ($GLOBALS['Data_List_Lazy_uncons'])($h);
 $__case_0 = $v1;
 if ((($__case_0)->tag === "Nothing")) {
@@ -1213,9 +1222,9 @@ $__tco_tmp_0 = $xss;
 $xs = $__tco_tmp_0;
 continue;
 } else {
-if (((($__case_0)->tag === "Just") && (is_object)(($__case_0)->values[0]))) {
-$x = (($__case_0)->values[0])->head;
-$xs__prime__ = (($__case_0)->values[0])->tail;
+if (((($__case_0)->tag === "Just") && (is_object)(($__case_0)->v0))) {
+$x = (($__case_0)->v0)->head;
+$xs__prime__ = (($__case_0)->v0)->tail;
 return ($GLOBALS['Data_List_Lazy_Types_cons'])(($GLOBALS['Data_List_Lazy_Types_cons'])($x, ($GLOBALS['Data_List_Lazy_mapMaybe'])($GLOBALS['Data_List_Lazy_head'], $xss)), ($GLOBALS['Data_List_Lazy_transpose'])(($GLOBALS['Data_List_Lazy_Types_cons'])($xs__prime__, ($GLOBALS['Data_List_Lazy_mapMaybe'])($GLOBALS['Data_List_Lazy_tail'], $xss))));
 } else {
 throw new \Exception("Pattern match failure");
@@ -1245,8 +1254,8 @@ $go = (function() use ($eq) {
 return $GLOBALS['Data_List_Lazy_Types_Nil'];
 } else {
 if ((($__case_0)->tag === "Cons")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 $v1 = ($GLOBALS['Data_List_Lazy_span'])(($eq)($x), $xs);
 $__case_0 = $v1;
 if ((is_object)($__case_0)) {
@@ -1313,8 +1322,8 @@ return ($GLOBALS['Data_List_Lazy_Types_Cons'])($x, $GLOBALS['Data_List_Lazy_Type
 } else {
 if ((($__case_0)->tag === "Cons")) {
 $ys = $__case_0;
-$y = ($__case_0)->values[0];
-$ys__prime__ = ($__case_0)->values[1];
+$y = ($__case_0)->v0;
+$ys__prime__ = ($__case_0)->v1;
 $v1 = ($cmp)($x, $y);
 $__case_0 = $v1;
 if ((($__case_0)->tag === "GT")) {
@@ -1387,8 +1396,8 @@ while (true) {
 $v = ($GLOBALS['Data_List_Lazy_Types_step'])($xs);
 $__case_0 = $v;
 if ((($__case_0)->tag === "Cons")) {
-$x = ($__case_0)->values[0];
-$xs__prime__ = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs__prime__ = ($__case_0)->v1;
 return ($defer1)((function() use ($op, $x, &$go, $xs__prime__) {
   $__fn = function($v1) use ($op, $x, &$go, $xs__prime__, &$__fn) {
   $__num = func_num_args();
@@ -1436,9 +1445,9 @@ return (function() use ($pure1, $bind2, $dictMonad) {
     if ((($__case_0)->tag === "Nothing")) {
 return ($pure1)($b);
 } else {
-if (((($__case_0)->tag === "Just") && (is_object)(($__case_0)->values[0]))) {
-$a = (($__case_0)->values[0])->head;
-$as = (($__case_0)->values[0])->tail;
+if (((($__case_0)->tag === "Just") && (is_object)(($__case_0)->v0))) {
+$a = (($__case_0)->v0)->head;
+$as = (($__case_0)->v0)->tail;
 return ($bind2)(($f)($b, $a), (function() use ($dictMonad, $f, $as) {
   $__fn = function($b__prime__) use ($dictMonad, $f, $as, &$__fn) {
   $__num = func_num_args();
@@ -1545,9 +1554,9 @@ return (function() use ($pure1, $bind2, $dictMonad) {
     if ((($__case_0)->tag === "Nothing")) {
 return ($pure1)($GLOBALS['Data_List_Lazy_Types_nil']);
 } else {
-if (((($__case_0)->tag === "Just") && (is_object)(($__case_0)->values[0]))) {
-$x = (($__case_0)->values[0])->head;
-$xs = (($__case_0)->values[0])->tail;
+if (((($__case_0)->tag === "Just") && (is_object)(($__case_0)->v0))) {
+$x = (($__case_0)->v0)->head;
+$xs = (($__case_0)->v0)->tail;
 return ($bind2)(($p)($x), (function() use ($bind2, $dictMonad, $p, $xs, $pure1, $x) {
   $__fn = function($b) use ($bind2, $dictMonad, $p, $xs, $pure1, $x, &$__fn) {
   $__num = func_num_args();
@@ -1612,8 +1621,8 @@ if ((($__case_0)->tag === "Nil")) {
 return $GLOBALS['Data_List_Lazy_Types_Nil'];
 } else {
 if ((($__case_0)->tag === "Cons")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 return "/* Unsupported: Guards not supported */";
 } else {
 throw new \Exception("Pattern match failure");
@@ -1676,8 +1685,8 @@ $go = (function() use ($eq) {
 return $GLOBALS['Data_List_Lazy_Types_Nil'];
 } else {
 if ((($__case_0)->tag === "Cons")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 return ($GLOBALS['Data_List_Lazy_Types_Cons'])($x, ($GLOBALS['Data_List_Lazy_nubByEq'])($eq, ($GLOBALS['Data_List_Lazy_filter'])((function() use ($eq, $x) {
   $__fn = function($y) use ($eq, $x, &$__fn) {
   $__num = func_num_args();
@@ -1858,8 +1867,8 @@ $go = (function() {
 while (true) {
 $__case_0 = $v;
 if ((($__case_0)->tag === "Cons")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 return "/* Unsupported: Guards not supported */";
 } else {
 if (true) {
@@ -1902,7 +1911,7 @@ return $GLOBALS['Data_List_Lazy_Types_Nil'];
 } else {
 if ((($__case_1)->tag === "Cons")) {
 $n__prime__ = $__case_0;
-$xs = ($__case_1)->values[1];
+$xs = ($__case_1)->v1;
 $__tco_tmp_0 = ($GLOBALS['Data_List_Lazy_sub'])($n__prime__, 1);
 $__tco_tmp_1 = ($GLOBALS['Data_List_Lazy_Types_step'])($xs);
 $v = $__tco_tmp_0;
@@ -1949,8 +1958,8 @@ $go = (function() {
 return $GLOBALS['Data_List_Lazy_Types_Nil'];
 } else {
 if ((($__case_0)->tag === "Cons")) {
-$y = ($__case_0)->values[0];
-$ys = ($__case_0)->values[1];
+$y = ($__case_0)->v0;
+$ys = ($__case_0)->v1;
 return "/* Unsupported: Guards not supported */";
 } else {
 throw new \Exception("Pattern match failure");
@@ -2009,13 +2018,13 @@ $go = (function() {
 return $GLOBALS['Data_List_Lazy_Types_Nil'];
 } else {
 if ((($__case_0 === 0) && (($__case_1)->tag === "Cons"))) {
-$ys = ($__case_1)->values[1];
+$ys = ($__case_1)->v1;
 return ($GLOBALS['Data_List_Lazy_Types_step'])($ys);
 } else {
 if ((($__case_1)->tag === "Cons")) {
 $n__prime__ = $__case_0;
-$y = ($__case_1)->values[0];
-$ys = ($__case_1)->values[1];
+$y = ($__case_1)->v0;
+$ys = ($__case_1)->v1;
 return ($GLOBALS['Data_List_Lazy_Types_Cons'])($y, ($GLOBALS['Data_List_Lazy_deleteAt'])(($GLOBALS['Data_List_Lazy_sub'])($n__prime__, 1), $ys));
 } else {
 throw new \Exception("Pattern match failure");
@@ -2111,15 +2120,15 @@ $go = (function() use ($f) {
 return $GLOBALS['Data_List_Lazy_Types_Nil'];
 } else {
 if ((($__case_0 === 0) && (($__case_1)->tag === "Cons"))) {
-$y = ($__case_1)->values[0];
-$ys = ($__case_1)->values[1];
+$y = ($__case_1)->v0;
+$ys = ($__case_1)->v1;
 $v2 = ($f)($y);
 $__case_0 = $v2;
 if ((($__case_0)->tag === "Nothing")) {
 return ($GLOBALS['Data_List_Lazy_Types_step'])($ys);
 } else {
 if ((($__case_0)->tag === "Just")) {
-$y__prime__ = ($__case_0)->values[0];
+$y__prime__ = ($__case_0)->v0;
 return ($GLOBALS['Data_List_Lazy_Types_Cons'])($y__prime__, $ys);
 } else {
 throw new \Exception("Pattern match failure");
@@ -2128,8 +2137,8 @@ throw new \Exception("Pattern match failure");
 } else {
 if ((($__case_1)->tag === "Cons")) {
 $n__prime__ = $__case_0;
-$y = ($__case_1)->values[0];
-$ys = ($__case_1)->values[1];
+$y = ($__case_1)->v0;
+$ys = ($__case_1)->v1;
 return ($GLOBALS['Data_List_Lazy_Types_Cons'])($y, ($GLOBALS['Data_List_Lazy_alterAt'])(($GLOBALS['Data_List_Lazy_sub'])($n__prime__, 1), $f, $ys));
 } else {
 throw new \Exception("Pattern match failure");

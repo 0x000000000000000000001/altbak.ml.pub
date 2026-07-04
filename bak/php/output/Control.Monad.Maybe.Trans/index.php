@@ -31,6 +31,15 @@ require_once __DIR__ . '/../Data.Tuple/index.php';
 require_once __DIR__ . '/../Effect.Class/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -216,7 +225,7 @@ return ($GLOBALS['Control_Monad_Maybe_Trans_MaybeT'])(($bind)($x, (function() us
 return ($pure)($GLOBALS['Data_Maybe_Nothing']);
 } else {
 if ((($__case_0)->tag === "Just")) {
-$y = ($__case_0)->values[0];
+$y = ($__case_0)->v0;
 $v2 = ($f1)($y);
 $__case_0 = $v2;
 if (true) {
@@ -485,12 +494,12 @@ $__case_res_0 = null;
 if ((($__case_0)->tag === "Nothing")) {
 $__case_res_0 = ($GLOBALS['Control_Monad_Rec_Class_Done'])($GLOBALS['Data_Maybe_Nothing']);
 } else {
-if (((($__case_0)->tag === "Just") && ((($__case_0)->values[0])->tag === "Loop"))) {
-$a1 = (($__case_0)->values[0])->values[0];
+if (((($__case_0)->tag === "Just") && ((($__case_0)->v0)->tag === "Loop"))) {
+$a1 = (($__case_0)->v0)->v0;
 $__case_res_0 = ($GLOBALS['Control_Monad_Rec_Class_Loop'])($a1);
 } else {
-if (((($__case_0)->tag === "Just") && ((($__case_0)->values[0])->tag === "Done"))) {
-$b = (($__case_0)->values[0])->values[0];
+if (((($__case_0)->tag === "Just") && ((($__case_0)->v0)->tag === "Done"))) {
+$b = (($__case_0)->v0)->v0;
 $__case_res_0 = ($GLOBALS['Control_Monad_Rec_Class_Done'])(($GLOBALS['Data_Maybe_Just'])($b));
 } else {
 throw new \Exception("Pattern match failure");
@@ -613,8 +622,8 @@ $monadTellMaybeT1 = ($GLOBALS['Control_Monad_Maybe_Trans_monadTellMaybeT'])($Mon
   $__body = function($v) use ($pure) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Tuple")) {
-$a = ($__case_0)->values[0];
-$w = ($__case_0)->values[1];
+$a = ($__case_0)->v0;
+$w = ($__case_0)->v1;
 return ($pure)(($GLOBALS['Control_Monad_Maybe_Trans_map'])((function() use ($w) {
   $__fn = function($r) use ($w, &$__fn) {
   $__num = func_num_args();
@@ -652,9 +661,9 @@ $__case_res_0 = null;
 if ((($__case_0)->tag === "Nothing")) {
 $__case_res_0 = ($GLOBALS['Data_Tuple_Tuple'])($GLOBALS['Data_Maybe_Nothing'], $GLOBALS['Control_Monad_Maybe_Trans_identity']);
 } else {
-if (((($__case_0)->tag === "Just") && ((($__case_0)->values[0])->tag === "Tuple"))) {
-$v = (($__case_0)->values[0])->values[0];
-$f = (($__case_0)->values[0])->values[1];
+if (((($__case_0)->tag === "Just") && ((($__case_0)->v0)->tag === "Tuple"))) {
+$v = (($__case_0)->v0)->v0;
+$f = (($__case_0)->v0)->v1;
 $__case_res_0 = ($GLOBALS['Data_Tuple_Tuple'])(($GLOBALS['Data_Maybe_Just'])($v), $f);
 } else {
 throw new \Exception("Pattern match failure");

@@ -9,6 +9,15 @@ require_once __DIR__ . '/../Data.Newtype/index.php';
 require_once __DIR__ . '/../Data.Void/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -134,67 +143,67 @@ $Data_Functor_Coproduct_Nested_coproduct9 = (function() {
   $__body = function($a, $b, $c, $d, $e, $f, $g, $h, $i, $y) {
     $__case_0 = $y;
     if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($a)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_1 = ($__case_0)->values[0];
+$_1 = ($__case_0)->v0;
 $__case_0 = $_1;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($b)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_2 = ($__case_0)->values[0];
+$_2 = ($__case_0)->v0;
 $__case_0 = $_2;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($c)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_3 = ($__case_0)->values[0];
+$_3 = ($__case_0)->v0;
 $__case_0 = $_3;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($d)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_4 = ($__case_0)->values[0];
+$_4 = ($__case_0)->v0;
 $__case_0 = $_4;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($e)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_5 = ($__case_0)->values[0];
+$_5 = ($__case_0)->v0;
 $__case_0 = $_5;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($f)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_6 = ($__case_0)->values[0];
+$_6 = ($__case_0)->v0;
 $__case_0 = $_6;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($g)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_7 = ($__case_0)->values[0];
+$_7 = ($__case_0)->v0;
 $__case_0 = $_7;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($h)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_8 = ($__case_0)->values[0];
+$_8 = ($__case_0)->v0;
 $__case_0 = $_8;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($i)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_9 = ($__case_0)->values[0];
+$_9 = ($__case_0)->v0;
 return ($GLOBALS['Data_Void_absurd'])(($GLOBALS['Data_Functor_Coproduct_Nested_unwrap'])($_9));
 } else {
 throw new \Exception("Pattern match failure");
@@ -247,60 +256,60 @@ $Data_Functor_Coproduct_Nested_coproduct8 = (function() {
   $__body = function($a, $b, $c, $d, $e, $f, $g, $h, $y) {
     $__case_0 = $y;
     if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($a)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_1 = ($__case_0)->values[0];
+$_1 = ($__case_0)->v0;
 $__case_0 = $_1;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($b)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_2 = ($__case_0)->values[0];
+$_2 = ($__case_0)->v0;
 $__case_0 = $_2;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($c)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_3 = ($__case_0)->values[0];
+$_3 = ($__case_0)->v0;
 $__case_0 = $_3;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($d)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_4 = ($__case_0)->values[0];
+$_4 = ($__case_0)->v0;
 $__case_0 = $_4;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($e)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_5 = ($__case_0)->values[0];
+$_5 = ($__case_0)->v0;
 $__case_0 = $_5;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($f)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_6 = ($__case_0)->values[0];
+$_6 = ($__case_0)->v0;
 $__case_0 = $_6;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($g)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_7 = ($__case_0)->values[0];
+$_7 = ($__case_0)->v0;
 $__case_0 = $_7;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($h)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_8 = ($__case_0)->values[0];
+$_8 = ($__case_0)->v0;
 return ($GLOBALS['Data_Void_absurd'])(($GLOBALS['Data_Functor_Coproduct_Nested_unwrap'])($_8));
 } else {
 throw new \Exception("Pattern match failure");
@@ -349,53 +358,53 @@ $Data_Functor_Coproduct_Nested_coproduct7 = (function() {
   $__body = function($a, $b, $c, $d, $e, $f, $g, $y) {
     $__case_0 = $y;
     if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($a)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_1 = ($__case_0)->values[0];
+$_1 = ($__case_0)->v0;
 $__case_0 = $_1;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($b)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_2 = ($__case_0)->values[0];
+$_2 = ($__case_0)->v0;
 $__case_0 = $_2;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($c)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_3 = ($__case_0)->values[0];
+$_3 = ($__case_0)->v0;
 $__case_0 = $_3;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($d)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_4 = ($__case_0)->values[0];
+$_4 = ($__case_0)->v0;
 $__case_0 = $_4;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($e)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_5 = ($__case_0)->values[0];
+$_5 = ($__case_0)->v0;
 $__case_0 = $_5;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($f)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_6 = ($__case_0)->values[0];
+$_6 = ($__case_0)->v0;
 $__case_0 = $_6;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($g)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_7 = ($__case_0)->values[0];
+$_7 = ($__case_0)->v0;
 return ($GLOBALS['Data_Void_absurd'])(($GLOBALS['Data_Functor_Coproduct_Nested_unwrap'])($_7));
 } else {
 throw new \Exception("Pattern match failure");
@@ -440,46 +449,46 @@ $Data_Functor_Coproduct_Nested_coproduct6 = (function() {
   $__body = function($a, $b, $c, $d, $e, $f, $y) {
     $__case_0 = $y;
     if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($a)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_1 = ($__case_0)->values[0];
+$_1 = ($__case_0)->v0;
 $__case_0 = $_1;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($b)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_2 = ($__case_0)->values[0];
+$_2 = ($__case_0)->v0;
 $__case_0 = $_2;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($c)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_3 = ($__case_0)->values[0];
+$_3 = ($__case_0)->v0;
 $__case_0 = $_3;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($d)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_4 = ($__case_0)->values[0];
+$_4 = ($__case_0)->v0;
 $__case_0 = $_4;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($e)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_5 = ($__case_0)->values[0];
+$_5 = ($__case_0)->v0;
 $__case_0 = $_5;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($f)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_6 = ($__case_0)->values[0];
+$_6 = ($__case_0)->v0;
 return ($GLOBALS['Data_Void_absurd'])(($GLOBALS['Data_Functor_Coproduct_Nested_unwrap'])($_6));
 } else {
 throw new \Exception("Pattern match failure");
@@ -520,39 +529,39 @@ $Data_Functor_Coproduct_Nested_coproduct5 = (function() {
   $__body = function($a, $b, $c, $d, $e, $y) {
     $__case_0 = $y;
     if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($a)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_1 = ($__case_0)->values[0];
+$_1 = ($__case_0)->v0;
 $__case_0 = $_1;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($b)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_2 = ($__case_0)->values[0];
+$_2 = ($__case_0)->v0;
 $__case_0 = $_2;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($c)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_3 = ($__case_0)->values[0];
+$_3 = ($__case_0)->v0;
 $__case_0 = $_3;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($d)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_4 = ($__case_0)->values[0];
+$_4 = ($__case_0)->v0;
 $__case_0 = $_4;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($e)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_5 = ($__case_0)->values[0];
+$_5 = ($__case_0)->v0;
 return ($GLOBALS['Data_Void_absurd'])(($GLOBALS['Data_Functor_Coproduct_Nested_unwrap'])($_5));
 } else {
 throw new \Exception("Pattern match failure");
@@ -589,32 +598,32 @@ $Data_Functor_Coproduct_Nested_coproduct4 = (function() {
   $__body = function($a, $b, $c, $d, $y) {
     $__case_0 = $y;
     if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($a)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_1 = ($__case_0)->values[0];
+$_1 = ($__case_0)->v0;
 $__case_0 = $_1;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($b)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_2 = ($__case_0)->values[0];
+$_2 = ($__case_0)->v0;
 $__case_0 = $_2;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($c)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_3 = ($__case_0)->values[0];
+$_3 = ($__case_0)->v0;
 $__case_0 = $_3;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($d)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_4 = ($__case_0)->values[0];
+$_4 = ($__case_0)->v0;
 return ($GLOBALS['Data_Void_absurd'])(($GLOBALS['Data_Functor_Coproduct_Nested_unwrap'])($_4));
 } else {
 throw new \Exception("Pattern match failure");
@@ -647,25 +656,25 @@ $Data_Functor_Coproduct_Nested_coproduct3 = (function() {
   $__body = function($a, $b, $c, $y) {
     $__case_0 = $y;
     if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($a)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_1 = ($__case_0)->values[0];
+$_1 = ($__case_0)->v0;
 $__case_0 = $_1;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($b)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_2 = ($__case_0)->values[0];
+$_2 = ($__case_0)->v0;
 $__case_0 = $_2;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($c)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_3 = ($__case_0)->values[0];
+$_3 = ($__case_0)->v0;
 return ($GLOBALS['Data_Void_absurd'])(($GLOBALS['Data_Functor_Coproduct_Nested_unwrap'])($_3));
 } else {
 throw new \Exception("Pattern match failure");
@@ -694,18 +703,18 @@ $Data_Functor_Coproduct_Nested_coproduct2 = (function() {
   $__body = function($a, $b, $y) {
     $__case_0 = $y;
     if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($a)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_1 = ($__case_0)->values[0];
+$_1 = ($__case_0)->v0;
 $__case_0 = $_1;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($b)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_2 = ($__case_0)->values[0];
+$_2 = ($__case_0)->v0;
 return ($GLOBALS['Data_Void_absurd'])(($GLOBALS['Data_Functor_Coproduct_Nested_unwrap'])($_2));
 } else {
 throw new \Exception("Pattern match failure");
@@ -730,74 +739,74 @@ $Data_Functor_Coproduct_Nested_coproduct10 = (function() {
   $__body = function($a, $b, $c, $d, $e, $f, $g, $h, $i, $j, $y) {
     $__case_0 = $y;
     if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($a)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_1 = ($__case_0)->values[0];
+$_1 = ($__case_0)->v0;
 $__case_0 = $_1;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($b)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_2 = ($__case_0)->values[0];
+$_2 = ($__case_0)->v0;
 $__case_0 = $_2;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($c)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_3 = ($__case_0)->values[0];
+$_3 = ($__case_0)->v0;
 $__case_0 = $_3;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($d)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_4 = ($__case_0)->values[0];
+$_4 = ($__case_0)->v0;
 $__case_0 = $_4;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($e)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_5 = ($__case_0)->values[0];
+$_5 = ($__case_0)->v0;
 $__case_0 = $_5;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($f)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_6 = ($__case_0)->values[0];
+$_6 = ($__case_0)->v0;
 $__case_0 = $_6;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($g)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_7 = ($__case_0)->values[0];
+$_7 = ($__case_0)->v0;
 $__case_0 = $_7;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($h)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_8 = ($__case_0)->values[0];
+$_8 = ($__case_0)->v0;
 $__case_0 = $_8;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($i)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_9 = ($__case_0)->values[0];
+$_9 = ($__case_0)->v0;
 $__case_0 = $_9;
 if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($j)($r);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_10 = ($__case_0)->values[0];
+$_10 = ($__case_0)->v0;
 return ($GLOBALS['Data_Void_absurd'])(($GLOBALS['Data_Functor_Coproduct_Nested_unwrap'])($_10));
 } else {
 throw new \Exception("Pattern match failure");
@@ -854,11 +863,11 @@ $Data_Functor_Coproduct_Nested_coproduct1 = (function() {
   $__body = function($y) {
     $__case_0 = $y;
     if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return $r;
 } else {
 if ((($__case_0)->tag === "Right")) {
-$_1 = ($__case_0)->values[0];
+$_1 = ($__case_0)->v0;
 return ($GLOBALS['Data_Void_absurd'])(($GLOBALS['Data_Functor_Coproduct_Nested_unwrap'])($_1));
 } else {
 throw new \Exception("Pattern match failure");
@@ -878,8 +887,8 @@ throw new \Exception("Pattern match failure");
 $Data_Functor_Coproduct_Nested_at9 = (function() {
   $__body = function($b, $f, $y) {
     $__case_0 = $y;
-    if (((($__case_0)->tag === "Right") && (((($__case_0)->values[0])->tag === "Right") && ((((($__case_0)->values[0])->values[0])->tag === "Right") && (((((($__case_0)->values[0])->values[0])->values[0])->tag === "Right") && ((((((($__case_0)->values[0])->values[0])->values[0])->values[0])->tag === "Right") && (((((((($__case_0)->values[0])->values[0])->values[0])->values[0])->values[0])->tag === "Right") && ((((((((($__case_0)->values[0])->values[0])->values[0])->values[0])->values[0])->values[0])->tag === "Right") && (((((((((($__case_0)->values[0])->values[0])->values[0])->values[0])->values[0])->values[0])->values[0])->tag === "Right") && (((((((((($__case_0)->values[0])->values[0])->values[0])->values[0])->values[0])->values[0])->values[0])->values[0])->tag === "Left")))))))))) {
-$r = ((((((((($__case_0)->values[0])->values[0])->values[0])->values[0])->values[0])->values[0])->values[0])->values[0])->values[0];
+    if (((($__case_0)->tag === "Right") && (((($__case_0)->v0)->tag === "Right") && ((((($__case_0)->v0)->v0)->tag === "Right") && (((((($__case_0)->v0)->v0)->v0)->tag === "Right") && ((((((($__case_0)->v0)->v0)->v0)->v0)->tag === "Right") && (((((((($__case_0)->v0)->v0)->v0)->v0)->v0)->tag === "Right") && ((((((((($__case_0)->v0)->v0)->v0)->v0)->v0)->v0)->tag === "Right") && (((((((((($__case_0)->v0)->v0)->v0)->v0)->v0)->v0)->v0)->tag === "Right") && (((((((((($__case_0)->v0)->v0)->v0)->v0)->v0)->v0)->v0)->v0)->tag === "Left")))))))))) {
+$r = ((((((((($__case_0)->v0)->v0)->v0)->v0)->v0)->v0)->v0)->v0)->v0;
 return ($f)($r);
 } else {
 if (true) {
@@ -902,8 +911,8 @@ throw new \Exception("Pattern match failure");
 $Data_Functor_Coproduct_Nested_at8 = (function() {
   $__body = function($b, $f, $y) {
     $__case_0 = $y;
-    if (((($__case_0)->tag === "Right") && (((($__case_0)->values[0])->tag === "Right") && ((((($__case_0)->values[0])->values[0])->tag === "Right") && (((((($__case_0)->values[0])->values[0])->values[0])->tag === "Right") && ((((((($__case_0)->values[0])->values[0])->values[0])->values[0])->tag === "Right") && (((((((($__case_0)->values[0])->values[0])->values[0])->values[0])->values[0])->tag === "Right") && ((((((((($__case_0)->values[0])->values[0])->values[0])->values[0])->values[0])->values[0])->tag === "Right") && ((((((((($__case_0)->values[0])->values[0])->values[0])->values[0])->values[0])->values[0])->values[0])->tag === "Left"))))))))) {
-$r = (((((((($__case_0)->values[0])->values[0])->values[0])->values[0])->values[0])->values[0])->values[0])->values[0];
+    if (((($__case_0)->tag === "Right") && (((($__case_0)->v0)->tag === "Right") && ((((($__case_0)->v0)->v0)->tag === "Right") && (((((($__case_0)->v0)->v0)->v0)->tag === "Right") && ((((((($__case_0)->v0)->v0)->v0)->v0)->tag === "Right") && (((((((($__case_0)->v0)->v0)->v0)->v0)->v0)->tag === "Right") && ((((((((($__case_0)->v0)->v0)->v0)->v0)->v0)->v0)->tag === "Right") && ((((((((($__case_0)->v0)->v0)->v0)->v0)->v0)->v0)->v0)->tag === "Left"))))))))) {
+$r = (((((((($__case_0)->v0)->v0)->v0)->v0)->v0)->v0)->v0)->v0;
 return ($f)($r);
 } else {
 if (true) {
@@ -926,8 +935,8 @@ throw new \Exception("Pattern match failure");
 $Data_Functor_Coproduct_Nested_at7 = (function() {
   $__body = function($b, $f, $y) {
     $__case_0 = $y;
-    if (((($__case_0)->tag === "Right") && (((($__case_0)->values[0])->tag === "Right") && ((((($__case_0)->values[0])->values[0])->tag === "Right") && (((((($__case_0)->values[0])->values[0])->values[0])->tag === "Right") && ((((((($__case_0)->values[0])->values[0])->values[0])->values[0])->tag === "Right") && (((((((($__case_0)->values[0])->values[0])->values[0])->values[0])->values[0])->tag === "Right") && (((((((($__case_0)->values[0])->values[0])->values[0])->values[0])->values[0])->values[0])->tag === "Left")))))))) {
-$r = ((((((($__case_0)->values[0])->values[0])->values[0])->values[0])->values[0])->values[0])->values[0];
+    if (((($__case_0)->tag === "Right") && (((($__case_0)->v0)->tag === "Right") && ((((($__case_0)->v0)->v0)->tag === "Right") && (((((($__case_0)->v0)->v0)->v0)->tag === "Right") && ((((((($__case_0)->v0)->v0)->v0)->v0)->tag === "Right") && (((((((($__case_0)->v0)->v0)->v0)->v0)->v0)->tag === "Right") && (((((((($__case_0)->v0)->v0)->v0)->v0)->v0)->v0)->tag === "Left")))))))) {
+$r = ((((((($__case_0)->v0)->v0)->v0)->v0)->v0)->v0)->v0;
 return ($f)($r);
 } else {
 if (true) {
@@ -950,8 +959,8 @@ throw new \Exception("Pattern match failure");
 $Data_Functor_Coproduct_Nested_at6 = (function() {
   $__body = function($b, $f, $y) {
     $__case_0 = $y;
-    if (((($__case_0)->tag === "Right") && (((($__case_0)->values[0])->tag === "Right") && ((((($__case_0)->values[0])->values[0])->tag === "Right") && (((((($__case_0)->values[0])->values[0])->values[0])->tag === "Right") && ((((((($__case_0)->values[0])->values[0])->values[0])->values[0])->tag === "Right") && ((((((($__case_0)->values[0])->values[0])->values[0])->values[0])->values[0])->tag === "Left"))))))) {
-$r = (((((($__case_0)->values[0])->values[0])->values[0])->values[0])->values[0])->values[0];
+    if (((($__case_0)->tag === "Right") && (((($__case_0)->v0)->tag === "Right") && ((((($__case_0)->v0)->v0)->tag === "Right") && (((((($__case_0)->v0)->v0)->v0)->tag === "Right") && ((((((($__case_0)->v0)->v0)->v0)->v0)->tag === "Right") && ((((((($__case_0)->v0)->v0)->v0)->v0)->v0)->tag === "Left"))))))) {
+$r = (((((($__case_0)->v0)->v0)->v0)->v0)->v0)->v0;
 return ($f)($r);
 } else {
 if (true) {
@@ -974,8 +983,8 @@ throw new \Exception("Pattern match failure");
 $Data_Functor_Coproduct_Nested_at5 = (function() {
   $__body = function($b, $f, $y) {
     $__case_0 = $y;
-    if (((($__case_0)->tag === "Right") && (((($__case_0)->values[0])->tag === "Right") && ((((($__case_0)->values[0])->values[0])->tag === "Right") && (((((($__case_0)->values[0])->values[0])->values[0])->tag === "Right") && (((((($__case_0)->values[0])->values[0])->values[0])->values[0])->tag === "Left")))))) {
-$r = ((((($__case_0)->values[0])->values[0])->values[0])->values[0])->values[0];
+    if (((($__case_0)->tag === "Right") && (((($__case_0)->v0)->tag === "Right") && ((((($__case_0)->v0)->v0)->tag === "Right") && (((((($__case_0)->v0)->v0)->v0)->tag === "Right") && (((((($__case_0)->v0)->v0)->v0)->v0)->tag === "Left")))))) {
+$r = ((((($__case_0)->v0)->v0)->v0)->v0)->v0;
 return ($f)($r);
 } else {
 if (true) {
@@ -998,8 +1007,8 @@ throw new \Exception("Pattern match failure");
 $Data_Functor_Coproduct_Nested_at4 = (function() {
   $__body = function($b, $f, $y) {
     $__case_0 = $y;
-    if (((($__case_0)->tag === "Right") && (((($__case_0)->values[0])->tag === "Right") && ((((($__case_0)->values[0])->values[0])->tag === "Right") && ((((($__case_0)->values[0])->values[0])->values[0])->tag === "Left"))))) {
-$r = (((($__case_0)->values[0])->values[0])->values[0])->values[0];
+    if (((($__case_0)->tag === "Right") && (((($__case_0)->v0)->tag === "Right") && ((((($__case_0)->v0)->v0)->tag === "Right") && ((((($__case_0)->v0)->v0)->v0)->tag === "Left"))))) {
+$r = (((($__case_0)->v0)->v0)->v0)->v0;
 return ($f)($r);
 } else {
 if (true) {
@@ -1022,8 +1031,8 @@ throw new \Exception("Pattern match failure");
 $Data_Functor_Coproduct_Nested_at3 = (function() {
   $__body = function($b, $f, $y) {
     $__case_0 = $y;
-    if (((($__case_0)->tag === "Right") && (((($__case_0)->values[0])->tag === "Right") && (((($__case_0)->values[0])->values[0])->tag === "Left")))) {
-$r = ((($__case_0)->values[0])->values[0])->values[0];
+    if (((($__case_0)->tag === "Right") && (((($__case_0)->v0)->tag === "Right") && (((($__case_0)->v0)->v0)->tag === "Left")))) {
+$r = ((($__case_0)->v0)->v0)->v0;
 return ($f)($r);
 } else {
 if (true) {
@@ -1046,8 +1055,8 @@ throw new \Exception("Pattern match failure");
 $Data_Functor_Coproduct_Nested_at2 = (function() {
   $__body = function($b, $f, $y) {
     $__case_0 = $y;
-    if (((($__case_0)->tag === "Right") && ((($__case_0)->values[0])->tag === "Left"))) {
-$r = (($__case_0)->values[0])->values[0];
+    if (((($__case_0)->tag === "Right") && ((($__case_0)->v0)->tag === "Left"))) {
+$r = (($__case_0)->v0)->v0;
 return ($f)($r);
 } else {
 if (true) {
@@ -1070,8 +1079,8 @@ throw new \Exception("Pattern match failure");
 $Data_Functor_Coproduct_Nested_at10 = (function() {
   $__body = function($b, $f, $y) {
     $__case_0 = $y;
-    if (((($__case_0)->tag === "Right") && (((($__case_0)->values[0])->tag === "Right") && ((((($__case_0)->values[0])->values[0])->tag === "Right") && (((((($__case_0)->values[0])->values[0])->values[0])->tag === "Right") && ((((((($__case_0)->values[0])->values[0])->values[0])->values[0])->tag === "Right") && (((((((($__case_0)->values[0])->values[0])->values[0])->values[0])->values[0])->tag === "Right") && ((((((((($__case_0)->values[0])->values[0])->values[0])->values[0])->values[0])->values[0])->tag === "Right") && (((((((((($__case_0)->values[0])->values[0])->values[0])->values[0])->values[0])->values[0])->values[0])->tag === "Right") && ((((((((((($__case_0)->values[0])->values[0])->values[0])->values[0])->values[0])->values[0])->values[0])->values[0])->tag === "Right") && ((((((((((($__case_0)->values[0])->values[0])->values[0])->values[0])->values[0])->values[0])->values[0])->values[0])->values[0])->tag === "Left"))))))))))) {
-$r = (((((((((($__case_0)->values[0])->values[0])->values[0])->values[0])->values[0])->values[0])->values[0])->values[0])->values[0])->values[0];
+    if (((($__case_0)->tag === "Right") && (((($__case_0)->v0)->tag === "Right") && ((((($__case_0)->v0)->v0)->tag === "Right") && (((((($__case_0)->v0)->v0)->v0)->tag === "Right") && ((((((($__case_0)->v0)->v0)->v0)->v0)->tag === "Right") && (((((((($__case_0)->v0)->v0)->v0)->v0)->v0)->tag === "Right") && ((((((((($__case_0)->v0)->v0)->v0)->v0)->v0)->v0)->tag === "Right") && (((((((((($__case_0)->v0)->v0)->v0)->v0)->v0)->v0)->v0)->tag === "Right") && ((((((((((($__case_0)->v0)->v0)->v0)->v0)->v0)->v0)->v0)->v0)->tag === "Right") && ((((((((((($__case_0)->v0)->v0)->v0)->v0)->v0)->v0)->v0)->v0)->v0)->tag === "Left"))))))))))) {
+$r = (((((((((($__case_0)->v0)->v0)->v0)->v0)->v0)->v0)->v0)->v0)->v0)->v0;
 return ($f)($r);
 } else {
 if (true) {
@@ -1095,7 +1104,7 @@ $Data_Functor_Coproduct_Nested_at1 = (function() {
   $__body = function($b, $f, $y) {
     $__case_0 = $y;
     if ((($__case_0)->tag === "Left")) {
-$r = ($__case_0)->values[0];
+$r = ($__case_0)->v0;
 return ($f)($r);
 } else {
 if (true) {

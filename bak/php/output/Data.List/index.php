@@ -36,6 +36,15 @@ require_once __DIR__ . '/../Data.Unfoldable/index.php';
 require_once __DIR__ . '/../Data.Unit/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -136,14 +145,14 @@ $__case_1 = $v1;
 $__case_2 = $v2;
 if ((($__case_0 === 0) && (($__case_2)->tag === "Cons"))) {
 $x = $__case_1;
-$xs = ($__case_2)->values[1];
+$xs = ($__case_2)->v1;
 return ($GLOBALS['Data_Maybe_Just'])(($GLOBALS['Data_List_Types_Cons'])($x, $xs));
 } else {
 if ((($__case_2)->tag === "Cons")) {
 $n = $__case_0;
 $x = $__case_1;
-$x1 = ($__case_2)->values[0];
-$xs = ($__case_2)->values[1];
+$x1 = ($__case_2)->v0;
+$xs = ($__case_2)->v1;
 return ($GLOBALS['Data_List_map'])((function() use ($x1) {
   $__fn = function($v3) use ($x1, &$__fn) {
   $__num = func_num_args();
@@ -173,14 +182,14 @@ $Data_List_unzip = ($GLOBALS['Data_List_foldr'])((function() {
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Tuple")) {
-$a = ($__case_0)->values[0];
-$b = ($__case_0)->values[1];
+$a = ($__case_0)->v0;
+$b = ($__case_0)->v1;
 return (function() use ($a, $b) {
   $__body = function($v1) use ($a, $b) {
     $__case_0 = $v1;
     if ((($__case_0)->tag === "Tuple")) {
-$as = ($__case_0)->values[0];
-$bs = ($__case_0)->values[1];
+$as = ($__case_0)->v0;
+$bs = ($__case_0)->v1;
 return ($GLOBALS['Data_Tuple_Tuple'])(($GLOBALS['Data_List_Types_Cons'])($a, $as), ($GLOBALS['Data_List_Types_Cons'])($b, $bs));
 } else {
 throw new \Exception("Pattern match failure");
@@ -215,8 +224,8 @@ $Data_List_uncons = (function() {
 return $GLOBALS['Data_Maybe_Nothing'];
 } else {
 if ((($__case_0)->tag === "Cons")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 return ($GLOBALS['Data_Maybe_Just'])((object)["head" => $x, "tail" => $xs]);
 } else {
 throw new \Exception("Pattern match failure");
@@ -267,7 +276,7 @@ $Data_List_tail = (function() {
 return $GLOBALS['Data_Maybe_Nothing'];
 } else {
 if ((($__case_0)->tag === "Cons")) {
-$xs = ($__case_0)->values[1];
+$xs = ($__case_0)->v1;
 return ($GLOBALS['Data_Maybe_Just'])($xs);
 } else {
 throw new \Exception("Pattern match failure");
@@ -301,10 +310,10 @@ $go = (function() {
     $__case_0 = $prefix;
     $__case_1 = $input;
     if (((($__case_0)->tag === "Cons") && (($__case_1)->tag === "Cons"))) {
-$p = ($__case_0)->values[0];
-$ps = ($__case_0)->values[1];
-$i = ($__case_1)->values[0];
-$is = ($__case_1)->values[1];
+$p = ($__case_0)->v0;
+$ps = ($__case_0)->v1;
+$i = ($__case_1)->v0;
+$is = ($__case_1)->v1;
 return "/* Unsupported: Guards not supported */";
 } else {
 if ((($__case_0)->tag === "Nil")) {
@@ -355,8 +364,8 @@ $__case_0 = $v;
 $__case_1 = $v1;
 if ((($__case_1)->tag === "Cons")) {
 $p = $__case_0;
-$x = ($__case_1)->values[0];
-$xs__prime__ = ($__case_1)->values[1];
+$x = ($__case_1)->v0;
+$xs__prime__ = ($__case_1)->v1;
 return "/* Unsupported: Guards not supported */";
 } else {
 if (true) {
@@ -409,11 +418,11 @@ $__case_0 = $v;
 $__case_1 = $v1;
 if (((($__case_0)->tag === "Cons") && (($__case_1)->tag === "Cons"))) {
 $as = $__case_0;
-$a = ($__case_0)->values[0];
-$as__prime__ = ($__case_0)->values[1];
+$a = ($__case_0)->v0;
+$as__prime__ = ($__case_0)->v1;
 $bs = $__case_1;
-$b = ($__case_1)->values[0];
-$bs__prime__ = ($__case_1)->values[1];
+$b = ($__case_1)->v0;
+$bs__prime__ = ($__case_1)->v1;
 return "/* Unsupported: Guards not supported */";
 } else {
 if ((($__case_0)->tag === "Nil")) {
@@ -440,10 +449,10 @@ $mergePairs = (function() use (&$merge, &$mergePairs) {
   if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
 while (true) {
 $__case_0 = $v;
-if (((($__case_0)->tag === "Cons") && ((($__case_0)->values[1])->tag === "Cons"))) {
-$a = ($__case_0)->values[0];
-$b = (($__case_0)->values[1])->values[0];
-$xs = (($__case_0)->values[1])->values[1];
+if (((($__case_0)->tag === "Cons") && ((($__case_0)->v1)->tag === "Cons"))) {
+$a = ($__case_0)->v0;
+$b = (($__case_0)->v1)->v0;
+$xs = (($__case_0)->v1)->v1;
 return ($GLOBALS['Data_List_Types_Cons'])(($merge)($a, $b), ($mergePairs)($xs));
 } else {
 if (true) {
@@ -465,8 +474,8 @@ $mergeAll = (function() use (&$mergeAll, &$mergePairs) {
   if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
 while (true) {
 $__case_0 = $v;
-if (((($__case_0)->tag === "Cons") && ((($__case_0)->values[1])->tag === "Nil"))) {
-$x = ($__case_0)->values[0];
+if (((($__case_0)->tag === "Cons") && ((($__case_0)->v1)->tag === "Nil"))) {
+$x = ($__case_0)->v0;
 return $x;
 } else {
 if (true) {
@@ -490,10 +499,10 @@ $sequences = (function() {
   if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
 while (true) {
 $__case_0 = $v;
-if (((($__case_0)->tag === "Cons") && ((($__case_0)->values[1])->tag === "Cons"))) {
-$a = ($__case_0)->values[0];
-$b = (($__case_0)->values[1])->values[0];
-$xs = (($__case_0)->values[1])->values[1];
+if (((($__case_0)->tag === "Cons") && ((($__case_0)->v1)->tag === "Cons"))) {
+$a = ($__case_0)->v0;
+$b = (($__case_0)->v1)->v0;
+$xs = (($__case_0)->v1)->v1;
 return "/* Unsupported: Guards not supported */";
 } else {
 if (true) {
@@ -520,8 +529,8 @@ $__case_2 = $v2;
 if ((($__case_2)->tag === "Cons")) {
 $a = $__case_0;
 $as = $__case_1;
-$b = ($__case_2)->values[0];
-$bs = ($__case_2)->values[1];
+$b = ($__case_2)->v0;
+$bs = ($__case_2)->v1;
 return "/* Unsupported: Guards not supported */";
 } else {
 if (true) {
@@ -550,8 +559,8 @@ $__case_2 = $v2;
 if ((($__case_2)->tag === "Cons")) {
 $a = $__case_0;
 $as = $__case_1;
-$b = ($__case_2)->values[0];
-$bs = ($__case_2)->values[1];
+$b = ($__case_2)->v0;
+$bs = ($__case_2)->v1;
 return "/* Unsupported: Guards not supported */";
 } else {
 if (true) {
@@ -607,7 +616,7 @@ return ($GLOBALS['Data_List_singleton'])($GLOBALS['Data_List_Types_Nil']);
 } else {
 if ((($__case_0)->tag === "Cons")) {
 $list = $__case_0;
-$tl = ($__case_0)->values[1];
+$tl = ($__case_0)->v1;
 return ($GLOBALS['Data_List_Types_Cons'])($list, ($GLOBALS['Data_List_tails'])($tl));
 } else {
 throw new \Exception("Pattern match failure");
@@ -663,8 +672,8 @@ return $acc;
 } else {
 if ((($__case_1)->tag === "Cons")) {
 $acc = $__case_0;
-$x = ($__case_1)->values[0];
-$xs = ($__case_1)->values[1];
+$x = ($__case_1)->v0;
+$xs = ($__case_1)->v1;
 $__tco_tmp_0 = ($GLOBALS['Data_List_Types_Cons'])($x, $acc);
 $__tco_tmp_1 = $xs;
 $v = $__tco_tmp_0;
@@ -703,8 +712,8 @@ return ($GLOBALS['Data_List_reverse'])($acc);
 if ((($__case_2)->tag === "Cons")) {
 $acc = $__case_0;
 $n = $__case_1;
-$x = ($__case_2)->values[0];
-$xs = ($__case_2)->values[1];
+$x = ($__case_2)->v0;
+$xs = ($__case_2)->v1;
 $__tco_tmp_0 = ($GLOBALS['Data_List_Types_Cons'])($x, $acc);
 $__tco_tmp_1 = ($GLOBALS['Data_List_sub'])($n, 1);
 $__tco_tmp_2 = $xs;
@@ -739,8 +748,8 @@ $__case_0 = $v;
 $__case_1 = $v1;
 if ((($__case_1)->tag === "Cons")) {
 $acc = $__case_0;
-$x = ($__case_1)->values[0];
-$xs = ($__case_1)->values[1];
+$x = ($__case_1)->v0;
+$xs = ($__case_1)->v1;
 return "/* Unsupported: Guards not supported */";
 } else {
 if (true) {
@@ -777,14 +786,14 @@ $__case_1 = $v1;
 if ((($__case_0)->tag === "Nil")) {
 return $GLOBALS['Data_Maybe_Nothing'];
 } else {
-if (((($__case_0)->tag === "Cons") && ((($__case_0)->values[1])->tag === "Nil"))) {
-$x = ($__case_0)->values[0];
+if (((($__case_0)->tag === "Cons") && ((($__case_0)->v1)->tag === "Nil"))) {
+$x = ($__case_0)->v0;
 $acc = $__case_1;
 return ($GLOBALS['Data_Maybe_Just'])((object)["revInit" => $acc, "last" => $x]);
 } else {
 if ((($__case_0)->tag === "Cons")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 $acc = $__case_1;
 $__tco_tmp_0 = $xs;
 $__tco_tmp_1 = ($GLOBALS['Data_List_Types_Cons'])($x, $acc);
@@ -838,10 +847,10 @@ $acc = $__case_2;
 return $acc;
 } else {
 if (((($__case_0)->tag === "Cons") && (($__case_1)->tag === "Cons"))) {
-$a = ($__case_0)->values[0];
-$as = ($__case_0)->values[1];
-$b = ($__case_1)->values[0];
-$bs = ($__case_1)->values[1];
+$a = ($__case_0)->v0;
+$as = ($__case_0)->v1;
+$b = ($__case_1)->v0;
+$bs = ($__case_1)->v1;
 $acc = $__case_2;
 $__tco_tmp_0 = $as;
 $__tco_tmp_1 = $bs;
@@ -996,8 +1005,8 @@ return $acc;
 if ((($__case_2)->tag === "Cons")) {
 $s = $__case_0;
 $acc = $__case_1;
-$a = ($__case_2)->values[0];
-$as = ($__case_2)->values[1];
+$a = ($__case_2)->v0;
+$as = ($__case_2)->v1;
 $v3 = ($GLOBALS['Data_List_Internal_insertAndLookupBy'])($p, $a, $s);
 $__case_0 = $v3;
 if ((is_object)($__case_0)) {
@@ -1084,8 +1093,8 @@ return ($GLOBALS['Data_List_reverse'])($acc);
 } else {
 if ((($__case_1)->tag === "Cons")) {
 $acc = $__case_0;
-$x = ($__case_1)->values[0];
-$xs = ($__case_1)->values[1];
+$x = ($__case_1)->v0;
+$xs = ($__case_1)->v1;
 $v2 = ($f)($x);
 $__case_0 = $v2;
 if ((($__case_0)->tag === "Nothing")) {
@@ -1096,7 +1105,7 @@ $v1 = $__tco_tmp_1;
 continue;
 } else {
 if ((($__case_0)->tag === "Just")) {
-$y = ($__case_0)->values[0];
+$y = ($__case_0)->v0;
 $__tco_tmp_0 = ($GLOBALS['Data_List_Types_Cons'])($y, $acc);
 $__tco_tmp_1 = $xs;
 $v = $__tco_tmp_0;
@@ -1302,12 +1311,12 @@ $Data_List_last = (function() {
   if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
 while (true) {
 $__case_0 = $v;
-if (((($__case_0)->tag === "Cons") && ((($__case_0)->values[1])->tag === "Nil"))) {
-$x = ($__case_0)->values[0];
+if (((($__case_0)->tag === "Cons") && ((($__case_0)->v1)->tag === "Nil"))) {
+$x = ($__case_0)->v0;
 return ($GLOBALS['Data_Maybe_Just'])($x);
 } else {
 if ((($__case_0)->tag === "Cons")) {
-$xs = ($__case_0)->values[1];
+$xs = ($__case_0)->v1;
 $__tco_tmp_0 = $xs;
 $v = $__tco_tmp_0;
 continue;
@@ -1343,8 +1352,8 @@ if ((($__case_2)->tag === "Cons")) {
 $cmp = $__case_0;
 $x = $__case_1;
 $ys = $__case_2;
-$y = ($__case_2)->values[0];
-$ys__prime__ = ($__case_2)->values[1];
+$y = ($__case_2)->v0;
+$ys__prime__ = ($__case_2)->v1;
 $v3 = ($cmp)($x, $y);
 $__case_0 = $v3;
 if ((($__case_0)->tag === "GT")) {
@@ -1384,8 +1393,8 @@ return ($GLOBALS['Data_Maybe_Just'])(($GLOBALS['Data_List_Types_Cons'])($x, $xs)
 if ((($__case_2)->tag === "Cons")) {
 $n = $__case_0;
 $x = $__case_1;
-$y = ($__case_2)->values[0];
-$ys = ($__case_2)->values[1];
+$y = ($__case_2)->v0;
+$ys = ($__case_2)->v1;
 return ($GLOBALS['Data_List_map'])((function() use ($y) {
   $__fn = function($v3) use ($y, &$__fn) {
   $__num = func_num_args();
@@ -1452,11 +1461,11 @@ if ((($__case_0)->tag === "Nil")) {
 return $GLOBALS['Data_Maybe_Nothing'];
 } else {
 if (((($__case_0)->tag === "Cons") && ($__case_1 === 0))) {
-$a = ($__case_0)->values[0];
+$a = ($__case_0)->v0;
 return ($GLOBALS['Data_Maybe_Just'])($a);
 } else {
 if ((($__case_0)->tag === "Cons")) {
-$as = ($__case_0)->values[1];
+$as = ($__case_0)->v1;
 $i = $__case_1;
 $__tco_tmp_0 = $as;
 $__tco_tmp_1 = ($GLOBALS['Data_List_sub'])($i, 1);
@@ -1483,7 +1492,7 @@ $Data_List_head = (function() {
 return $GLOBALS['Data_Maybe_Nothing'];
 } else {
 if ((($__case_0)->tag === "Cons")) {
-$x = ($__case_0)->values[0];
+$x = ($__case_0)->v0;
 return ($GLOBALS['Data_Maybe_Just'])($x);
 } else {
 throw new \Exception("Pattern match failure");
@@ -1509,16 +1518,16 @@ $__case_0 = $v;
 if ((($__case_0)->tag === "Nil")) {
 return $GLOBALS['Data_List_Types_Nil'];
 } else {
-if (((($__case_0)->tag === "Cons") && ((($__case_0)->values[0])->tag === "Nil"))) {
-$xss = ($__case_0)->values[1];
+if (((($__case_0)->tag === "Cons") && ((($__case_0)->v0)->tag === "Nil"))) {
+$xss = ($__case_0)->v1;
 $__tco_tmp_0 = $xss;
 $v = $__tco_tmp_0;
 continue;
 } else {
-if (((($__case_0)->tag === "Cons") && ((($__case_0)->values[0])->tag === "Cons"))) {
-$x = (($__case_0)->values[0])->values[0];
-$xs = (($__case_0)->values[0])->values[1];
-$xss = ($__case_0)->values[1];
+if (((($__case_0)->tag === "Cons") && ((($__case_0)->v0)->tag === "Cons"))) {
+$x = (($__case_0)->v0)->v0;
+$xs = (($__case_0)->v0)->v1;
+$xss = ($__case_0)->v1;
 return ($GLOBALS['Data_List_Types_Cons'])(($GLOBALS['Data_List_Types_Cons'])($x, ($GLOBALS['Data_List_mapMaybe'])($GLOBALS['Data_List_head'], $xss)), ($GLOBALS['Data_List_transpose'])(($GLOBALS['Data_List_Types_Cons'])($xs, ($GLOBALS['Data_List_mapMaybe'])($GLOBALS['Data_List_tail'], $xss))));
 } else {
 throw new \Exception("Pattern match failure");
@@ -1545,8 +1554,8 @@ return $GLOBALS['Data_List_Types_Nil'];
 } else {
 if ((($__case_1)->tag === "Cons")) {
 $eq2 = $__case_0;
-$x = ($__case_1)->values[0];
-$xs = ($__case_1)->values[1];
+$x = ($__case_1)->v0;
+$xs = ($__case_1)->v1;
 $v2 = ($GLOBALS['Data_List_span'])(($eq2)($x), $xs);
 $__case_0 = $v2;
 if ((is_object)($__case_0)) {
@@ -1639,8 +1648,8 @@ return ($pure)($b);
 if ((($__case_2)->tag === "Cons")) {
 $f = $__case_0;
 $b = $__case_1;
-$a = ($__case_2)->values[0];
-$as = ($__case_2)->values[1];
+$a = ($__case_2)->v0;
+$as = ($__case_2)->v1;
 return ($bind1)(($f)($b, $a), (function() use ($dictMonad, $f, $as) {
   $__fn = function($b__prime__) use ($dictMonad, $f, $as, &$__fn) {
   $__num = func_num_args();
@@ -1684,8 +1693,8 @@ $__case_0 = $v;
 $__case_1 = $v1;
 if ((($__case_1)->tag === "Cons")) {
 $n = $__case_0;
-$x = ($__case_1)->values[0];
-$xs = ($__case_1)->values[1];
+$x = ($__case_1)->v0;
+$xs = ($__case_1)->v1;
 return "/* Unsupported: Guards not supported */";
 } else {
 if ((($__case_1)->tag === "Nil")) {
@@ -1742,8 +1751,8 @@ return ($pure)($GLOBALS['Data_List_Types_Nil']);
 } else {
 if ((($__case_1)->tag === "Cons")) {
 $p = $__case_0;
-$x = ($__case_1)->values[0];
-$xs = ($__case_1)->values[1];
+$x = ($__case_1)->v0;
+$xs = ($__case_1)->v1;
 return ($bind1)(($p)($x), (function() use ($bind1, $dictMonad, $p, $xs, $pure, $x) {
   $__fn = function($b) use ($bind1, $dictMonad, $p, $xs, $pure, $x, &$__fn) {
   $__num = func_num_args();
@@ -1810,8 +1819,8 @@ return ($GLOBALS['Data_List_reverse'])($acc);
 } else {
 if ((($__case_1)->tag === "Cons")) {
 $acc = $__case_0;
-$x = ($__case_1)->values[0];
-$xs = ($__case_1)->values[1];
+$x = ($__case_1)->v0;
+$xs = ($__case_1)->v1;
 return "/* Unsupported: Guards not supported */";
 } else {
 throw new \Exception("Pattern match failure");
@@ -1893,8 +1902,8 @@ return $GLOBALS['Data_List_Types_Nil'];
 } else {
 if ((($__case_1)->tag === "Cons")) {
 $eq__prime__ = $__case_0;
-$x = ($__case_1)->values[0];
-$xs = ($__case_1)->values[1];
+$x = ($__case_1)->v0;
+$xs = ($__case_1)->v1;
 return ($GLOBALS['Data_List_Types_Cons'])($x, ($GLOBALS['Data_List_nubByEq'])($eq__prime__, ($GLOBALS['Data_List_filter'])((function() use ($eq__prime__, $x) {
   $__fn = function($y) use ($eq__prime__, $x, &$__fn) {
   $__num = func_num_args();
@@ -2065,8 +2074,8 @@ $go = (function() {
 while (true) {
 $__case_0 = $v;
 if ((($__case_0)->tag === "Cons")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 return "/* Unsupported: Guards not supported */";
 } else {
 if (true) {
@@ -2117,7 +2126,7 @@ return $GLOBALS['Data_List_Types_Nil'];
 } else {
 if ((($__case_1)->tag === "Cons")) {
 $n = $__case_0;
-$xs = ($__case_1)->values[1];
+$xs = ($__case_1)->v1;
 $__tco_tmp_0 = ($GLOBALS['Data_List_sub'])($n, 1);
 $__tco_tmp_1 = $xs;
 $v = $__tco_tmp_0;
@@ -2172,15 +2181,15 @@ return $GLOBALS['Data_List_Types_Nil'];
 if ((($__case_2)->tag === "Cons")) {
 $eq__prime__ = $__case_0;
 $x = $__case_1;
-$y = ($__case_2)->values[0];
-$ys = ($__case_2)->values[1];
+$y = ($__case_2)->v0;
+$ys = ($__case_2)->v1;
 return "/* Unsupported: Guards not supported */";
 } else {
 if ((($__case_2)->tag === "Cons")) {
 $eq__prime__ = $__case_0;
 $x = $__case_1;
-$y = ($__case_2)->values[0];
-$ys = ($__case_2)->values[1];
+$y = ($__case_2)->v0;
+$ys = ($__case_2)->v1;
 return ($GLOBALS['Data_List_Types_Cons'])($y, ($GLOBALS['Data_List_deleteBy'])($eq__prime__, $x, $ys));
 } else {
 throw new \Exception("Pattern match failure");
@@ -2225,13 +2234,13 @@ while (true) {
 $__case_0 = $v;
 $__case_1 = $v1;
 if ((($__case_0 === 0) && (($__case_1)->tag === "Cons"))) {
-$ys = ($__case_1)->values[1];
+$ys = ($__case_1)->v1;
 return ($GLOBALS['Data_Maybe_Just'])($ys);
 } else {
 if ((($__case_1)->tag === "Cons")) {
 $n = $__case_0;
-$y = ($__case_1)->values[0];
-$ys = ($__case_1)->values[1];
+$y = ($__case_1)->v0;
+$ys = ($__case_1)->v1;
 return ($GLOBALS['Data_List_map'])((function() use ($y) {
   $__fn = function($v2) use ($y, &$__fn) {
   $__num = func_num_args();
@@ -2306,8 +2315,8 @@ $__case_1 = $v1;
 $__case_2 = $v2;
 if ((($__case_0 === 0) && (($__case_2)->tag === "Cons"))) {
 $f = $__case_1;
-$y = ($__case_2)->values[0];
-$ys = ($__case_2)->values[1];
+$y = ($__case_2)->v0;
+$ys = ($__case_2)->v1;
 $v3 = ($f)($y);
 $__case_0 = $v3;
 $__case_res_0 = null;
@@ -2315,7 +2324,7 @@ if ((($__case_0)->tag === "Nothing")) {
 $__case_res_0 = $ys;
 } else {
 if ((($__case_0)->tag === "Just")) {
-$y__prime__ = ($__case_0)->values[0];
+$y__prime__ = ($__case_0)->v0;
 $__case_res_0 = ($GLOBALS['Data_List_Types_Cons'])($y__prime__, $ys);
 } else {
 throw new \Exception("Pattern match failure");
@@ -2326,8 +2335,8 @@ return ($GLOBALS['Data_Maybe_Just'])($__case_res_0);
 if ((($__case_2)->tag === "Cons")) {
 $n = $__case_0;
 $f = $__case_1;
-$y = ($__case_2)->values[0];
-$ys = ($__case_2)->values[1];
+$y = ($__case_2)->v0;
+$ys = ($__case_2)->v1;
 return ($GLOBALS['Data_List_map'])((function() use ($y) {
   $__fn = function($v3) use ($y, &$__fn) {
   $__num = func_num_args();

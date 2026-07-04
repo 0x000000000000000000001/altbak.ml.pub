@@ -36,6 +36,15 @@ require_once __DIR__ . '/../Data.Unfoldable/index.php';
 require_once __DIR__ . '/../Data.Unit/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -94,28 +103,28 @@ $Data_Map_Internal_sub = ($GLOBALS['Data_Ring_sub'])($GLOBALS['Data_Ring_ringInt
 $Data_Map_Internal_disj = ($GLOBALS['Data_HeytingAlgebra_disj'])($GLOBALS['Data_HeytingAlgebra_heytingAlgebraBoolean']);
 
 // Data_Map_Internal_Leaf
-$Data_Map_Internal_Leaf = (object)["tag" => "Leaf", "values" => []];
+$Data_Map_Internal_Leaf = new Phpurs_Data0("Leaf");
 
 // Data_Map_Internal_Node
 $Data_Map_Internal_Node = (function() {
   $__fn = function($value0, $value1 = null, $value2 = null, $value3 = null, $value4 = null, $value5 = null) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 6) return phpurs_curry_fallback($__fn, func_get_args(), 6);
-    $__res = (object)["tag" => "Node", "values" => [$value0, $value1, $value2, $value3, $value4, $value5]];
+    $__res = new Phpurs_Data6("Node", $value0, $value1, $value2, $value3, $value4, $value5);
   return $__num > 6 ? $__res(...array_slice(func_get_args(), 6)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Map_Internal_IterLeaf
-$Data_Map_Internal_IterLeaf = (object)["tag" => "IterLeaf", "values" => []];
+$Data_Map_Internal_IterLeaf = new Phpurs_Data0("IterLeaf");
 
 // Data_Map_Internal_IterEmit
 $Data_Map_Internal_IterEmit = (function() {
   $__fn = function($value0, $value1 = null, $value2 = null) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 3) return phpurs_curry_fallback($__fn, func_get_args(), 3);
-    $__res = (object)["tag" => "IterEmit", "values" => [$value0, $value1, $value2]];
+    $__res = new Phpurs_Data3("IterEmit", $value0, $value1, $value2);
   return $__num > 3 ? $__res(...array_slice(func_get_args(), 3)) : $__res;
   };
   return $__fn;
@@ -126,21 +135,21 @@ $Data_Map_Internal_IterNode = (function() {
   $__fn = function($value0, $value1 = null) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
-    $__res = (object)["tag" => "IterNode", "values" => [$value0, $value1]];
+    $__res = new Phpurs_Data2("IterNode", $value0, $value1);
   return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })();
 
 // Data_Map_Internal_IterDone
-$Data_Map_Internal_IterDone = (object)["tag" => "IterDone", "values" => []];
+$Data_Map_Internal_IterDone = new Phpurs_Data0("IterDone");
 
 // Data_Map_Internal_IterNext
 $Data_Map_Internal_IterNext = (function() {
   $__fn = function($value0, $value1 = null, $value2 = null) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 3) return phpurs_curry_fallback($__fn, func_get_args(), 3);
-    $__res = (object)["tag" => "IterNext", "values" => [$value0, $value1, $value2]];
+    $__res = new Phpurs_Data3("IterNext", $value0, $value1, $value2);
   return $__num > 3 ? $__res(...array_slice(func_get_args(), 3)) : $__res;
   };
   return $__fn;
@@ -151,7 +160,7 @@ $Data_Map_Internal_Split = (function() {
   $__fn = function($value0, $value1 = null, $value2 = null) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 3) return phpurs_curry_fallback($__fn, func_get_args(), 3);
-    $__res = (object)["tag" => "Split", "values" => [$value0, $value1, $value2]];
+    $__res = new Phpurs_Data3("Split", $value0, $value1, $value2);
   return $__num > 3 ? $__res(...array_slice(func_get_args(), 3)) : $__res;
   };
   return $__fn;
@@ -162,7 +171,7 @@ $Data_Map_Internal_SplitLast = (function() {
   $__fn = function($value0, $value1 = null, $value2 = null) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 3) return phpurs_curry_fallback($__fn, func_get_args(), 3);
-    $__res = (object)["tag" => "SplitLast", "values" => [$value0, $value1, $value2]];
+    $__res = new Phpurs_Data3("SplitLast", $value0, $value1, $value2);
   return $__num > 3 ? $__res(...array_slice(func_get_args(), 3)) : $__res;
   };
   return $__fn;
@@ -178,8 +187,8 @@ if ((($__case_0)->tag === "Leaf")) {
 return ($GLOBALS['Data_Map_Internal_Node'])(1, 1, $k, $v, $l, $r);
 } else {
 if ((($__case_0)->tag === "Node")) {
-$h2 = ($__case_0)->values[0];
-$s2 = ($__case_0)->values[1];
+$h2 = ($__case_0)->v0;
+$s2 = ($__case_0)->v1;
 return ($GLOBALS['Data_Map_Internal_Node'])(($GLOBALS['Data_Map_Internal_add'])(1, $h2), ($GLOBALS['Data_Map_Internal_add'])(1, $s2), $k, $v, $l, $r);
 } else {
 throw new \Exception("Pattern match failure");
@@ -187,15 +196,15 @@ throw new \Exception("Pattern match failure");
 };
 } else {
 if ((($__case_0)->tag === "Node")) {
-$h1 = ($__case_0)->values[0];
-$s1 = ($__case_0)->values[1];
+$h1 = ($__case_0)->v0;
+$s1 = ($__case_0)->v1;
 $__case_0 = $r;
 if ((($__case_0)->tag === "Leaf")) {
 return ($GLOBALS['Data_Map_Internal_Node'])(($GLOBALS['Data_Map_Internal_add'])(1, $h1), ($GLOBALS['Data_Map_Internal_add'])(1, $s1), $k, $v, $l, $r);
 } else {
 if ((($__case_0)->tag === "Node")) {
-$h2 = ($__case_0)->values[0];
-$s2 = ($__case_0)->values[1];
+$h2 = ($__case_0)->v0;
+$s2 = ($__case_0)->v1;
 $__case_0 = ($GLOBALS['Data_Map_Internal_greaterThan'])($h1, $h2);
 $__case_res_0 = null;
 if (($__case_0 === true)) {
@@ -244,14 +253,14 @@ if ((($__case_0)->tag === "IterLeaf")) {
 return ($done)($GLOBALS['Data_Unit_unit']);
 } else {
 if ((($__case_0)->tag === "IterEmit")) {
-$k = ($__case_0)->values[0];
-$v1 = ($__case_0)->values[1];
-$iter = ($__case_0)->values[2];
+$k = ($__case_0)->v0;
+$v1 = ($__case_0)->v1;
+$iter = ($__case_0)->v2;
 return ($GLOBALS['Data_Function_Uncurried_runFn3'])($next, $k, $v1, $iter);
 } else {
 if ((($__case_0)->tag === "IterNode")) {
-$m = ($__case_0)->values[0];
-$iter = ($__case_0)->values[1];
+$m = ($__case_0)->v0;
+$iter = ($__case_0)->v1;
 $__tco_tmp_0 = ($f)($iter, $m);
 $v = $__tco_tmp_0;
 continue;
@@ -280,7 +289,7 @@ $Data_Map_Internal_size = (function() {
 return 0;
 } else {
 if ((($__case_0)->tag === "Node")) {
-$s = ($__case_0)->values[1];
+$s = ($__case_0)->v1;
 return $s;
 } else {
 throw new \Exception("Pattern match failure");
@@ -315,7 +324,7 @@ $Data_Map_Internal_unsafeBalancedNode = ($height = (function() {
 return 0;
 } else {
 if ((($__case_0)->tag === "Node")) {
-$h = ($__case_0)->values[0];
+$h = ($__case_0)->v0;
 return $h;
 } else {
 throw new \Exception("Pattern match failure");
@@ -334,11 +343,11 @@ $rotateLeft = ($GLOBALS['Data_Function_Uncurried_mkFn7'])((function() {
   $__body = function($k, $v, $l, $rk, $rv, $rl, $rr) {
     $__case_0 = $rl;
     if ((($__case_0)->tag === "Node")) {
-$lh = ($__case_0)->values[0];
-$lk = ($__case_0)->values[2];
-$lv = ($__case_0)->values[3];
-$ll = ($__case_0)->values[4];
-$lr = ($__case_0)->values[5];
+$lh = ($__case_0)->v0;
+$lk = ($__case_0)->v2;
+$lv = ($__case_0)->v3;
+$ll = ($__case_0)->v4;
+$lr = ($__case_0)->v5;
 return "/* Unsupported: Guards not supported */";
 } else {
 if (true) {
@@ -360,11 +369,11 @@ $rotateRight = ($GLOBALS['Data_Function_Uncurried_mkFn7'])((function() {
   $__body = function($k, $v, $lk, $lv, $ll, $lr, $r) {
     $__case_0 = $lr;
     if ((($__case_0)->tag === "Node")) {
-$rh = ($__case_0)->values[0];
-$rk = ($__case_0)->values[2];
-$rv = ($__case_0)->values[3];
-$rl = ($__case_0)->values[4];
-$rr = ($__case_0)->values[5];
+$rh = ($__case_0)->v0;
+$rk = ($__case_0)->v2;
+$rv = ($__case_0)->v3;
+$rl = ($__case_0)->v4;
+$rr = ($__case_0)->v5;
 return "/* Unsupported: Guards not supported */";
 } else {
 if (true) {
@@ -391,11 +400,11 @@ if ((($__case_0)->tag === "Leaf")) {
 return ($GLOBALS['Data_Map_Internal_singleton'])($k, $v);
 } else {
 if ((($__case_0)->tag === "Node")) {
-$rh = ($__case_0)->values[0];
-$rk = ($__case_0)->values[2];
-$rv = ($__case_0)->values[3];
-$rl = ($__case_0)->values[4];
-$rr = ($__case_0)->values[5];
+$rh = ($__case_0)->v0;
+$rk = ($__case_0)->v2;
+$rv = ($__case_0)->v3;
+$rl = ($__case_0)->v4;
+$rr = ($__case_0)->v5;
 return "/* Unsupported: Guards not supported */";
 } else {
 if (true) {
@@ -407,18 +416,18 @@ throw new \Exception("Pattern match failure");
 };
 } else {
 if ((($__case_0)->tag === "Node")) {
-$lh = ($__case_0)->values[0];
-$lk = ($__case_0)->values[2];
-$lv = ($__case_0)->values[3];
-$ll = ($__case_0)->values[4];
-$lr = ($__case_0)->values[5];
+$lh = ($__case_0)->v0;
+$lk = ($__case_0)->v2;
+$lv = ($__case_0)->v3;
+$ll = ($__case_0)->v4;
+$lr = ($__case_0)->v5;
 $__case_0 = $r;
 if ((($__case_0)->tag === "Node")) {
-$rh = ($__case_0)->values[0];
-$rk = ($__case_0)->values[2];
-$rv = ($__case_0)->values[3];
-$rl = ($__case_0)->values[4];
-$rr = ($__case_0)->values[5];
+$rh = ($__case_0)->v0;
+$rk = ($__case_0)->v2;
+$rv = ($__case_0)->v3;
+$rl = ($__case_0)->v4;
+$rr = ($__case_0)->v5;
 return "/* Unsupported: Guards not supported */";
 } else {
 if ((($__case_0)->tag === "Leaf")) {
@@ -453,19 +462,19 @@ $Data_Map_Internal_unsafeSplit = ($GLOBALS['Data_Function_Uncurried_mkFn3'])((fu
 return ($GLOBALS['Data_Map_Internal_Split'])($GLOBALS['Data_Maybe_Nothing'], $GLOBALS['Data_Map_Internal_Leaf'], $GLOBALS['Data_Map_Internal_Leaf']);
 } else {
 if ((($__case_0)->tag === "Node")) {
-$mk = ($__case_0)->values[2];
-$mv = ($__case_0)->values[3];
-$ml = ($__case_0)->values[4];
-$mr = ($__case_0)->values[5];
+$mk = ($__case_0)->v2;
+$mv = ($__case_0)->v3;
+$ml = ($__case_0)->v4;
+$mr = ($__case_0)->v5;
 $v = ($comp)($k, $mk);
 $__case_0 = $v;
 if ((($__case_0)->tag === "LT")) {
 $v1 = ($GLOBALS['Data_Function_Uncurried_runFn3'])($GLOBALS['Data_Map_Internal_unsafeSplit'], $comp, $k, $ml);
 $__case_0 = $v1;
 if ((($__case_0)->tag === "Split")) {
-$b = ($__case_0)->values[0];
-$ll = ($__case_0)->values[1];
-$lr = ($__case_0)->values[2];
+$b = ($__case_0)->v0;
+$ll = ($__case_0)->v1;
+$lr = ($__case_0)->v2;
 return ($GLOBALS['Data_Map_Internal_Split'])($b, $ll, ($GLOBALS['Data_Function_Uncurried_runFn4'])($GLOBALS['Data_Map_Internal_unsafeBalancedNode'], $mk, $mv, $lr, $mr));
 } else {
 throw new \Exception("Pattern match failure");
@@ -475,9 +484,9 @@ if ((($__case_0)->tag === "GT")) {
 $v1 = ($GLOBALS['Data_Function_Uncurried_runFn3'])($GLOBALS['Data_Map_Internal_unsafeSplit'], $comp, $k, $mr);
 $__case_0 = $v1;
 if ((($__case_0)->tag === "Split")) {
-$b = ($__case_0)->values[0];
-$rl = ($__case_0)->values[1];
-$rr = ($__case_0)->values[2];
+$b = ($__case_0)->v0;
+$rl = ($__case_0)->v1;
+$rr = ($__case_0)->v2;
 return ($GLOBALS['Data_Map_Internal_Split'])($b, ($GLOBALS['Data_Function_Uncurried_runFn4'])($GLOBALS['Data_Map_Internal_unsafeBalancedNode'], $mk, $mv, $ml, $rl), $rr);
 } else {
 throw new \Exception("Pattern match failure");
@@ -512,16 +521,16 @@ $Data_Map_Internal_unsafeSplitLast = ($GLOBALS['Data_Function_Uncurried_mkFn4'])
 return ($GLOBALS['Data_Map_Internal_SplitLast'])($k, $v, $l);
 } else {
 if ((($__case_0)->tag === "Node")) {
-$rk = ($__case_0)->values[2];
-$rv = ($__case_0)->values[3];
-$rl = ($__case_0)->values[4];
-$rr = ($__case_0)->values[5];
+$rk = ($__case_0)->v2;
+$rv = ($__case_0)->v3;
+$rl = ($__case_0)->v4;
+$rr = ($__case_0)->v5;
 $v1 = ($GLOBALS['Data_Function_Uncurried_runFn4'])($GLOBALS['Data_Map_Internal_unsafeSplitLast'], $rk, $rv, $rl, $rr);
 $__case_0 = $v1;
 if ((($__case_0)->tag === "SplitLast")) {
-$k__prime__ = ($__case_0)->values[0];
-$v__prime__ = ($__case_0)->values[1];
-$t__prime__ = ($__case_0)->values[2];
+$k__prime__ = ($__case_0)->v0;
+$v__prime__ = ($__case_0)->v1;
+$t__prime__ = ($__case_0)->v2;
 return ($GLOBALS['Data_Map_Internal_SplitLast'])($k__prime__, $v__prime__, ($GLOBALS['Data_Function_Uncurried_runFn4'])($GLOBALS['Data_Map_Internal_unsafeBalancedNode'], $k, $v, $l, $t__prime__));
 } else {
 throw new \Exception("Pattern match failure");
@@ -550,17 +559,17 @@ $b = $__case_1;
 return $b;
 } else {
 if ((($__case_0)->tag === "Node")) {
-$lk = ($__case_0)->values[2];
-$lv = ($__case_0)->values[3];
-$ll = ($__case_0)->values[4];
-$lr = ($__case_0)->values[5];
+$lk = ($__case_0)->v2;
+$lv = ($__case_0)->v3;
+$ll = ($__case_0)->v4;
+$lr = ($__case_0)->v5;
 $r = $__case_1;
 $v2 = ($GLOBALS['Data_Function_Uncurried_runFn4'])($GLOBALS['Data_Map_Internal_unsafeSplitLast'], $lk, $lv, $ll, $lr);
 $__case_0 = $v2;
 if ((($__case_0)->tag === "SplitLast")) {
-$k = ($__case_0)->values[0];
-$v3 = ($__case_0)->values[1];
-$l = ($__case_0)->values[2];
+$k = ($__case_0)->v0;
+$v3 = ($__case_0)->v1;
+$l = ($__case_0)->v2;
 return ($GLOBALS['Data_Function_Uncurried_runFn4'])($GLOBALS['Data_Map_Internal_unsafeBalancedNode'], $k, $v3, $l, $r);
 } else {
 throw new \Exception("Pattern match failure");
@@ -591,14 +600,14 @@ if ((($__case_1)->tag === "Leaf")) {
 return $l;
 } else {
 if ((($__case_1)->tag === "Node")) {
-$rk = ($__case_1)->values[2];
-$rl = ($__case_1)->values[4];
-$rr = ($__case_1)->values[5];
+$rk = ($__case_1)->v2;
+$rl = ($__case_1)->v4;
+$rr = ($__case_1)->v5;
 $v = ($GLOBALS['Data_Function_Uncurried_runFn3'])($GLOBALS['Data_Map_Internal_unsafeSplit'], $comp, $rk, $l);
 $__case_0 = $v;
 if ((($__case_0)->tag === "Split")) {
-$ll = ($__case_0)->values[1];
-$lr = ($__case_0)->values[2];
+$ll = ($__case_0)->v1;
+$lr = ($__case_0)->v2;
 $l__prime__ = ($GLOBALS['Data_Function_Uncurried_runFn3'])($GLOBALS['Data_Map_Internal_unsafeDifference'], $comp, $ll, $rl);
 $r__prime__ = ($GLOBALS['Data_Function_Uncurried_runFn3'])($GLOBALS['Data_Map_Internal_unsafeDifference'], $comp, $lr, $rr);
 return ($GLOBALS['Data_Function_Uncurried_runFn2'])($GLOBALS['Data_Map_Internal_unsafeJoinNodes'], $l__prime__, $r__prime__);
@@ -632,21 +641,21 @@ if ((($__case_1)->tag === "Leaf")) {
 return $GLOBALS['Data_Map_Internal_Leaf'];
 } else {
 if ((($__case_1)->tag === "Node")) {
-$rk = ($__case_1)->values[2];
-$rv = ($__case_1)->values[3];
-$rl = ($__case_1)->values[4];
-$rr = ($__case_1)->values[5];
+$rk = ($__case_1)->v2;
+$rv = ($__case_1)->v3;
+$rl = ($__case_1)->v4;
+$rr = ($__case_1)->v5;
 $v = ($GLOBALS['Data_Function_Uncurried_runFn3'])($GLOBALS['Data_Map_Internal_unsafeSplit'], $comp, $rk, $l);
 $__case_0 = $v;
 if ((($__case_0)->tag === "Split")) {
-$lv = ($__case_0)->values[0];
-$ll = ($__case_0)->values[1];
-$lr = ($__case_0)->values[2];
+$lv = ($__case_0)->v0;
+$ll = ($__case_0)->v1;
+$lr = ($__case_0)->v2;
 $l__prime__ = ($GLOBALS['Data_Function_Uncurried_runFn4'])($GLOBALS['Data_Map_Internal_unsafeIntersectionWith'], $comp, $app, $ll, $rl);
 $r__prime__ = ($GLOBALS['Data_Function_Uncurried_runFn4'])($GLOBALS['Data_Map_Internal_unsafeIntersectionWith'], $comp, $app, $lr, $rr);
 $__case_0 = $lv;
 if ((($__case_0)->tag === "Just")) {
-$lv__prime__ = ($__case_0)->values[0];
+$lv__prime__ = ($__case_0)->v0;
 return ($GLOBALS['Data_Function_Uncurried_runFn4'])($GLOBALS['Data_Map_Internal_unsafeBalancedNode'], $rk, ($app)($lv__prime__, $rv), $l__prime__, $r__prime__);
 } else {
 if ((($__case_0)->tag === "Nothing")) {
@@ -685,21 +694,21 @@ if ((($__case_1)->tag === "Leaf")) {
 return $l;
 } else {
 if ((($__case_1)->tag === "Node")) {
-$rk = ($__case_1)->values[2];
-$rv = ($__case_1)->values[3];
-$rl = ($__case_1)->values[4];
-$rr = ($__case_1)->values[5];
+$rk = ($__case_1)->v2;
+$rv = ($__case_1)->v3;
+$rl = ($__case_1)->v4;
+$rr = ($__case_1)->v5;
 $v = ($GLOBALS['Data_Function_Uncurried_runFn3'])($GLOBALS['Data_Map_Internal_unsafeSplit'], $comp, $rk, $l);
 $__case_0 = $v;
 if ((($__case_0)->tag === "Split")) {
-$lv = ($__case_0)->values[0];
-$ll = ($__case_0)->values[1];
-$lr = ($__case_0)->values[2];
+$lv = ($__case_0)->v0;
+$ll = ($__case_0)->v1;
+$lr = ($__case_0)->v2;
 $l__prime__ = ($GLOBALS['Data_Function_Uncurried_runFn4'])($GLOBALS['Data_Map_Internal_unsafeUnionWith'], $comp, $app, $ll, $rl);
 $r__prime__ = ($GLOBALS['Data_Function_Uncurried_runFn4'])($GLOBALS['Data_Map_Internal_unsafeUnionWith'], $comp, $app, $lr, $rr);
 $__case_0 = $lv;
 if ((($__case_0)->tag === "Just")) {
-$lv__prime__ = ($__case_0)->values[0];
+$lv__prime__ = ($__case_0)->v0;
 return ($GLOBALS['Data_Function_Uncurried_runFn4'])($GLOBALS['Data_Map_Internal_unsafeBalancedNode'], $rk, ($app)($lv__prime__, $rv), $l__prime__, $r__prime__);
 } else {
 if ((($__case_0)->tag === "Nothing")) {
@@ -777,12 +786,12 @@ if ((($__case_0)->tag === "Leaf")) {
 return $GLOBALS['Data_Map_Internal_Leaf'];
 } else {
 if ((($__case_0)->tag === "Node")) {
-$mh = ($__case_0)->values[0];
-$ms = ($__case_0)->values[1];
-$mk = ($__case_0)->values[2];
-$mv = ($__case_0)->values[3];
-$ml = ($__case_0)->values[4];
-$mr = ($__case_0)->values[5];
+$mh = ($__case_0)->v0;
+$ms = ($__case_0)->v1;
+$mk = ($__case_0)->v2;
+$mv = ($__case_0)->v3;
+$ml = ($__case_0)->v4;
+$mr = ($__case_0)->v5;
 $v1 = ($compare)($k, $mk);
 $__case_0 = $v1;
 if ((($__case_0)->tag === "LT")) {
@@ -798,7 +807,7 @@ if ((($__case_0)->tag === "Nothing")) {
 return ($GLOBALS['Data_Function_Uncurried_runFn2'])($GLOBALS['Data_Map_Internal_unsafeJoinNodes'], $ml, $mr);
 } else {
 if ((($__case_0)->tag === "Just")) {
-$mv__prime__ = ($__case_0)->values[0];
+$mv__prime__ = ($__case_0)->v0;
 return ($GLOBALS['Data_Map_Internal_Node'])($mh, $ms, $mk, $mv__prime__, $ml, $mr);
 } else {
 throw new \Exception("Pattern match failure");
@@ -850,11 +859,11 @@ if ((($__case_0)->tag === "Leaf")) {
 return ($GLOBALS['Data_Map_Internal_append'])($ind, "Leaf");
 } else {
 if ((($__case_0)->tag === "Node")) {
-$h = ($__case_0)->values[0];
-$k = ($__case_0)->values[2];
-$v1 = ($__case_0)->values[3];
-$l = ($__case_0)->values[4];
-$r = ($__case_0)->values[5];
+$h = ($__case_0)->v0;
+$k = ($__case_0)->v2;
+$v1 = ($__case_0)->v3;
+$l = ($__case_0)->v4;
+$r = ($__case_0)->v5;
 return ($GLOBALS['Data_Map_Internal_append'])(($GLOBALS['Data_Map_Internal_append'])($ind, ($GLOBALS['Data_Map_Internal_append'])("[", ($GLOBALS['Data_Map_Internal_append'])(($GLOBALS['Data_Map_Internal_show'])($h), ($GLOBALS['Data_Map_Internal_append'])("] ", ($GLOBALS['Data_Map_Internal_append'])(($show1)($k), ($GLOBALS['Data_Map_Internal_append'])(" => ", ($GLOBALS['Data_Map_Internal_append'])(($show2)($v1), "
 "))))))), ($GLOBALS['Data_Map_Internal_append'])(($GLOBALS['Data_Map_Internal_append'])(($go)(($GLOBALS['Data_Map_Internal_append'])($ind, "    "), $l), "
 "), ($go)(($GLOBALS['Data_Map_Internal_append'])($ind, "    "), $r)));
@@ -912,9 +921,9 @@ $compare = ($GLOBALS['Data_Ord_compare'])($dictOrd);
     $v = ($GLOBALS['Data_Function_Uncurried_runFn3'])($GLOBALS['Data_Map_Internal_unsafeSplit'], $compare, $k, $m);
     $__case_0 = $v;
     if ((($__case_0)->tag === "Split")) {
-$x = ($__case_0)->values[0];
-$l = ($__case_0)->values[1];
-$r = ($__case_0)->values[2];
+$x = ($__case_0)->v0;
+$l = ($__case_0)->v1;
+$r = ($__case_0)->v2;
 return ($GLOBALS['Data_Map_Internal_map'])((function() use ($l, $r) {
   $__fn = function($a) use ($l, $r, &$__fn) {
   $__num = func_num_args();
@@ -961,9 +970,9 @@ if ((($__case_0)->tag === "Leaf")) {
 return false;
 } else {
 if ((($__case_0)->tag === "Node")) {
-$mk = ($__case_0)->values[2];
-$ml = ($__case_0)->values[4];
-$mr = ($__case_0)->values[5];
+$mk = ($__case_0)->v2;
+$ml = ($__case_0)->v4;
+$mr = ($__case_0)->v5;
 $v1 = ($compare)($k, $mk);
 $__case_0 = $v1;
 if ((($__case_0)->tag === "LT")) {
@@ -1018,14 +1027,14 @@ if ((($__case_0)->tag === "Leaf")) {
 return $GLOBALS['Data_Map_Internal_Leaf'];
 } else {
 if ((($__case_0)->tag === "Node")) {
-$k = ($__case_0)->values[2];
-$v1 = ($__case_0)->values[3];
-$l = ($__case_0)->values[4];
-$r = ($__case_0)->values[5];
+$k = ($__case_0)->v2;
+$v1 = ($__case_0)->v3;
+$l = ($__case_0)->v4;
+$r = ($__case_0)->v5;
 $v2 = ($f)($k, $v1);
 $__case_0 = $v2;
 if ((($__case_0)->tag === "Just")) {
-$v__prime__ = ($__case_0)->values[0];
+$v__prime__ = ($__case_0)->v0;
 return ($GLOBALS['Data_Function_Uncurried_runFn4'])($GLOBALS['Data_Map_Internal_unsafeBalancedNode'], $k, $v__prime__, ($go)($l), ($go)($r));
 } else {
 if ((($__case_0)->tag === "Nothing")) {
@@ -1081,10 +1090,10 @@ if ((($__case_0)->tag === "Leaf")) {
 return $GLOBALS['Data_Maybe_Nothing'];
 } else {
 if ((($__case_0)->tag === "Node")) {
-$mk = ($__case_0)->values[2];
-$mv = ($__case_0)->values[3];
-$ml = ($__case_0)->values[4];
-$mr = ($__case_0)->values[5];
+$mk = ($__case_0)->v2;
+$mv = ($__case_0)->v3;
+$ml = ($__case_0)->v4;
+$mr = ($__case_0)->v5;
 $v1 = ($compare)($k, $mk);
 $__case_0 = $v1;
 if ((($__case_0)->tag === "LT")) {
@@ -1153,10 +1162,10 @@ if ((($__case_0)->tag === "Leaf")) {
 return $GLOBALS['Data_Maybe_Nothing'];
 } else {
 if ((($__case_0)->tag === "Node")) {
-$mk = ($__case_0)->values[2];
-$mv = ($__case_0)->values[3];
-$ml = ($__case_0)->values[4];
-$mr = ($__case_0)->values[5];
+$mk = ($__case_0)->v2;
+$mv = ($__case_0)->v3;
+$ml = ($__case_0)->v4;
+$mr = ($__case_0)->v5;
 $v1 = ($compare)($k, $mk);
 $__case_0 = $v1;
 if ((($__case_0)->tag === "LT")) {
@@ -1225,10 +1234,10 @@ if ((($__case_0)->tag === "Leaf")) {
 return $GLOBALS['Data_Maybe_Nothing'];
 } else {
 if ((($__case_0)->tag === "Node")) {
-$mk = ($__case_0)->values[2];
-$mv = ($__case_0)->values[3];
-$ml = ($__case_0)->values[4];
-$mr = ($__case_0)->values[5];
+$mk = ($__case_0)->v2;
+$mv = ($__case_0)->v3;
+$ml = ($__case_0)->v4;
+$mr = ($__case_0)->v5;
 $v1 = ($compare)($k, $mk);
 $__case_0 = $v1;
 if ((($__case_0)->tag === "LT")) {
@@ -1276,10 +1285,10 @@ $Data_Map_Internal_iterMapU = (function() {
 return $iter;
 } else {
 if ((($__case_0)->tag === "Node")) {
-$k = ($__case_0)->values[2];
-$v1 = ($__case_0)->values[3];
-$l = ($__case_0)->values[4];
-$r = ($__case_0)->values[5];
+$k = ($__case_0)->v2;
+$v1 = ($__case_0)->v3;
+$l = ($__case_0)->v4;
+$r = ($__case_0)->v5;
 $__case_0 = $l;
 if ((($__case_0)->tag === "Leaf")) {
 $__case_0 = $r;
@@ -1378,10 +1387,10 @@ if ((($__case_0)->tag === "Leaf")) {
 return $iter;
 } else {
 if ((($__case_0)->tag === "Node")) {
-$k = ($__case_0)->values[2];
-$v1 = ($__case_0)->values[3];
-$l = ($__case_0)->values[4];
-$r = ($__case_0)->values[5];
+$k = ($__case_0)->v2;
+$v1 = ($__case_0)->v3;
+$l = ($__case_0)->v4;
+$r = ($__case_0)->v5;
 $__case_0 = $r;
 if ((($__case_0)->tag === "Leaf")) {
 $__tco_tmp_0 = ($GLOBALS['Data_Map_Internal_IterEmit'])($k, $v1, $iter);
@@ -1437,10 +1446,10 @@ if ((($__case_0)->tag === "Leaf")) {
 return $iter;
 } else {
 if ((($__case_0)->tag === "Node")) {
-$k = ($__case_0)->values[2];
-$v1 = ($__case_0)->values[3];
-$l = ($__case_0)->values[4];
-$r = ($__case_0)->values[5];
+$k = ($__case_0)->v2;
+$v1 = ($__case_0)->v3;
+$l = ($__case_0)->v4;
+$r = ($__case_0)->v5;
 $__case_0 = $r;
 if ((($__case_0)->tag === "Leaf")) {
 $__tco_tmp_0 = ($GLOBALS['Data_Map_Internal_IterEmit'])($k, $v1, $iter);
@@ -1504,15 +1513,15 @@ while (true) {
 $v = ($GLOBALS['Data_Map_Internal_stepAsc'])($a);
 $__case_0 = $v;
 if ((($__case_0)->tag === "IterNext")) {
-$k1 = ($__case_0)->values[0];
-$v1 = ($__case_0)->values[1];
-$a__prime__ = ($__case_0)->values[2];
+$k1 = ($__case_0)->v0;
+$v1 = ($__case_0)->v1;
+$a__prime__ = ($__case_0)->v2;
 $v2 = ($GLOBALS['Data_Map_Internal_stepAsc'])($b);
 $__case_0 = $v2;
 if ((($__case_0)->tag === "IterNext")) {
-$k2 = ($__case_0)->values[0];
-$v21 = ($__case_0)->values[1];
-$b__prime__ = ($__case_0)->values[2];
+$k2 = ($__case_0)->v0;
+$v21 = ($__case_0)->v1;
+$b__prime__ = ($__case_0)->v2;
 return "/* Unsupported: Guards not supported */";
 } else {
 if (true) {
@@ -1567,12 +1576,12 @@ $v1 = ($GLOBALS['Data_Map_Internal_stepAsc'])($a);
 $__case_0 = $v1;
 $__case_1 = $v;
 if (((($__case_0)->tag === "IterNext") && (($__case_1)->tag === "IterNext"))) {
-$k1 = ($__case_0)->values[0];
-$v11 = ($__case_0)->values[1];
-$a__prime__ = ($__case_0)->values[2];
-$k2 = ($__case_1)->values[0];
-$v2 = ($__case_1)->values[1];
-$b__prime__ = ($__case_1)->values[2];
+$k1 = ($__case_0)->v0;
+$v11 = ($__case_0)->v1;
+$a__prime__ = ($__case_0)->v2;
+$k2 = ($__case_1)->v0;
+$v2 = ($__case_1)->v1;
+$b__prime__ = ($__case_1)->v2;
 $v3 = ($compare)($k1, $k2);
 $__case_0 = $v3;
 if ((($__case_0)->tag === "EQ")) {
@@ -1729,17 +1738,17 @@ if ((($__case_0)->tag === "Leaf")) {
 return true;
 } else {
 if ((($__case_0)->tag === "Node")) {
-$k = ($__case_0)->values[2];
-$v = ($__case_0)->values[3];
-$l = ($__case_0)->values[4];
-$r = ($__case_0)->values[5];
+$k = ($__case_0)->v2;
+$v = ($__case_0)->v3;
+$l = ($__case_0)->v4;
+$r = ($__case_0)->v5;
 $v1 = ($lookup1)($k, $m2);
 $__case_0 = $v1;
 if ((($__case_0)->tag === "Nothing")) {
 return false;
 } else {
 if ((($__case_0)->tag === "Just")) {
-$v__prime__ = ($__case_0)->values[0];
+$v__prime__ = ($__case_0)->v0;
 return ($GLOBALS['Data_Map_Internal_conj'])(($eq1)($v, $v__prime__), ($GLOBALS['Data_Map_Internal_conj'])(($go)($l, $m2), ($go)($r, $m2)));
 } else {
 throw new \Exception("Pattern match failure");
@@ -1839,12 +1848,12 @@ if ((($__case_0)->tag === "Leaf")) {
 return ($GLOBALS['Data_Map_Internal_singleton'])($k, $v);
 } else {
 if ((($__case_0)->tag === "Node")) {
-$mh = ($__case_0)->values[0];
-$ms = ($__case_0)->values[1];
-$mk = ($__case_0)->values[2];
-$mv = ($__case_0)->values[3];
-$ml = ($__case_0)->values[4];
-$mr = ($__case_0)->values[5];
+$mh = ($__case_0)->v0;
+$ms = ($__case_0)->v1;
+$mk = ($__case_0)->v2;
+$mv = ($__case_0)->v3;
+$ml = ($__case_0)->v4;
+$mr = ($__case_0)->v5;
 $v2 = ($compare)($k, $mk);
 $__case_0 = $v2;
 if ((($__case_0)->tag === "LT")) {
@@ -1900,12 +1909,12 @@ if ((($__case_0)->tag === "Leaf")) {
 return ($GLOBALS['Data_Map_Internal_singleton'])($k, $v);
 } else {
 if ((($__case_0)->tag === "Node")) {
-$mh = ($__case_0)->values[0];
-$ms = ($__case_0)->values[1];
-$mk = ($__case_0)->values[2];
-$mv = ($__case_0)->values[3];
-$ml = ($__case_0)->values[4];
-$mr = ($__case_0)->values[5];
+$mh = ($__case_0)->v0;
+$ms = ($__case_0)->v1;
+$mk = ($__case_0)->v2;
+$mv = ($__case_0)->v3;
+$ml = ($__case_0)->v4;
+$mr = ($__case_0)->v5;
 $v2 = ($compare)($k, $mk);
 $__case_0 = $v2;
 if ((($__case_0)->tag === "LT")) {
@@ -1956,12 +1965,12 @@ if ((($__case_0)->tag === "Leaf")) {
 return $GLOBALS['Data_Map_Internal_Leaf'];
 } else {
 if ((($__case_0)->tag === "Node")) {
-$h = ($__case_0)->values[0];
-$s = ($__case_0)->values[1];
-$k = ($__case_0)->values[2];
-$v1 = ($__case_0)->values[3];
-$l = ($__case_0)->values[4];
-$r = ($__case_0)->values[5];
+$h = ($__case_0)->v0;
+$s = ($__case_0)->v1;
+$k = ($__case_0)->v2;
+$v1 = ($__case_0)->v3;
+$l = ($__case_0)->v4;
+$r = ($__case_0)->v5;
 return ($GLOBALS['Data_Map_Internal_Node'])($h, $s, $k, ($f)($v1), ($go)($l), ($go)($r));
 } else {
 throw new \Exception("Pattern match failure");
@@ -1994,12 +2003,12 @@ if ((($__case_0)->tag === "Leaf")) {
 return $GLOBALS['Data_Map_Internal_Leaf'];
 } else {
 if ((($__case_0)->tag === "Node")) {
-$h = ($__case_0)->values[0];
-$s = ($__case_0)->values[1];
-$k = ($__case_0)->values[2];
-$v1 = ($__case_0)->values[3];
-$l = ($__case_0)->values[4];
-$r = ($__case_0)->values[5];
+$h = ($__case_0)->v0;
+$s = ($__case_0)->v1;
+$k = ($__case_0)->v2;
+$v1 = ($__case_0)->v3;
+$l = ($__case_0)->v4;
+$r = ($__case_0)->v5;
 return ($GLOBALS['Data_Map_Internal_Node'])($h, $s, $k, ($f)($k, $v1), ($go)($l), ($go)($r));
 } else {
 throw new \Exception("Pattern match failure");
@@ -2037,9 +2046,9 @@ $go = ($GLOBALS['Data_Function_Uncurried_mkFn2'])((function() use (&$go, $f) {
 return $z__prime__;
 } else {
 if ((($__case_0)->tag === "Node")) {
-$v = ($__case_0)->values[3];
-$l = ($__case_0)->values[4];
-$r = ($__case_0)->values[5];
+$v = ($__case_0)->v3;
+$l = ($__case_0)->v4;
+$r = ($__case_0)->v5;
 return ($GLOBALS['Data_Function_Uncurried_runFn2'])($go, $l, ($f)($v, ($GLOBALS['Data_Function_Uncurried_runFn2'])($go, $r, $z__prime__)));
 } else {
 throw new \Exception("Pattern match failure");
@@ -2077,9 +2086,9 @@ $go = ($GLOBALS['Data_Function_Uncurried_mkFn2'])((function() use (&$go, $f) {
 return $z__prime__;
 } else {
 if ((($__case_0)->tag === "Node")) {
-$v = ($__case_0)->values[3];
-$l = ($__case_0)->values[4];
-$r = ($__case_0)->values[5];
+$v = ($__case_0)->v3;
+$l = ($__case_0)->v4;
+$r = ($__case_0)->v5;
 return ($GLOBALS['Data_Function_Uncurried_runFn2'])($go, ($f)(($GLOBALS['Data_Function_Uncurried_runFn2'])($go, $z__prime__, $l), $v), $r);
 } else {
 throw new \Exception("Pattern match failure");
@@ -2126,9 +2135,9 @@ if ((($__case_0)->tag === "Leaf")) {
 return $mempty;
 } else {
 if ((($__case_0)->tag === "Node")) {
-$v1 = ($__case_0)->values[3];
-$l = ($__case_0)->values[4];
-$r = ($__case_0)->values[5];
+$v1 = ($__case_0)->v3;
+$l = ($__case_0)->v4;
+$r = ($__case_0)->v5;
 return ($append1)(($go)($l), ($append1)(($f)($v1), ($go)($r)));
 } else {
 throw new \Exception("Pattern match failure");
@@ -2162,10 +2171,10 @@ $go = ($GLOBALS['Data_Function_Uncurried_mkFn2'])((function() use (&$go, $f) {
 return $z__prime__;
 } else {
 if ((($__case_0)->tag === "Node")) {
-$k = ($__case_0)->values[2];
-$v = ($__case_0)->values[3];
-$l = ($__case_0)->values[4];
-$r = ($__case_0)->values[5];
+$k = ($__case_0)->v2;
+$v = ($__case_0)->v3;
+$l = ($__case_0)->v4;
+$r = ($__case_0)->v5;
 return ($GLOBALS['Data_Function_Uncurried_runFn2'])($go, $l, ($f)($k, $v, ($GLOBALS['Data_Function_Uncurried_runFn2'])($go, $r, $z__prime__)));
 } else {
 throw new \Exception("Pattern match failure");
@@ -2203,10 +2212,10 @@ $go = ($GLOBALS['Data_Function_Uncurried_mkFn2'])((function() use (&$go, $f) {
 return $z__prime__;
 } else {
 if ((($__case_0)->tag === "Node")) {
-$k = ($__case_0)->values[2];
-$v = ($__case_0)->values[3];
-$l = ($__case_0)->values[4];
-$r = ($__case_0)->values[5];
+$k = ($__case_0)->v2;
+$v = ($__case_0)->v3;
+$l = ($__case_0)->v4;
+$r = ($__case_0)->v5;
 return ($GLOBALS['Data_Function_Uncurried_runFn2'])($go, ($f)($k, ($GLOBALS['Data_Function_Uncurried_runFn2'])($go, $z__prime__, $l), $v), $r);
 } else {
 throw new \Exception("Pattern match failure");
@@ -2253,10 +2262,10 @@ if ((($__case_0)->tag === "Leaf")) {
 return $mempty;
 } else {
 if ((($__case_0)->tag === "Node")) {
-$k = ($__case_0)->values[2];
-$v1 = ($__case_0)->values[3];
-$l = ($__case_0)->values[4];
-$r = ($__case_0)->values[5];
+$k = ($__case_0)->v2;
+$v1 = ($__case_0)->v3;
+$l = ($__case_0)->v4;
+$r = ($__case_0)->v5;
 return ($append1)(($go)($l), ($append1)(($f)($k, $v1), ($go)($r)));
 } else {
 throw new \Exception("Pattern match failure");
@@ -2320,12 +2329,12 @@ if ((($__case_0)->tag === "Leaf")) {
 return ($pure)($GLOBALS['Data_Map_Internal_Leaf']);
 } else {
 if ((($__case_0)->tag === "Node")) {
-$h = ($__case_0)->values[0];
-$s = ($__case_0)->values[1];
-$k = ($__case_0)->values[2];
-$v1 = ($__case_0)->values[3];
-$l = ($__case_0)->values[4];
-$r = ($__case_0)->values[5];
+$h = ($__case_0)->v0;
+$s = ($__case_0)->v1;
+$k = ($__case_0)->v2;
+$v1 = ($__case_0)->v3;
+$l = ($__case_0)->v4;
+$r = ($__case_0)->v5;
 return ($apply)(($apply)(($map1)((function() use ($h, $s, $k) {
   $__fn = function($l__prime__, $v__prime__ = null, $r__prime__ = null) use ($h, $s, $k, &$__fn) {
   $__num = func_num_args();
@@ -2402,12 +2411,12 @@ if ((($__case_0)->tag === "Leaf")) {
 return ($pure)($GLOBALS['Data_Map_Internal_Leaf']);
 } else {
 if ((($__case_0)->tag === "Node")) {
-$h = ($__case_0)->values[0];
-$s = ($__case_0)->values[1];
-$k = ($__case_0)->values[2];
-$v1 = ($__case_0)->values[3];
-$l = ($__case_0)->values[4];
-$r = ($__case_0)->values[5];
+$h = ($__case_0)->v0;
+$s = ($__case_0)->v1;
+$k = ($__case_0)->v2;
+$v1 = ($__case_0)->v3;
+$l = ($__case_0)->v4;
+$r = ($__case_0)->v5;
 return ($apply)(($apply)(($map1)((function() use ($h, $s, $k) {
   $__fn = function($l__prime__, $v__prime__ = null, $r__prime__ = null) use ($h, $s, $k, &$__fn) {
   $__num = func_num_args();
@@ -2479,7 +2488,7 @@ $lessThanOrEq1 = ($GLOBALS['Data_Ord_lessThanOrEq'])($dictOrd);
 $__case_0 = $kmin;
 $__case_res_0 = null;
 if ((($__case_0)->tag === "Just")) {
-$kmin__prime__ = ($__case_0)->values[0];
+$kmin__prime__ = ($__case_0)->v0;
 $__case_res_0 = (function() use ($lessThan1, $kmin__prime__) {
   $__fn = function($k) use ($lessThan1, $kmin__prime__, &$__fn) {
   $__num = func_num_args();
@@ -2500,7 +2509,7 @@ $tooSmall = $__case_res_0;
 $__case_0 = $kmax;
 $__case_res_1 = null;
 if ((($__case_0)->tag === "Just")) {
-$kmax__prime__ = ($__case_0)->values[0];
+$kmax__prime__ = ($__case_0)->v0;
 $__case_res_1 = (function() use ($greaterThan1, $kmax__prime__) {
   $__fn = function($k) use ($greaterThan1, $kmax__prime__, &$__fn) {
   $__num = func_num_args();
@@ -2522,8 +2531,8 @@ $__case_0 = $kmin;
 $__case_1 = $kmax;
 $__case_res_2 = null;
 if (((($__case_0)->tag === "Just") && (($__case_1)->tag === "Just"))) {
-$kmin__prime__ = ($__case_0)->values[0];
-$kmax__prime__ = ($__case_1)->values[0];
+$kmin__prime__ = ($__case_0)->v0;
+$kmax__prime__ = ($__case_1)->v0;
 $__case_res_2 = (function() use ($lessThanOrEq1, $kmin__prime__, $kmax__prime__) {
   $__fn = function($k) use ($lessThanOrEq1, $kmin__prime__, $kmax__prime__, &$__fn) {
   $__num = func_num_args();
@@ -2535,7 +2544,7 @@ $__case_res_2 = (function() use ($lessThanOrEq1, $kmin__prime__, $kmax__prime__)
 })();
 } else {
 if (((($__case_0)->tag === "Just") && (($__case_1)->tag === "Nothing"))) {
-$kmin__prime__ = ($__case_0)->values[0];
+$kmin__prime__ = ($__case_0)->v0;
 $__case_res_2 = (function() use ($lessThanOrEq1, $kmin__prime__) {
   $__fn = function($k) use ($lessThanOrEq1, $kmin__prime__, &$__fn) {
   $__num = func_num_args();
@@ -2547,7 +2556,7 @@ $__case_res_2 = (function() use ($lessThanOrEq1, $kmin__prime__) {
 })();
 } else {
 if (((($__case_0)->tag === "Nothing") && (($__case_1)->tag === "Just"))) {
-$kmax__prime__ = ($__case_1)->values[0];
+$kmax__prime__ = ($__case_1)->v0;
 $__case_res_2 = (function() use ($lessThanOrEq1, $kmax__prime__) {
   $__fn = function($k) use ($lessThanOrEq1, $kmax__prime__, &$__fn) {
   $__num = func_num_args();
@@ -2577,10 +2586,10 @@ if ((($__case_0)->tag === "Leaf")) {
 return $memptyValue;
 } else {
 if ((($__case_0)->tag === "Node")) {
-$k = ($__case_0)->values[2];
-$v1 = ($__case_0)->values[3];
-$left = ($__case_0)->values[4];
-$right = ($__case_0)->values[5];
+$k = ($__case_0)->v2;
+$v1 = ($__case_0)->v3;
+$left = ($__case_0)->v4;
+$right = ($__case_0)->v5;
 $__case_0 = ($tooSmall)($k);
 $__case_res_3 = null;
 if (($__case_0 === true)) {
@@ -2666,9 +2675,9 @@ if ((($__case_0)->tag === "Leaf")) {
 return $GLOBALS['Data_Maybe_Nothing'];
 } else {
 if ((($__case_0)->tag === "Node")) {
-$k = ($__case_0)->values[2];
-$v1 = ($__case_0)->values[3];
-$l = ($__case_0)->values[4];
+$k = ($__case_0)->v2;
+$v1 = ($__case_0)->v3;
+$l = ($__case_0)->v4;
 $__case_0 = $l;
 if ((($__case_0)->tag === "Leaf")) {
 return ($GLOBALS['Data_Maybe_Just'])((object)["key" => $k, "value" => $v1]);
@@ -2712,10 +2721,10 @@ if ((($__case_0)->tag === "Leaf")) {
 return $GLOBALS['Data_Maybe_Nothing'];
 } else {
 if ((($__case_0)->tag === "Node")) {
-$mk = ($__case_0)->values[2];
-$mv = ($__case_0)->values[3];
-$ml = ($__case_0)->values[4];
-$mr = ($__case_0)->values[5];
+$mk = ($__case_0)->v2;
+$mv = ($__case_0)->v3;
+$ml = ($__case_0)->v4;
+$mr = ($__case_0)->v5;
 $v1 = ($compare)($k, $mk);
 $__case_0 = $v1;
 if ((($__case_0)->tag === "LT")) {
@@ -2775,9 +2784,9 @@ if ((($__case_0)->tag === "Leaf")) {
 return $GLOBALS['Data_Maybe_Nothing'];
 } else {
 if ((($__case_0)->tag === "Node")) {
-$k = ($__case_0)->values[2];
-$v1 = ($__case_0)->values[3];
-$r = ($__case_0)->values[5];
+$k = ($__case_0)->v2;
+$v1 = ($__case_0)->v3;
+$r = ($__case_0)->v5;
 $__case_0 = $r;
 if ((($__case_0)->tag === "Leaf")) {
 return ($GLOBALS['Data_Maybe_Just'])((object)["key" => $k, "value" => $v1]);
@@ -2821,10 +2830,10 @@ if ((($__case_0)->tag === "Leaf")) {
 return $GLOBALS['Data_Maybe_Nothing'];
 } else {
 if ((($__case_0)->tag === "Node")) {
-$mk = ($__case_0)->values[2];
-$mv = ($__case_0)->values[3];
-$ml = ($__case_0)->values[4];
-$mr = ($__case_0)->values[5];
+$mk = ($__case_0)->v2;
+$mv = ($__case_0)->v3;
+$ml = ($__case_0)->v4;
+$mr = ($__case_0)->v5;
 $v1 = ($compare)($k, $mk);
 $__case_0 = $v1;
 if ((($__case_0)->tag === "LT")) {
@@ -2888,10 +2897,10 @@ if ((($__case_0)->tag === "Leaf")) {
 return $GLOBALS['Data_Map_Internal_Leaf'];
 } else {
 if ((($__case_0)->tag === "Node")) {
-$k = ($__case_0)->values[2];
-$v1 = ($__case_0)->values[3];
-$l = ($__case_0)->values[4];
-$r = ($__case_0)->values[5];
+$k = ($__case_0)->v2;
+$v1 = ($__case_0)->v3;
+$l = ($__case_0)->v4;
+$r = ($__case_0)->v5;
 return "/* Unsupported: Guards not supported */";
 } else {
 throw new \Exception("Pattern match failure");
@@ -2924,10 +2933,10 @@ if ((($__case_0)->tag === "Leaf")) {
 return $GLOBALS['Data_Map_Internal_Leaf'];
 } else {
 if ((($__case_0)->tag === "Node")) {
-$k = ($__case_0)->values[2];
-$v1 = ($__case_0)->values[3];
-$l = ($__case_0)->values[4];
-$r = ($__case_0)->values[5];
+$k = ($__case_0)->v2;
+$v1 = ($__case_0)->v3;
+$l = ($__case_0)->v4;
+$r = ($__case_0)->v5;
 return "/* Unsupported: Guards not supported */";
 } else {
 throw new \Exception("Pattern match failure");
@@ -2983,10 +2992,10 @@ throw new \Exception("Pattern match failure");
 };
 } else {
 if ((($__case_0)->tag === "Node")) {
-$s1 = ($__case_0)->values[1];
+$s1 = ($__case_0)->v1;
 $__case_0 = $ys;
 if ((($__case_0)->tag === "Node")) {
-$s2 = ($__case_0)->values[1];
+$s2 = ($__case_0)->v1;
 return "/* Unsupported: Guards not supported */";
 } else {
 if (true) {
@@ -3152,8 +3161,8 @@ $insert1 = ($GLOBALS['Data_Map_Internal_insert'])($dictOrd);
   $__body = function($m, $v) use ($insert1) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Tuple")) {
-$k = ($__case_0)->values[0];
-$v1 = ($__case_0)->values[1];
+$k = ($__case_0)->v0;
+$v1 = ($__case_0)->v1;
 return ($insert1)($k, $v1, $m);
 } else {
 throw new \Exception("Pattern match failure");
@@ -3196,8 +3205,8 @@ $f__prime__ = ($insertWith1)(($GLOBALS['Data_Function_flip'])($f));
   $__body = function($m, $v) use ($f__prime__) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Tuple")) {
-$k = ($__case_0)->values[0];
-$v1 = ($__case_0)->values[1];
+$k = ($__case_0)->v0;
+$v1 = ($__case_0)->v1;
 return ($f__prime__)($k, $v1, $m);
 } else {
 throw new \Exception("Pattern match failure");
@@ -3362,10 +3371,10 @@ if ((($__case_0)->tag === "Leaf")) {
 return $GLOBALS['Data_Map_Internal_Leaf'];
 } else {
 if ((($__case_0)->tag === "Node")) {
-$mk = ($__case_0)->values[2];
-$mv = ($__case_0)->values[3];
-$ml = ($__case_0)->values[4];
-$mr = ($__case_0)->values[5];
+$mk = ($__case_0)->v2;
+$mv = ($__case_0)->v3;
+$ml = ($__case_0)->v4;
+$mr = ($__case_0)->v5;
 $v1 = ($compare)($k, $mk);
 $__case_0 = $v1;
 if ((($__case_0)->tag === "LT")) {
@@ -3418,11 +3427,11 @@ if ((($__case_0)->tag === "Leaf")) {
 return true;
 } else {
 if ((($__case_0)->tag === "Node")) {
-$h = ($__case_0)->values[0];
-$s = ($__case_0)->values[1];
-$k = ($__case_0)->values[2];
-$l = ($__case_0)->values[4];
-$r = ($__case_0)->values[5];
+$h = ($__case_0)->v0;
+$s = ($__case_0)->v1;
+$k = ($__case_0)->v2;
+$l = ($__case_0)->v4;
+$r = ($__case_0)->v5;
 $__case_0 = $l;
 if ((($__case_0)->tag === "Leaf")) {
 $__case_0 = $r;
@@ -3430,9 +3439,9 @@ if ((($__case_0)->tag === "Leaf")) {
 return true;
 } else {
 if ((($__case_0)->tag === "Node")) {
-$rh = ($__case_0)->values[0];
-$rs = ($__case_0)->values[1];
-$rk = ($__case_0)->values[2];
+$rh = ($__case_0)->v0;
+$rs = ($__case_0)->v1;
+$rk = ($__case_0)->v2;
 return ($GLOBALS['Data_Map_Internal_conj'])(($GLOBALS['Data_Map_Internal_eq'])($h, 2), ($GLOBALS['Data_Map_Internal_conj'])(($GLOBALS['Data_Map_Internal_eq'])($rh, 1), ($GLOBALS['Data_Map_Internal_conj'])(($GLOBALS['Data_Map_Internal_greaterThan'])($s, $rs), ($GLOBALS['Data_Map_Internal_conj'])(($greaterThan1)($rk, $k), ($go)($r)))));
 } else {
 throw new \Exception("Pattern match failure");
@@ -3440,17 +3449,17 @@ throw new \Exception("Pattern match failure");
 };
 } else {
 if ((($__case_0)->tag === "Node")) {
-$lh = ($__case_0)->values[0];
-$ls = ($__case_0)->values[1];
-$lk = ($__case_0)->values[2];
+$lh = ($__case_0)->v0;
+$ls = ($__case_0)->v1;
+$lk = ($__case_0)->v2;
 $__case_0 = $r;
 if ((($__case_0)->tag === "Leaf")) {
 return ($GLOBALS['Data_Map_Internal_conj'])(($GLOBALS['Data_Map_Internal_eq'])($h, 2), ($GLOBALS['Data_Map_Internal_conj'])(($GLOBALS['Data_Map_Internal_eq'])($lh, 1), ($GLOBALS['Data_Map_Internal_conj'])(($GLOBALS['Data_Map_Internal_greaterThan'])($s, $ls), ($GLOBALS['Data_Map_Internal_conj'])(($lessThan1)($lk, $k), ($go)($l)))));
 } else {
 if ((($__case_0)->tag === "Node")) {
-$rh = ($__case_0)->values[0];
-$rs = ($__case_0)->values[1];
-$rk = ($__case_0)->values[2];
+$rh = ($__case_0)->v0;
+$rs = ($__case_0)->v1;
+$rk = ($__case_0)->v2;
 return ($GLOBALS['Data_Map_Internal_conj'])(($GLOBALS['Data_Map_Internal_greaterThan'])($h, $rh), ($GLOBALS['Data_Map_Internal_conj'])(($greaterThan1)($rk, $k), ($GLOBALS['Data_Map_Internal_conj'])(($GLOBALS['Data_Map_Internal_greaterThan'])($h, $lh), ($GLOBALS['Data_Map_Internal_conj'])(($lessThan1)($lk, $k), ($GLOBALS['Data_Map_Internal_conj'])(($GLOBALS['Data_Map_Internal_lessThan'])(($GLOBALS['Data_Map_Internal_abs'])(($GLOBALS['Data_Map_Internal_sub'])($rh, $lh)), 2), ($GLOBALS['Data_Map_Internal_conj'])(($GLOBALS['Data_Map_Internal_eq'])(($GLOBALS['Data_Map_Internal_add'])(($GLOBALS['Data_Map_Internal_add'])($rs, $ls), 1), $s), ($GLOBALS['Data_Map_Internal_conj'])(($go)($l), ($go)($r))))))));
 } else {
 throw new \Exception("Pattern match failure");
@@ -3559,10 +3568,10 @@ if ((($__case_0)->tag === "Leaf")) {
 return false;
 } else {
 if ((($__case_0)->tag === "Node")) {
-$mk = ($__case_0)->values[2];
-$mv = ($__case_0)->values[3];
-$ml = ($__case_0)->values[4];
-$mr = ($__case_0)->values[5];
+$mk = ($__case_0)->v2;
+$mv = ($__case_0)->v3;
+$ml = ($__case_0)->v4;
+$mr = ($__case_0)->v5;
 return ($GLOBALS['Data_Map_Internal_disj'])(($predicate)($mk, $mv), ($GLOBALS['Data_Map_Internal_disj'])(($go)($ml), ($go)($mr)));
 } else {
 throw new \Exception("Pattern match failure");
@@ -3595,9 +3604,9 @@ if ((($__case_0)->tag === "Leaf")) {
 return false;
 } else {
 if ((($__case_0)->tag === "Node")) {
-$mv = ($__case_0)->values[3];
-$ml = ($__case_0)->values[4];
-$mr = ($__case_0)->values[5];
+$mv = ($__case_0)->v3;
+$ml = ($__case_0)->v4;
+$mr = ($__case_0)->v5;
 return ($GLOBALS['Data_Map_Internal_disj'])(($predicate)($mv), ($GLOBALS['Data_Map_Internal_disj'])(($go)($ml), ($go)($mr)));
 } else {
 throw new \Exception("Pattern match failure");
@@ -3626,16 +3635,16 @@ $compare = ($GLOBALS['Data_Ord_compare'])($dictOrd);
     $v = ($GLOBALS['Data_Function_Uncurried_runFn3'])($GLOBALS['Data_Map_Internal_unsafeSplit'], $compare, $k, $m);
     $__case_0 = $v;
     if ((($__case_0)->tag === "Split")) {
-$v1 = ($__case_0)->values[0];
-$l = ($__case_0)->values[1];
-$r = ($__case_0)->values[2];
+$v1 = ($__case_0)->v0;
+$l = ($__case_0)->v1;
+$r = ($__case_0)->v2;
 $v2 = ($f)($v1);
 $__case_0 = $v2;
 if ((($__case_0)->tag === "Nothing")) {
 return ($GLOBALS['Data_Function_Uncurried_runFn2'])($GLOBALS['Data_Map_Internal_unsafeJoinNodes'], $l, $r);
 } else {
 if ((($__case_0)->tag === "Just")) {
-$v__prime__ = ($__case_0)->values[0];
+$v__prime__ = ($__case_0)->v0;
 return ($GLOBALS['Data_Function_Uncurried_runFn4'])($GLOBALS['Data_Map_Internal_unsafeBalancedNode'], $k, $v__prime__, $l, $r);
 } else {
 throw new \Exception("Pattern match failure");

@@ -26,6 +26,15 @@ require_once __DIR__ . '/../Data.Tuple/index.php';
 require_once __DIR__ . '/../Data.Unit/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -200,8 +209,8 @@ $append = ($GLOBALS['Data_Semigroup_append'])((($dictMonoid)->Semigroup0)($GLOBA
     if ((($__case_2)->tag === "Tuple")) {
 $f1 = $__case_0;
 $g1 = $__case_1;
-$a = ($__case_2)->values[0];
-$b = ($__case_2)->values[1];
+$a = ($__case_2)->v0;
+$b = ($__case_2)->v1;
 return ($append)(($f1)($a), ($g1)($b));
 } else {
 throw new \Exception("Pattern match failure");
@@ -228,8 +237,8 @@ throw new \Exception("Pattern match failure");
 $f1 = $__case_0;
 $g1 = $__case_1;
 $z1 = $__case_2;
-$a = ($__case_3)->values[0];
-$b = ($__case_3)->values[1];
+$a = ($__case_3)->v0;
+$b = ($__case_3)->v1;
 return ($f1)($a, ($g1)($b, $z1));
 } else {
 throw new \Exception("Pattern match failure");
@@ -252,8 +261,8 @@ throw new \Exception("Pattern match failure");
 $f1 = $__case_0;
 $g1 = $__case_1;
 $z1 = $__case_2;
-$a = ($__case_3)->values[0];
-$b = ($__case_3)->values[1];
+$a = ($__case_3)->v0;
+$b = ($__case_3)->v1;
 return ($g1)(($f1)($z1, $a), $b);
 } else {
 throw new \Exception("Pattern match failure");
@@ -365,13 +374,13 @@ $Data_Bifoldable_bifoldableEither = ($GLOBALS['Data_Bifoldable_Bifoldable__dolla
     if ((($__case_3)->tag === "Left")) {
 $f = $__case_0;
 $z = $__case_2;
-$a = ($__case_3)->values[0];
+$a = ($__case_3)->v0;
 return ($f)($a, $z);
 } else {
 if ((($__case_3)->tag === "Right")) {
 $g = $__case_1;
 $z = $__case_2;
-$b = ($__case_3)->values[0];
+$b = ($__case_3)->v0;
 return ($g)($b, $z);
 } else {
 throw new \Exception("Pattern match failure");
@@ -394,13 +403,13 @@ throw new \Exception("Pattern match failure");
     if ((($__case_3)->tag === "Left")) {
 $f = $__case_0;
 $z = $__case_2;
-$a = ($__case_3)->values[0];
+$a = ($__case_3)->v0;
 return ($f)($z, $a);
 } else {
 if ((($__case_3)->tag === "Right")) {
 $g = $__case_1;
 $z = $__case_2;
-$b = ($__case_3)->values[0];
+$b = ($__case_3)->v0;
 return ($g)($z, $b);
 } else {
 throw new \Exception("Pattern match failure");
@@ -421,12 +430,12 @@ throw new \Exception("Pattern match failure");
     $__case_2 = $v2;
     if ((($__case_2)->tag === "Left")) {
 $f = $__case_0;
-$a = ($__case_2)->values[0];
+$a = ($__case_2)->v0;
 return ($f)($a);
 } else {
 if ((($__case_2)->tag === "Right")) {
 $g = $__case_1;
-$b = ($__case_2)->values[0];
+$b = ($__case_2)->v0;
 return ($g)($b);
 } else {
 throw new \Exception("Pattern match failure");
@@ -865,8 +874,8 @@ $bifoldMap4 = ($bifoldMap2)($dictMonoid);
     if ((($__case_2)->tag === "Product2")) {
 $l1 = $__case_0;
 $r1 = $__case_1;
-$f = ($__case_2)->values[0];
-$g = ($__case_2)->values[1];
+$f = ($__case_2)->v0;
+$g = ($__case_2)->v1;
 return ($append)(($bifoldMap3)($l1, $r1, $f), ($bifoldMap4)($l1, $r1, $g));
 } else {
 throw new \Exception("Pattern match failure");

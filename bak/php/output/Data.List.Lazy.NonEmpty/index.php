@@ -20,6 +20,15 @@ require_once __DIR__ . '/../Data.Tuple/index.php';
 require_once __DIR__ . '/../Data.Unfoldable/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -56,8 +65,8 @@ $nel = $__case_0;
 $v1 = ($GLOBALS['Data_Lazy_force'])($nel);
 $__case_0 = $v1;
 if ((($__case_0)->tag === "NonEmpty")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 return (object)["head" => $x, "tail" => $xs];
 } else {
 throw new \Exception("Pattern match failure");
@@ -84,8 +93,8 @@ $nel = $__case_0;
 $v1 = ($GLOBALS['Data_Lazy_force'])($nel);
 $__case_0 = $v1;
 if ((($__case_0)->tag === "NonEmpty")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 return ($GLOBALS['Data_List_Lazy_Types_cons'])($x, $xs);
 } else {
 throw new \Exception("Pattern match failure");
@@ -139,7 +148,7 @@ $nel = $__case_0;
 $v1 = ($GLOBALS['Data_Lazy_force'])($nel);
 $__case_0 = $v1;
 if ((($__case_0)->tag === "NonEmpty")) {
-$xs = ($__case_0)->values[1];
+$xs = ($__case_0)->v1;
 return $xs;
 } else {
 throw new \Exception("Pattern match failure");
@@ -188,7 +197,7 @@ $nel = $__case_0;
 $v1 = ($GLOBALS['Data_Lazy_force'])($nel);
 $__case_0 = $v1;
 if ((($__case_0)->tag === "NonEmpty")) {
-$xs = ($__case_0)->values[1];
+$xs = ($__case_0)->v1;
 return ($GLOBALS['Data_List_Lazy_NonEmpty_add'])(1, ($GLOBALS['Data_List_Lazy_length'])($xs));
 } else {
 throw new \Exception("Pattern match failure");
@@ -215,8 +224,8 @@ $nel = $__case_0;
 $v1 = ($GLOBALS['Data_Lazy_force'])($nel);
 $__case_0 = $v1;
 if ((($__case_0)->tag === "NonEmpty")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 return ($GLOBALS['Data_Maybe_fromMaybe'])($x, ($GLOBALS['Data_List_Lazy_last'])($xs));
 } else {
 throw new \Exception("Pattern match failure");
@@ -262,8 +271,8 @@ $nel = $__case_0;
 $v1 = ($GLOBALS['Data_Lazy_force'])($nel);
 $__case_0 = $v1;
 if ((($__case_0)->tag === "NonEmpty")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 return ($GLOBALS['Data_Maybe_maybe'])($GLOBALS['Data_List_Lazy_Types_nil'], (function() use ($x) {
   $__fn = function($v2) use ($x, &$__fn) {
   $__num = func_num_args();
@@ -298,7 +307,7 @@ $nel = $__case_0;
 $v1 = ($GLOBALS['Data_Lazy_force'])($nel);
 $__case_0 = $v1;
 if ((($__case_0)->tag === "NonEmpty")) {
-$x = ($__case_0)->values[0];
+$x = ($__case_0)->v0;
 return $x;
 } else {
 throw new \Exception("Pattern match failure");
@@ -325,8 +334,8 @@ $Data_List_Lazy_NonEmpty_fromList = (function() {
 return $GLOBALS['Data_Maybe_Nothing'];
 } else {
 if ((($__case_0)->tag === "Cons")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 return ($GLOBALS['Data_Maybe_Just'])(($GLOBALS['Data_List_Lazy_Types_NonEmptyList'])(($GLOBALS['Data_Lazy_defer'])((function() use ($x, $xs) {
   $__fn = function($v1) use ($x, $xs, &$__fn) {
   $__num = func_num_args();
@@ -374,8 +383,8 @@ return ($GLOBALS['Data_List_Lazy_Types_NonEmptyList'])(($GLOBALS['Data_Lazy_defe
     $v2 = ($GLOBALS['Data_Lazy_force'])($nel);
     $__case_0 = $v2;
     if ((($__case_0)->tag === "NonEmpty")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 return ($GLOBALS['Data_NonEmpty_NonEmpty'])($y1, ($GLOBALS['Data_List_Lazy_Types_cons'])($x, $xs));
 } else {
 throw new \Exception("Pattern match failure");

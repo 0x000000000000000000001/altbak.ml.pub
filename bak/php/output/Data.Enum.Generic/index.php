@@ -21,6 +21,15 @@ require_once __DIR__ . '/../Data.Ring/index.php';
 require_once __DIR__ . '/../Data.Semiring/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -286,18 +295,18 @@ $genericBottom__prime__ = ($GLOBALS['Data_Bounded_Generic_genericBottom__prime__
   $__body = function($v) use ($genericPred__prime__1, $genericPred__prime__2, $genericTop__prime__) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Inl")) {
-$a = ($__case_0)->values[0];
+$a = ($__case_0)->v0;
 return ($GLOBALS['Data_Enum_Generic_map'])($GLOBALS['Data_Generic_Rep_Inl'], ($genericPred__prime__1)($a));
 } else {
 if ((($__case_0)->tag === "Inr")) {
-$b = ($__case_0)->values[0];
+$b = ($__case_0)->v0;
 $v1 = ($genericPred__prime__2)($b);
 $__case_0 = $v1;
 if ((($__case_0)->tag === "Nothing")) {
 return ($GLOBALS['Data_Maybe_Just'])(($GLOBALS['Data_Generic_Rep_Inl'])($genericTop__prime__));
 } else {
 if ((($__case_0)->tag === "Just")) {
-$b__prime__ = ($__case_0)->values[0];
+$b__prime__ = ($__case_0)->v0;
 return ($GLOBALS['Data_Maybe_Just'])(($GLOBALS['Data_Generic_Rep_Inr'])($b__prime__));
 } else {
 throw new \Exception("Pattern match failure");
@@ -319,14 +328,14 @@ throw new \Exception("Pattern match failure");
   $__body = function($v) use ($genericSucc__prime__1, $genericBottom__prime__, $genericSucc__prime__2) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Inl")) {
-$a = ($__case_0)->values[0];
+$a = ($__case_0)->v0;
 $v1 = ($genericSucc__prime__1)($a);
 $__case_0 = $v1;
 if ((($__case_0)->tag === "Nothing")) {
 return ($GLOBALS['Data_Maybe_Just'])(($GLOBALS['Data_Generic_Rep_Inr'])($genericBottom__prime__));
 } else {
 if ((($__case_0)->tag === "Just")) {
-$a__prime__ = ($__case_0)->values[0];
+$a__prime__ = ($__case_0)->v0;
 return ($GLOBALS['Data_Maybe_Just'])(($GLOBALS['Data_Generic_Rep_Inl'])($a__prime__));
 } else {
 throw new \Exception("Pattern match failure");
@@ -334,7 +343,7 @@ throw new \Exception("Pattern match failure");
 };
 } else {
 if ((($__case_0)->tag === "Inr")) {
-$b = ($__case_0)->values[0];
+$b = ($__case_0)->v0;
 return ($GLOBALS['Data_Enum_Generic_map'])($GLOBALS['Data_Generic_Rep_Inr'], ($genericSucc__prime__2)($b));
 } else {
 throw new \Exception("Pattern match failure");
@@ -393,12 +402,12 @@ $genericBottom__prime__ = ($GLOBALS['Data_Bounded_Generic_genericBottom__prime__
   $__body = function($v) use ($genericPred__prime__2, $genericTop__prime__, $genericPred__prime__1) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Product")) {
-$a = ($__case_0)->values[0];
-$b = ($__case_0)->values[1];
+$a = ($__case_0)->v0;
+$b = ($__case_0)->v1;
 $v1 = ($genericPred__prime__2)($b);
 $__case_0 = $v1;
 if ((($__case_0)->tag === "Just")) {
-$p = ($__case_0)->values[0];
+$p = ($__case_0)->v0;
 return ($GLOBALS['Data_Maybe_Just'])(($GLOBALS['Data_Generic_Rep_Product'])($a, $p));
 } else {
 if ((($__case_0)->tag === "Nothing")) {
@@ -422,12 +431,12 @@ throw new \Exception("Pattern match failure");
   $__body = function($v) use ($genericSucc__prime__2, $genericBottom__prime__, $genericSucc__prime__1) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Product")) {
-$a = ($__case_0)->values[0];
-$b = ($__case_0)->values[1];
+$a = ($__case_0)->v0;
+$b = ($__case_0)->v1;
 $v1 = ($genericSucc__prime__2)($b);
 $__case_0 = $v1;
 if ((($__case_0)->tag === "Just")) {
-$s = ($__case_0)->values[0];
+$s = ($__case_0)->v0;
 return ($GLOBALS['Data_Maybe_Just'])(($GLOBALS['Data_Generic_Rep_Product'])($a, $s));
 } else {
 if ((($__case_0)->tag === "Nothing")) {
@@ -653,11 +662,11 @@ throw new \Exception("Pattern match failure");
   $__body = function($v) use ($genericFromEnum__prime__1, $genericFromEnum__prime__2, $genericCardinality__prime__1) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Inl")) {
-$a = ($__case_0)->values[0];
+$a = ($__case_0)->v0;
 return ($genericFromEnum__prime__1)($a);
 } else {
 if ((($__case_0)->tag === "Inr")) {
-$b = ($__case_0)->values[0];
+$b = ($__case_0)->v0;
 return ($GLOBALS['Data_Enum_Generic_add'])(($genericFromEnum__prime__2)($b), ($GLOBALS['Data_Enum_Generic_unwrap'])($genericCardinality__prime__1));
 } else {
 throw new \Exception("Pattern match failure");
@@ -702,8 +711,8 @@ $from = (function() use ($genericFromEnum__prime__1, $genericFromEnum__prime__2)
     $__case_1 = $v1;
     if ((($__case_1)->tag === "Product")) {
 $cb = $__case_0;
-$a = ($__case_1)->values[0];
-$b = ($__case_1)->values[1];
+$a = ($__case_1)->v0;
+$b = ($__case_1)->v1;
 return ($GLOBALS['Data_Enum_Generic_add'])(($GLOBALS['Data_Enum_Generic_mul'])(($genericFromEnum__prime__1)($a), $cb), ($genericFromEnum__prime__2)($b));
 } else {
 throw new \Exception("Pattern match failure");

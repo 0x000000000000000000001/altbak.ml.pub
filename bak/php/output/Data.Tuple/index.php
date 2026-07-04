@@ -30,6 +30,15 @@ require_once __DIR__ . '/../Data.Tuple/index.php';
 require_once __DIR__ . '/../Data.Unit/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -56,7 +65,7 @@ $Data_Tuple_Tuple = (function() {
   $__fn = function($value0, $value1 = null) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
-    $__res = (object)["tag" => "Tuple", "values" => [$value0, $value1]];
+    $__res = new Phpurs_Data2("Tuple", $value0, $value1);
   return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
@@ -69,8 +78,8 @@ $Data_Tuple_uncurry = (function() {
     $__case_1 = $v;
     if ((($__case_1)->tag === "Tuple")) {
 $f1 = $__case_0;
-$a = ($__case_1)->values[0];
-$b = ($__case_1)->values[1];
+$a = ($__case_1)->v0;
+$b = ($__case_1)->v1;
 return ($f1)($a, $b);
 } else {
 throw new \Exception("Pattern match failure");
@@ -90,8 +99,8 @@ $Data_Tuple_swap = (function() {
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Tuple")) {
-$a = ($__case_0)->values[0];
-$b = ($__case_0)->values[1];
+$a = ($__case_0)->v0;
+$b = ($__case_0)->v1;
 return ($GLOBALS['Data_Tuple_Tuple'])($b, $a);
 } else {
 throw new \Exception("Pattern match failure");
@@ -111,7 +120,7 @@ $Data_Tuple_snd = (function() {
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Tuple")) {
-$b = ($__case_0)->values[1];
+$b = ($__case_0)->v1;
 return $b;
 } else {
 throw new \Exception("Pattern match failure");
@@ -141,8 +150,8 @@ $show1 = ($GLOBALS['Data_Show_show'])($dictShow1);
   $__body = function($v) use ($show, $show1) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Tuple")) {
-$a = ($__case_0)->values[0];
-$b = ($__case_0)->values[1];
+$a = ($__case_0)->v0;
+$b = ($__case_0)->v1;
 return ($GLOBALS['Data_Tuple_append'])("(Tuple ", ($GLOBALS['Data_Tuple_append'])(($show)($a), ($GLOBALS['Data_Tuple_append'])(" ", ($GLOBALS['Data_Tuple_append'])(($show1)($b), ")"))));
 } else {
 throw new \Exception("Pattern match failure");
@@ -185,10 +194,10 @@ $mul1 = ($GLOBALS['Data_Semiring_mul'])($dictSemiring1);
     $__case_0 = $v;
     $__case_1 = $v1;
     if (((($__case_0)->tag === "Tuple") && (($__case_1)->tag === "Tuple"))) {
-$x1 = ($__case_0)->values[0];
-$y1 = ($__case_0)->values[1];
-$x2 = ($__case_1)->values[0];
-$y2 = ($__case_1)->values[1];
+$x1 = ($__case_0)->v0;
+$y1 = ($__case_0)->v1;
+$x2 = ($__case_1)->v0;
+$y2 = ($__case_1)->v1;
 return ($GLOBALS['Data_Tuple_Tuple'])(($add)($x1, $x2), ($add1)($y1, $y2));
 } else {
 throw new \Exception("Pattern match failure");
@@ -206,10 +215,10 @@ throw new \Exception("Pattern match failure");
     $__case_0 = $v;
     $__case_1 = $v1;
     if (((($__case_0)->tag === "Tuple") && (($__case_1)->tag === "Tuple"))) {
-$x1 = ($__case_0)->values[0];
-$y1 = ($__case_0)->values[1];
-$x2 = ($__case_1)->values[0];
-$y2 = ($__case_1)->values[1];
+$x1 = ($__case_0)->v0;
+$y1 = ($__case_0)->v1;
+$x2 = ($__case_1)->v0;
+$y2 = ($__case_1)->v1;
 return ($GLOBALS['Data_Tuple_Tuple'])(($mul)($x1, $x2), ($mul1)($y1, $y2));
 } else {
 throw new \Exception("Pattern match failure");
@@ -238,8 +247,8 @@ $Data_Tuple_semigroupoidTuple = ($GLOBALS['Control_Semigroupoid_Semigroupoid__do
     $__case_0 = $v;
     $__case_1 = $v1;
     if (((($__case_0)->tag === "Tuple") && (($__case_1)->tag === "Tuple"))) {
-$c = ($__case_0)->values[1];
-$a = ($__case_1)->values[0];
+$c = ($__case_0)->v1;
+$a = ($__case_1)->v0;
 return ($GLOBALS['Data_Tuple_Tuple'])($a, $c);
 } else {
 throw new \Exception("Pattern match failure");
@@ -270,10 +279,10 @@ $append2 = ($GLOBALS['Data_Semigroup_append'])($dictSemigroup1);
     $__case_0 = $v;
     $__case_1 = $v1;
     if (((($__case_0)->tag === "Tuple") && (($__case_1)->tag === "Tuple"))) {
-$a1 = ($__case_0)->values[0];
-$b1 = ($__case_0)->values[1];
-$a2 = ($__case_1)->values[0];
-$b2 = ($__case_1)->values[1];
+$a1 = ($__case_0)->v0;
+$b1 = ($__case_0)->v1;
+$a2 = ($__case_1)->v0;
+$b2 = ($__case_1)->v1;
 return ($GLOBALS['Data_Tuple_Tuple'])(($append1)($a1, $a2), ($append2)($b1, $b2));
 } else {
 throw new \Exception("Pattern match failure");
@@ -314,10 +323,10 @@ $semiringTuple2 = ($semiringTuple1)((($dictRing1)->Semiring0)($GLOBALS['Prim_und
     $__case_0 = $v;
     $__case_1 = $v1;
     if (((($__case_0)->tag === "Tuple") && (($__case_1)->tag === "Tuple"))) {
-$x1 = ($__case_0)->values[0];
-$y1 = ($__case_0)->values[1];
-$x2 = ($__case_1)->values[0];
-$y2 = ($__case_1)->values[1];
+$x1 = ($__case_0)->v0;
+$y1 = ($__case_0)->v1;
+$x2 = ($__case_1)->v0;
+$y2 = ($__case_1)->v1;
 return ($GLOBALS['Data_Tuple_Tuple'])(($sub)($x1, $x2), ($sub1)($y1, $y2));
 } else {
 throw new \Exception("Pattern match failure");
@@ -402,10 +411,10 @@ $not1 = ($GLOBALS['Data_HeytingAlgebra_not'])($dictHeytingAlgebra1);
     $__case_0 = $v;
     $__case_1 = $v1;
     if (((($__case_0)->tag === "Tuple") && (($__case_1)->tag === "Tuple"))) {
-$x1 = ($__case_0)->values[0];
-$y1 = ($__case_0)->values[1];
-$x2 = ($__case_1)->values[0];
-$y2 = ($__case_1)->values[1];
+$x1 = ($__case_0)->v0;
+$y1 = ($__case_0)->v1;
+$x2 = ($__case_1)->v0;
+$y2 = ($__case_1)->v1;
 return ($GLOBALS['Data_Tuple_Tuple'])(($implies)($x1, $x2), ($implies1)($y1, $y2));
 } else {
 throw new \Exception("Pattern match failure");
@@ -423,10 +432,10 @@ throw new \Exception("Pattern match failure");
     $__case_0 = $v;
     $__case_1 = $v1;
     if (((($__case_0)->tag === "Tuple") && (($__case_1)->tag === "Tuple"))) {
-$x1 = ($__case_0)->values[0];
-$y1 = ($__case_0)->values[1];
-$x2 = ($__case_1)->values[0];
-$y2 = ($__case_1)->values[1];
+$x1 = ($__case_0)->v0;
+$y1 = ($__case_0)->v1;
+$x2 = ($__case_1)->v0;
+$y2 = ($__case_1)->v1;
 return ($GLOBALS['Data_Tuple_Tuple'])(($conj1)($x1, $x2), ($conj2)($y1, $y2));
 } else {
 throw new \Exception("Pattern match failure");
@@ -444,10 +453,10 @@ throw new \Exception("Pattern match failure");
     $__case_0 = $v;
     $__case_1 = $v1;
     if (((($__case_0)->tag === "Tuple") && (($__case_1)->tag === "Tuple"))) {
-$x1 = ($__case_0)->values[0];
-$y1 = ($__case_0)->values[1];
-$x2 = ($__case_1)->values[0];
-$y2 = ($__case_1)->values[1];
+$x1 = ($__case_0)->v0;
+$y1 = ($__case_0)->v1;
+$x2 = ($__case_1)->v0;
+$y2 = ($__case_1)->v1;
 return ($GLOBALS['Data_Tuple_Tuple'])(($disj)($x1, $x2), ($disj1)($y1, $y2));
 } else {
 throw new \Exception("Pattern match failure");
@@ -464,8 +473,8 @@ throw new \Exception("Pattern match failure");
   $__body = function($v) use ($not, $not1) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Tuple")) {
-$x = ($__case_0)->values[0];
-$y = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$y = ($__case_0)->v1;
 return ($GLOBALS['Data_Tuple_Tuple'])(($not)($x), ($not1)($y));
 } else {
 throw new \Exception("Pattern match failure");
@@ -493,8 +502,8 @@ $Data_Tuple_genericTuple = ($GLOBALS['Data_Generic_Rep_Generic__dollar__Dict'])(
   $__body = function($x) {
     $__case_0 = $x;
     if ((($__case_0)->tag === "Product")) {
-$arg = ($__case_0)->values[0];
-$arg1 = ($__case_0)->values[1];
+$arg = ($__case_0)->v0;
+$arg1 = ($__case_0)->v1;
 return ($GLOBALS['Data_Tuple_Tuple'])($arg, $arg1);
 } else {
 throw new \Exception("Pattern match failure");
@@ -511,8 +520,8 @@ throw new \Exception("Pattern match failure");
   $__body = function($x) {
     $__case_0 = $x;
     if ((($__case_0)->tag === "Tuple")) {
-$arg = ($__case_0)->values[0];
-$arg1 = ($__case_0)->values[1];
+$arg = ($__case_0)->v0;
+$arg1 = ($__case_0)->v1;
 return ($GLOBALS['Data_Generic_Rep_Constructor'])(($GLOBALS['Data_Generic_Rep_Product'])(($GLOBALS['Data_Generic_Rep_Argument'])($arg), ($GLOBALS['Data_Generic_Rep_Argument'])($arg1)));
 } else {
 throw new \Exception("Pattern match failure");
@@ -532,8 +541,8 @@ $Data_Tuple_functorTuple = ($GLOBALS['Data_Functor_Functor__dollar__Dict'])((obj
   $__body = function($f, $m) {
     $__case_0 = $m;
     if ((($__case_0)->tag === "Tuple")) {
-$v = ($__case_0)->values[0];
-$v1 = ($__case_0)->values[1];
+$v = ($__case_0)->v0;
+$v1 = ($__case_0)->v1;
 return ($GLOBALS['Data_Tuple_Tuple'])($v, ($f)($v1));
 } else {
 throw new \Exception("Pattern match failure");
@@ -556,7 +565,7 @@ $Data_Tuple_fst = (function() {
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Tuple")) {
-$a = ($__case_0)->values[0];
+$a = ($__case_0)->v0;
 return $a;
 } else {
 throw new \Exception("Pattern match failure");
@@ -624,7 +633,7 @@ $Data_Tuple_extendTuple = ($GLOBALS['Control_Extend_Extend__dollar__Dict'])((obj
     if ((($__case_1)->tag === "Tuple")) {
 $f1 = $__case_0;
 $t = $__case_1;
-$a = ($__case_1)->values[0];
+$a = ($__case_1)->v0;
 return ($GLOBALS['Data_Tuple_Tuple'])($a, ($f1)($t));
 } else {
 throw new \Exception("Pattern match failure");
@@ -663,10 +672,10 @@ $eq1 = ($GLOBALS['Data_Eq_eq'])($dictEq1);
     $__case_0 = $x;
     $__case_1 = $y;
     if (((($__case_0)->tag === "Tuple") && (($__case_1)->tag === "Tuple"))) {
-$l = ($__case_0)->values[0];
-$l1 = ($__case_0)->values[1];
-$r = ($__case_1)->values[0];
-$r1 = ($__case_1)->values[1];
+$l = ($__case_0)->v0;
+$l1 = ($__case_0)->v1;
+$r = ($__case_1)->v0;
+$r1 = ($__case_1)->v1;
 return ($GLOBALS['Data_Tuple_conj'])(($eq)($l, $r), ($eq1)($l1, $r1));
 } else {
 throw new \Exception("Pattern match failure");
@@ -707,10 +716,10 @@ $eqTuple2 = ($eqTuple1)((($dictOrd1)->Eq0)($GLOBALS['Prim_undefined']));
     $__case_0 = $x;
     $__case_1 = $y;
     if (((($__case_0)->tag === "Tuple") && (($__case_1)->tag === "Tuple"))) {
-$l = ($__case_0)->values[0];
-$l1 = ($__case_0)->values[1];
-$r = ($__case_1)->values[0];
-$r1 = ($__case_1)->values[1];
+$l = ($__case_0)->v0;
+$l1 = ($__case_0)->v1;
+$r = ($__case_1)->v0;
+$r1 = ($__case_1)->v1;
 $v = ($compare)($l, $r);
 $__case_0 = $v;
 if ((($__case_0)->tag === "LT")) {
@@ -926,10 +935,10 @@ $append1 = ($GLOBALS['Data_Semigroup_append'])($dictSemigroup);
     $__case_0 = $v;
     $__case_1 = $v1;
     if (((($__case_0)->tag === "Tuple") && (($__case_1)->tag === "Tuple"))) {
-$a1 = ($__case_0)->values[0];
-$f = ($__case_0)->values[1];
-$a2 = ($__case_1)->values[0];
-$x = ($__case_1)->values[1];
+$a1 = ($__case_0)->v0;
+$f = ($__case_0)->v1;
+$a2 = ($__case_1)->v0;
+$x = ($__case_1)->v1;
 return ($GLOBALS['Data_Tuple_Tuple'])(($append1)($a1, $a2), ($f)($x));
 } else {
 throw new \Exception("Pattern match failure");
@@ -968,14 +977,14 @@ $applyTuple1 = ($GLOBALS['Data_Tuple_applyTuple'])($dictSemigroup);
     $__case_0 = $v;
     $__case_1 = $f;
     if ((($__case_0)->tag === "Tuple")) {
-$a1 = ($__case_0)->values[0];
-$b = ($__case_0)->values[1];
+$a1 = ($__case_0)->v0;
+$b = ($__case_0)->v1;
 $f1 = $__case_1;
 $v1 = ($f1)($b);
 $__case_0 = $v1;
 if ((($__case_0)->tag === "Tuple")) {
-$a2 = ($__case_0)->values[0];
-$c = ($__case_0)->values[1];
+$a2 = ($__case_0)->v0;
+$c = ($__case_0)->v1;
 return ($GLOBALS['Data_Tuple_Tuple'])(($append1)($a1, $a2), $c);
 } else {
 throw new \Exception("Pattern match failure");

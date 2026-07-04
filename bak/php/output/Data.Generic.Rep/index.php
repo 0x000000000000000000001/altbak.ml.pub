@@ -9,6 +9,15 @@ require_once __DIR__ . '/../Data.Symbol/index.php';
 require_once __DIR__ . '/../Data.Void/index.php';
 require_once __DIR__ . '/../Type.Proxy/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -35,7 +44,7 @@ $Data_Generic_Rep_Inl = (function() {
   $__fn = function($value0) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
-    $__res = (object)["tag" => "Inl", "values" => [$value0]];
+    $__res = new Phpurs_Data1("Inl", $value0);
   return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
@@ -46,7 +55,7 @@ $Data_Generic_Rep_Inr = (function() {
   $__fn = function($value0) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
-    $__res = (object)["tag" => "Inr", "values" => [$value0]];
+    $__res = new Phpurs_Data1("Inr", $value0);
   return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
@@ -57,7 +66,7 @@ $Data_Generic_Rep_Product = (function() {
   $__fn = function($value0, $value1 = null) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
-    $__res = (object)["tag" => "Product", "values" => [$value0, $value1]];
+    $__res = new Phpurs_Data2("Product", $value0, $value1);
   return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
@@ -75,7 +84,7 @@ $Data_Generic_Rep_NoConstructors = (function() {
 })();
 
 // Data_Generic_Rep_NoArguments
-$Data_Generic_Rep_NoArguments = (object)["tag" => "NoArguments", "values" => []];
+$Data_Generic_Rep_NoArguments = new Phpurs_Data0("NoArguments");
 
 // Data_Generic_Rep_Generic$Dict
 $Data_Generic_Rep_Generic__dollar__Dict = (function() {
@@ -145,11 +154,11 @@ $show2 = ($GLOBALS['Data_Show_show'])($dictShow1);
   $__body = function($v) use ($show1, $show2) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Inl")) {
-$a = ($__case_0)->values[0];
+$a = ($__case_0)->v0;
 return ($GLOBALS['Data_Generic_Rep_append'])("(Inl ", ($GLOBALS['Data_Generic_Rep_append'])(($show1)($a), ")"));
 } else {
 if ((($__case_0)->tag === "Inr")) {
-$b = ($__case_0)->values[0];
+$b = ($__case_0)->v0;
 return ($GLOBALS['Data_Generic_Rep_append'])("(Inr ", ($GLOBALS['Data_Generic_Rep_append'])(($show2)($b), ")"));
 } else {
 throw new \Exception("Pattern match failure");
@@ -188,8 +197,8 @@ $show2 = ($GLOBALS['Data_Show_show'])($dictShow1);
   $__body = function($v) use ($show1, $show2) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Product")) {
-$a = ($__case_0)->values[0];
-$b = ($__case_0)->values[1];
+$a = ($__case_0)->v0;
+$b = ($__case_0)->v1;
 return ($GLOBALS['Data_Generic_Rep_append'])("(Product ", ($GLOBALS['Data_Generic_Rep_append'])(($show1)($a), ($GLOBALS['Data_Generic_Rep_append'])(" ", ($GLOBALS['Data_Generic_Rep_append'])(($show2)($b), ")"))));
 } else {
 throw new \Exception("Pattern match failure");

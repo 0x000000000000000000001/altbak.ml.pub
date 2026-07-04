@@ -18,6 +18,15 @@ require_once __DIR__ . '/../Data.TraversableWithIndex/index.php';
 require_once __DIR__ . '/../Data.Tuple/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -57,8 +66,8 @@ $Control_Comonad_Env_Trans_withEnvT = (function() {
     $__case_1 = $v;
     if ((($__case_1)->tag === "Tuple")) {
 $f1 = $__case_0;
-$e = ($__case_1)->values[0];
-$x = ($__case_1)->values[1];
+$e = ($__case_1)->v0;
+$x = ($__case_1)->v1;
 return ($GLOBALS['Control_Comonad_Env_Trans_EnvT'])(($GLOBALS['Data_Tuple_Tuple'])(($f1)($e), $x));
 } else {
 throw new \Exception("Pattern match failure");
@@ -111,8 +120,8 @@ $Control_Comonad_Env_Trans_mapEnvT = (function() {
     $__case_1 = $v;
     if ((($__case_1)->tag === "Tuple")) {
 $f1 = $__case_0;
-$e = ($__case_1)->values[0];
-$x = ($__case_1)->values[1];
+$e = ($__case_1)->v0;
+$x = ($__case_1)->v1;
 return ($GLOBALS['Control_Comonad_Env_Trans_EnvT'])(($GLOBALS['Data_Tuple_Tuple'])($e, ($f1)($x)));
 } else {
 throw new \Exception("Pattern match failure");
@@ -139,8 +148,8 @@ $map1 = ($GLOBALS['Data_Functor_map'])($dictFunctor);
     $__case_1 = $v;
     if ((($__case_1)->tag === "Tuple")) {
 $f1 = $__case_0;
-$e = ($__case_1)->values[0];
-$x = ($__case_1)->values[1];
+$e = ($__case_1)->v0;
+$x = ($__case_1)->v1;
 return ($GLOBALS['Control_Comonad_Env_Trans_EnvT'])(($GLOBALS['Data_Tuple_Tuple'])($e, ($map1)($f1, $x)));
 } else {
 throw new \Exception("Pattern match failure");
@@ -172,8 +181,8 @@ $functorEnvT1 = ($GLOBALS['Control_Comonad_Env_Trans_functorEnvT'])((($dictFunct
     $__case_1 = $v;
     if ((($__case_1)->tag === "Tuple")) {
 $f1 = $__case_0;
-$e = ($__case_1)->values[0];
-$x = ($__case_1)->values[1];
+$e = ($__case_1)->v0;
+$x = ($__case_1)->v1;
 return ($GLOBALS['Control_Comonad_Env_Trans_EnvT'])(($GLOBALS['Data_Tuple_Tuple'])($e, ($mapWithIndex)($f1, $x)));
 } else {
 throw new \Exception("Pattern match failure");
@@ -216,7 +225,7 @@ $foldMap = ($GLOBALS['Data_Foldable_foldMap'])($dictFoldable);
     if ((($__case_2)->tag === "Tuple")) {
 $fn1 = $__case_0;
 $a1 = $__case_1;
-$x = ($__case_2)->values[1];
+$x = ($__case_2)->v1;
 return ($foldl)($fn1, $a1, $x);
 } else {
 throw new \Exception("Pattern match failure");
@@ -237,7 +246,7 @@ throw new \Exception("Pattern match failure");
     if ((($__case_2)->tag === "Tuple")) {
 $fn1 = $__case_0;
 $a1 = $__case_1;
-$x = ($__case_2)->values[1];
+$x = ($__case_2)->v1;
 return ($foldr)($fn1, $a1, $x);
 } else {
 throw new \Exception("Pattern match failure");
@@ -261,7 +270,7 @@ $foldMap1 = ($foldMap)($dictMonoid);
     $__case_1 = $v;
     if ((($__case_1)->tag === "Tuple")) {
 $fn1 = $__case_0;
-$x = ($__case_1)->values[1];
+$x = ($__case_1)->v1;
 return ($foldMap1)($fn1, $x);
 } else {
 throw new \Exception("Pattern match failure");
@@ -301,7 +310,7 @@ $foldableEnvT1 = ($GLOBALS['Control_Comonad_Env_Trans_foldableEnvT'])((($dictFol
     if ((($__case_2)->tag === "Tuple")) {
 $f1 = $__case_0;
 $a1 = $__case_1;
-$x = ($__case_2)->values[1];
+$x = ($__case_2)->v1;
 return ($foldlWithIndex)($f1, $a1, $x);
 } else {
 throw new \Exception("Pattern match failure");
@@ -322,7 +331,7 @@ throw new \Exception("Pattern match failure");
     if ((($__case_2)->tag === "Tuple")) {
 $f1 = $__case_0;
 $a1 = $__case_1;
-$x = ($__case_2)->values[1];
+$x = ($__case_2)->v1;
 return ($foldrWithIndex)($f1, $a1, $x);
 } else {
 throw new \Exception("Pattern match failure");
@@ -346,7 +355,7 @@ $foldMapWithIndex1 = ($foldMapWithIndex)($dictMonoid);
     $__case_1 = $v;
     if ((($__case_1)->tag === "Tuple")) {
 $f1 = $__case_0;
-$x = ($__case_1)->values[1];
+$x = ($__case_1)->v1;
 return ($foldMapWithIndex1)($f1, $x);
 } else {
 throw new \Exception("Pattern match failure");
@@ -396,8 +405,8 @@ $sequence1 = ($sequence)($dictApplicative);
   $__body = function($v) use ($map1, $sequence1) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Tuple")) {
-$a = ($__case_0)->values[0];
-$x = ($__case_0)->values[1];
+$a = ($__case_0)->v0;
+$x = ($__case_0)->v1;
 return ($map1)(($GLOBALS['Control_Comonad_Env_Trans_map'])($GLOBALS['Control_Comonad_Env_Trans_EnvT'], ($GLOBALS['Data_Tuple_Tuple'])($a)), ($sequence1)($x));
 } else {
 throw new \Exception("Pattern match failure");
@@ -426,8 +435,8 @@ $traverse1 = ($traverse)($dictApplicative);
     $__case_1 = $v;
     if ((($__case_1)->tag === "Tuple")) {
 $f1 = $__case_0;
-$a = ($__case_1)->values[0];
-$x = ($__case_1)->values[1];
+$a = ($__case_1)->v0;
+$x = ($__case_1)->v1;
 return ($map1)(($GLOBALS['Control_Comonad_Env_Trans_map'])($GLOBALS['Control_Comonad_Env_Trans_EnvT'], ($GLOBALS['Data_Tuple_Tuple'])($a)), ($traverse1)($f1, $x));
 } else {
 throw new \Exception("Pattern match failure");
@@ -487,8 +496,8 @@ $traverseWithIndex1 = ($traverseWithIndex)($dictApplicative);
     $__case_1 = $v;
     if ((($__case_1)->tag === "Tuple")) {
 $f1 = $__case_0;
-$e = ($__case_1)->values[0];
-$x = ($__case_1)->values[1];
+$e = ($__case_1)->v0;
+$x = ($__case_1)->v1;
 return ($map1)(($GLOBALS['Control_Comonad_Env_Trans_map'])($GLOBALS['Control_Comonad_Env_Trans_EnvT'], ($GLOBALS['Data_Tuple_Tuple'])($e)), ($traverseWithIndex1)($f1, $x));
 } else {
 throw new \Exception("Pattern match failure");
@@ -550,8 +559,8 @@ $functorEnvT1 = ($GLOBALS['Control_Comonad_Env_Trans_functorEnvT'])($Functor0);
     $__case_1 = $v;
     if ((($__case_1)->tag === "Tuple")) {
 $f1 = $__case_0;
-$e = ($__case_1)->values[0];
-$x = ($__case_1)->values[1];
+$e = ($__case_1)->v0;
+$x = ($__case_1)->v1;
 return ($GLOBALS['Control_Comonad_Env_Trans_EnvT'])(($GLOBALS['Data_Tuple_Tuple'])($e, ($map1)($f1, ($extend)(($GLOBALS['Control_Comonad_Env_Trans_composeFlipped'])(($GLOBALS['Data_Tuple_Tuple'])($e), $GLOBALS['Control_Comonad_Env_Trans_EnvT']), $x))));
 } else {
 throw new \Exception("Pattern match failure");
@@ -583,7 +592,7 @@ $Control_Comonad_Env_Trans_comonadTransEnvT = ($GLOBALS['Control_Comonad_Trans_C
   $__body = function($dictComonad, $v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Tuple")) {
-$x = ($__case_0)->values[1];
+$x = ($__case_0)->v1;
 return $x;
 } else {
 throw new \Exception("Pattern match failure");
@@ -609,7 +618,7 @@ $extendEnvT1 = ($GLOBALS['Control_Comonad_Env_Trans_extendEnvT'])((($dictComonad
   $__body = function($v) use ($extract) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Tuple")) {
-$x = ($__case_0)->values[1];
+$x = ($__case_0)->v1;
 return ($extract)($x);
 } else {
 throw new \Exception("Pattern match failure");

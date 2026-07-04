@@ -20,6 +20,15 @@ require_once __DIR__ . '/../Data.Show/index.php';
 require_once __DIR__ . '/../Data.Tuple/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -76,8 +85,8 @@ $show1 = ($GLOBALS['Data_Show_show'])($dictShow1);
   $__body = function($v) use ($show, $show1) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Tuple")) {
-$fa = ($__case_0)->values[0];
-$ga = ($__case_0)->values[1];
+$fa = ($__case_0)->v0;
+$ga = ($__case_0)->v1;
 return ($GLOBALS['Data_Functor_Product_append'])("(product ", ($GLOBALS['Data_Functor_Product_append'])(($show)($fa), ($GLOBALS['Data_Functor_Product_append'])(" ", ($GLOBALS['Data_Functor_Product_append'])(($show1)($ga), ")"))));
 } else {
 throw new \Exception("Pattern match failure");
@@ -184,10 +193,10 @@ $eq13 = ($eq11)($dictEq);
     $__case_0 = $v;
     $__case_1 = $v1;
     if (((($__case_0)->tag === "Tuple") && (($__case_1)->tag === "Tuple"))) {
-$l1 = ($__case_0)->values[0];
-$r1 = ($__case_0)->values[1];
-$l2 = ($__case_1)->values[0];
-$r2 = ($__case_1)->values[1];
+$l1 = ($__case_0)->v0;
+$r1 = ($__case_0)->v1;
+$l2 = ($__case_1)->v0;
+$r2 = ($__case_1)->v1;
 return ($GLOBALS['Data_Functor_Product_conj'])(($eq12)($l1, $l2), ($eq13)($r1, $r2));
 } else {
 throw new \Exception("Pattern match failure");
@@ -267,10 +276,10 @@ $compare13 = ($compare11)($dictOrd);
     $__case_0 = $v;
     $__case_1 = $v1;
     if (((($__case_0)->tag === "Tuple") && (($__case_1)->tag === "Tuple"))) {
-$l1 = ($__case_0)->values[0];
-$r1 = ($__case_0)->values[1];
-$l2 = ($__case_1)->values[0];
-$r2 = ($__case_1)->values[1];
+$l1 = ($__case_0)->v0;
+$r1 = ($__case_0)->v1;
+$l2 = ($__case_1)->v0;
+$r2 = ($__case_1)->v1;
 $v2 = ($compare12)($l1, $l2);
 $__case_0 = $v2;
 if ((($__case_0)->tag === "EQ")) {
@@ -398,10 +407,10 @@ $functorProduct2 = ($functorProduct1)((($dictApply1)->Functor0)($GLOBALS['Prim_u
     $__case_0 = $v;
     $__case_1 = $v1;
     if (((($__case_0)->tag === "Tuple") && (($__case_1)->tag === "Tuple"))) {
-$f = ($__case_0)->values[0];
-$g = ($__case_0)->values[1];
-$a = ($__case_1)->values[0];
-$b = ($__case_1)->values[1];
+$f = ($__case_0)->v0;
+$g = ($__case_0)->v1;
+$a = ($__case_1)->v0;
+$b = ($__case_1)->v1;
 return ($GLOBALS['Data_Functor_Product_product'])(($apply)($f, $a), ($apply1)($g, $b));
 } else {
 throw new \Exception("Pattern match failure");
@@ -450,8 +459,8 @@ $applyProduct2 = ($applyProduct1)((($dictBind1)->Apply0)($GLOBALS['Prim_undefine
     $__case_0 = $v;
     $__case_1 = $f;
     if ((($__case_0)->tag === "Tuple")) {
-$fa = ($__case_0)->values[0];
-$ga = ($__case_0)->values[1];
+$fa = ($__case_0)->v0;
+$ga = ($__case_0)->v1;
 $f1 = $__case_1;
 return ($GLOBALS['Data_Functor_Product_product'])(($bind)($fa, ($GLOBALS['Data_Functor_Product_compose'])($GLOBALS['Data_Tuple_fst'], ($GLOBALS['Data_Functor_Product_compose'])($GLOBALS['Data_Functor_Product_unwrap'], $f1))), ($bind1)($ga, ($GLOBALS['Data_Functor_Product_compose'])($GLOBALS['Data_Tuple_snd'], ($GLOBALS['Data_Functor_Product_compose'])($GLOBALS['Data_Functor_Product_unwrap'], $f1))));
 } else {

@@ -30,6 +30,15 @@ require_once __DIR__ . '/../Data.Traversable.Accum.Internal/index.php';
 require_once __DIR__ . '/../Data.Tuple/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -94,8 +103,8 @@ $map = ($GLOBALS['Data_Functor_map'])((((($dictApplicative)->Apply0)($GLOBALS['P
     $__case_1 = $v;
     if ((($__case_1)->tag === "Tuple")) {
 $f1 = $__case_0;
-$x = ($__case_1)->values[0];
-$y = ($__case_1)->values[1];
+$x = ($__case_1)->v0;
+$y = ($__case_1)->v1;
 return ($map)(($GLOBALS['Data_Tuple_Tuple'])($x), ($f1)($y));
 } else {
 throw new \Exception("Pattern match failure");
@@ -121,8 +130,8 @@ $map = ($GLOBALS['Data_Functor_map'])((((($dictApplicative)->Apply0)($GLOBALS['P
   $__body = function($v) use ($map) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Tuple")) {
-$x = ($__case_0)->values[0];
-$y = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$y = ($__case_0)->v1;
 return ($map)(($GLOBALS['Data_Tuple_Tuple'])($x), $y);
 } else {
 throw new \Exception("Pattern match failure");
@@ -246,7 +255,7 @@ return ($pure)($GLOBALS['Data_Maybe_Nothing']);
 } else {
 if ((($__case_1)->tag === "Just")) {
 $f = $__case_0;
-$x = ($__case_1)->values[0];
+$x = ($__case_1)->v0;
 return ($map)($GLOBALS['Data_Maybe_Just'], ($f)($x));
 } else {
 throw new \Exception("Pattern match failure");
@@ -277,7 +286,7 @@ $map = ($GLOBALS['Data_Functor_map'])((((($dictApplicative)->Apply0)($GLOBALS['P
 return ($pure)($GLOBALS['Data_Maybe_Nothing']);
 } else {
 if ((($__case_0)->tag === "Just")) {
-$x = ($__case_0)->values[0];
+$x = ($__case_0)->v0;
 return ($map)($GLOBALS['Data_Maybe_Just'], $x);
 } else {
 throw new \Exception("Pattern match failure");
@@ -401,12 +410,12 @@ $map = ($GLOBALS['Data_Functor_map'])((((($dictApplicative)->Apply0)($GLOBALS['P
     $__case_0 = $v;
     $__case_1 = $v1;
     if ((($__case_1)->tag === "Left")) {
-$x = ($__case_1)->values[0];
+$x = ($__case_1)->v0;
 return ($pure)(($GLOBALS['Data_Either_Left'])($x));
 } else {
 if ((($__case_1)->tag === "Right")) {
 $f = $__case_0;
-$x = ($__case_1)->values[0];
+$x = ($__case_1)->v0;
 return ($map)($GLOBALS['Data_Either_Right'], ($f)($x));
 } else {
 throw new \Exception("Pattern match failure");
@@ -434,11 +443,11 @@ $map = ($GLOBALS['Data_Functor_map'])((((($dictApplicative)->Apply0)($GLOBALS['P
   $__body = function($v) use ($pure, $map) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Left")) {
-$x = ($__case_0)->values[0];
+$x = ($__case_0)->v0;
 return ($pure)(($GLOBALS['Data_Either_Left'])($x));
 } else {
 if ((($__case_0)->tag === "Right")) {
-$x = ($__case_0)->values[0];
+$x = ($__case_0)->v0;
 return ($map)($GLOBALS['Data_Either_Right'], $x);
 } else {
 throw new \Exception("Pattern match failure");
@@ -1337,8 +1346,8 @@ $traverse5 = ($traverse3)($dictApplicative);
     $__case_1 = $v;
     if ((($__case_1)->tag === "Tuple")) {
 $f1 = $__case_0;
-$fa = ($__case_1)->values[0];
-$ga = ($__case_1)->values[1];
+$fa = ($__case_1)->v0;
+$ga = ($__case_1)->v1;
 return ($lift2)($GLOBALS['Data_Functor_Product_product'], ($traverse4)($f1, $fa), ($traverse5)($f1, $ga));
 } else {
 throw new \Exception("Pattern match failure");
@@ -1366,8 +1375,8 @@ $sequence5 = ($sequence3)($dictApplicative);
   $__body = function($v) use ($lift2, $sequence4, $sequence5) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Tuple")) {
-$fa = ($__case_0)->values[0];
-$ga = ($__case_0)->values[1];
+$fa = ($__case_0)->v0;
+$ga = ($__case_0)->v1;
 return ($lift2)($GLOBALS['Data_Functor_Product_product'], ($sequence4)($fa), ($sequence5)($ga));
 } else {
 throw new \Exception("Pattern match failure");

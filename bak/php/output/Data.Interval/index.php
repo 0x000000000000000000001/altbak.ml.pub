@@ -25,6 +25,15 @@ require_once __DIR__ . '/../Data.Show/index.php';
 require_once __DIR__ . '/../Data.Traversable/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -63,7 +72,7 @@ $Data_Interval_StartEnd = (function() {
   $__fn = function($value0, $value1 = null) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
-    $__res = (object)["tag" => "StartEnd", "values" => [$value0, $value1]];
+    $__res = new Phpurs_Data2("StartEnd", $value0, $value1);
   return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
@@ -74,7 +83,7 @@ $Data_Interval_DurationEnd = (function() {
   $__fn = function($value0, $value1 = null) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
-    $__res = (object)["tag" => "DurationEnd", "values" => [$value0, $value1]];
+    $__res = new Phpurs_Data2("DurationEnd", $value0, $value1);
   return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
@@ -85,7 +94,7 @@ $Data_Interval_StartDuration = (function() {
   $__fn = function($value0, $value1 = null) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
-    $__res = (object)["tag" => "StartDuration", "values" => [$value0, $value1]];
+    $__res = new Phpurs_Data2("StartDuration", $value0, $value1);
   return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
@@ -96,7 +105,7 @@ $Data_Interval_DurationOnly = (function() {
   $__fn = function($value0) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
-    $__res = (object)["tag" => "DurationOnly", "values" => [$value0]];
+    $__res = new Phpurs_Data1("DurationOnly", $value0);
   return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
@@ -107,7 +116,7 @@ $Data_Interval_RecurringInterval = (function() {
   $__fn = function($value0, $value1 = null) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
-    $__res = (object)["tag" => "RecurringInterval", "values" => [$value0, $value1]];
+    $__res = new Phpurs_Data2("RecurringInterval", $value0, $value1);
   return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
@@ -128,22 +137,22 @@ $show2 = ($GLOBALS['Data_Show_show'])($dictShow1);
   $__body = function($v) use ($show2, $show1) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "StartEnd")) {
-$x = ($__case_0)->values[0];
-$y = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$y = ($__case_0)->v1;
 return ($GLOBALS['Data_Interval_append'])("(StartEnd ", ($GLOBALS['Data_Interval_append'])(($show2)($x), ($GLOBALS['Data_Interval_append'])(" ", ($GLOBALS['Data_Interval_append'])(($show2)($y), ")"))));
 } else {
 if ((($__case_0)->tag === "DurationEnd")) {
-$d = ($__case_0)->values[0];
-$x = ($__case_0)->values[1];
+$d = ($__case_0)->v0;
+$x = ($__case_0)->v1;
 return ($GLOBALS['Data_Interval_append'])("(DurationEnd ", ($GLOBALS['Data_Interval_append'])(($show1)($d), ($GLOBALS['Data_Interval_append'])(" ", ($GLOBALS['Data_Interval_append'])(($show2)($x), ")"))));
 } else {
 if ((($__case_0)->tag === "StartDuration")) {
-$x = ($__case_0)->values[0];
-$d = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$d = ($__case_0)->v1;
 return ($GLOBALS['Data_Interval_append'])("(StartDuration ", ($GLOBALS['Data_Interval_append'])(($show2)($x), ($GLOBALS['Data_Interval_append'])(" ", ($GLOBALS['Data_Interval_append'])(($show1)($d), ")"))));
 } else {
 if ((($__case_0)->tag === "DurationOnly")) {
-$d = ($__case_0)->values[0];
+$d = ($__case_0)->v0;
 return ($GLOBALS['Data_Interval_append'])("(DurationOnly ", ($GLOBALS['Data_Interval_append'])(($show1)($d), ")"));
 } else {
 throw new \Exception("Pattern match failure");
@@ -184,8 +193,8 @@ $show1 = ($GLOBALS['Data_Show_show'])(($showInterval1)($dictShow1));
   $__body = function($v) use ($show1) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "RecurringInterval")) {
-$x = ($__case_0)->values[0];
-$y = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$y = ($__case_0)->v1;
 return ($GLOBALS['Data_Interval_append'])("(RecurringInterval ", ($GLOBALS['Data_Interval_append'])(($GLOBALS['Data_Interval_show'])($x), ($GLOBALS['Data_Interval_append'])(" ", ($GLOBALS['Data_Interval_append'])(($show1)($y), ")"))));
 } else {
 throw new \Exception("Pattern match failure");
@@ -220,8 +229,8 @@ $map1 = ($GLOBALS['Data_Functor_map'])($dictFunctor);
     $__case_1 = $v;
     if ((($__case_1)->tag === "RecurringInterval")) {
 $f1 = $__case_0;
-$n = ($__case_1)->values[0];
-$i = ($__case_1)->values[1];
+$n = ($__case_1)->v0;
+$i = ($__case_1)->v1;
 return ($map1)(($GLOBALS['Data_Interval_RecurringInterval'])($n), ($f1)($i));
 } else {
 throw new \Exception("Pattern match failure");
@@ -245,7 +254,7 @@ $Data_Interval_interval = (function() {
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "RecurringInterval")) {
-$i = ($__case_0)->values[1];
+$i = ($__case_0)->v1;
 return $i;
 } else {
 throw new \Exception("Pattern match failure");
@@ -269,20 +278,20 @@ $Data_Interval_foldableInterval = ($GLOBALS['Data_Foldable_Foldable__dollar__Dic
     if ((($__case_2)->tag === "StartEnd")) {
 $f = $__case_0;
 $z = $__case_1;
-$x = ($__case_2)->values[0];
-$y = ($__case_2)->values[1];
+$x = ($__case_2)->v0;
+$y = ($__case_2)->v1;
 return ($f)(($f)($z, $x), $y);
 } else {
 if ((($__case_2)->tag === "DurationEnd")) {
 $f = $__case_0;
 $z = $__case_1;
-$x = ($__case_2)->values[1];
+$x = ($__case_2)->v1;
 return ($f)($z, $x);
 } else {
 if ((($__case_2)->tag === "StartDuration")) {
 $f = $__case_0;
 $z = $__case_1;
-$x = ($__case_2)->values[0];
+$x = ($__case_2)->v0;
 return ($f)($z, $x);
 } else {
 if (true) {
@@ -369,29 +378,29 @@ $eq2 = ($GLOBALS['Data_Eq_eq'])($dictEq1);
     $__case_0 = $x;
     $__case_1 = $y;
     if (((($__case_0)->tag === "StartEnd") && (($__case_1)->tag === "StartEnd"))) {
-$l = ($__case_0)->values[0];
-$l1 = ($__case_0)->values[1];
-$r = ($__case_1)->values[0];
-$r1 = ($__case_1)->values[1];
+$l = ($__case_0)->v0;
+$l1 = ($__case_0)->v1;
+$r = ($__case_1)->v0;
+$r1 = ($__case_1)->v1;
 return ($GLOBALS['Data_Interval_conj'])(($eq2)($l, $r), ($eq2)($l1, $r1));
 } else {
 if (((($__case_0)->tag === "DurationEnd") && (($__case_1)->tag === "DurationEnd"))) {
-$l = ($__case_0)->values[0];
-$l1 = ($__case_0)->values[1];
-$r = ($__case_1)->values[0];
-$r1 = ($__case_1)->values[1];
+$l = ($__case_0)->v0;
+$l1 = ($__case_0)->v1;
+$r = ($__case_1)->v0;
+$r1 = ($__case_1)->v1;
 return ($GLOBALS['Data_Interval_conj'])(($eq1)($l, $r), ($eq2)($l1, $r1));
 } else {
 if (((($__case_0)->tag === "StartDuration") && (($__case_1)->tag === "StartDuration"))) {
-$l = ($__case_0)->values[0];
-$l1 = ($__case_0)->values[1];
-$r = ($__case_1)->values[0];
-$r1 = ($__case_1)->values[1];
+$l = ($__case_0)->v0;
+$l1 = ($__case_0)->v1;
+$r = ($__case_1)->v0;
+$r1 = ($__case_1)->v1;
 return ($GLOBALS['Data_Interval_conj'])(($eq2)($l, $r), ($eq1)($l1, $r1));
 } else {
 if (((($__case_0)->tag === "DurationOnly") && (($__case_1)->tag === "DurationOnly"))) {
-$l = ($__case_0)->values[0];
-$r = ($__case_1)->values[0];
+$l = ($__case_0)->v0;
+$r = ($__case_1)->v0;
 return ($eq1)($l, $r);
 } else {
 if (true) {
@@ -437,10 +446,10 @@ $eq1 = ($GLOBALS['Data_Eq_eq'])(($eqInterval1)($dictEq1));
     $__case_0 = $x;
     $__case_1 = $y;
     if (((($__case_0)->tag === "RecurringInterval") && (($__case_1)->tag === "RecurringInterval"))) {
-$l = ($__case_0)->values[0];
-$l1 = ($__case_0)->values[1];
-$r = ($__case_1)->values[0];
-$r1 = ($__case_1)->values[1];
+$l = ($__case_0)->v0;
+$l1 = ($__case_0)->v1;
+$r = ($__case_1)->v0;
+$r1 = ($__case_1)->v1;
 return ($GLOBALS['Data_Interval_conj'])(($GLOBALS['Data_Interval_eq'])($l, $r), ($eq1)($l1, $r1));
 } else {
 throw new \Exception("Pattern match failure");
@@ -481,10 +490,10 @@ $eqInterval2 = ($eqInterval1)((($dictOrd1)->Eq0)($GLOBALS['Prim_undefined']));
     $__case_0 = $x;
     $__case_1 = $y;
     if (((($__case_0)->tag === "StartEnd") && (($__case_1)->tag === "StartEnd"))) {
-$l = ($__case_0)->values[0];
-$l1 = ($__case_0)->values[1];
-$r = ($__case_1)->values[0];
-$r1 = ($__case_1)->values[1];
+$l = ($__case_0)->v0;
+$l1 = ($__case_0)->v1;
+$r = ($__case_1)->v0;
+$r1 = ($__case_1)->v1;
 $v = ($compare2)($l, $r);
 $__case_0 = $v;
 if ((($__case_0)->tag === "LT")) {
@@ -508,10 +517,10 @@ if ((($__case_1)->tag === "StartEnd")) {
 return $GLOBALS['Data_Ordering_GT'];
 } else {
 if (((($__case_0)->tag === "DurationEnd") && (($__case_1)->tag === "DurationEnd"))) {
-$l = ($__case_0)->values[0];
-$l1 = ($__case_0)->values[1];
-$r = ($__case_1)->values[0];
-$r1 = ($__case_1)->values[1];
+$l = ($__case_0)->v0;
+$l1 = ($__case_0)->v1;
+$r = ($__case_1)->v0;
+$r1 = ($__case_1)->v1;
 $v = ($compare1)($l, $r);
 $__case_0 = $v;
 if ((($__case_0)->tag === "LT")) {
@@ -535,10 +544,10 @@ if ((($__case_1)->tag === "DurationEnd")) {
 return $GLOBALS['Data_Ordering_GT'];
 } else {
 if (((($__case_0)->tag === "StartDuration") && (($__case_1)->tag === "StartDuration"))) {
-$l = ($__case_0)->values[0];
-$l1 = ($__case_0)->values[1];
-$r = ($__case_1)->values[0];
-$r1 = ($__case_1)->values[1];
+$l = ($__case_0)->v0;
+$l1 = ($__case_0)->v1;
+$r = ($__case_1)->v0;
+$r1 = ($__case_1)->v1;
 $v = ($compare2)($l, $r);
 $__case_0 = $v;
 if ((($__case_0)->tag === "LT")) {
@@ -562,8 +571,8 @@ if ((($__case_1)->tag === "StartDuration")) {
 return $GLOBALS['Data_Ordering_GT'];
 } else {
 if (((($__case_0)->tag === "DurationOnly") && (($__case_1)->tag === "DurationOnly"))) {
-$l = ($__case_0)->values[0];
-$r = ($__case_1)->values[0];
+$l = ($__case_0)->v0;
+$r = ($__case_1)->v0;
 return ($compare1)($l, $r);
 } else {
 throw new \Exception("Pattern match failure");
@@ -621,10 +630,10 @@ $eqRecurringInterval2 = ($eqRecurringInterval1)((($dictOrd1)->Eq0)($GLOBALS['Pri
     $__case_0 = $x;
     $__case_1 = $y;
     if (((($__case_0)->tag === "RecurringInterval") && (($__case_1)->tag === "RecurringInterval"))) {
-$l = ($__case_0)->values[0];
-$l1 = ($__case_0)->values[1];
-$r = ($__case_1)->values[0];
-$r1 = ($__case_1)->values[1];
+$l = ($__case_0)->v0;
+$l1 = ($__case_0)->v1;
+$r = ($__case_1)->v0;
+$r1 = ($__case_1)->v1;
 $v = ($GLOBALS['Data_Interval_compare'])($l, $r);
 $__case_0 = $v;
 if ((($__case_0)->tag === "LT")) {
@@ -677,27 +686,27 @@ $Data_Interval_bifunctorInterval = ($GLOBALS['Data_Bifunctor_Bifunctor__dollar__
     $__case_2 = $v2;
     if ((($__case_2)->tag === "StartEnd")) {
 $f = $__case_1;
-$x = ($__case_2)->values[0];
-$y = ($__case_2)->values[1];
+$x = ($__case_2)->v0;
+$y = ($__case_2)->v1;
 return ($GLOBALS['Data_Interval_StartEnd'])(($f)($x), ($f)($y));
 } else {
 if ((($__case_2)->tag === "DurationEnd")) {
 $g = $__case_0;
 $f = $__case_1;
-$d = ($__case_2)->values[0];
-$x = ($__case_2)->values[1];
+$d = ($__case_2)->v0;
+$x = ($__case_2)->v1;
 return ($GLOBALS['Data_Interval_DurationEnd'])(($g)($d), ($f)($x));
 } else {
 if ((($__case_2)->tag === "StartDuration")) {
 $g = $__case_0;
 $f = $__case_1;
-$x = ($__case_2)->values[0];
-$d = ($__case_2)->values[1];
+$x = ($__case_2)->v0;
+$d = ($__case_2)->v1;
 return ($GLOBALS['Data_Interval_StartDuration'])(($f)($x), ($g)($d));
 } else {
 if ((($__case_2)->tag === "DurationOnly")) {
 $g = $__case_0;
-$d = ($__case_2)->values[0];
+$d = ($__case_2)->v0;
 return ($GLOBALS['Data_Interval_DurationOnly'])(($g)($d));
 } else {
 throw new \Exception("Pattern match failure");
@@ -727,8 +736,8 @@ $Data_Interval_bifunctorRecurringInterval = ($GLOBALS['Data_Bifunctor_Bifunctor_
     if ((($__case_2)->tag === "RecurringInterval")) {
 $f1 = $__case_0;
 $g1 = $__case_1;
-$n = ($__case_2)->values[0];
-$i = ($__case_2)->values[1];
+$n = ($__case_2)->v0;
+$i = ($__case_2)->v1;
 return ($GLOBALS['Data_Interval_RecurringInterval'])($n, ($GLOBALS['Data_Interval_bimap'])($f1, $g1, $i));
 } else {
 throw new \Exception("Pattern match failure");
@@ -762,17 +771,17 @@ return ($GLOBALS['Data_Interval_StartEnd'])(($f)($a), ($f)($a));
 if ((($__case_1)->tag === "DurationEnd")) {
 $f = $__case_0;
 $a = $__case_1;
-$d = ($__case_1)->values[0];
+$d = ($__case_1)->v0;
 return ($GLOBALS['Data_Interval_DurationEnd'])($d, ($f)($a));
 } else {
 if ((($__case_1)->tag === "StartDuration")) {
 $f = $__case_0;
 $a = $__case_1;
-$d = ($__case_1)->values[1];
+$d = ($__case_1)->v1;
 return ($GLOBALS['Data_Interval_StartDuration'])(($f)($a), $d);
 } else {
 if ((($__case_1)->tag === "DurationOnly")) {
-$d = ($__case_1)->values[0];
+$d = ($__case_1)->v0;
 return ($GLOBALS['Data_Interval_DurationOnly'])($d);
 } else {
 throw new \Exception("Pattern match failure");
@@ -808,8 +817,8 @@ $Data_Interval_functorRecurringInterval = ($GLOBALS['Data_Functor_Functor__dolla
     $__case_1 = $v;
     if ((($__case_1)->tag === "RecurringInterval")) {
 $f1 = $__case_0;
-$n = ($__case_1)->values[0];
-$i = ($__case_1)->values[1];
+$n = ($__case_1)->v0;
+$i = ($__case_1)->v1;
 return ($GLOBALS['Data_Interval_RecurringInterval'])($n, ($GLOBALS['Data_Interval_map'])($f1, $i));
 } else {
 throw new \Exception("Pattern match failure");
@@ -832,8 +841,8 @@ $Data_Interval_extendRecurringInterval = ($GLOBALS['Control_Extend_Extend__dolla
     if ((($__case_1)->tag === "RecurringInterval")) {
 $f1 = $__case_0;
 $a = $__case_1;
-$n = ($__case_1)->values[0];
-$i = ($__case_1)->values[1];
+$n = ($__case_1)->v0;
+$i = ($__case_1)->v1;
 return ($GLOBALS['Data_Interval_RecurringInterval'])($n, ($GLOBALS['Data_Interval_extend'])(($GLOBALS['Data_Function_const'])(($f1)($a)), $i));
 } else {
 throw new \Exception("Pattern match failure");
@@ -873,20 +882,20 @@ $pure = ($GLOBALS['Control_Applicative_pure'])($dictApplicative);
     $__case_1 = $v1;
     if ((($__case_1)->tag === "StartEnd")) {
 $f = $__case_0;
-$x = ($__case_1)->values[0];
-$y = ($__case_1)->values[1];
+$x = ($__case_1)->v0;
+$y = ($__case_1)->v1;
 return ($apply)(($map1)($GLOBALS['Data_Interval_StartEnd'], ($f)($x)), ($f)($y));
 } else {
 if ((($__case_1)->tag === "DurationEnd")) {
 $f = $__case_0;
-$d = ($__case_1)->values[0];
-$x = ($__case_1)->values[1];
+$d = ($__case_1)->v0;
+$x = ($__case_1)->v1;
 return ($mapFlipped)(($f)($x), ($GLOBALS['Data_Interval_DurationEnd'])($d));
 } else {
 if ((($__case_1)->tag === "StartDuration")) {
 $f = $__case_0;
-$x = ($__case_1)->values[0];
-$d = ($__case_1)->values[1];
+$x = ($__case_1)->v0;
+$d = ($__case_1)->v1;
 return ($mapFlipped)(($f)($x), (function() use ($d) {
   $__fn = function($v2) use ($d, &$__fn) {
   $__num = func_num_args();
@@ -898,7 +907,7 @@ return ($mapFlipped)(($f)($x), (function() use ($d) {
 })());
 } else {
 if ((($__case_1)->tag === "DurationOnly")) {
-$d = ($__case_1)->values[0];
+$d = ($__case_1)->v0;
 return ($pure)(($GLOBALS['Data_Interval_DurationOnly'])($d));
 } else {
 throw new \Exception("Pattern match failure");
@@ -1002,30 +1011,30 @@ $Data_Interval_bifoldableInterval = ($GLOBALS['Data_Bifoldable_Bifoldable__dolla
     if ((($__case_3)->tag === "StartEnd")) {
 $f = $__case_1;
 $z = $__case_2;
-$x = ($__case_3)->values[0];
-$y = ($__case_3)->values[1];
+$x = ($__case_3)->v0;
+$y = ($__case_3)->v1;
 return ($f)(($f)($z, $x), $y);
 } else {
 if ((($__case_3)->tag === "DurationEnd")) {
 $g = $__case_0;
 $f = $__case_1;
 $z = $__case_2;
-$d = ($__case_3)->values[0];
-$x = ($__case_3)->values[1];
+$d = ($__case_3)->v0;
+$x = ($__case_3)->v1;
 return ($f)(($g)($z, $d), $x);
 } else {
 if ((($__case_3)->tag === "StartDuration")) {
 $g = $__case_0;
 $f = $__case_1;
 $z = $__case_2;
-$x = ($__case_3)->values[0];
-$d = ($__case_3)->values[1];
+$x = ($__case_3)->v0;
+$d = ($__case_3)->v1;
 return ($f)(($g)($z, $d), $x);
 } else {
 if ((($__case_3)->tag === "DurationOnly")) {
 $g = $__case_0;
 $z = $__case_2;
-$d = ($__case_3)->values[0];
+$d = ($__case_3)->v0;
 return ($g)($z, $d);
 } else {
 throw new \Exception("Pattern match failure");
@@ -1107,27 +1116,27 @@ $map1 = ($GLOBALS['Data_Functor_map'])((($Apply0)->Functor0)($GLOBALS['Prim_unde
     $__case_2 = $v2;
     if ((($__case_2)->tag === "StartEnd")) {
 $r = $__case_1;
-$x = ($__case_2)->values[0];
-$y = ($__case_2)->values[1];
+$x = ($__case_2)->v0;
+$y = ($__case_2)->v1;
 return ($apply)(($map1)($GLOBALS['Data_Interval_StartEnd'], ($r)($x)), ($r)($y));
 } else {
 if ((($__case_2)->tag === "DurationEnd")) {
 $l = $__case_0;
 $r = $__case_1;
-$d = ($__case_2)->values[0];
-$x = ($__case_2)->values[1];
+$d = ($__case_2)->v0;
+$x = ($__case_2)->v1;
 return ($apply)(($map1)($GLOBALS['Data_Interval_DurationEnd'], ($l)($d)), ($r)($x));
 } else {
 if ((($__case_2)->tag === "StartDuration")) {
 $l = $__case_0;
 $r = $__case_1;
-$x = ($__case_2)->values[0];
-$d = ($__case_2)->values[1];
+$x = ($__case_2)->v0;
+$d = ($__case_2)->v1;
 return ($apply)(($map1)($GLOBALS['Data_Interval_StartDuration'], ($r)($x)), ($l)($d));
 } else {
 if ((($__case_2)->tag === "DurationOnly")) {
 $l = $__case_0;
-$d = ($__case_2)->values[0];
+$d = ($__case_2)->v0;
 return ($map1)($GLOBALS['Data_Interval_DurationOnly'], ($l)($d));
 } else {
 throw new \Exception("Pattern match failure");

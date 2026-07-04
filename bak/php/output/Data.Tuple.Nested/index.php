@@ -6,6 +6,15 @@ require_once __DIR__ . '/../Data.Tuple/index.php';
 require_once __DIR__ . '/../Data.Unit/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -26,17 +35,17 @@ $Data_Tuple_Nested_uncurry9 = (function() {
   $__body = function($f__prime__, $v) {
     $__case_0 = $f__prime__;
     $__case_1 = $v;
-    if (((($__case_1)->tag === "Tuple") && (((($__case_1)->values[1])->tag === "Tuple") && ((((($__case_1)->values[1])->values[1])->tag === "Tuple") && (((((($__case_1)->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && (((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && (((((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && (((((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple")))))))))) {
+    if (((($__case_1)->tag === "Tuple") && (((($__case_1)->v1)->tag === "Tuple") && ((((($__case_1)->v1)->v1)->tag === "Tuple") && (((((($__case_1)->v1)->v1)->v1)->tag === "Tuple") && ((((((($__case_1)->v1)->v1)->v1)->v1)->tag === "Tuple") && (((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple") && ((((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple") && (((((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple") && (((((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple")))))))))) {
 $f__prime__1 = $__case_0;
-$a = ($__case_1)->values[0];
-$b = (($__case_1)->values[1])->values[0];
-$c = ((($__case_1)->values[1])->values[1])->values[0];
-$d = (((($__case_1)->values[1])->values[1])->values[1])->values[0];
-$e = ((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[0];
-$f = (((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
-$g = ((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
-$h = (((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
-$i = ((((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
+$a = ($__case_1)->v0;
+$b = (($__case_1)->v1)->v0;
+$c = ((($__case_1)->v1)->v1)->v0;
+$d = (((($__case_1)->v1)->v1)->v1)->v0;
+$e = ((((($__case_1)->v1)->v1)->v1)->v1)->v0;
+$f = (((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v0;
+$g = ((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v0;
+$h = (((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v0;
+$i = ((((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v0;
 return ($f__prime__1)($a, $b, $c, $d, $e, $f, $g, $h, $i);
 } else {
 throw new \Exception("Pattern match failure");
@@ -56,16 +65,16 @@ $Data_Tuple_Nested_uncurry8 = (function() {
   $__body = function($f__prime__, $v) {
     $__case_0 = $f__prime__;
     $__case_1 = $v;
-    if (((($__case_1)->tag === "Tuple") && (((($__case_1)->values[1])->tag === "Tuple") && ((((($__case_1)->values[1])->values[1])->tag === "Tuple") && (((((($__case_1)->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && (((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple"))))))))) {
+    if (((($__case_1)->tag === "Tuple") && (((($__case_1)->v1)->tag === "Tuple") && ((((($__case_1)->v1)->v1)->tag === "Tuple") && (((((($__case_1)->v1)->v1)->v1)->tag === "Tuple") && ((((((($__case_1)->v1)->v1)->v1)->v1)->tag === "Tuple") && (((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple") && ((((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple") && ((((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple"))))))))) {
 $f__prime__1 = $__case_0;
-$a = ($__case_1)->values[0];
-$b = (($__case_1)->values[1])->values[0];
-$c = ((($__case_1)->values[1])->values[1])->values[0];
-$d = (((($__case_1)->values[1])->values[1])->values[1])->values[0];
-$e = ((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[0];
-$f = (((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
-$g = ((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
-$h = (((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
+$a = ($__case_1)->v0;
+$b = (($__case_1)->v1)->v0;
+$c = ((($__case_1)->v1)->v1)->v0;
+$d = (((($__case_1)->v1)->v1)->v1)->v0;
+$e = ((((($__case_1)->v1)->v1)->v1)->v1)->v0;
+$f = (((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v0;
+$g = ((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v0;
+$h = (((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v0;
 return ($f__prime__1)($a, $b, $c, $d, $e, $f, $g, $h);
 } else {
 throw new \Exception("Pattern match failure");
@@ -85,15 +94,15 @@ $Data_Tuple_Nested_uncurry7 = (function() {
   $__body = function($f__prime__, $v) {
     $__case_0 = $f__prime__;
     $__case_1 = $v;
-    if (((($__case_1)->tag === "Tuple") && (((($__case_1)->values[1])->tag === "Tuple") && ((((($__case_1)->values[1])->values[1])->tag === "Tuple") && (((((($__case_1)->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && (((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && (((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple")))))))) {
+    if (((($__case_1)->tag === "Tuple") && (((($__case_1)->v1)->tag === "Tuple") && ((((($__case_1)->v1)->v1)->tag === "Tuple") && (((((($__case_1)->v1)->v1)->v1)->tag === "Tuple") && ((((((($__case_1)->v1)->v1)->v1)->v1)->tag === "Tuple") && (((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple") && (((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple")))))))) {
 $f__prime__1 = $__case_0;
-$a = ($__case_1)->values[0];
-$b = (($__case_1)->values[1])->values[0];
-$c = ((($__case_1)->values[1])->values[1])->values[0];
-$d = (((($__case_1)->values[1])->values[1])->values[1])->values[0];
-$e = ((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[0];
-$f = (((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
-$g = ((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
+$a = ($__case_1)->v0;
+$b = (($__case_1)->v1)->v0;
+$c = ((($__case_1)->v1)->v1)->v0;
+$d = (((($__case_1)->v1)->v1)->v1)->v0;
+$e = ((((($__case_1)->v1)->v1)->v1)->v1)->v0;
+$f = (((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v0;
+$g = ((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v0;
 return ($f__prime__1)($a, $b, $c, $d, $e, $f, $g);
 } else {
 throw new \Exception("Pattern match failure");
@@ -113,14 +122,14 @@ $Data_Tuple_Nested_uncurry6 = (function() {
   $__body = function($f__prime__, $v) {
     $__case_0 = $f__prime__;
     $__case_1 = $v;
-    if (((($__case_1)->tag === "Tuple") && (((($__case_1)->values[1])->tag === "Tuple") && ((((($__case_1)->values[1])->values[1])->tag === "Tuple") && (((((($__case_1)->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple"))))))) {
+    if (((($__case_1)->tag === "Tuple") && (((($__case_1)->v1)->tag === "Tuple") && ((((($__case_1)->v1)->v1)->tag === "Tuple") && (((((($__case_1)->v1)->v1)->v1)->tag === "Tuple") && ((((((($__case_1)->v1)->v1)->v1)->v1)->tag === "Tuple") && ((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple"))))))) {
 $f__prime__1 = $__case_0;
-$a = ($__case_1)->values[0];
-$b = (($__case_1)->values[1])->values[0];
-$c = ((($__case_1)->values[1])->values[1])->values[0];
-$d = (((($__case_1)->values[1])->values[1])->values[1])->values[0];
-$e = ((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[0];
-$f = (((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
+$a = ($__case_1)->v0;
+$b = (($__case_1)->v1)->v0;
+$c = ((($__case_1)->v1)->v1)->v0;
+$d = (((($__case_1)->v1)->v1)->v1)->v0;
+$e = ((((($__case_1)->v1)->v1)->v1)->v1)->v0;
+$f = (((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v0;
 return ($f__prime__1)($a, $b, $c, $d, $e, $f);
 } else {
 throw new \Exception("Pattern match failure");
@@ -140,13 +149,13 @@ $Data_Tuple_Nested_uncurry5 = (function() {
   $__body = function($f, $v) {
     $__case_0 = $f;
     $__case_1 = $v;
-    if (((($__case_1)->tag === "Tuple") && (((($__case_1)->values[1])->tag === "Tuple") && ((((($__case_1)->values[1])->values[1])->tag === "Tuple") && (((((($__case_1)->values[1])->values[1])->values[1])->tag === "Tuple") && (((((($__case_1)->values[1])->values[1])->values[1])->values[1])->tag === "Tuple")))))) {
+    if (((($__case_1)->tag === "Tuple") && (((($__case_1)->v1)->tag === "Tuple") && ((((($__case_1)->v1)->v1)->tag === "Tuple") && (((((($__case_1)->v1)->v1)->v1)->tag === "Tuple") && (((((($__case_1)->v1)->v1)->v1)->v1)->tag === "Tuple")))))) {
 $f1 = $__case_0;
-$a = ($__case_1)->values[0];
-$b = (($__case_1)->values[1])->values[0];
-$c = ((($__case_1)->values[1])->values[1])->values[0];
-$d = (((($__case_1)->values[1])->values[1])->values[1])->values[0];
-$e = ((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[0];
+$a = ($__case_1)->v0;
+$b = (($__case_1)->v1)->v0;
+$c = ((($__case_1)->v1)->v1)->v0;
+$d = (((($__case_1)->v1)->v1)->v1)->v0;
+$e = ((((($__case_1)->v1)->v1)->v1)->v1)->v0;
 return ($f1)($a, $b, $c, $d, $e);
 } else {
 throw new \Exception("Pattern match failure");
@@ -166,12 +175,12 @@ $Data_Tuple_Nested_uncurry4 = (function() {
   $__body = function($f, $v) {
     $__case_0 = $f;
     $__case_1 = $v;
-    if (((($__case_1)->tag === "Tuple") && (((($__case_1)->values[1])->tag === "Tuple") && ((((($__case_1)->values[1])->values[1])->tag === "Tuple") && ((((($__case_1)->values[1])->values[1])->values[1])->tag === "Tuple"))))) {
+    if (((($__case_1)->tag === "Tuple") && (((($__case_1)->v1)->tag === "Tuple") && ((((($__case_1)->v1)->v1)->tag === "Tuple") && ((((($__case_1)->v1)->v1)->v1)->tag === "Tuple"))))) {
 $f1 = $__case_0;
-$a = ($__case_1)->values[0];
-$b = (($__case_1)->values[1])->values[0];
-$c = ((($__case_1)->values[1])->values[1])->values[0];
-$d = (((($__case_1)->values[1])->values[1])->values[1])->values[0];
+$a = ($__case_1)->v0;
+$b = (($__case_1)->v1)->v0;
+$c = ((($__case_1)->v1)->v1)->v0;
+$d = (((($__case_1)->v1)->v1)->v1)->v0;
 return ($f1)($a, $b, $c, $d);
 } else {
 throw new \Exception("Pattern match failure");
@@ -191,11 +200,11 @@ $Data_Tuple_Nested_uncurry3 = (function() {
   $__body = function($f, $v) {
     $__case_0 = $f;
     $__case_1 = $v;
-    if (((($__case_1)->tag === "Tuple") && (((($__case_1)->values[1])->tag === "Tuple") && (((($__case_1)->values[1])->values[1])->tag === "Tuple")))) {
+    if (((($__case_1)->tag === "Tuple") && (((($__case_1)->v1)->tag === "Tuple") && (((($__case_1)->v1)->v1)->tag === "Tuple")))) {
 $f1 = $__case_0;
-$a = ($__case_1)->values[0];
-$b = (($__case_1)->values[1])->values[0];
-$c = ((($__case_1)->values[1])->values[1])->values[0];
+$a = ($__case_1)->v0;
+$b = (($__case_1)->v1)->v0;
+$c = ((($__case_1)->v1)->v1)->v0;
 return ($f1)($a, $b, $c);
 } else {
 throw new \Exception("Pattern match failure");
@@ -215,10 +224,10 @@ $Data_Tuple_Nested_uncurry2 = (function() {
   $__body = function($f, $v) {
     $__case_0 = $f;
     $__case_1 = $v;
-    if (((($__case_1)->tag === "Tuple") && ((($__case_1)->values[1])->tag === "Tuple"))) {
+    if (((($__case_1)->tag === "Tuple") && ((($__case_1)->v1)->tag === "Tuple"))) {
 $f1 = $__case_0;
-$a = ($__case_1)->values[0];
-$b = (($__case_1)->values[1])->values[0];
+$a = ($__case_1)->v0;
+$b = (($__case_1)->v1)->v0;
 return ($f1)($a, $b);
 } else {
 throw new \Exception("Pattern match failure");
@@ -238,18 +247,18 @@ $Data_Tuple_Nested_uncurry10 = (function() {
   $__body = function($f__prime__, $v) {
     $__case_0 = $f__prime__;
     $__case_1 = $v;
-    if (((($__case_1)->tag === "Tuple") && (((($__case_1)->values[1])->tag === "Tuple") && ((((($__case_1)->values[1])->values[1])->tag === "Tuple") && (((((($__case_1)->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && (((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && (((((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple"))))))))))) {
+    if (((($__case_1)->tag === "Tuple") && (((($__case_1)->v1)->tag === "Tuple") && ((((($__case_1)->v1)->v1)->tag === "Tuple") && (((((($__case_1)->v1)->v1)->v1)->tag === "Tuple") && ((((((($__case_1)->v1)->v1)->v1)->v1)->tag === "Tuple") && (((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple") && ((((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple") && (((((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple") && ((((((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple") && ((((((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple"))))))))))) {
 $f__prime__1 = $__case_0;
-$a = ($__case_1)->values[0];
-$b = (($__case_1)->values[1])->values[0];
-$c = ((($__case_1)->values[1])->values[1])->values[0];
-$d = (((($__case_1)->values[1])->values[1])->values[1])->values[0];
-$e = ((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[0];
-$f = (((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
-$g = ((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
-$h = (((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
-$i = ((((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
-$j = (((((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
+$a = ($__case_1)->v0;
+$b = (($__case_1)->v1)->v0;
+$c = ((($__case_1)->v1)->v1)->v0;
+$d = (((($__case_1)->v1)->v1)->v1)->v0;
+$e = ((((($__case_1)->v1)->v1)->v1)->v1)->v0;
+$f = (((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v0;
+$g = ((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v0;
+$h = (((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v0;
+$i = ((((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v0;
+$j = (((((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v0;
 return ($f__prime__1)($a, $b, $c, $d, $e, $f, $g, $h, $i, $j);
 } else {
 throw new \Exception("Pattern match failure");
@@ -271,7 +280,7 @@ $Data_Tuple_Nested_uncurry1 = (function() {
     $__case_1 = $v;
     if ((($__case_1)->tag === "Tuple")) {
 $f1 = $__case_0;
-$a = ($__case_1)->values[0];
+$a = ($__case_1)->v0;
 return ($f1)($a);
 } else {
 throw new \Exception("Pattern match failure");
@@ -401,18 +410,18 @@ $Data_Tuple_Nested_over9 = (function() {
   $__body = function($o, $v) {
     $__case_0 = $o;
     $__case_1 = $v;
-    if (((($__case_1)->tag === "Tuple") && (((($__case_1)->values[1])->tag === "Tuple") && ((((($__case_1)->values[1])->values[1])->tag === "Tuple") && (((((($__case_1)->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && (((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && (((((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && (((((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple")))))))))) {
+    if (((($__case_1)->tag === "Tuple") && (((($__case_1)->v1)->tag === "Tuple") && ((((($__case_1)->v1)->v1)->tag === "Tuple") && (((((($__case_1)->v1)->v1)->v1)->tag === "Tuple") && ((((((($__case_1)->v1)->v1)->v1)->v1)->tag === "Tuple") && (((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple") && ((((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple") && (((((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple") && (((((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple")))))))))) {
 $o1 = $__case_0;
-$a = ($__case_1)->values[0];
-$b = (($__case_1)->values[1])->values[0];
-$c = ((($__case_1)->values[1])->values[1])->values[0];
-$d = (((($__case_1)->values[1])->values[1])->values[1])->values[0];
-$e = ((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[0];
-$f = (((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
-$g = ((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
-$h = (((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
-$i = ((((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
-$z = ((((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1];
+$a = ($__case_1)->v0;
+$b = (($__case_1)->v1)->v0;
+$c = ((($__case_1)->v1)->v1)->v0;
+$d = (((($__case_1)->v1)->v1)->v1)->v0;
+$e = ((((($__case_1)->v1)->v1)->v1)->v1)->v0;
+$f = (((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v0;
+$g = ((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v0;
+$h = (((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v0;
+$i = ((((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v0;
+$z = ((((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v1;
 return ($GLOBALS['Data_Tuple_Tuple'])($a, ($GLOBALS['Data_Tuple_Tuple'])($b, ($GLOBALS['Data_Tuple_Tuple'])($c, ($GLOBALS['Data_Tuple_Tuple'])($d, ($GLOBALS['Data_Tuple_Tuple'])($e, ($GLOBALS['Data_Tuple_Tuple'])($f, ($GLOBALS['Data_Tuple_Tuple'])($g, ($GLOBALS['Data_Tuple_Tuple'])($h, ($GLOBALS['Data_Tuple_Tuple'])(($o1)($i), $z)))))))));
 } else {
 throw new \Exception("Pattern match failure");
@@ -432,17 +441,17 @@ $Data_Tuple_Nested_over8 = (function() {
   $__body = function($o, $v) {
     $__case_0 = $o;
     $__case_1 = $v;
-    if (((($__case_1)->tag === "Tuple") && (((($__case_1)->values[1])->tag === "Tuple") && ((((($__case_1)->values[1])->values[1])->tag === "Tuple") && (((((($__case_1)->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && (((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple"))))))))) {
+    if (((($__case_1)->tag === "Tuple") && (((($__case_1)->v1)->tag === "Tuple") && ((((($__case_1)->v1)->v1)->tag === "Tuple") && (((((($__case_1)->v1)->v1)->v1)->tag === "Tuple") && ((((((($__case_1)->v1)->v1)->v1)->v1)->tag === "Tuple") && (((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple") && ((((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple") && ((((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple"))))))))) {
 $o1 = $__case_0;
-$a = ($__case_1)->values[0];
-$b = (($__case_1)->values[1])->values[0];
-$c = ((($__case_1)->values[1])->values[1])->values[0];
-$d = (((($__case_1)->values[1])->values[1])->values[1])->values[0];
-$e = ((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[0];
-$f = (((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
-$g = ((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
-$h = (((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
-$z = (((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1];
+$a = ($__case_1)->v0;
+$b = (($__case_1)->v1)->v0;
+$c = ((($__case_1)->v1)->v1)->v0;
+$d = (((($__case_1)->v1)->v1)->v1)->v0;
+$e = ((((($__case_1)->v1)->v1)->v1)->v1)->v0;
+$f = (((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v0;
+$g = ((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v0;
+$h = (((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v0;
+$z = (((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v1;
 return ($GLOBALS['Data_Tuple_Tuple'])($a, ($GLOBALS['Data_Tuple_Tuple'])($b, ($GLOBALS['Data_Tuple_Tuple'])($c, ($GLOBALS['Data_Tuple_Tuple'])($d, ($GLOBALS['Data_Tuple_Tuple'])($e, ($GLOBALS['Data_Tuple_Tuple'])($f, ($GLOBALS['Data_Tuple_Tuple'])($g, ($GLOBALS['Data_Tuple_Tuple'])(($o1)($h), $z))))))));
 } else {
 throw new \Exception("Pattern match failure");
@@ -462,16 +471,16 @@ $Data_Tuple_Nested_over7 = (function() {
   $__body = function($o, $v) {
     $__case_0 = $o;
     $__case_1 = $v;
-    if (((($__case_1)->tag === "Tuple") && (((($__case_1)->values[1])->tag === "Tuple") && ((((($__case_1)->values[1])->values[1])->tag === "Tuple") && (((((($__case_1)->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && (((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && (((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple")))))))) {
+    if (((($__case_1)->tag === "Tuple") && (((($__case_1)->v1)->tag === "Tuple") && ((((($__case_1)->v1)->v1)->tag === "Tuple") && (((((($__case_1)->v1)->v1)->v1)->tag === "Tuple") && ((((((($__case_1)->v1)->v1)->v1)->v1)->tag === "Tuple") && (((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple") && (((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple")))))))) {
 $o1 = $__case_0;
-$a = ($__case_1)->values[0];
-$b = (($__case_1)->values[1])->values[0];
-$c = ((($__case_1)->values[1])->values[1])->values[0];
-$d = (((($__case_1)->values[1])->values[1])->values[1])->values[0];
-$e = ((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[0];
-$f = (((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
-$g = ((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
-$z = ((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1];
+$a = ($__case_1)->v0;
+$b = (($__case_1)->v1)->v0;
+$c = ((($__case_1)->v1)->v1)->v0;
+$d = (((($__case_1)->v1)->v1)->v1)->v0;
+$e = ((((($__case_1)->v1)->v1)->v1)->v1)->v0;
+$f = (((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v0;
+$g = ((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v0;
+$z = ((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v1;
 return ($GLOBALS['Data_Tuple_Tuple'])($a, ($GLOBALS['Data_Tuple_Tuple'])($b, ($GLOBALS['Data_Tuple_Tuple'])($c, ($GLOBALS['Data_Tuple_Tuple'])($d, ($GLOBALS['Data_Tuple_Tuple'])($e, ($GLOBALS['Data_Tuple_Tuple'])($f, ($GLOBALS['Data_Tuple_Tuple'])(($o1)($g), $z)))))));
 } else {
 throw new \Exception("Pattern match failure");
@@ -491,15 +500,15 @@ $Data_Tuple_Nested_over6 = (function() {
   $__body = function($o, $v) {
     $__case_0 = $o;
     $__case_1 = $v;
-    if (((($__case_1)->tag === "Tuple") && (((($__case_1)->values[1])->tag === "Tuple") && ((((($__case_1)->values[1])->values[1])->tag === "Tuple") && (((((($__case_1)->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple"))))))) {
+    if (((($__case_1)->tag === "Tuple") && (((($__case_1)->v1)->tag === "Tuple") && ((((($__case_1)->v1)->v1)->tag === "Tuple") && (((((($__case_1)->v1)->v1)->v1)->tag === "Tuple") && ((((((($__case_1)->v1)->v1)->v1)->v1)->tag === "Tuple") && ((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple"))))))) {
 $o1 = $__case_0;
-$a = ($__case_1)->values[0];
-$b = (($__case_1)->values[1])->values[0];
-$c = ((($__case_1)->values[1])->values[1])->values[0];
-$d = (((($__case_1)->values[1])->values[1])->values[1])->values[0];
-$e = ((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[0];
-$f = (((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
-$z = (((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1];
+$a = ($__case_1)->v0;
+$b = (($__case_1)->v1)->v0;
+$c = ((($__case_1)->v1)->v1)->v0;
+$d = (((($__case_1)->v1)->v1)->v1)->v0;
+$e = ((((($__case_1)->v1)->v1)->v1)->v1)->v0;
+$f = (((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v0;
+$z = (((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1;
 return ($GLOBALS['Data_Tuple_Tuple'])($a, ($GLOBALS['Data_Tuple_Tuple'])($b, ($GLOBALS['Data_Tuple_Tuple'])($c, ($GLOBALS['Data_Tuple_Tuple'])($d, ($GLOBALS['Data_Tuple_Tuple'])($e, ($GLOBALS['Data_Tuple_Tuple'])(($o1)($f), $z))))));
 } else {
 throw new \Exception("Pattern match failure");
@@ -519,14 +528,14 @@ $Data_Tuple_Nested_over5 = (function() {
   $__body = function($o, $v) {
     $__case_0 = $o;
     $__case_1 = $v;
-    if (((($__case_1)->tag === "Tuple") && (((($__case_1)->values[1])->tag === "Tuple") && ((((($__case_1)->values[1])->values[1])->tag === "Tuple") && (((((($__case_1)->values[1])->values[1])->values[1])->tag === "Tuple") && (((((($__case_1)->values[1])->values[1])->values[1])->values[1])->tag === "Tuple")))))) {
+    if (((($__case_1)->tag === "Tuple") && (((($__case_1)->v1)->tag === "Tuple") && ((((($__case_1)->v1)->v1)->tag === "Tuple") && (((((($__case_1)->v1)->v1)->v1)->tag === "Tuple") && (((((($__case_1)->v1)->v1)->v1)->v1)->tag === "Tuple")))))) {
 $o1 = $__case_0;
-$a = ($__case_1)->values[0];
-$b = (($__case_1)->values[1])->values[0];
-$c = ((($__case_1)->values[1])->values[1])->values[0];
-$d = (((($__case_1)->values[1])->values[1])->values[1])->values[0];
-$e = ((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[0];
-$z = ((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1];
+$a = ($__case_1)->v0;
+$b = (($__case_1)->v1)->v0;
+$c = ((($__case_1)->v1)->v1)->v0;
+$d = (((($__case_1)->v1)->v1)->v1)->v0;
+$e = ((((($__case_1)->v1)->v1)->v1)->v1)->v0;
+$z = ((((($__case_1)->v1)->v1)->v1)->v1)->v1;
 return ($GLOBALS['Data_Tuple_Tuple'])($a, ($GLOBALS['Data_Tuple_Tuple'])($b, ($GLOBALS['Data_Tuple_Tuple'])($c, ($GLOBALS['Data_Tuple_Tuple'])($d, ($GLOBALS['Data_Tuple_Tuple'])(($o1)($e), $z)))));
 } else {
 throw new \Exception("Pattern match failure");
@@ -546,13 +555,13 @@ $Data_Tuple_Nested_over4 = (function() {
   $__body = function($o, $v) {
     $__case_0 = $o;
     $__case_1 = $v;
-    if (((($__case_1)->tag === "Tuple") && (((($__case_1)->values[1])->tag === "Tuple") && ((((($__case_1)->values[1])->values[1])->tag === "Tuple") && ((((($__case_1)->values[1])->values[1])->values[1])->tag === "Tuple"))))) {
+    if (((($__case_1)->tag === "Tuple") && (((($__case_1)->v1)->tag === "Tuple") && ((((($__case_1)->v1)->v1)->tag === "Tuple") && ((((($__case_1)->v1)->v1)->v1)->tag === "Tuple"))))) {
 $o1 = $__case_0;
-$a = ($__case_1)->values[0];
-$b = (($__case_1)->values[1])->values[0];
-$c = ((($__case_1)->values[1])->values[1])->values[0];
-$d = (((($__case_1)->values[1])->values[1])->values[1])->values[0];
-$z = (((($__case_1)->values[1])->values[1])->values[1])->values[1];
+$a = ($__case_1)->v0;
+$b = (($__case_1)->v1)->v0;
+$c = ((($__case_1)->v1)->v1)->v0;
+$d = (((($__case_1)->v1)->v1)->v1)->v0;
+$z = (((($__case_1)->v1)->v1)->v1)->v1;
 return ($GLOBALS['Data_Tuple_Tuple'])($a, ($GLOBALS['Data_Tuple_Tuple'])($b, ($GLOBALS['Data_Tuple_Tuple'])($c, ($GLOBALS['Data_Tuple_Tuple'])(($o1)($d), $z))));
 } else {
 throw new \Exception("Pattern match failure");
@@ -572,12 +581,12 @@ $Data_Tuple_Nested_over3 = (function() {
   $__body = function($o, $v) {
     $__case_0 = $o;
     $__case_1 = $v;
-    if (((($__case_1)->tag === "Tuple") && (((($__case_1)->values[1])->tag === "Tuple") && (((($__case_1)->values[1])->values[1])->tag === "Tuple")))) {
+    if (((($__case_1)->tag === "Tuple") && (((($__case_1)->v1)->tag === "Tuple") && (((($__case_1)->v1)->v1)->tag === "Tuple")))) {
 $o1 = $__case_0;
-$a = ($__case_1)->values[0];
-$b = (($__case_1)->values[1])->values[0];
-$c = ((($__case_1)->values[1])->values[1])->values[0];
-$z = ((($__case_1)->values[1])->values[1])->values[1];
+$a = ($__case_1)->v0;
+$b = (($__case_1)->v1)->v0;
+$c = ((($__case_1)->v1)->v1)->v0;
+$z = ((($__case_1)->v1)->v1)->v1;
 return ($GLOBALS['Data_Tuple_Tuple'])($a, ($GLOBALS['Data_Tuple_Tuple'])($b, ($GLOBALS['Data_Tuple_Tuple'])(($o1)($c), $z)));
 } else {
 throw new \Exception("Pattern match failure");
@@ -597,11 +606,11 @@ $Data_Tuple_Nested_over2 = (function() {
   $__body = function($o, $v) {
     $__case_0 = $o;
     $__case_1 = $v;
-    if (((($__case_1)->tag === "Tuple") && ((($__case_1)->values[1])->tag === "Tuple"))) {
+    if (((($__case_1)->tag === "Tuple") && ((($__case_1)->v1)->tag === "Tuple"))) {
 $o1 = $__case_0;
-$a = ($__case_1)->values[0];
-$b = (($__case_1)->values[1])->values[0];
-$z = (($__case_1)->values[1])->values[1];
+$a = ($__case_1)->v0;
+$b = (($__case_1)->v1)->v0;
+$z = (($__case_1)->v1)->v1;
 return ($GLOBALS['Data_Tuple_Tuple'])($a, ($GLOBALS['Data_Tuple_Tuple'])(($o1)($b), $z));
 } else {
 throw new \Exception("Pattern match failure");
@@ -621,19 +630,19 @@ $Data_Tuple_Nested_over10 = (function() {
   $__body = function($o, $v) {
     $__case_0 = $o;
     $__case_1 = $v;
-    if (((($__case_1)->tag === "Tuple") && (((($__case_1)->values[1])->tag === "Tuple") && ((((($__case_1)->values[1])->values[1])->tag === "Tuple") && (((((($__case_1)->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && (((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && (((((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple"))))))))))) {
+    if (((($__case_1)->tag === "Tuple") && (((($__case_1)->v1)->tag === "Tuple") && ((((($__case_1)->v1)->v1)->tag === "Tuple") && (((((($__case_1)->v1)->v1)->v1)->tag === "Tuple") && ((((((($__case_1)->v1)->v1)->v1)->v1)->tag === "Tuple") && (((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple") && ((((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple") && (((((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple") && ((((((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple") && ((((((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple"))))))))))) {
 $o1 = $__case_0;
-$a = ($__case_1)->values[0];
-$b = (($__case_1)->values[1])->values[0];
-$c = ((($__case_1)->values[1])->values[1])->values[0];
-$d = (((($__case_1)->values[1])->values[1])->values[1])->values[0];
-$e = ((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[0];
-$f = (((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
-$g = ((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
-$h = (((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
-$i = ((((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
-$j = (((((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
-$z = (((((((((($__case_1)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1];
+$a = ($__case_1)->v0;
+$b = (($__case_1)->v1)->v0;
+$c = ((($__case_1)->v1)->v1)->v0;
+$d = (((($__case_1)->v1)->v1)->v1)->v0;
+$e = ((((($__case_1)->v1)->v1)->v1)->v1)->v0;
+$f = (((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v0;
+$g = ((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v0;
+$h = (((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v0;
+$i = ((((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v0;
+$j = (((((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v0;
+$z = (((((((((($__case_1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v1;
 return ($GLOBALS['Data_Tuple_Tuple'])($a, ($GLOBALS['Data_Tuple_Tuple'])($b, ($GLOBALS['Data_Tuple_Tuple'])($c, ($GLOBALS['Data_Tuple_Tuple'])($d, ($GLOBALS['Data_Tuple_Tuple'])($e, ($GLOBALS['Data_Tuple_Tuple'])($f, ($GLOBALS['Data_Tuple_Tuple'])($g, ($GLOBALS['Data_Tuple_Tuple'])($h, ($GLOBALS['Data_Tuple_Tuple'])($i, ($GLOBALS['Data_Tuple_Tuple'])(($o1)($j), $z))))))))));
 } else {
 throw new \Exception("Pattern match failure");
@@ -655,8 +664,8 @@ $Data_Tuple_Nested_over1 = (function() {
     $__case_1 = $v;
     if ((($__case_1)->tag === "Tuple")) {
 $o1 = $__case_0;
-$a = ($__case_1)->values[0];
-$z = ($__case_1)->values[1];
+$a = ($__case_1)->v0;
+$z = ($__case_1)->v1;
 return ($GLOBALS['Data_Tuple_Tuple'])(($o1)($a), $z);
 } else {
 throw new \Exception("Pattern match failure");
@@ -675,8 +684,8 @@ throw new \Exception("Pattern match failure");
 $Data_Tuple_Nested_get9 = (function() {
   $__body = function($v) {
     $__case_0 = $v;
-    if (((($__case_0)->tag === "Tuple") && (((($__case_0)->values[1])->tag === "Tuple") && ((((($__case_0)->values[1])->values[1])->tag === "Tuple") && (((((($__case_0)->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((($__case_0)->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && (((((((($__case_0)->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((((($__case_0)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && (((((((((($__case_0)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && (((((((((($__case_0)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple")))))))))) {
-$i = ((((((((($__case_0)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
+    if (((($__case_0)->tag === "Tuple") && (((($__case_0)->v1)->tag === "Tuple") && ((((($__case_0)->v1)->v1)->tag === "Tuple") && (((((($__case_0)->v1)->v1)->v1)->tag === "Tuple") && ((((((($__case_0)->v1)->v1)->v1)->v1)->tag === "Tuple") && (((((((($__case_0)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple") && ((((((((($__case_0)->v1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple") && (((((((((($__case_0)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple") && (((((((((($__case_0)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple")))))))))) {
+$i = ((((((((($__case_0)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v0;
 return $i;
 } else {
 throw new \Exception("Pattern match failure");
@@ -695,8 +704,8 @@ throw new \Exception("Pattern match failure");
 $Data_Tuple_Nested_get8 = (function() {
   $__body = function($v) {
     $__case_0 = $v;
-    if (((($__case_0)->tag === "Tuple") && (((($__case_0)->values[1])->tag === "Tuple") && ((((($__case_0)->values[1])->values[1])->tag === "Tuple") && (((((($__case_0)->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((($__case_0)->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && (((((((($__case_0)->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((((($__case_0)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((((($__case_0)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple"))))))))) {
-$h = (((((((($__case_0)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
+    if (((($__case_0)->tag === "Tuple") && (((($__case_0)->v1)->tag === "Tuple") && ((((($__case_0)->v1)->v1)->tag === "Tuple") && (((((($__case_0)->v1)->v1)->v1)->tag === "Tuple") && ((((((($__case_0)->v1)->v1)->v1)->v1)->tag === "Tuple") && (((((((($__case_0)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple") && ((((((((($__case_0)->v1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple") && ((((((((($__case_0)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple"))))))))) {
+$h = (((((((($__case_0)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v0;
 return $h;
 } else {
 throw new \Exception("Pattern match failure");
@@ -715,8 +724,8 @@ throw new \Exception("Pattern match failure");
 $Data_Tuple_Nested_get7 = (function() {
   $__body = function($v) {
     $__case_0 = $v;
-    if (((($__case_0)->tag === "Tuple") && (((($__case_0)->values[1])->tag === "Tuple") && ((((($__case_0)->values[1])->values[1])->tag === "Tuple") && (((((($__case_0)->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((($__case_0)->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && (((((((($__case_0)->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && (((((((($__case_0)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple")))))))) {
-$g = ((((((($__case_0)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
+    if (((($__case_0)->tag === "Tuple") && (((($__case_0)->v1)->tag === "Tuple") && ((((($__case_0)->v1)->v1)->tag === "Tuple") && (((((($__case_0)->v1)->v1)->v1)->tag === "Tuple") && ((((((($__case_0)->v1)->v1)->v1)->v1)->tag === "Tuple") && (((((((($__case_0)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple") && (((((((($__case_0)->v1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple")))))))) {
+$g = ((((((($__case_0)->v1)->v1)->v1)->v1)->v1)->v1)->v0;
 return $g;
 } else {
 throw new \Exception("Pattern match failure");
@@ -735,8 +744,8 @@ throw new \Exception("Pattern match failure");
 $Data_Tuple_Nested_get6 = (function() {
   $__body = function($v) {
     $__case_0 = $v;
-    if (((($__case_0)->tag === "Tuple") && (((($__case_0)->values[1])->tag === "Tuple") && ((((($__case_0)->values[1])->values[1])->tag === "Tuple") && (((((($__case_0)->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((($__case_0)->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((($__case_0)->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple"))))))) {
-$f = (((((($__case_0)->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
+    if (((($__case_0)->tag === "Tuple") && (((($__case_0)->v1)->tag === "Tuple") && ((((($__case_0)->v1)->v1)->tag === "Tuple") && (((((($__case_0)->v1)->v1)->v1)->tag === "Tuple") && ((((((($__case_0)->v1)->v1)->v1)->v1)->tag === "Tuple") && ((((((($__case_0)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple"))))))) {
+$f = (((((($__case_0)->v1)->v1)->v1)->v1)->v1)->v0;
 return $f;
 } else {
 throw new \Exception("Pattern match failure");
@@ -755,8 +764,8 @@ throw new \Exception("Pattern match failure");
 $Data_Tuple_Nested_get5 = (function() {
   $__body = function($v) {
     $__case_0 = $v;
-    if (((($__case_0)->tag === "Tuple") && (((($__case_0)->values[1])->tag === "Tuple") && ((((($__case_0)->values[1])->values[1])->tag === "Tuple") && (((((($__case_0)->values[1])->values[1])->values[1])->tag === "Tuple") && (((((($__case_0)->values[1])->values[1])->values[1])->values[1])->tag === "Tuple")))))) {
-$e = ((((($__case_0)->values[1])->values[1])->values[1])->values[1])->values[0];
+    if (((($__case_0)->tag === "Tuple") && (((($__case_0)->v1)->tag === "Tuple") && ((((($__case_0)->v1)->v1)->tag === "Tuple") && (((((($__case_0)->v1)->v1)->v1)->tag === "Tuple") && (((((($__case_0)->v1)->v1)->v1)->v1)->tag === "Tuple")))))) {
+$e = ((((($__case_0)->v1)->v1)->v1)->v1)->v0;
 return $e;
 } else {
 throw new \Exception("Pattern match failure");
@@ -775,8 +784,8 @@ throw new \Exception("Pattern match failure");
 $Data_Tuple_Nested_get4 = (function() {
   $__body = function($v) {
     $__case_0 = $v;
-    if (((($__case_0)->tag === "Tuple") && (((($__case_0)->values[1])->tag === "Tuple") && ((((($__case_0)->values[1])->values[1])->tag === "Tuple") && ((((($__case_0)->values[1])->values[1])->values[1])->tag === "Tuple"))))) {
-$d = (((($__case_0)->values[1])->values[1])->values[1])->values[0];
+    if (((($__case_0)->tag === "Tuple") && (((($__case_0)->v1)->tag === "Tuple") && ((((($__case_0)->v1)->v1)->tag === "Tuple") && ((((($__case_0)->v1)->v1)->v1)->tag === "Tuple"))))) {
+$d = (((($__case_0)->v1)->v1)->v1)->v0;
 return $d;
 } else {
 throw new \Exception("Pattern match failure");
@@ -795,8 +804,8 @@ throw new \Exception("Pattern match failure");
 $Data_Tuple_Nested_get3 = (function() {
   $__body = function($v) {
     $__case_0 = $v;
-    if (((($__case_0)->tag === "Tuple") && (((($__case_0)->values[1])->tag === "Tuple") && (((($__case_0)->values[1])->values[1])->tag === "Tuple")))) {
-$c = ((($__case_0)->values[1])->values[1])->values[0];
+    if (((($__case_0)->tag === "Tuple") && (((($__case_0)->v1)->tag === "Tuple") && (((($__case_0)->v1)->v1)->tag === "Tuple")))) {
+$c = ((($__case_0)->v1)->v1)->v0;
 return $c;
 } else {
 throw new \Exception("Pattern match failure");
@@ -815,8 +824,8 @@ throw new \Exception("Pattern match failure");
 $Data_Tuple_Nested_get2 = (function() {
   $__body = function($v) {
     $__case_0 = $v;
-    if (((($__case_0)->tag === "Tuple") && ((($__case_0)->values[1])->tag === "Tuple"))) {
-$b = (($__case_0)->values[1])->values[0];
+    if (((($__case_0)->tag === "Tuple") && ((($__case_0)->v1)->tag === "Tuple"))) {
+$b = (($__case_0)->v1)->v0;
 return $b;
 } else {
 throw new \Exception("Pattern match failure");
@@ -835,8 +844,8 @@ throw new \Exception("Pattern match failure");
 $Data_Tuple_Nested_get10 = (function() {
   $__body = function($v) {
     $__case_0 = $v;
-    if (((($__case_0)->tag === "Tuple") && (((($__case_0)->values[1])->tag === "Tuple") && ((((($__case_0)->values[1])->values[1])->tag === "Tuple") && (((((($__case_0)->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((($__case_0)->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && (((((((($__case_0)->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((((($__case_0)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && (((((((((($__case_0)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((((((($__case_0)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple") && ((((((((((($__case_0)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->tag === "Tuple"))))))))))) {
-$j = (((((((((($__case_0)->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[1])->values[0];
+    if (((($__case_0)->tag === "Tuple") && (((($__case_0)->v1)->tag === "Tuple") && ((((($__case_0)->v1)->v1)->tag === "Tuple") && (((((($__case_0)->v1)->v1)->v1)->tag === "Tuple") && ((((((($__case_0)->v1)->v1)->v1)->v1)->tag === "Tuple") && (((((((($__case_0)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple") && ((((((((($__case_0)->v1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple") && (((((((((($__case_0)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple") && ((((((((((($__case_0)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple") && ((((((((((($__case_0)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->tag === "Tuple"))))))))))) {
+$j = (((((((((($__case_0)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v1)->v0;
 return $j;
 } else {
 throw new \Exception("Pattern match failure");
@@ -856,7 +865,7 @@ $Data_Tuple_Nested_get1 = (function() {
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Tuple")) {
-$a = ($__case_0)->values[0];
+$a = ($__case_0)->v0;
 return $a;
 } else {
 throw new \Exception("Pattern match failure");

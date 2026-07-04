@@ -12,6 +12,15 @@ require_once __DIR__ . '/../Effect.Console/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 require_once __DIR__ . '/../Test.RBTree/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -40,20 +49,20 @@ $Test_RBTree_lessThan = ($GLOBALS['Data_Ord_lessThan'])($GLOBALS['Data_Ord_ordIn
 $Test_RBTree_sub = ($GLOBALS['Data_Ring_sub'])($GLOBALS['Data_Ring_ringInt']);
 
 // Test_RBTree_R
-$Test_RBTree_R = (object)["tag" => "R", "values" => []];
+$Test_RBTree_R = new Phpurs_Data0("R");
 
 // Test_RBTree_B
-$Test_RBTree_B = (object)["tag" => "B", "values" => []];
+$Test_RBTree_B = new Phpurs_Data0("B");
 
 // Test_RBTree_E
-$Test_RBTree_E = (object)["tag" => "E", "values" => []];
+$Test_RBTree_E = new Phpurs_Data0("E");
 
 // Test_RBTree_T
 $Test_RBTree_T = (function() {
   $__fn = function($value0, $value1 = null, $value2 = null, $value3 = null) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 4) return phpurs_curry_fallback($__fn, func_get_args(), 4);
-    $__res = (object)["tag" => "T", "values" => [$value0, $value1, $value2, $value3]];
+    $__res = new Phpurs_Data4("T", $value0, $value1, $value2, $value3);
   return $__num > 4 ? $__res(...array_slice(func_get_args(), 4)) : $__res;
   };
   return $__fn;
@@ -96,8 +105,8 @@ if ((($__case_0)->tag === "E")) {
 return 0;
 } else {
 if ((($__case_0)->tag === "T")) {
-$a = ($__case_0)->values[1];
-$b = ($__case_0)->values[3];
+$a = ($__case_0)->v1;
+$b = ($__case_0)->v3;
 return ($GLOBALS['Test_RBTree_add'])(1, ($GLOBALS['Test_RBTree_max'])(($GLOBALS['Test_RBTree_depth'])($a), ($GLOBALS['Test_RBTree_depth'])($b)));
 } else {
 throw new \Exception("Pattern match failure");
@@ -117,44 +126,44 @@ $Test_RBTree_balance = (function() {
     $__case_1 = $v1;
     $__case_2 = $v2;
     $__case_3 = $v3;
-    if (((($__case_0)->tag === "B") && (((($__case_1)->tag === "T") && ((($__case_1)->values[0])->tag === "R")) && (((($__case_1)->values[1])->tag === "T") && (((($__case_1)->values[1])->values[0])->tag === "R"))))) {
-$a = (($__case_1)->values[1])->values[1];
-$x = (($__case_1)->values[1])->values[2];
-$b = (($__case_1)->values[1])->values[3];
-$y = ($__case_1)->values[2];
-$c = ($__case_1)->values[3];
+    if (((($__case_0)->tag === "B") && (((($__case_1)->tag === "T") && ((($__case_1)->v0)->tag === "R")) && (((($__case_1)->v1)->tag === "T") && (((($__case_1)->v1)->v0)->tag === "R"))))) {
+$a = (($__case_1)->v1)->v1;
+$x = (($__case_1)->v1)->v2;
+$b = (($__case_1)->v1)->v3;
+$y = ($__case_1)->v2;
+$c = ($__case_1)->v3;
 $z = $__case_2;
 $d = $__case_3;
 return ($GLOBALS['Test_RBTree_T'])($GLOBALS['Test_RBTree_R'], ($GLOBALS['Test_RBTree_T'])($GLOBALS['Test_RBTree_B'], $a, $x, $b), $y, ($GLOBALS['Test_RBTree_T'])($GLOBALS['Test_RBTree_B'], $c, $z, $d));
 } else {
-if (((($__case_0)->tag === "B") && (((($__case_1)->tag === "T") && ((($__case_1)->values[0])->tag === "R")) && (((($__case_1)->values[3])->tag === "T") && (((($__case_1)->values[3])->values[0])->tag === "R"))))) {
-$a = ($__case_1)->values[1];
-$x = ($__case_1)->values[2];
-$b = (($__case_1)->values[3])->values[1];
-$y = (($__case_1)->values[3])->values[2];
-$c = (($__case_1)->values[3])->values[3];
+if (((($__case_0)->tag === "B") && (((($__case_1)->tag === "T") && ((($__case_1)->v0)->tag === "R")) && (((($__case_1)->v3)->tag === "T") && (((($__case_1)->v3)->v0)->tag === "R"))))) {
+$a = ($__case_1)->v1;
+$x = ($__case_1)->v2;
+$b = (($__case_1)->v3)->v1;
+$y = (($__case_1)->v3)->v2;
+$c = (($__case_1)->v3)->v3;
 $z = $__case_2;
 $d = $__case_3;
 return ($GLOBALS['Test_RBTree_T'])($GLOBALS['Test_RBTree_R'], ($GLOBALS['Test_RBTree_T'])($GLOBALS['Test_RBTree_B'], $a, $x, $b), $y, ($GLOBALS['Test_RBTree_T'])($GLOBALS['Test_RBTree_B'], $c, $z, $d));
 } else {
-if (((($__case_0)->tag === "B") && (((($__case_3)->tag === "T") && ((($__case_3)->values[0])->tag === "R")) && (((($__case_3)->values[1])->tag === "T") && (((($__case_3)->values[1])->values[0])->tag === "R"))))) {
+if (((($__case_0)->tag === "B") && (((($__case_3)->tag === "T") && ((($__case_3)->v0)->tag === "R")) && (((($__case_3)->v1)->tag === "T") && (((($__case_3)->v1)->v0)->tag === "R"))))) {
 $a = $__case_1;
 $x = $__case_2;
-$b = (($__case_3)->values[1])->values[1];
-$y = (($__case_3)->values[1])->values[2];
-$c = (($__case_3)->values[1])->values[3];
-$z = ($__case_3)->values[2];
-$d = ($__case_3)->values[3];
+$b = (($__case_3)->v1)->v1;
+$y = (($__case_3)->v1)->v2;
+$c = (($__case_3)->v1)->v3;
+$z = ($__case_3)->v2;
+$d = ($__case_3)->v3;
 return ($GLOBALS['Test_RBTree_T'])($GLOBALS['Test_RBTree_R'], ($GLOBALS['Test_RBTree_T'])($GLOBALS['Test_RBTree_B'], $a, $x, $b), $y, ($GLOBALS['Test_RBTree_T'])($GLOBALS['Test_RBTree_B'], $c, $z, $d));
 } else {
-if (((($__case_0)->tag === "B") && (((($__case_3)->tag === "T") && ((($__case_3)->values[0])->tag === "R")) && (((($__case_3)->values[3])->tag === "T") && (((($__case_3)->values[3])->values[0])->tag === "R"))))) {
+if (((($__case_0)->tag === "B") && (((($__case_3)->tag === "T") && ((($__case_3)->v0)->tag === "R")) && (((($__case_3)->v3)->tag === "T") && (((($__case_3)->v3)->v0)->tag === "R"))))) {
 $a = $__case_1;
 $x = $__case_2;
-$b = ($__case_3)->values[1];
-$y = ($__case_3)->values[2];
-$c = (($__case_3)->values[3])->values[1];
-$z = (($__case_3)->values[3])->values[2];
-$d = (($__case_3)->values[3])->values[3];
+$b = ($__case_3)->v1;
+$y = ($__case_3)->v2;
+$c = (($__case_3)->v3)->v1;
+$z = (($__case_3)->v3)->v2;
+$d = (($__case_3)->v3)->v3;
 return ($GLOBALS['Test_RBTree_T'])($GLOBALS['Test_RBTree_R'], ($GLOBALS['Test_RBTree_T'])($GLOBALS['Test_RBTree_B'], $a, $x, $b), $y, ($GLOBALS['Test_RBTree_T'])($GLOBALS['Test_RBTree_B'], $c, $z, $d));
 } else {
 if (true) {
@@ -189,9 +198,9 @@ $makeBlack = (function() {
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "T")) {
-$a = ($__case_0)->values[1];
-$y = ($__case_0)->values[2];
-$b = ($__case_0)->values[3];
+$a = ($__case_0)->v1;
+$y = ($__case_0)->v2;
+$b = ($__case_0)->v3;
 return ($GLOBALS['Test_RBTree_T'])($GLOBALS['Test_RBTree_B'], $a, $y, $b);
 } else {
 if ((($__case_0)->tag === "E")) {
@@ -219,10 +228,10 @@ if ((($__case_0)->tag === "E")) {
 return ($GLOBALS['Test_RBTree_T'])($GLOBALS['Test_RBTree_R'], $GLOBALS['Test_RBTree_E'], $x, $GLOBALS['Test_RBTree_E']);
 } else {
 if ((($__case_0)->tag === "T")) {
-$color = ($__case_0)->values[0];
-$a = ($__case_0)->values[1];
-$y = ($__case_0)->values[2];
-$b = ($__case_0)->values[3];
+$color = ($__case_0)->v0;
+$a = ($__case_0)->v1;
+$y = ($__case_0)->v2;
+$b = ($__case_0)->v3;
 $__case_0 = ($GLOBALS['Test_RBTree_lessThan'])($x, $y);
 if (($__case_0 === true)) {
 return ($GLOBALS['Test_RBTree_balance'])($color, ($ins)($a), $y, $b);

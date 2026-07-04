@@ -41,6 +41,15 @@ require_once __DIR__ . '/../Data.Unfoldable/index.php';
 require_once __DIR__ . '/../Data.Unfoldable1/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -75,14 +84,14 @@ $Data_List_Types_identity = ($GLOBALS['Control_Category_identity'])($GLOBALS['Co
 $Data_List_Types_conj = ($GLOBALS['Data_HeytingAlgebra_conj'])($GLOBALS['Data_HeytingAlgebra_heytingAlgebraBoolean']);
 
 // Data_List_Types_Nil
-$Data_List_Types_Nil = (object)["tag" => "Nil", "values" => []];
+$Data_List_Types_Nil = new Phpurs_Data0("Nil");
 
 // Data_List_Types_Cons
 $Data_List_Types_Cons = (function() {
   $__fn = function($value0, $value1 = null) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
-    $__res = (object)["tag" => "Cons", "values" => [$value0, $value1]];
+    $__res = new Phpurs_Data2("Cons", $value0, $value1);
   return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
@@ -104,8 +113,8 @@ $Data_List_Types_toList = (function() {
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "NonEmpty")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 return ($GLOBALS['Data_List_Types_Cons'])($x, $xs);
 } else {
 throw new \Exception("Pattern match failure");
@@ -138,8 +147,8 @@ $Data_List_Types_nelCons = (function() {
     $__case_1 = $v;
     if ((($__case_1)->tag === "NonEmpty")) {
 $a1 = $__case_0;
-$b = ($__case_1)->values[0];
-$bs = ($__case_1)->values[1];
+$b = ($__case_1)->v0;
+$bs = ($__case_1)->v1;
 return ($GLOBALS['Data_List_Types_NonEmptyList'])(($GLOBALS['Data_NonEmpty_NonEmpty'])($a1, ($GLOBALS['Data_List_Types_Cons'])($b, $bs)));
 } else {
 throw new \Exception("Pattern match failure");
@@ -166,10 +175,10 @@ $chunkedRevMap = (function() use (&$chunkedRevMap, $f) {
 while (true) {
 $__case_0 = $v;
 $__case_1 = $v1;
-if (((($__case_1)->tag === "Cons") && (((($__case_1)->values[1])->tag === "Cons") && (((($__case_1)->values[1])->values[1])->tag === "Cons")))) {
+if (((($__case_1)->tag === "Cons") && (((($__case_1)->v1)->tag === "Cons") && (((($__case_1)->v1)->v1)->tag === "Cons")))) {
 $chunksAcc = $__case_0;
 $chunk = $__case_1;
-$xs = ((($__case_1)->values[1])->values[1])->values[1];
+$xs = ((($__case_1)->v1)->v1)->v1;
 $__tco_tmp_0 = ($GLOBALS['Data_List_Types_Cons'])($chunk, $chunksAcc);
 $__tco_tmp_1 = $xs;
 $v = $__tco_tmp_0;
@@ -182,13 +191,13 @@ $xs = $__case_1;
 $unrolledMap = (function() use ($f) {
   $__body = function($v2) use ($f) {
     $__case_0 = $v2;
-    if (((($__case_0)->tag === "Cons") && (((($__case_0)->values[1])->tag === "Cons") && (((($__case_0)->values[1])->values[1])->tag === "Nil")))) {
-$x1 = ($__case_0)->values[0];
-$x2 = (($__case_0)->values[1])->values[0];
+    if (((($__case_0)->tag === "Cons") && (((($__case_0)->v1)->tag === "Cons") && (((($__case_0)->v1)->v1)->tag === "Nil")))) {
+$x1 = ($__case_0)->v0;
+$x2 = (($__case_0)->v1)->v0;
 return ($GLOBALS['Data_List_Types_Cons'])(($f)($x1), ($GLOBALS['Data_List_Types_Cons'])(($f)($x2), $GLOBALS['Data_List_Types_Nil']));
 } else {
-if (((($__case_0)->tag === "Cons") && ((($__case_0)->values[1])->tag === "Nil"))) {
-$x1 = ($__case_0)->values[0];
+if (((($__case_0)->tag === "Cons") && ((($__case_0)->v1)->tag === "Nil"))) {
+$x1 = ($__case_0)->v0;
 return ($GLOBALS['Data_List_Types_Cons'])(($f)($x1), $GLOBALS['Data_List_Types_Nil']);
 } else {
 if (true) {
@@ -214,11 +223,11 @@ $reverseUnrolledMap = (function() use (&$reverseUnrolledMap, $f) {
 while (true) {
 $__case_0 = $v2;
 $__case_1 = $v3;
-if (((($__case_0)->tag === "Cons") && (((($__case_0)->values[0])->tag === "Cons") && ((((($__case_0)->values[0])->values[1])->tag === "Cons") && ((((($__case_0)->values[0])->values[1])->values[1])->tag === "Cons"))))) {
-$x1 = (($__case_0)->values[0])->values[0];
-$x2 = ((($__case_0)->values[0])->values[1])->values[0];
-$x3 = (((($__case_0)->values[0])->values[1])->values[1])->values[0];
-$cs = ($__case_0)->values[1];
+if (((($__case_0)->tag === "Cons") && (((($__case_0)->v0)->tag === "Cons") && ((((($__case_0)->v0)->v1)->tag === "Cons") && ((((($__case_0)->v0)->v1)->v1)->tag === "Cons"))))) {
+$x1 = (($__case_0)->v0)->v0;
+$x2 = ((($__case_0)->v0)->v1)->v0;
+$x3 = (((($__case_0)->v0)->v1)->v1)->v0;
+$cs = ($__case_0)->v1;
 $acc = $__case_1;
 $__tco_tmp_0 = $cs;
 $__tco_tmp_1 = ($GLOBALS['Data_List_Types_Cons'])(($f)($x1), ($GLOBALS['Data_List_Types_Cons'])(($f)($x2), ($GLOBALS['Data_List_Types_Cons'])(($f)($x3), $acc)));
@@ -283,8 +292,8 @@ return $acc;
 } else {
 if ((($__case_1)->tag === "Cons")) {
 $acc = $__case_0;
-$x = ($__case_1)->values[0];
-$xs = ($__case_1)->values[1];
+$x = ($__case_1)->v0;
+$xs = ($__case_1)->v1;
 $__tco_tmp_0 = ($GLOBALS['Data_List_Types_Cons'])($x, $acc);
 $__tco_tmp_1 = $xs;
 $v = $__tco_tmp_0;
@@ -319,8 +328,8 @@ if ((($__case_0)->tag === "Nil")) {
 return $b;
 } else {
 if ((($__case_0)->tag === "Cons")) {
-$a = ($__case_0)->values[0];
-$as = ($__case_0)->values[1];
+$a = ($__case_0)->v0;
+$as = ($__case_0)->v1;
 $__tco_tmp_0 = ($f)($b, $a);
 $__tco_tmp_1 = $as;
 $b = $__tco_tmp_0;
@@ -387,8 +396,8 @@ $Data_List_Types_foldableWithIndexList = ($GLOBALS['Data_FoldableWithIndex_Folda
   $__body = function($v1) {
     $__case_0 = $v1;
     if ((($__case_0)->tag === "Tuple")) {
-$i = ($__case_0)->values[0];
-$acc = ($__case_0)->values[1];
+$i = ($__case_0)->v0;
+$acc = ($__case_0)->v1;
 return (function() use ($i, $acc) {
   $__fn = function($a) use ($i, $acc, &$__fn) {
   $__num = func_num_args();
@@ -413,14 +422,14 @@ throw new \Exception("Pattern match failure");
     $v = ($rev)(($GLOBALS['Data_Tuple_Tuple'])(0, $GLOBALS['Data_List_Types_Nil']), $xs);
     $__case_0 = $v;
     if ((($__case_0)->tag === "Tuple")) {
-$len = ($__case_0)->values[0];
-$revList = ($__case_0)->values[1];
+$len = ($__case_0)->v0;
+$revList = ($__case_0)->v1;
 return ($GLOBALS['Data_Tuple_snd'])(($GLOBALS['Data_List_Types_foldl'])((function() use ($f) {
   $__body = function($v1) use ($f) {
     $__case_0 = $v1;
     if ((($__case_0)->tag === "Tuple")) {
-$i = ($__case_0)->values[0];
-$b__prime__ = ($__case_0)->values[1];
+$i = ($__case_0)->v0;
+$b__prime__ = ($__case_0)->v1;
 return (function() use ($i, $f, $b__prime__) {
   $__fn = function($a) use ($i, $f, $b__prime__, &$__fn) {
   $__num = func_num_args();
@@ -461,8 +470,8 @@ throw new \Exception("Pattern match failure");
   $__body = function($v) use ($f) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Tuple")) {
-$i = ($__case_0)->values[0];
-$b = ($__case_0)->values[1];
+$i = ($__case_0)->v0;
+$b = ($__case_0)->v1;
 return (function() use ($i, $f, $b) {
   $__fn = function($a) use ($i, $f, $b, &$__fn) {
   $__num = func_num_args();
@@ -713,8 +722,8 @@ $Data_List_Types_semigroupNonEmptyList = ($GLOBALS['Data_Semigroup_Semigroup__do
     $__case_0 = $v;
     $__case_1 = $as__prime__;
     if ((($__case_0)->tag === "NonEmpty")) {
-$a = ($__case_0)->values[0];
-$as = ($__case_0)->values[1];
+$a = ($__case_0)->v0;
+$as = ($__case_0)->v1;
 $as__prime__1 = $__case_1;
 return ($GLOBALS['Data_List_Types_NonEmptyList'])(($GLOBALS['Data_NonEmpty_NonEmpty'])($a, ($GLOBALS['Data_List_Types_append1'])($as, ($GLOBALS['Data_List_Types_toList'])($as__prime__1))));
 } else {
@@ -977,17 +986,17 @@ $go = (function() use ($f, &$go) {
 while (true) {
 $v = ($f)($source);
 $__case_0 = $v;
-if (((($__case_0)->tag === "Tuple") && ((($__case_0)->values[1])->tag === "Just"))) {
-$one = ($__case_0)->values[0];
-$rest = (($__case_0)->values[1])->values[0];
+if (((($__case_0)->tag === "Tuple") && ((($__case_0)->v1)->tag === "Just"))) {
+$one = ($__case_0)->v0;
+$rest = (($__case_0)->v1)->v0;
 $__tco_tmp_0 = $rest;
 $__tco_tmp_1 = ($GLOBALS['Data_List_Types_Cons'])($one, $memo);
 $source = $__tco_tmp_0;
 $memo = $__tco_tmp_1;
 continue;
 } else {
-if (((($__case_0)->tag === "Tuple") && ((($__case_0)->values[1])->tag === "Nothing"))) {
-$one = ($__case_0)->values[0];
+if (((($__case_0)->tag === "Tuple") && ((($__case_0)->v1)->tag === "Nothing"))) {
+$one = ($__case_0)->v0;
 return ($GLOBALS['Data_List_Types_foldl'])(($GLOBALS['Data_Function_flip'])($GLOBALS['Data_List_Types_Cons']), $GLOBALS['Data_List_Types_Nil'], ($GLOBALS['Data_List_Types_Cons'])($one, $memo));
 } else {
 throw new \Exception("Pattern match failure");
@@ -1020,9 +1029,9 @@ $__case_0 = $v;
 if ((($__case_0)->tag === "Nothing")) {
 return ($GLOBALS['Data_List_Types_foldl'])(($GLOBALS['Data_Function_flip'])($GLOBALS['Data_List_Types_Cons']), $GLOBALS['Data_List_Types_Nil'], $memo);
 } else {
-if (((($__case_0)->tag === "Just") && ((($__case_0)->values[0])->tag === "Tuple"))) {
-$one = (($__case_0)->values[0])->values[0];
-$rest = (($__case_0)->values[0])->values[1];
+if (((($__case_0)->tag === "Just") && ((($__case_0)->v0)->tag === "Tuple"))) {
+$one = (($__case_0)->v0)->v0;
+$rest = (($__case_0)->v0)->v1;
 $__tco_tmp_0 = $rest;
 $__tco_tmp_1 = ($GLOBALS['Data_List_Types_Cons'])($one, $memo);
 $source = $__tco_tmp_0;
@@ -1066,7 +1075,7 @@ $Data_List_Types_extendNonEmptyList = ($GLOBALS['Control_Extend_Extend__dollar__
     if ((($__case_1)->tag === "NonEmpty")) {
 $f1 = $__case_0;
 $w = $__case_1;
-$as = ($__case_1)->values[1];
+$as = ($__case_1)->v1;
 $go = (function() use ($f1) {
   $__body = function($a, $v1) use ($f1) {
     $__case_0 = $a;
@@ -1121,7 +1130,7 @@ return $GLOBALS['Data_List_Types_Nil'];
 if ((($__case_1)->tag === "Cons")) {
 $f = $__case_0;
 $l = $__case_1;
-$as = ($__case_1)->values[1];
+$as = ($__case_1)->v1;
 $go = (function() use ($f) {
   $__body = function($a__prime__, $v2) use ($f) {
     $__case_0 = $a__prime__;
@@ -1193,10 +1202,10 @@ $acc = $__case_2;
 return $acc;
 } else {
 if (((($__case_0)->tag === "Cons") && (($__case_1)->tag === "Cons"))) {
-$x = ($__case_0)->values[0];
-$xs__prime__ = ($__case_0)->values[1];
-$y = ($__case_1)->values[0];
-$ys__prime__ = ($__case_1)->values[1];
+$x = ($__case_0)->v0;
+$xs__prime__ = ($__case_0)->v1;
+$y = ($__case_1)->v0;
+$ys__prime__ = ($__case_1)->v1;
 $acc = $__case_2;
 $__tco_tmp_0 = $xs__prime__;
 $__tco_tmp_1 = $ys__prime__;
@@ -1288,10 +1297,10 @@ if ((($__case_1)->tag === "Nil")) {
 return $GLOBALS['Data_Ordering_GT'];
 } else {
 if (((($__case_0)->tag === "Cons") && (($__case_1)->tag === "Cons"))) {
-$x = ($__case_0)->values[0];
-$xs__prime__ = ($__case_0)->values[1];
-$y = ($__case_1)->values[0];
-$ys__prime__ = ($__case_1)->values[1];
+$x = ($__case_0)->v0;
+$xs__prime__ = ($__case_0)->v1;
+$y = ($__case_1)->v0;
+$ys__prime__ = ($__case_1)->v1;
 $v2 = ($compare)($x, $y);
 $__case_0 = $v2;
 if ((($__case_0)->tag === "EQ")) {
@@ -1383,7 +1392,7 @@ $Data_List_Types_comonadNonEmptyList = ($GLOBALS['Control_Comonad_Comonad__dolla
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "NonEmpty")) {
-$a = ($__case_0)->values[0];
+$a = ($__case_0)->v0;
 return $a;
 } else {
 throw new \Exception("Pattern match failure");
@@ -1415,8 +1424,8 @@ $Data_List_Types_applyList = ($GLOBALS['Control_Apply_Apply__dollar__Dict'])((ob
 return $GLOBALS['Data_List_Types_Nil'];
 } else {
 if ((($__case_0)->tag === "Cons")) {
-$f = ($__case_0)->values[0];
-$fs = ($__case_0)->values[1];
+$f = ($__case_0)->v0;
+$fs = ($__case_0)->v1;
 $xs = $__case_1;
 return ($GLOBALS['Data_List_Types_append1'])(($GLOBALS['Data_List_Types_map'])($f, $xs), ($GLOBALS['Control_Apply_apply'])($GLOBALS['Data_List_Types_applyList'], $fs, $xs));
 } else {
@@ -1450,10 +1459,10 @@ $Data_List_Types_applyNonEmptyList = ($GLOBALS['Control_Apply_Apply__dollar__Dic
     $__case_0 = $v;
     $__case_1 = $v1;
     if (((($__case_0)->tag === "NonEmpty") && (($__case_1)->tag === "NonEmpty"))) {
-$f = ($__case_0)->values[0];
-$fs = ($__case_0)->values[1];
-$a = ($__case_1)->values[0];
-$as = ($__case_1)->values[1];
+$f = ($__case_0)->v0;
+$fs = ($__case_0)->v1;
+$a = ($__case_1)->v0;
+$as = ($__case_1)->v1;
 return ($GLOBALS['Data_List_Types_NonEmptyList'])(($GLOBALS['Data_NonEmpty_NonEmpty'])(($f)($a), ($GLOBALS['Data_List_Types_append1'])(($GLOBALS['Data_List_Types_apply'])($fs, ($GLOBALS['Data_List_Types_Cons'])($a, $GLOBALS['Data_List_Types_Nil'])), ($GLOBALS['Data_List_Types_apply'])(($GLOBALS['Data_List_Types_Cons'])($f, $fs), $as))));
 } else {
 throw new \Exception("Pattern match failure");
@@ -1485,8 +1494,8 @@ $Data_List_Types_bindList = ($GLOBALS['Control_Bind_Bind__dollar__Dict'])((objec
 return $GLOBALS['Data_List_Types_Nil'];
 } else {
 if ((($__case_0)->tag === "Cons")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 $f = $__case_1;
 return ($GLOBALS['Data_List_Types_append1'])(($f)($x), ($GLOBALS['Control_Bind_bind'])($GLOBALS['Data_List_Types_bindList'], $xs, $f));
 } else {
@@ -1520,14 +1529,14 @@ $Data_List_Types_bindNonEmptyList = ($GLOBALS['Control_Bind_Bind__dollar__Dict']
     $__case_0 = $v;
     $__case_1 = $f;
     if ((($__case_0)->tag === "NonEmpty")) {
-$a = ($__case_0)->values[0];
-$as = ($__case_0)->values[1];
+$a = ($__case_0)->v0;
+$as = ($__case_0)->v1;
 $f1 = $__case_1;
 $v1 = ($f1)($a);
 $__case_0 = $v1;
 if ((($__case_0)->tag === "NonEmpty")) {
-$b = ($__case_0)->values[0];
-$bs = ($__case_0)->values[1];
+$b = ($__case_0)->v0;
+$bs = ($__case_0)->v1;
 return ($GLOBALS['Data_List_Types_NonEmptyList'])(($GLOBALS['Data_NonEmpty_NonEmpty'])($b, ($GLOBALS['Data_List_Types_append1'])($bs, ($GLOBALS['Data_List_Types_bind'])($as, ($GLOBALS['Data_List_Types_compose'])($GLOBALS['Data_List_Types_toList'], $f1)))));
 } else {
 throw new \Exception("Pattern match failure");
@@ -1710,8 +1719,8 @@ $map1 = ($GLOBALS['Data_Functor_map'])($Functor0);
     $__case_1 = $v;
     if ((($__case_1)->tag === "NonEmpty")) {
 $f1 = $__case_0;
-$a = ($__case_1)->values[0];
-$as = ($__case_1)->values[1];
+$a = ($__case_1)->v0;
+$as = ($__case_1)->v1;
 return ($mapFlipped)(($GLOBALS['Data_List_Types_foldl'])((function() use ($lift2, $f1) {
   $__fn = function($acc) use ($lift2, $f1, &$__fn) {
   $__num = func_num_args();
@@ -1724,8 +1733,8 @@ return ($mapFlipped)(($GLOBALS['Data_List_Types_foldl'])((function() use ($lift2
   $__body = function($v1) {
     $__case_0 = $v1;
     if ((($__case_0)->tag === "NonEmpty")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 return ($GLOBALS['Data_List_Types_foldl'])(($GLOBALS['Data_Function_flip'])($GLOBALS['Data_List_Types_nelCons']), ($GLOBALS['Data_List_Types_pure'])($x), $xs);
 } else {
 throw new \Exception("Pattern match failure");

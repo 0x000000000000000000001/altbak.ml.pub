@@ -14,6 +14,15 @@ require_once __DIR__ . '/../Effect.Console/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 require_once __DIR__ . '/../Test.Primes/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -45,14 +54,14 @@ $Test_Primes_notEq = ($GLOBALS['Data_Eq_notEq'])($GLOBALS['Data_Eq_eqInt']);
 $Test_Primes_mod = ($GLOBALS['Data_EuclideanRing_mod'])($GLOBALS['Data_EuclideanRing_euclideanRingInt']);
 
 // Test_Primes_Nil
-$Test_Primes_Nil = (object)["tag" => "Nil", "values" => []];
+$Test_Primes_Nil = new Phpurs_Data0("Nil");
 
 // Test_Primes_Cons
 $Test_Primes_Cons = (function() {
   $__fn = function($value0, $value1 = null) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
-    $__res = (object)["tag" => "Cons", "values" => [$value0, $value1]];
+    $__res = new Phpurs_Data2("Cons", $value0, $value1);
   return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
@@ -75,8 +84,8 @@ $acc = $__case_1;
 return $acc;
 } else {
 if ((($__case_0)->tag === "Cons")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 $acc = $__case_1;
 $__tco_tmp_0 = $xs;
 $__tco_tmp_1 = ($GLOBALS['Test_Primes_add'])($acc, $x);
@@ -116,8 +125,8 @@ $acc = $__case_1;
 return $acc;
 } else {
 if ((($__case_0)->tag === "Cons")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 $acc = $__case_1;
 $__tco_tmp_0 = $xs;
 $__tco_tmp_1 = ($GLOBALS['Test_Primes_Cons'])($x, $acc);
@@ -193,8 +202,8 @@ $acc = $__case_1;
 return ($GLOBALS['Test_Primes_reverse'])($acc);
 } else {
 if ((($__case_0)->tag === "Cons")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 $acc = $__case_1;
 $__case_0 = ($p)($x);
 if (($__case_0 === true)) {
@@ -241,8 +250,8 @@ if ((($__case_0)->tag === "Nil")) {
 return $GLOBALS['Test_Primes_Nil'];
 } else {
 if ((($__case_0)->tag === "Cons")) {
-$p = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$p = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 return ($GLOBALS['Test_Primes_Cons'])($p, ($GLOBALS['Test_Primes_sieve'])(($GLOBALS['Test_Primes_filter'])((function() use ($p) {
   $__fn = function($x) use ($p, &$__fn) {
   $__num = func_num_args();

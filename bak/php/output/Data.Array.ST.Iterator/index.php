@@ -17,6 +17,15 @@ require_once __DIR__ . '/../Data.Maybe/index.php';
 require_once __DIR__ . '/../Data.Semiring/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -55,7 +64,7 @@ $Data_Array_ST_Iterator_Iterator = (function() {
   $__fn = function($value0, $value1 = null) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
-    $__res = (object)["tag" => "Iterator", "values" => [$value0, $value1]];
+    $__res = new Phpurs_Data2("Iterator", $value0, $value1);
   return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
@@ -66,8 +75,8 @@ $Data_Array_ST_Iterator_peek = (function() {
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Iterator")) {
-$f = ($__case_0)->values[0];
-$currentIndex = ($__case_0)->values[1];
+$f = ($__case_0)->v0;
+$currentIndex = ($__case_0)->v1;
 return ($GLOBALS['Data_Array_ST_Iterator_bind'])(($GLOBALS['Control_Monad_ST_Internal_read'])($currentIndex), (function() use ($f) {
   $__fn = function($i) use ($f, &$__fn) {
   $__num = func_num_args();
@@ -95,8 +104,8 @@ $Data_Array_ST_Iterator_next = (function() {
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Iterator")) {
-$f = ($__case_0)->values[0];
-$currentIndex = ($__case_0)->values[1];
+$f = ($__case_0)->v0;
+$currentIndex = ($__case_0)->v1;
 return ($GLOBALS['Data_Array_ST_Iterator_bind'])(($GLOBALS['Control_Monad_ST_Internal_read'])($currentIndex), (function() use ($currentIndex, $f) {
   $__fn = function($i) use ($currentIndex, $f, &$__fn) {
   $__num = func_num_args();
@@ -148,7 +157,7 @@ $Data_Array_ST_Iterator_pushWhile = (function() {
   $__body = function($mx) use ($break) {
     $__case_0 = $mx;
     if ((($__case_0)->tag === "Just")) {
-$x = ($__case_0)->values[0];
+$x = ($__case_0)->v0;
 return "/* Unsupported: Guards not supported */";
 } else {
 if (true) {
@@ -202,7 +211,7 @@ $Data_Array_ST_Iterator_iterate = (function() {
   $__body = function($mx) use ($f, $break) {
     $__case_0 = $mx;
     if ((($__case_0)->tag === "Just")) {
-$x = ($__case_0)->values[0];
+$x = ($__case_0)->v0;
 return ($f)($x);
 } else {
 if ((($__case_0)->tag === "Nothing")) {

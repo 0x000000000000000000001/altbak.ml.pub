@@ -12,6 +12,15 @@ require_once __DIR__ . '/../Data.Profunctor/index.php';
 require_once __DIR__ . '/../Data.Profunctor.Split/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -38,7 +47,7 @@ $Data_Profunctor_Split_SplitF = (function() {
   $__fn = function($value0, $value1 = null, $value2 = null) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 3) return phpurs_curry_fallback($__fn, func_get_args(), 3);
-    $__res = (object)["tag" => "SplitF", "values" => [$value0, $value1, $value2]];
+    $__res = new Phpurs_Data3("SplitF", $value0, $value1, $value2);
   return $__num > 3 ? $__res(...array_slice(func_get_args(), 3)) : $__res;
   };
   return $__fn;
@@ -67,9 +76,9 @@ return ($GLOBALS['Data_Exists_runExists'])((function() use ($f1) {
   $__body = function($v1) use ($f1) {
     $__case_0 = $v1;
     if ((($__case_0)->tag === "SplitF")) {
-$g = ($__case_0)->values[0];
-$h = ($__case_0)->values[1];
-$fx = ($__case_0)->values[2];
+$g = ($__case_0)->v0;
+$h = ($__case_0)->v1;
+$fx = ($__case_0)->v2;
 return ($f1)($g, $h, $fx);
 } else {
 throw new \Exception("Pattern match failure");

@@ -29,6 +29,15 @@ require_once __DIR__ . '/../Data.Time.Duration/index.php';
 require_once __DIR__ . '/../Partial.Unsafe/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -166,7 +175,7 @@ $Data_Date_Date = (function() {
   $__fn = function($value0, $value1 = null, $value2 = null) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 3) return phpurs_curry_fallback($__fn, func_get_args(), 3);
-    $__res = (object)["tag" => "Date", "values" => [$value0, $value1, $value2]];
+    $__res = new Phpurs_Data3("Date", $value0, $value1, $value2);
   return $__num > 3 ? $__res(...array_slice(func_get_args(), 3)) : $__res;
   };
   return $__fn;
@@ -177,7 +186,7 @@ $Data_Date_year = (function() {
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Date")) {
-$y = ($__case_0)->values[0];
+$y = ($__case_0)->v0;
 return $y;
 } else {
 throw new \Exception("Pattern match failure");
@@ -197,9 +206,9 @@ $Data_Date_weekday = ($GLOBALS['Partial_Unsafe_unsafePartial'])((function() {
   $__body = function($__dollar____unused, $v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Date")) {
-$y = ($__case_0)->values[0];
-$m = ($__case_0)->values[1];
-$d = ($__case_0)->values[2];
+$y = ($__case_0)->v0;
+$m = ($__case_0)->v1;
+$d = ($__case_0)->v2;
 $n = ($GLOBALS['Data_Function_Uncurried_runFn3'])($GLOBALS['Data_Date_calcWeekday'], $y, ($GLOBALS['Data_Date_fromEnum'])($m), $d);
 $__case_0 = ($GLOBALS['Data_Date_eq'])($n, 0);
 if (($__case_0 === true)) {
@@ -229,9 +238,9 @@ $Data_Date_showDate = ($GLOBALS['Data_Show_Show__dollar__Dict'])((object)["show"
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Date")) {
-$y = ($__case_0)->values[0];
-$m = ($__case_0)->values[1];
-$d = ($__case_0)->values[2];
+$y = ($__case_0)->v0;
+$m = ($__case_0)->v1;
+$d = ($__case_0)->v2;
 return ($GLOBALS['Data_Date_append'])("(Date ", ($GLOBALS['Data_Date_append'])(($GLOBALS['Data_Date_show'])($y), ($GLOBALS['Data_Date_append'])(" ", ($GLOBALS['Data_Date_append'])(($GLOBALS['Data_Date_show1'])($m), ($GLOBALS['Data_Date_append'])(" ", ($GLOBALS['Data_Date_append'])(($GLOBALS['Data_Date_show2'])($d), ")"))))));
 } else {
 throw new \Exception("Pattern match failure");
@@ -251,7 +260,7 @@ $Data_Date_month = (function() {
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Date")) {
-$m = ($__case_0)->values[1];
+$m = ($__case_0)->v1;
 return $m;
 } else {
 throw new \Exception("Pattern match failure");
@@ -356,12 +365,12 @@ $Data_Date_eqDate = ($GLOBALS['Data_Eq_Eq__dollar__Dict'])((object)["eq" => (fun
     $__case_0 = $x;
     $__case_1 = $y;
     if (((($__case_0)->tag === "Date") && (($__case_1)->tag === "Date"))) {
-$l = ($__case_0)->values[0];
-$l1 = ($__case_0)->values[1];
-$l2 = ($__case_0)->values[2];
-$r = ($__case_1)->values[0];
-$r1 = ($__case_1)->values[1];
-$r2 = ($__case_1)->values[2];
+$l = ($__case_0)->v0;
+$l1 = ($__case_0)->v1;
+$l2 = ($__case_0)->v2;
+$r = ($__case_1)->v0;
+$r1 = ($__case_1)->v1;
+$r2 = ($__case_1)->v2;
 return ($GLOBALS['Data_Date_conj'])(($GLOBALS['Data_Date_conj'])(($GLOBALS['Data_Date_eq1'])($l, $r), ($GLOBALS['Data_Date_eq2'])($l1, $r1)), ($GLOBALS['Data_Date_eq3'])($l2, $r2));
 } else {
 throw new \Exception("Pattern match failure");
@@ -385,12 +394,12 @@ $Data_Date_ordDate = ($GLOBALS['Data_Ord_Ord__dollar__Dict'])((object)["compare"
     $__case_0 = $x;
     $__case_1 = $y;
     if (((($__case_0)->tag === "Date") && (($__case_1)->tag === "Date"))) {
-$l = ($__case_0)->values[0];
-$l1 = ($__case_0)->values[1];
-$l2 = ($__case_0)->values[2];
-$r = ($__case_1)->values[0];
-$r1 = ($__case_1)->values[1];
-$r2 = ($__case_1)->values[2];
+$l = ($__case_0)->v0;
+$l1 = ($__case_0)->v1;
+$l2 = ($__case_0)->v2;
+$r = ($__case_1)->v0;
+$r1 = ($__case_1)->v1;
+$r2 = ($__case_1)->v2;
 $v = ($GLOBALS['Data_Date_compare'])($l, $r);
 $__case_0 = $v;
 if ((($__case_0)->tag === "LT")) {
@@ -446,9 +455,9 @@ $Data_Date_enumDate = ($GLOBALS['Data_Enum_Enum__dollar__Dict'])((object)["succ"
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Date")) {
-$y = ($__case_0)->values[0];
-$m = ($__case_0)->values[1];
-$d = ($__case_0)->values[2];
+$y = ($__case_0)->v0;
+$m = ($__case_0)->v1;
+$d = ($__case_0)->v2;
 $sm = ($GLOBALS['Data_Date_succ'])($m);
 $l = ($GLOBALS['Data_Date_lastDayOfMonth'])($y, $m);
 $v1 = ($GLOBALS['Data_Date_succ1'])($d);
@@ -516,9 +525,9 @@ throw new \Exception("Pattern match failure");
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Date")) {
-$y = ($__case_0)->values[0];
-$m = ($__case_0)->values[1];
-$d = ($__case_0)->values[2];
+$y = ($__case_0)->v0;
+$m = ($__case_0)->v1;
+$d = ($__case_0)->v2;
 $pm = ($GLOBALS['Data_Date_pred'])($m);
 $pd = ($GLOBALS['Data_Date_pred1'])($d);
 $__case_0 = ($GLOBALS['Data_Date_conj'])(($GLOBALS['Data_Maybe_isNothing'])($pd), ($GLOBALS['Data_Maybe_isNothing'])($pm));
@@ -597,12 +606,12 @@ $toDuration = ($GLOBALS['Data_Time_Duration_toDuration'])($dictDuration);
     $__case_0 = $v;
     $__case_1 = $v1;
     if (((($__case_0)->tag === "Date") && (($__case_1)->tag === "Date"))) {
-$y1 = ($__case_0)->values[0];
-$m1 = ($__case_0)->values[1];
-$d1 = ($__case_0)->values[2];
-$y2 = ($__case_1)->values[0];
-$m2 = ($__case_1)->values[1];
-$d2 = ($__case_1)->values[2];
+$y1 = ($__case_0)->v0;
+$m1 = ($__case_0)->v1;
+$d1 = ($__case_0)->v2;
+$y2 = ($__case_1)->v0;
+$m2 = ($__case_1)->v1;
+$d2 = ($__case_1)->v2;
 return ($toDuration)(($GLOBALS['Data_Function_Uncurried_runFn6'])($GLOBALS['Data_Date_calcDiff'], $y1, ($GLOBALS['Data_Date_fromEnum'])($m1), $d1, $y2, ($GLOBALS['Data_Date_fromEnum'])($m2), $d2));
 } else {
 throw new \Exception("Pattern match failure");
@@ -626,7 +635,7 @@ $Data_Date_day = (function() {
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Date")) {
-$d = ($__case_0)->values[2];
+$d = ($__case_0)->v2;
 return $d;
 } else {
 throw new \Exception("Pattern match failure");
@@ -717,9 +726,9 @@ return ($GLOBALS['Data_Maybe_Just'])($dt);
 } else {
 if ((($__case_1)->tag === "Date")) {
 $i = $__case_0;
-$y = ($__case_1)->values[0];
-$m = ($__case_1)->values[1];
-$d = ($__case_1)->values[2];
+$y = ($__case_1)->v0;
+$m = ($__case_1)->v1;
+$d = ($__case_1)->v2;
 $j = ($GLOBALS['Data_Date_add'])($i, ($GLOBALS['Data_Date_fromEnum2'])($d));
 $low = ($GLOBALS['Data_Date_lessThan'])($j, 1);
 $__case_0 = $low;

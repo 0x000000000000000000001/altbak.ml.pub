@@ -30,6 +30,15 @@ require_once __DIR__ . '/../Data.Unit/index.php';
 require_once __DIR__ . '/../Partial.Unsafe/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -291,7 +300,7 @@ $bottom2 = ($GLOBALS['Data_Bounded_bottom'])((($dictBoundedEnum)->Bounded0)($GLO
     $v = ($toEnum1)($x);
     $__case_0 = $v;
     if ((($__case_0)->tag === "Just")) {
-$enum = ($__case_0)->values[0];
+$enum = ($__case_0)->v0;
 return $enum;
 } else {
 if ((($__case_0)->tag === "Nothing")) {
@@ -360,8 +369,8 @@ $ordTuple1 = ($ordTuple)((($Enum1)->Ord0)($GLOBALS['Prim_undefined']));
   $__body = function($v) use ($bottom2, $succ1, $succ2) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Tuple")) {
-$a = ($__case_0)->values[0];
-$b = ($__case_0)->values[1];
+$a = ($__case_0)->v0;
+$b = ($__case_0)->v1;
 return ($GLOBALS['Data_Maybe_maybe'])(($GLOBALS['Data_Enum_map'])(($GLOBALS['Data_Function_flip'])($GLOBALS['Data_Tuple_Tuple'], $bottom2), ($succ1)($a)), ($GLOBALS['Data_Enum_compose'])($GLOBALS['Data_Maybe_Just'], ($GLOBALS['Data_Tuple_Tuple'])($a)), ($succ2)($b));
 } else {
 throw new \Exception("Pattern match failure");
@@ -378,8 +387,8 @@ throw new \Exception("Pattern match failure");
   $__body = function($v) use ($top2, $pred1, $pred2) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Tuple")) {
-$a = ($__case_0)->values[0];
-$b = ($__case_0)->values[1];
+$a = ($__case_0)->v0;
+$b = ($__case_0)->v1;
 return ($GLOBALS['Data_Maybe_maybe'])(($GLOBALS['Data_Enum_map'])(($GLOBALS['Data_Function_flip'])($GLOBALS['Data_Tuple_Tuple'], $top2), ($pred1)($a)), ($GLOBALS['Data_Enum_compose'])($GLOBALS['Data_Maybe_Just'], ($GLOBALS['Data_Tuple_Tuple'])($a)), ($pred2)($b));
 } else {
 throw new \Exception("Pattern match failure");
@@ -486,7 +495,7 @@ $ordMaybe = ($GLOBALS['Data_Maybe_ordMaybe'])((($Enum1)->Ord0)($GLOBALS['Prim_un
 return ($GLOBALS['Data_Maybe_Just'])(($GLOBALS['Data_Maybe_Just'])($bottom2));
 } else {
 if ((($__case_0)->tag === "Just")) {
-$a = ($__case_0)->values[0];
+$a = ($__case_0)->v0;
 return ($GLOBALS['Data_Enum_map'])($GLOBALS['Data_Maybe_Just'], ($succ1)($a));
 } else {
 throw new \Exception("Pattern match failure");
@@ -507,7 +516,7 @@ throw new \Exception("Pattern match failure");
 return $GLOBALS['Data_Maybe_Nothing'];
 } else {
 if ((($__case_0)->tag === "Just")) {
-$a = ($__case_0)->values[0];
+$a = ($__case_0)->v0;
 return ($GLOBALS['Data_Maybe_Just'])(($pred1)($a));
 } else {
 throw new \Exception("Pattern match failure");
@@ -737,11 +746,11 @@ $ordEither1 = ($ordEither)((($Enum11)->Ord0)($GLOBALS['Prim_undefined']));
   $__body = function($v) use ($bottom2, $succ1, $succ2) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Left")) {
-$a = ($__case_0)->values[0];
+$a = ($__case_0)->v0;
 return ($GLOBALS['Data_Maybe_maybe'])(($GLOBALS['Data_Maybe_Just'])(($GLOBALS['Data_Either_Right'])($bottom2)), ($GLOBALS['Data_Enum_compose'])($GLOBALS['Data_Maybe_Just'], $GLOBALS['Data_Either_Left']), ($succ1)($a));
 } else {
 if ((($__case_0)->tag === "Right")) {
-$b = ($__case_0)->values[0];
+$b = ($__case_0)->v0;
 return ($GLOBALS['Data_Maybe_maybe'])($GLOBALS['Data_Maybe_Nothing'], ($GLOBALS['Data_Enum_compose'])($GLOBALS['Data_Maybe_Just'], $GLOBALS['Data_Either_Right']), ($succ2)($b));
 } else {
 throw new \Exception("Pattern match failure");
@@ -759,11 +768,11 @@ throw new \Exception("Pattern match failure");
   $__body = function($v) use ($pred1, $top2, $pred2) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Left")) {
-$a = ($__case_0)->values[0];
+$a = ($__case_0)->v0;
 return ($GLOBALS['Data_Maybe_maybe'])($GLOBALS['Data_Maybe_Nothing'], ($GLOBALS['Data_Enum_compose'])($GLOBALS['Data_Maybe_Just'], $GLOBALS['Data_Either_Left']), ($pred1)($a));
 } else {
 if ((($__case_0)->tag === "Right")) {
-$b = ($__case_0)->values[0];
+$b = ($__case_0)->v0;
 return ($GLOBALS['Data_Maybe_maybe'])(($GLOBALS['Data_Maybe_Just'])(($GLOBALS['Data_Either_Left'])($top2)), ($GLOBALS['Data_Enum_compose'])($GLOBALS['Data_Maybe_Just'], $GLOBALS['Data_Either_Right']), ($pred2)($b));
 } else {
 throw new \Exception("Pattern match failure");
@@ -943,7 +952,7 @@ if (true) {
 $v = ($succ1)($x);
 $__case_0 = $v;
 if ((($__case_0)->tag === "Just")) {
-$x__prime__ = ($__case_0)->values[0];
+$x__prime__ = ($__case_0)->v0;
 $__tco_tmp_0 = ($GLOBALS['Data_Enum_sub'])($i, 1);
 $__tco_tmp_1 = $x__prime__;
 $i = $__tco_tmp_0;
@@ -1030,7 +1039,7 @@ while (true) {
 $v = ($pred1)($x);
 $__case_0 = $v;
 if ((($__case_0)->tag === "Just")) {
-$x__prime__ = ($__case_0)->values[0];
+$x__prime__ = ($__case_0)->v0;
 $__tco_tmp_0 = ($GLOBALS['Data_Enum_add'])($i, 1);
 $__tco_tmp_1 = $x__prime__;
 $i = $__tco_tmp_0;
@@ -1074,7 +1083,7 @@ while (true) {
 $v = ($succ1)($x);
 $__case_0 = $v;
 if ((($__case_0)->tag === "Just")) {
-$x__prime__ = ($__case_0)->values[0];
+$x__prime__ = ($__case_0)->v0;
 $__tco_tmp_0 = ($GLOBALS['Data_Enum_add'])($i, 1);
 $__tco_tmp_1 = $x__prime__;
 $i = $__tco_tmp_0;

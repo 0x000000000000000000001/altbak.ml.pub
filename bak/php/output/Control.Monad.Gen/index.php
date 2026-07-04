@@ -26,6 +26,15 @@ require_once __DIR__ . '/../Data.Unfoldable/index.php';
 require_once __DIR__ . '/../Data.Unit/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -70,14 +79,14 @@ $Control_Monad_Gen_Cons = (function() {
   $__fn = function($value0, $value1 = null) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
-    $__res = (object)["tag" => "Cons", "values" => [$value0, $value1]];
+    $__res = new Phpurs_Data2("Cons", $value0, $value1);
   return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
 })();
 
 // Control_Monad_Gen_Nil
-$Control_Monad_Gen_Nil = (object)["tag" => "Nil", "values" => []];
+$Control_Monad_Gen_Nil = new Phpurs_Data0("Nil");
 
 // Control_Monad_Gen_FreqSemigroup
 $Control_Monad_Gen_FreqSemigroup = (function() {
@@ -122,8 +131,8 @@ $unfold = (function() {
 return $GLOBALS['Data_Maybe_Nothing'];
 } else {
 if ((($__case_0)->tag === "Cons")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 return ($GLOBALS['Data_Maybe_Just'])(($GLOBALS['Data_Tuple_Tuple'])($x, $xs));
 } else {
 throw new \Exception("Pattern match failure");
@@ -142,8 +151,8 @@ $loopGen = (function() {
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Tuple")) {
-$acc = ($__case_0)->values[0];
-$n = ($__case_0)->values[1];
+$acc = ($__case_0)->v0;
+$n = ($__case_0)->v1;
 return "/* Unsupported: Guards not supported */";
 } else {
 throw new \Exception("Pattern match failure");
@@ -187,8 +196,8 @@ return ($GLOBALS['Control_Monad_Gen_FreqSemigroup'])((function() use ($f, $g) {
   $__body = function($pos) use ($f, $g) {
     $v2 = ($f)($pos);
     $__case_0 = $v2;
-    if (((($__case_0)->tag === "Tuple") && ((($__case_0)->values[0])->tag === "Just"))) {
-$pos__prime__ = (($__case_0)->values[0])->values[0];
+    if (((($__case_0)->tag === "Tuple") && ((($__case_0)->v0)->tag === "Just"))) {
+$pos__prime__ = (($__case_0)->v0)->v0;
 return ($g)($pos__prime__);
 } else {
 if (true) {
@@ -258,18 +267,18 @@ $go = (function() use (&$go, $foldMap1, $xs) {
 while (true) {
 $__case_0 = $v;
 $__case_1 = $v1;
-if (((($__case_1)->tag === "Cons") && ((($__case_1)->values[1])->tag === "Nil"))) {
-$a = ($__case_1)->values[0];
+if (((($__case_1)->tag === "Cons") && ((($__case_1)->v1)->tag === "Nil"))) {
+$a = ($__case_1)->v0;
 return $a;
 } else {
 if ((($__case_1)->tag === "Cons")) {
 $j = $__case_0;
-$a = ($__case_1)->values[0];
+$a = ($__case_1)->v0;
 return "/* Unsupported: Guards not supported */";
 } else {
 if ((($__case_1)->tag === "Cons")) {
 $j = $__case_0;
-$as = ($__case_1)->values[1];
+$as = ($__case_1)->v1;
 $__tco_tmp_0 = ($GLOBALS['Control_Monad_Gen_sub'])($j, 1);
 $__tco_tmp_1 = $as;
 $v = $__tco_tmp_0;
@@ -344,8 +353,8 @@ $Control_Monad_Gen_freqSemigroup = (function() {
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Tuple")) {
-$weight = ($__case_0)->values[0];
-$x = ($__case_0)->values[1];
+$weight = ($__case_0)->v0;
+$x = ($__case_0)->v1;
 return ($GLOBALS['Control_Monad_Gen_FreqSemigroup'])((function() use ($weight, $x) {
   $__body = function($pos) use ($weight, $x) {
     $__case_0 = ($GLOBALS['Control_Monad_Gen_greaterThanOrEq'])($pos, $weight);
@@ -438,7 +447,7 @@ $go = (function() use ($mapFlipped, $gen) {
 return ($GLOBALS['Control_Monad_Rec_Class_Loop'])($GLOBALS['Data_Unit_unit']);
 } else {
 if ((($__case_0)->tag === "Just")) {
-$a__prime__ = ($__case_0)->values[0];
+$a__prime__ = ($__case_0)->v0;
 return ($GLOBALS['Control_Monad_Rec_Class_Done'])($a__prime__);
 } else {
 throw new \Exception("Pattern match failure");

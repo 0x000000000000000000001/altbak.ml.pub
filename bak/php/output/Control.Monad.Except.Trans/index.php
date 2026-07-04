@@ -31,6 +31,15 @@ require_once __DIR__ . '/../Data.Tuple/index.php';
 require_once __DIR__ . '/../Effect.Class/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -84,12 +93,12 @@ $mapLeft = (function() {
     $__case_0 = $v1;
     $__case_1 = $v2;
     if ((($__case_1)->tag === "Right")) {
-$x = ($__case_1)->values[0];
+$x = ($__case_1)->v0;
 return ($GLOBALS['Data_Either_Right'])($x);
 } else {
 if ((($__case_1)->tag === "Left")) {
 $f__prime__ = $__case_0;
-$x = ($__case_1)->values[0];
+$x = ($__case_1)->v0;
 return ($GLOBALS['Data_Either_Left'])(($f__prime__)($x));
 } else {
 throw new \Exception("Pattern match failure");
@@ -547,15 +556,15 @@ return ($bind)($m, (function() use ($pure) {
 $__case_0 = $m__prime__;
 $__case_res_0 = null;
 if ((($__case_0)->tag === "Left")) {
-$e = ($__case_0)->values[0];
+$e = ($__case_0)->v0;
 $__case_res_0 = ($GLOBALS['Control_Monad_Rec_Class_Done'])(($GLOBALS['Data_Either_Left'])($e));
 } else {
-if (((($__case_0)->tag === "Right") && ((($__case_0)->values[0])->tag === "Loop"))) {
-$a1 = (($__case_0)->values[0])->values[0];
+if (((($__case_0)->tag === "Right") && ((($__case_0)->v0)->tag === "Loop"))) {
+$a1 = (($__case_0)->v0)->v0;
 $__case_res_0 = ($GLOBALS['Control_Monad_Rec_Class_Loop'])($a1);
 } else {
-if (((($__case_0)->tag === "Right") && ((($__case_0)->values[0])->tag === "Done"))) {
-$b = (($__case_0)->values[0])->values[0];
+if (((($__case_0)->tag === "Right") && ((($__case_0)->v0)->tag === "Done"))) {
+$b = (($__case_0)->v0)->v0;
 $__case_res_0 = ($GLOBALS['Control_Monad_Rec_Class_Done'])(($GLOBALS['Data_Either_Right'])($b));
 } else {
 throw new \Exception("Pattern match failure");
@@ -678,8 +687,8 @@ $monadTellExceptT1 = ($GLOBALS['Control_Monad_Except_Trans_monadTellExceptT'])($
   $__body = function($v) use ($pure) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Tuple")) {
-$a = ($__case_0)->values[0];
-$w = ($__case_0)->values[1];
+$a = ($__case_0)->v0;
+$w = ($__case_0)->v1;
 return ($pure)(($GLOBALS['Control_Monad_Except_Trans_map'])((function() use ($w) {
   $__fn = function($r) use ($w, &$__fn) {
   $__num = func_num_args();
@@ -715,12 +724,12 @@ throw new \Exception("Pattern match failure");
 $__case_0 = $a;
 $__case_res_0 = null;
 if ((($__case_0)->tag === "Left")) {
-$e = ($__case_0)->values[0];
+$e = ($__case_0)->v0;
 $__case_res_0 = ($GLOBALS['Data_Tuple_Tuple'])(($GLOBALS['Data_Either_Left'])($e), $GLOBALS['Control_Monad_Except_Trans_identity']);
 } else {
-if (((($__case_0)->tag === "Right") && ((($__case_0)->values[0])->tag === "Tuple"))) {
-$r = (($__case_0)->values[0])->values[0];
-$f = (($__case_0)->values[0])->values[1];
+if (((($__case_0)->tag === "Right") && ((($__case_0)->v0)->tag === "Tuple"))) {
+$r = (($__case_0)->v0)->v0;
+$f = (($__case_0)->v0)->v1;
 $__case_res_0 = ($GLOBALS['Data_Tuple_Tuple'])(($GLOBALS['Data_Either_Right'])($r), $f);
 } else {
 throw new \Exception("Pattern match failure");
@@ -911,20 +920,20 @@ return ($GLOBALS['Control_Monad_Except_Trans_ExceptT'])(($bind)($m, (function() 
   $__body = function($rm) use ($pure, $bind, $n, $append) {
     $__case_0 = $rm;
     if ((($__case_0)->tag === "Right")) {
-$x = ($__case_0)->values[0];
+$x = ($__case_0)->v0;
 return ($pure)(($GLOBALS['Data_Either_Right'])($x));
 } else {
 if ((($__case_0)->tag === "Left")) {
-$err = ($__case_0)->values[0];
+$err = ($__case_0)->v0;
 return ($bind)($n, (function() use ($pure, $append, $err) {
   $__body = function($rn) use ($pure, $append, $err) {
     $__case_0 = $rn;
     if ((($__case_0)->tag === "Right")) {
-$x = ($__case_0)->values[0];
+$x = ($__case_0)->v0;
 return ($pure)(($GLOBALS['Data_Either_Right'])($x));
 } else {
 if ((($__case_0)->tag === "Left")) {
-$err__prime__ = ($__case_0)->values[0];
+$err__prime__ = ($__case_0)->v0;
 return ($pure)(($GLOBALS['Data_Either_Left'])(($append)($err, $err__prime__)));
 } else {
 throw new \Exception("Pattern match failure");

@@ -27,6 +27,15 @@ require_once __DIR__ . '/../Data.Show/index.php';
 require_once __DIR__ . '/../Data.Unit/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -49,14 +58,14 @@ $Data_Maybe_append = ($GLOBALS['Data_Semigroup_append'])($GLOBALS['Data_Semigrou
 $Data_Maybe_identity = ($GLOBALS['Control_Category_identity'])($GLOBALS['Control_Category_categoryFn']);
 
 // Data_Maybe_Nothing
-$Data_Maybe_Nothing = (object)["tag" => "Nothing", "values" => []];
+$Data_Maybe_Nothing = new Phpurs_Data0("Nothing");
 
 // Data_Maybe_Just
 $Data_Maybe_Just = (function() {
   $__fn = function($value0) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
-    $__res = (object)["tag" => "Just", "values" => [$value0]];
+    $__res = new Phpurs_Data1("Just", $value0);
   return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
@@ -72,7 +81,7 @@ $show = ($GLOBALS['Data_Show_show'])($dictShow);
   $__body = function($v) use ($show) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Just")) {
-$x = ($__case_0)->values[0];
+$x = ($__case_0)->v0;
 return ($GLOBALS['Data_Maybe_append'])("(Just ", ($GLOBALS['Data_Maybe_append'])(($show)($x), ")"));
 } else {
 if ((($__case_0)->tag === "Nothing")) {
@@ -114,8 +123,8 @@ $x = $__case_0;
 return $x;
 } else {
 if (((($__case_0)->tag === "Just") && (($__case_1)->tag === "Just"))) {
-$x = ($__case_0)->values[0];
-$y = ($__case_1)->values[0];
+$x = ($__case_0)->v0;
+$y = ($__case_1)->v0;
 return ($GLOBALS['Data_Maybe_Just'])(($append1)($x, $y));
 } else {
 throw new \Exception("Pattern match failure");
@@ -198,7 +207,7 @@ return ($g)($GLOBALS['Data_Unit_unit']);
 } else {
 if ((($__case_2)->tag === "Just")) {
 $f = $__case_1;
-$a = ($__case_2)->values[0];
+$a = ($__case_2)->v0;
 return ($f)($a);
 } else {
 throw new \Exception("Pattern match failure");
@@ -226,7 +235,7 @@ return $b;
 } else {
 if ((($__case_2)->tag === "Just")) {
 $f = $__case_1;
-$a = ($__case_2)->values[0];
+$a = ($__case_2)->v0;
 return ($f)($a);
 } else {
 throw new \Exception("Pattern match failure");
@@ -256,7 +265,7 @@ $Data_Maybe_genericMaybe = ($GLOBALS['Data_Generic_Rep_Generic__dollar__Dict'])(
 return $GLOBALS['Data_Maybe_Nothing'];
 } else {
 if ((($__case_0)->tag === "Inr")) {
-$arg = ($__case_0)->values[0];
+$arg = ($__case_0)->v0;
 return ($GLOBALS['Data_Maybe_Just'])($arg);
 } else {
 throw new \Exception("Pattern match failure");
@@ -277,7 +286,7 @@ throw new \Exception("Pattern match failure");
 return ($GLOBALS['Data_Generic_Rep_Inl'])(($GLOBALS['Data_Generic_Rep_Constructor'])($GLOBALS['Data_Generic_Rep_NoArguments']));
 } else {
 if ((($__case_0)->tag === "Just")) {
-$arg = ($__case_0)->values[0];
+$arg = ($__case_0)->v0;
 return ($GLOBALS['Data_Generic_Rep_Inr'])(($GLOBALS['Data_Generic_Rep_Constructor'])(($GLOBALS['Data_Generic_Rep_Argument'])($arg)));
 } else {
 throw new \Exception("Pattern match failure");
@@ -300,7 +309,7 @@ $Data_Maybe_functorMaybe = ($GLOBALS['Data_Functor_Functor__dollar__Dict'])((obj
     $__case_1 = $v1;
     if ((($__case_1)->tag === "Just")) {
 $fn = $__case_0;
-$x = ($__case_1)->values[0];
+$x = ($__case_1)->v0;
 return ($GLOBALS['Data_Maybe_Just'])(($fn)($x));
 } else {
 if (true) {
@@ -356,7 +365,7 @@ $Data_Maybe_fromJust = (function() {
   $__body = function($__dollar____unused) use ($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Just")) {
-$x = ($__case_0)->values[0];
+$x = ($__case_0)->v0;
 return $x;
 } else {
 throw new \Exception("Pattern match failure");
@@ -423,8 +432,8 @@ $eq = ($GLOBALS['Data_Eq_eq'])($dictEq);
 return true;
 } else {
 if (((($__case_0)->tag === "Just") && (($__case_1)->tag === "Just"))) {
-$l = ($__case_0)->values[0];
-$r = ($__case_1)->values[0];
+$l = ($__case_0)->v0;
+$r = ($__case_1)->v0;
 return ($eq)($l, $r);
 } else {
 if (true) {
@@ -469,8 +478,8 @@ if ((($__case_1)->tag === "Nothing")) {
 return $GLOBALS['Data_Ordering_GT'];
 } else {
 if (((($__case_0)->tag === "Just") && (($__case_1)->tag === "Just"))) {
-$l = ($__case_0)->values[0];
-$r = ($__case_1)->values[0];
+$l = ($__case_0)->v0;
+$r = ($__case_1)->v0;
 return ($compare)($l, $r);
 } else {
 throw new \Exception("Pattern match failure");
@@ -556,7 +565,7 @@ $Data_Maybe_applyMaybe = ($GLOBALS['Control_Apply_Apply__dollar__Dict'])((object
     $__case_0 = $v;
     $__case_1 = $v1;
     if ((($__case_0)->tag === "Just")) {
-$fn = ($__case_0)->values[0];
+$fn = ($__case_0)->v0;
 $x = $__case_1;
 return ($GLOBALS['Data_Maybe_map'])($fn, $x);
 } else {
@@ -593,7 +602,7 @@ $Data_Maybe_bindMaybe = ($GLOBALS['Control_Bind_Bind__dollar__Dict'])((object)["
     $__case_0 = $v;
     $__case_1 = $v1;
     if ((($__case_0)->tag === "Just")) {
-$x = ($__case_0)->values[0];
+$x = ($__case_0)->v0;
 $k = $__case_1;
 return ($k)($x);
 } else {
@@ -641,8 +650,8 @@ $x = $__case_0;
 return $x;
 } else {
 if (((($__case_0)->tag === "Just") && (($__case_1)->tag === "Just"))) {
-$x = ($__case_0)->values[0];
-$y = ($__case_1)->values[0];
+$x = ($__case_0)->v0;
+$y = ($__case_1)->v0;
 return ($GLOBALS['Data_Maybe_Just'])(($add)($x, $y));
 } else {
 throw new \Exception("Pattern match failure");

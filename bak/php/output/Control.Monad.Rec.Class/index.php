@@ -21,6 +21,15 @@ require_once __DIR__ . '/../Effect.Ref/index.php';
 require_once __DIR__ . '/../Partial.Unsafe/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -59,7 +68,7 @@ $Control_Monad_Rec_Class_Loop = (function() {
   $__fn = function($value0) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
-    $__res = (object)["tag" => "Loop", "values" => [$value0]];
+    $__res = new Phpurs_Data1("Loop", $value0);
   return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
@@ -70,7 +79,7 @@ $Control_Monad_Rec_Class_Done = (function() {
   $__fn = function($value0) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
-    $__res = (object)["tag" => "Done", "values" => [$value0]];
+    $__res = new Phpurs_Data1("Done", $value0);
   return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
@@ -185,7 +194,7 @@ $mapFlipped = ($GLOBALS['Data_Functor_mapFlipped'])((((((((($dictMonadRec)->Mona
 return ($GLOBALS['Control_Monad_Rec_Class_Loop'])($GLOBALS['Data_Unit_unit']);
 } else {
 if ((($__case_0)->tag === "Just")) {
-$x = ($__case_0)->values[0];
+$x = ($__case_0)->v0;
 return ($GLOBALS['Control_Monad_Rec_Class_Done'])($x);
 } else {
 throw new \Exception("Pattern match failure");
@@ -241,7 +250,7 @@ $mapFlipped = ($GLOBALS['Data_Functor_mapFlipped'])((((((((($dictMonadRec)->Mona
 return ($GLOBALS['Control_Monad_Rec_Class_Done'])($v);
 } else {
 if ((($__case_0)->tag === "Just")) {
-$x = ($__case_0)->values[0];
+$x = ($__case_0)->v0;
 return ($GLOBALS['Control_Monad_Rec_Class_Loop'])(($append)($v, $x));
 } else {
 throw new \Exception("Pattern match failure");
@@ -285,13 +294,13 @@ $go = (function() use (&$go, $f) {
 while (true) {
 $__case_0 = $v;
 if ((($__case_0)->tag === "Loop")) {
-$a = ($__case_0)->values[0];
+$a = ($__case_0)->v0;
 $__tco_tmp_0 = ($f)($a);
 $v = $__tco_tmp_0;
 continue;
 } else {
 if ((($__case_0)->tag === "Done")) {
-$b = ($__case_0)->values[0];
+$b = ($__case_0)->v0;
 return $b;
 } else {
 throw new \Exception("Pattern match failure");
@@ -358,12 +367,12 @@ $g = (function() use ($f) {
     if ((($__case_0)->tag === "Nothing")) {
 return ($GLOBALS['Control_Monad_Rec_Class_Done'])($GLOBALS['Data_Maybe_Nothing']);
 } else {
-if (((($__case_0)->tag === "Just") && ((($__case_0)->values[0])->tag === "Loop"))) {
-$a = (($__case_0)->values[0])->values[0];
+if (((($__case_0)->tag === "Just") && ((($__case_0)->v0)->tag === "Loop"))) {
+$a = (($__case_0)->v0)->v0;
 return ($GLOBALS['Control_Monad_Rec_Class_Loop'])(($f)($a));
 } else {
-if (((($__case_0)->tag === "Just") && ((($__case_0)->values[0])->tag === "Done"))) {
-$b = (($__case_0)->values[0])->values[0];
+if (((($__case_0)->tag === "Just") && ((($__case_0)->v0)->tag === "Done"))) {
+$b = (($__case_0)->v0)->v0;
 return ($GLOBALS['Control_Monad_Rec_Class_Done'])(($GLOBALS['Data_Maybe_Just'])($b));
 } else {
 throw new \Exception("Pattern match failure");
@@ -466,15 +475,15 @@ $g = (function() use ($f) {
   $__body = function($v) use ($f) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Left")) {
-$e = ($__case_0)->values[0];
+$e = ($__case_0)->v0;
 return ($GLOBALS['Control_Monad_Rec_Class_Done'])(($GLOBALS['Data_Either_Left'])($e));
 } else {
-if (((($__case_0)->tag === "Right") && ((($__case_0)->values[0])->tag === "Loop"))) {
-$a = (($__case_0)->values[0])->values[0];
+if (((($__case_0)->tag === "Right") && ((($__case_0)->v0)->tag === "Loop"))) {
+$a = (($__case_0)->v0)->v0;
 return ($GLOBALS['Control_Monad_Rec_Class_Loop'])(($f)($a));
 } else {
-if (((($__case_0)->tag === "Right") && ((($__case_0)->values[0])->tag === "Done"))) {
-$b = (($__case_0)->values[0])->values[0];
+if (((($__case_0)->tag === "Right") && ((($__case_0)->v0)->tag === "Done"))) {
+$b = (($__case_0)->v0)->v0;
 return ($GLOBALS['Control_Monad_Rec_Class_Done'])(($GLOBALS['Data_Either_Right'])($b));
 } else {
 throw new \Exception("Pattern match failure");
@@ -517,7 +526,7 @@ $fromDone = ($GLOBALS['Partial_Unsafe_unsafePartial'])((function() {
   $__body = function($__dollar____unused) use ($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Done")) {
-$b = ($__case_0)->values[0];
+$b = ($__case_0)->v0;
 return $b;
 } else {
 throw new \Exception("Pattern match failure");
@@ -543,7 +552,7 @@ throw new \Exception("Pattern match failure");
   $__body = function($v) use ($f, $r) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Loop")) {
-$a__prime__ = ($__case_0)->values[0];
+$a__prime__ = ($__case_0)->v0;
 return ($GLOBALS['Control_Monad_Rec_Class_bind'])(($f)($a__prime__), (function() use ($r) {
   $__fn = function($e) use ($r, &$__fn) {
   $__num = func_num_args();
@@ -629,11 +638,11 @@ $Control_Monad_Rec_Class_functorStep = ($GLOBALS['Data_Functor_Functor__dollar__
   $__body = function($f, $m) {
     $__case_0 = $m;
     if ((($__case_0)->tag === "Loop")) {
-$v = ($__case_0)->values[0];
+$v = ($__case_0)->v0;
 return ($GLOBALS['Control_Monad_Rec_Class_Loop'])($v);
 } else {
 if ((($__case_0)->tag === "Done")) {
-$v = ($__case_0)->values[0];
+$v = ($__case_0)->v0;
 return ($GLOBALS['Control_Monad_Rec_Class_Done'])(($f)($v));
 } else {
 throw new \Exception("Pattern match failure");
@@ -686,12 +695,12 @@ $Control_Monad_Rec_Class_bifunctorStep = ($GLOBALS['Data_Bifunctor_Bifunctor__do
     $__case_2 = $v2;
     if ((($__case_2)->tag === "Loop")) {
 $f = $__case_0;
-$a = ($__case_2)->values[0];
+$a = ($__case_2)->v0;
 return ($GLOBALS['Control_Monad_Rec_Class_Loop'])(($f)($a));
 } else {
 if ((($__case_2)->tag === "Done")) {
 $g = $__case_1;
-$b = ($__case_2)->values[0];
+$b = ($__case_2)->v0;
 return ($GLOBALS['Control_Monad_Rec_Class_Done'])(($g)($b));
 } else {
 throw new \Exception("Pattern match failure");

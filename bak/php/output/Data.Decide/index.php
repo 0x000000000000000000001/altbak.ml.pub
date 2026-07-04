@@ -14,6 +14,15 @@ require_once __DIR__ . '/../Data.Ordering/index.php';
 require_once __DIR__ . '/../Data.Predicate/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -134,11 +143,11 @@ return ($GLOBALS['Data_Equivalence_Equivalence'])((function() use ($f1, $g, $h) 
     $v2 = ($f1)($a);
     $__case_0 = $v2;
     if ((($__case_0)->tag === "Left")) {
-$c = ($__case_0)->values[0];
+$c = ($__case_0)->v0;
 $v3 = ($f1)($b);
 $__case_0 = $v3;
 if ((($__case_0)->tag === "Left")) {
-$d = ($__case_0)->values[0];
+$d = ($__case_0)->v0;
 return ($g)($c, $d);
 } else {
 if ((($__case_0)->tag === "Right")) {
@@ -149,14 +158,14 @@ throw new \Exception("Pattern match failure");
 };
 } else {
 if ((($__case_0)->tag === "Right")) {
-$c = ($__case_0)->values[0];
+$c = ($__case_0)->v0;
 $v3 = ($f1)($b);
 $__case_0 = $v3;
 if ((($__case_0)->tag === "Left")) {
 return false;
 } else {
 if ((($__case_0)->tag === "Right")) {
-$d = ($__case_0)->values[0];
+$d = ($__case_0)->v0;
 return ($h)($c, $d);
 } else {
 throw new \Exception("Pattern match failure");
@@ -211,11 +220,11 @@ return ($GLOBALS['Data_Comparison_Comparison'])((function() use ($f1, $g, $h) {
     $v2 = ($f1)($a);
     $__case_0 = $v2;
     if ((($__case_0)->tag === "Left")) {
-$c = ($__case_0)->values[0];
+$c = ($__case_0)->v0;
 $v3 = ($f1)($b);
 $__case_0 = $v3;
 if ((($__case_0)->tag === "Left")) {
-$d = ($__case_0)->values[0];
+$d = ($__case_0)->v0;
 return ($g)($c, $d);
 } else {
 if ((($__case_0)->tag === "Right")) {
@@ -226,14 +235,14 @@ throw new \Exception("Pattern match failure");
 };
 } else {
 if ((($__case_0)->tag === "Right")) {
-$c = ($__case_0)->values[0];
+$c = ($__case_0)->v0;
 $v3 = ($f1)($b);
 $__case_0 = $v3;
 if ((($__case_0)->tag === "Left")) {
 return $GLOBALS['Data_Ordering_GT'];
 } else {
 if ((($__case_0)->tag === "Right")) {
-$d = ($__case_0)->values[0];
+$d = ($__case_0)->v0;
 return ($h)($c, $d);
 } else {
 throw new \Exception("Pattern match failure");

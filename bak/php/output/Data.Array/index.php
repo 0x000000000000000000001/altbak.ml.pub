@@ -37,6 +37,15 @@ require_once __DIR__ . '/../Data.Unfoldable/index.php';
 require_once __DIR__ . '/../Partial.Unsafe/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -189,8 +198,8 @@ $traverse_1 = ($GLOBALS['Data_Array_traverse_'])($dictFoldable);
   $__body = function($v) use ($res) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Tuple")) {
-$i = ($__case_0)->values[0];
-$a = ($__case_0)->values[1];
+$i = ($__case_0)->v0;
+$a = ($__case_0)->v1;
 return ($GLOBALS['Data_Array_ST_poke'])($i, $a, $res);
 } else {
 throw new \Exception("Pattern match failure");
@@ -633,7 +642,7 @@ while (true) {
 $v = ($GLOBALS['Data_Array_index'])($arr, $i);
 $__case_0 = $v;
 if ((($__case_0)->tag === "Just")) {
-$x = ($__case_0)->values[0];
+$x = ($__case_0)->v0;
 $__case_0 = ($p)($x);
 if (($__case_0 === true)) {
 $__tco_tmp_0 = ($GLOBALS['Data_Array_add'])($i, 1);
@@ -661,11 +670,11 @@ throw new \Exception("Pattern match failure");
 })();
     $breakIndex = ($go)(0);
     $__case_0 = $breakIndex;
-    if (((($__case_0)->tag === "Just") && (($__case_0)->values[0] === 0))) {
+    if (((($__case_0)->tag === "Just") && (($__case_0)->v0 === 0))) {
 return (object)["init" => [], "rest" => $arr];
 } else {
 if ((($__case_0)->tag === "Just")) {
-$i = ($__case_0)->values[0];
+$i = ($__case_0)->v0;
 return (object)["init" => ($GLOBALS['Data_Array_slice'])(0, $i, $arr), "rest" => ($GLOBALS['Data_Array_slice'])($i, ($GLOBALS['Data_Array_length'])($arr), $arr)];
 } else {
 if ((($__case_0)->tag === "Nothing")) {
@@ -725,8 +734,8 @@ $Data_Array_unzip = (function() {
   $__body = function($v) use ($fsts, $snds) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Tuple")) {
-$fst = ($__case_0)->values[0];
-$snd = ($__case_0)->values[1];
+$fst = ($__case_0)->v0;
+$snd = ($__case_0)->v1;
 return ($GLOBALS['Data_Array_discard'])(($GLOBALS['Data_Array_void'])(($GLOBALS['Data_Array_ST_push'])($fst, $fsts)), (function() use ($snd, $snds) {
   $__fn = function($__dollar____unused) use ($snd, $snds, &$__fn) {
   $__num = func_num_args();
@@ -818,7 +827,7 @@ $Data_Array_nubBy = (function() {
 return [];
 } else {
 if ((($__case_0)->tag === "Just")) {
-$x = ($__case_0)->values[0];
+$x = ($__case_0)->v0;
 return ($GLOBALS['Data_Array_map1'])($GLOBALS['Data_Tuple_snd'], ($GLOBALS['Data_Array_sortWith1'])($GLOBALS['Data_Tuple_fst'], ($GLOBALS['Control_Monad_ST_Internal_run'])(($GLOBALS['Data_Array_bind'])(($GLOBALS['Data_Array_ST_unsafeThaw'])(($GLOBALS['Data_Array_singleton'])($x)), (function() use ($indexedAndSorted, $comp) {
   $__fn = function($result) use ($indexedAndSorted, $comp, &$__fn) {
   $__num = func_num_args();
@@ -828,7 +837,7 @@ return ($GLOBALS['Data_Array_map1'])($GLOBALS['Data_Tuple_snd'], ($GLOBALS['Data
     $__case_0 = $v1;
     if ((($__case_0)->tag === "Tuple")) {
 $pair = $__case_0;
-$x__prime__ = ($__case_0)->values[1];
+$x__prime__ = ($__case_0)->v1;
 return ($GLOBALS['Data_Array_bind'])(($GLOBALS['Data_Array_map2'])(($GLOBALS['Data_Array_compose'])($GLOBALS['Data_Tuple_snd'], ($GLOBALS['Partial_Unsafe_unsafePartial'])((function() {
   $__fn = function($__dollar____unused) use (&$__fn) {
   $__num = func_num_args();
@@ -1086,7 +1095,7 @@ if ((($__case_0)->tag === "Nothing")) {
 return $allArrays;
 } else {
 if ((($__case_0)->tag === "Just")) {
-$next = ($__case_0)->values[0];
+$next = ($__case_0)->v0;
 $__tco_tmp_0 = ($GLOBALS['Data_Array_add'])($idx, 1);
 $__tco_tmp_1 = ($GLOBALS['Data_Array_snoc'])($allArrays, $next);
 $idx = $__tco_tmp_0;
@@ -1663,8 +1672,8 @@ $map3 = ($GLOBALS['Data_Functor_map'])((((($dictApplicative)->Apply0)($GLOBALS['
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Tuple")) {
-$x = ($__case_0)->values[0];
-$b = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$b = ($__case_0)->v1;
 $__case_0 = $b;
 if (($__case_0 === true)) {
 return ($GLOBALS['Data_Maybe_Just'])($x);
@@ -1799,7 +1808,7 @@ $go = (function() use ($f, $i, $xs) {
 return ($GLOBALS['Data_Array_deleteAt'])($i, $xs);
 } else {
 if ((($__case_0)->tag === "Just")) {
-$x__prime__ = ($__case_0)->values[0];
+$x__prime__ = ($__case_0)->v0;
 return ($GLOBALS['Data_Array_updateAt'])($i, $x__prime__, $xs);
 } else {
 throw new \Exception("Pattern match failure");

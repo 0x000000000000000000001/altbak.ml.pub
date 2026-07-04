@@ -27,6 +27,15 @@ require_once __DIR__ . '/../Data.Unfoldable/index.php';
 require_once __DIR__ . '/../Partial.Unsafe/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -83,10 +92,10 @@ $Data_List_NonEmpty_zipWith = (function() {
     $__case_2 = $v1;
     if (((($__case_1)->tag === "NonEmpty") && (($__case_2)->tag === "NonEmpty"))) {
 $f1 = $__case_0;
-$x = ($__case_1)->values[0];
-$xs = ($__case_1)->values[1];
-$y = ($__case_2)->values[0];
-$ys = ($__case_2)->values[1];
+$x = ($__case_1)->v0;
+$xs = ($__case_1)->v1;
+$y = ($__case_2)->v0;
+$ys = ($__case_2)->v1;
 return ($GLOBALS['Data_List_Types_NonEmptyList'])(($GLOBALS['Data_NonEmpty_NonEmpty'])(($f1)($x, $y), ($GLOBALS['Data_List_zipWith'])($f1, $xs, $ys)));
 } else {
 throw new \Exception("Pattern match failure");
@@ -134,15 +143,15 @@ $Data_List_NonEmpty_wrappedOperation2 = (function() {
     if (((($__case_2)->tag === "NonEmpty") && (($__case_3)->tag === "NonEmpty"))) {
 $name1 = $__case_0;
 $f1 = $__case_1;
-$x = ($__case_2)->values[0];
-$xs = ($__case_2)->values[1];
-$y = ($__case_3)->values[0];
-$ys = ($__case_3)->values[1];
+$x = ($__case_2)->v0;
+$xs = ($__case_2)->v1;
+$y = ($__case_3)->v0;
+$ys = ($__case_3)->v1;
 $v2 = ($f1)(($GLOBALS['Data_List_Types_Cons'])($x, $xs), ($GLOBALS['Data_List_Types_Cons'])($y, $ys));
 $__case_0 = $v2;
 if ((($__case_0)->tag === "Cons")) {
-$x__prime__ = ($__case_0)->values[0];
-$xs__prime__ = ($__case_0)->values[1];
+$x__prime__ = ($__case_0)->v0;
+$xs__prime__ = ($__case_0)->v1;
 return ($GLOBALS['Data_List_Types_NonEmptyList'])(($GLOBALS['Data_NonEmpty_NonEmpty'])($x__prime__, $xs__prime__));
 } else {
 if ((($__case_0)->tag === "Nil")) {
@@ -173,13 +182,13 @@ $Data_List_NonEmpty_wrappedOperation = (function() {
     if ((($__case_2)->tag === "NonEmpty")) {
 $name1 = $__case_0;
 $f1 = $__case_1;
-$x = ($__case_2)->values[0];
-$xs = ($__case_2)->values[1];
+$x = ($__case_2)->v0;
+$xs = ($__case_2)->v1;
 $v1 = ($f1)(($GLOBALS['Data_List_Types_Cons'])($x, $xs));
 $__case_0 = $v1;
 if ((($__case_0)->tag === "Cons")) {
-$x__prime__ = ($__case_0)->values[0];
-$xs__prime__ = ($__case_0)->values[1];
+$x__prime__ = ($__case_0)->v0;
+$xs__prime__ = ($__case_0)->v1;
 return ($GLOBALS['Data_List_Types_NonEmptyList'])(($GLOBALS['Data_NonEmpty_NonEmpty'])($x__prime__, $xs__prime__));
 } else {
 if ((($__case_0)->tag === "Nil")) {
@@ -210,8 +219,8 @@ $Data_List_NonEmpty_updateAt = (function() {
     if ((($__case_2)->tag === "NonEmpty")) {
 $i1 = $__case_0;
 $a1 = $__case_1;
-$x = ($__case_2)->values[0];
-$xs = ($__case_2)->values[1];
+$x = ($__case_2)->v0;
+$xs = ($__case_2)->v1;
 return "/* Unsupported: Guards not supported */";
 } else {
 throw new \Exception("Pattern match failure");
@@ -242,15 +251,15 @@ $Data_List_NonEmpty_unsnoc = (function() {
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "NonEmpty")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 $v1 = ($GLOBALS['Data_List_unsnoc'])($xs);
 $__case_0 = $v1;
 if ((($__case_0)->tag === "Nothing")) {
 return (object)["init" => $GLOBALS['Data_List_Types_Nil'], "last" => $x];
 } else {
 if ((($__case_0)->tag === "Just")) {
-$un = ($__case_0)->values[0];
+$un = ($__case_0)->v0;
 return (object)["init" => ($GLOBALS['Data_List_Types_Cons'])($x, ($un)->init), "last" => ($un)->last];
 } else {
 throw new \Exception("Pattern match failure");
@@ -288,8 +297,8 @@ $Data_List_NonEmpty_uncons = (function() {
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "NonEmpty")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 return (object)["head" => $x, "tail" => $xs];
 } else {
 throw new \Exception("Pattern match failure");
@@ -309,8 +318,8 @@ $Data_List_NonEmpty_toList = (function() {
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "NonEmpty")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 return ($GLOBALS['Data_List_Types_Cons'])($x, $xs);
 } else {
 throw new \Exception("Pattern match failure");
@@ -357,7 +366,7 @@ $Data_List_NonEmpty_tail = (function() {
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "NonEmpty")) {
-$xs = ($__case_0)->values[1];
+$xs = ($__case_0)->v1;
 return $xs;
 } else {
 throw new \Exception("Pattern match failure");
@@ -401,8 +410,8 @@ $Data_List_NonEmpty_snoc = (function() {
     $__case_0 = $v;
     $__case_1 = $y;
     if ((($__case_0)->tag === "NonEmpty")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 $y1 = $__case_1;
 return ($GLOBALS['Data_List_Types_NonEmptyList'])(($GLOBALS['Data_NonEmpty_NonEmpty'])($x, ($GLOBALS['Data_List_snoc'])($xs, $y1)));
 } else {
@@ -427,8 +436,8 @@ $Data_List_NonEmpty_snoc__prime__ = (function() {
     $__case_0 = $v;
     $__case_1 = $v1;
     if ((($__case_0)->tag === "Cons")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 $y = $__case_1;
 return ($GLOBALS['Data_List_Types_NonEmptyList'])(($GLOBALS['Data_NonEmpty_NonEmpty'])($x, ($GLOBALS['Data_List_snoc'])($xs, $y)));
 } else {
@@ -489,8 +498,8 @@ $Data_List_NonEmpty_modifyAt = (function() {
     if ((($__case_2)->tag === "NonEmpty")) {
 $i1 = $__case_0;
 $f1 = $__case_1;
-$x = ($__case_2)->values[0];
-$xs = ($__case_2)->values[1];
+$x = ($__case_2)->v0;
+$xs = ($__case_2)->v1;
 return "/* Unsupported: Guards not supported */";
 } else {
 throw new \Exception("Pattern match failure");
@@ -512,8 +521,8 @@ $Data_List_NonEmpty_lift = (function() {
     $__case_1 = $v;
     if ((($__case_1)->tag === "NonEmpty")) {
 $f1 = $__case_0;
-$x = ($__case_1)->values[0];
-$xs = ($__case_1)->values[1];
+$x = ($__case_1)->v0;
+$xs = ($__case_1)->v1;
 return ($f1)(($GLOBALS['Data_List_Types_Cons'])($x, $xs));
 } else {
 throw new \Exception("Pattern match failure");
@@ -548,7 +557,7 @@ $Data_List_NonEmpty_length = (function() {
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "NonEmpty")) {
-$xs = ($__case_0)->values[1];
+$xs = ($__case_0)->v1;
 return ($GLOBALS['Data_List_NonEmpty_add'])(1, ($GLOBALS['Data_List_length'])($xs));
 } else {
 throw new \Exception("Pattern match failure");
@@ -568,8 +577,8 @@ $Data_List_NonEmpty_last = (function() {
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "NonEmpty")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 return ($GLOBALS['Data_Maybe_fromMaybe'])($x, ($GLOBALS['Data_List_last'])($xs));
 } else {
 throw new \Exception("Pattern match failure");
@@ -607,8 +616,8 @@ $Data_List_NonEmpty_insertAt = (function() {
     if ((($__case_2)->tag === "NonEmpty")) {
 $i1 = $__case_0;
 $a1 = $__case_1;
-$x = ($__case_2)->values[0];
-$xs = ($__case_2)->values[1];
+$x = ($__case_2)->v0;
+$xs = ($__case_2)->v1;
 return "/* Unsupported: Guards not supported */";
 } else {
 throw new \Exception("Pattern match failure");
@@ -628,8 +637,8 @@ $Data_List_NonEmpty_init = (function() {
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "NonEmpty")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 return ($GLOBALS['Data_Maybe_maybe'])($GLOBALS['Data_List_Types_Nil'], (function() use ($x) {
   $__fn = function($v1) use ($x, &$__fn) {
   $__num = func_num_args();
@@ -658,8 +667,8 @@ $Data_List_NonEmpty_index = (function() {
     $__case_0 = $v;
     $__case_1 = $i;
     if ((($__case_0)->tag === "NonEmpty")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 $i1 = $__case_1;
 return "/* Unsupported: Guards not supported */";
 } else {
@@ -680,7 +689,7 @@ $Data_List_NonEmpty_head = (function() {
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "NonEmpty")) {
-$x = ($__case_0)->values[0];
+$x = ($__case_0)->v0;
 return $x;
 } else {
 throw new \Exception("Pattern match failure");
@@ -731,8 +740,8 @@ $Data_List_NonEmpty_fromList = (function() {
 return $GLOBALS['Data_Maybe_Nothing'];
 } else {
 if ((($__case_0)->tag === "Cons")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 return ($GLOBALS['Data_Maybe_Just'])(($GLOBALS['Data_List_Types_NonEmptyList'])(($GLOBALS['Data_NonEmpty_NonEmpty'])($x, $xs)));
 } else {
 throw new \Exception("Pattern match failure");
@@ -774,8 +783,8 @@ $foldM1 = ($GLOBALS['Data_List_foldM'])($dictMonad);
     if ((($__case_2)->tag === "NonEmpty")) {
 $f1 = $__case_0;
 $b1 = $__case_1;
-$a = ($__case_2)->values[0];
-$as = ($__case_2)->values[1];
+$a = ($__case_2)->v0;
+$as = ($__case_2)->v1;
 return ($bind1)(($f1)($b1, $a), (function() use ($foldM1, $f1, $as) {
   $__fn = function($b__prime__) use ($foldM1, $f1, $as, &$__fn) {
   $__num = func_num_args();
@@ -809,12 +818,12 @@ $Data_List_NonEmpty_findLastIndex = (function() {
     $__case_1 = $v;
     if ((($__case_1)->tag === "NonEmpty")) {
 $f1 = $__case_0;
-$x = ($__case_1)->values[0];
-$xs = ($__case_1)->values[1];
+$x = ($__case_1)->v0;
+$xs = ($__case_1)->v1;
 $v1 = ($GLOBALS['Data_List_findLastIndex'])($f1, $xs);
 $__case_0 = $v1;
 if ((($__case_0)->tag === "Just")) {
-$i = ($__case_0)->values[0];
+$i = ($__case_0)->v0;
 return ($GLOBALS['Data_Maybe_Just'])(($GLOBALS['Data_List_NonEmpty_add'])($i, 1));
 } else {
 if ((($__case_0)->tag === "Nothing")) {
@@ -843,8 +852,8 @@ $Data_List_NonEmpty_findIndex = (function() {
     $__case_1 = $v;
     if ((($__case_1)->tag === "NonEmpty")) {
 $f1 = $__case_0;
-$x = ($__case_1)->values[0];
-$xs = ($__case_1)->values[1];
+$x = ($__case_1)->v0;
+$xs = ($__case_1)->v1;
 return "/* Unsupported: Guards not supported */";
 } else {
 throw new \Exception("Pattern match failure");
@@ -953,8 +962,8 @@ $Data_List_NonEmpty_cons = (function() {
     $__case_1 = $v;
     if ((($__case_1)->tag === "NonEmpty")) {
 $y1 = $__case_0;
-$x = ($__case_1)->values[0];
-$xs = ($__case_1)->values[1];
+$x = ($__case_1)->v0;
+$xs = ($__case_1)->v1;
 return ($GLOBALS['Data_List_Types_NonEmptyList'])(($GLOBALS['Data_NonEmpty_NonEmpty'])($y1, ($GLOBALS['Data_List_Types_Cons'])($x, $xs)));
 } else {
 throw new \Exception("Pattern match failure");
@@ -997,8 +1006,8 @@ $fromFoldable1 = ($GLOBALS['Data_List_fromFoldable'])($dictFoldable);
     $__case_0 = $v;
     $__case_1 = $ys;
     if ((($__case_0)->tag === "NonEmpty")) {
-$x = ($__case_0)->values[0];
-$xs = ($__case_0)->values[1];
+$x = ($__case_0)->v0;
+$xs = ($__case_0)->v1;
 $ys1 = $__case_1;
 return ($GLOBALS['Data_List_Types_NonEmptyList'])(($GLOBALS['Data_NonEmpty_NonEmpty'])($x, ($GLOBALS['Data_List_NonEmpty_append1'])($xs, ($fromFoldable1)($ys1))));
 } else {

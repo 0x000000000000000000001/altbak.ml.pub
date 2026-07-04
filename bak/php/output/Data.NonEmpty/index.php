@@ -29,6 +29,15 @@ require_once __DIR__ . '/../Data.Unfoldable/index.php';
 require_once __DIR__ . '/../Data.Unfoldable1/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -64,7 +73,7 @@ $Data_NonEmpty_NonEmpty = (function() {
   $__fn = function($value0, $value1 = null) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 2) return phpurs_curry_fallback($__fn, func_get_args(), 2);
-    $__res = (object)["tag" => "NonEmpty", "values" => [$value0, $value1]];
+    $__res = new Phpurs_Data2("NonEmpty", $value0, $value1);
   return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
@@ -95,7 +104,7 @@ $Data_NonEmpty_tail = (function() {
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "NonEmpty")) {
-$xs = ($__case_0)->values[1];
+$xs = ($__case_0)->v1;
 return $xs;
 } else {
 throw new \Exception("Pattern match failure");
@@ -145,8 +154,8 @@ $show1 = ($GLOBALS['Data_Show_show'])($dictShow1);
   $__body = function($v) use ($show, $show1) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "NonEmpty")) {
-$a = ($__case_0)->values[0];
-$fa = ($__case_0)->values[1];
+$a = ($__case_0)->v0;
+$fa = ($__case_0)->v1;
 return ($GLOBALS['Data_NonEmpty_append'])("(NonEmpty ", ($GLOBALS['Data_NonEmpty_append'])(($show)($a), ($GLOBALS['Data_NonEmpty_append'])(" ", ($GLOBALS['Data_NonEmpty_append'])(($show1)($fa), ")"))));
 } else {
 throw new \Exception("Pattern match failure");
@@ -185,10 +194,10 @@ $append1 = ($GLOBALS['Data_Semigroup_append'])($dictSemigroup);
     $__case_0 = $v;
     $__case_1 = $v1;
     if (((($__case_0)->tag === "NonEmpty") && (($__case_1)->tag === "NonEmpty"))) {
-$a1 = ($__case_0)->values[0];
-$f1 = ($__case_0)->values[1];
-$a2 = ($__case_1)->values[0];
-$f2 = ($__case_1)->values[1];
+$a1 = ($__case_0)->v0;
+$f1 = ($__case_0)->v1;
+$a2 = ($__case_1)->v0;
+$f2 = ($__case_1)->v1;
 return ($GLOBALS['Data_NonEmpty_NonEmpty'])($a1, ($append1)($f1, ($append1)(($pure)($a2), $f2)));
 } else {
 throw new \Exception("Pattern match failure");
@@ -222,8 +231,8 @@ $pure = ($GLOBALS['Control_Applicative_pure'])((($dictAlternative)->Applicative0
   $__body = function($v) use ($alt, $pure) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "NonEmpty")) {
-$a = ($__case_0)->values[0];
-$fa = ($__case_0)->values[1];
+$a = ($__case_0)->v0;
+$fa = ($__case_0)->v1;
 return ($alt)(($pure)($a), $fa);
 } else {
 throw new \Exception("Pattern match failure");
@@ -247,7 +256,7 @@ $Data_NonEmpty_head = (function() {
   $__body = function($v) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "NonEmpty")) {
-$x = ($__case_0)->values[0];
+$x = ($__case_0)->v0;
 return $x;
 } else {
 throw new \Exception("Pattern match failure");
@@ -272,8 +281,8 @@ $map2 = ($GLOBALS['Data_Functor_map'])($dictFunctor);
   $__body = function($f, $m) use ($map2) {
     $__case_0 = $m;
     if ((($__case_0)->tag === "NonEmpty")) {
-$v = ($__case_0)->values[0];
-$v1 = ($__case_0)->values[1];
+$v = ($__case_0)->v0;
+$v1 = ($__case_0)->v1;
 return ($GLOBALS['Data_NonEmpty_NonEmpty'])(($f)($v), ($map2)($f, $v1));
 } else {
 throw new \Exception("Pattern match failure");
@@ -305,8 +314,8 @@ $functorNonEmpty1 = ($GLOBALS['Data_NonEmpty_functorNonEmpty'])((($dictFunctorWi
     $__case_1 = $v;
     if ((($__case_1)->tag === "NonEmpty")) {
 $f1 = $__case_0;
-$a = ($__case_1)->values[0];
-$fa = ($__case_1)->values[1];
+$a = ($__case_1)->v0;
+$fa = ($__case_1)->v1;
 return ($GLOBALS['Data_NonEmpty_NonEmpty'])(($f1)($GLOBALS['Data_Maybe_Nothing'], $a), ($mapWithIndex)(($GLOBALS['Data_NonEmpty_compose'])($f1, $GLOBALS['Data_Maybe_Just']), $fa));
 } else {
 throw new \Exception("Pattern match failure");
@@ -340,8 +349,8 @@ $Data_NonEmpty_fromNonEmpty = (function() {
     $__case_1 = $v;
     if ((($__case_1)->tag === "NonEmpty")) {
 $f1 = $__case_0;
-$a = ($__case_1)->values[0];
-$fa = ($__case_1)->values[1];
+$a = ($__case_1)->v0;
+$fa = ($__case_1)->v1;
 return ($f1)($a, $fa);
 } else {
 throw new \Exception("Pattern match failure");
@@ -376,8 +385,8 @@ $foldMap1 = ($foldMap)($dictMonoid);
     $__case_1 = $v;
     if ((($__case_1)->tag === "NonEmpty")) {
 $f1 = $__case_0;
-$a = ($__case_1)->values[0];
-$fa = ($__case_1)->values[1];
+$a = ($__case_1)->v0;
+$fa = ($__case_1)->v1;
 return ($append1)(($f1)($a), ($foldMap1)($f1, $fa));
 } else {
 throw new \Exception("Pattern match failure");
@@ -402,8 +411,8 @@ throw new \Exception("Pattern match failure");
     if ((($__case_2)->tag === "NonEmpty")) {
 $f1 = $__case_0;
 $b1 = $__case_1;
-$a = ($__case_2)->values[0];
-$fa = ($__case_2)->values[1];
+$a = ($__case_2)->v0;
+$fa = ($__case_2)->v1;
 return ($foldl)($f1, ($f1)($b1, $a), $fa);
 } else {
 throw new \Exception("Pattern match failure");
@@ -424,8 +433,8 @@ throw new \Exception("Pattern match failure");
     if ((($__case_2)->tag === "NonEmpty")) {
 $f1 = $__case_0;
 $b1 = $__case_1;
-$a = ($__case_2)->values[0];
-$fa = ($__case_2)->values[1];
+$a = ($__case_2)->v0;
+$fa = ($__case_2)->v1;
 return ($f1)($a, ($foldr)($f1, $b1, $fa));
 } else {
 throw new \Exception("Pattern match failure");
@@ -465,8 +474,8 @@ $foldMapWithIndex1 = ($foldMapWithIndex)($dictMonoid);
     $__case_1 = $v;
     if ((($__case_1)->tag === "NonEmpty")) {
 $f1 = $__case_0;
-$a = ($__case_1)->values[0];
-$fa = ($__case_1)->values[1];
+$a = ($__case_1)->v0;
+$fa = ($__case_1)->v1;
 return ($append1)(($f1)($GLOBALS['Data_Maybe_Nothing'], $a), ($foldMapWithIndex1)(($GLOBALS['Data_NonEmpty_compose'])($f1, $GLOBALS['Data_Maybe_Just']), $fa));
 } else {
 throw new \Exception("Pattern match failure");
@@ -491,8 +500,8 @@ throw new \Exception("Pattern match failure");
     if ((($__case_2)->tag === "NonEmpty")) {
 $f1 = $__case_0;
 $b1 = $__case_1;
-$a = ($__case_2)->values[0];
-$fa = ($__case_2)->values[1];
+$a = ($__case_2)->v0;
+$fa = ($__case_2)->v1;
 return ($foldlWithIndex)(($GLOBALS['Data_NonEmpty_compose'])($f1, $GLOBALS['Data_Maybe_Just']), ($f1)($GLOBALS['Data_Maybe_Nothing'], $b1, $a), $fa);
 } else {
 throw new \Exception("Pattern match failure");
@@ -513,8 +522,8 @@ throw new \Exception("Pattern match failure");
     if ((($__case_2)->tag === "NonEmpty")) {
 $f1 = $__case_0;
 $b1 = $__case_1;
-$a = ($__case_2)->values[0];
-$fa = ($__case_2)->values[1];
+$a = ($__case_2)->v0;
+$fa = ($__case_2)->v1;
 return ($f1)($GLOBALS['Data_Maybe_Nothing'], $a, ($foldrWithIndex)(($GLOBALS['Data_NonEmpty_compose'])($f1, $GLOBALS['Data_Maybe_Just']), $b1, $fa));
 } else {
 throw new \Exception("Pattern match failure");
@@ -562,8 +571,8 @@ $sequence1 = ($sequence)($dictApplicative);
   $__body = function($v) use ($apply, $map2, $sequence1) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "NonEmpty")) {
-$a = ($__case_0)->values[0];
-$fa = ($__case_0)->values[1];
+$a = ($__case_0)->v0;
+$fa = ($__case_0)->v1;
 return ($apply)(($map2)($GLOBALS['Data_NonEmpty_NonEmpty'], $a), ($sequence1)($fa));
 } else {
 throw new \Exception("Pattern match failure");
@@ -594,8 +603,8 @@ $traverse1 = ($traverse)($dictApplicative);
     $__case_1 = $v;
     if ((($__case_1)->tag === "NonEmpty")) {
 $f1 = $__case_0;
-$a = ($__case_1)->values[0];
-$fa = ($__case_1)->values[1];
+$a = ($__case_1)->v0;
+$fa = ($__case_1)->v1;
 return ($apply)(($map2)($GLOBALS['Data_NonEmpty_NonEmpty'], ($f1)($a)), ($traverse1)($f1, $fa));
 } else {
 throw new \Exception("Pattern match failure");
@@ -657,8 +666,8 @@ $traverseWithIndex1 = ($traverseWithIndex)($dictApplicative);
     $__case_1 = $v;
     if ((($__case_1)->tag === "NonEmpty")) {
 $f1 = $__case_0;
-$a = ($__case_1)->values[0];
-$fa = ($__case_1)->values[1];
+$a = ($__case_1)->v0;
+$fa = ($__case_1)->v1;
 return ($apply)(($map2)($GLOBALS['Data_NonEmpty_NonEmpty'], ($f1)($GLOBALS['Data_Maybe_Nothing'], $a)), ($traverseWithIndex1)(($GLOBALS['Data_NonEmpty_compose'])($f1, $GLOBALS['Data_Maybe_Just']), $fa));
 } else {
 throw new \Exception("Pattern match failure");
@@ -724,8 +733,8 @@ $append1 = ($GLOBALS['Data_Semigroup_append'])($dictSemigroup);
     $__case_1 = $v;
     if ((($__case_1)->tag === "NonEmpty")) {
 $f1 = $__case_0;
-$a = ($__case_1)->values[0];
-$fa = ($__case_1)->values[1];
+$a = ($__case_1)->v0;
+$fa = ($__case_1)->v1;
 return ($foldl)((function() use ($append1, $f1) {
   $__fn = function($s, $a1 = null) use ($append1, $f1, &$__fn) {
   $__num = func_num_args();
@@ -756,8 +765,8 @@ throw new \Exception("Pattern match failure");
     $__case_1 = $v;
     if ((($__case_1)->tag === "NonEmpty")) {
 $f1 = $__case_0;
-$a = ($__case_1)->values[0];
-$fa = ($__case_1)->values[1];
+$a = ($__case_1)->v0;
+$fa = ($__case_1)->v1;
 return ($GLOBALS['Data_Maybe_maybe'])($a, ($f1)($a), ($foldr)((function() use ($f1) {
   $__fn = function($a1) use ($f1, &$__fn) {
   $__num = func_num_args();
@@ -784,8 +793,8 @@ throw new \Exception("Pattern match failure");
     $__case_1 = $v;
     if ((($__case_1)->tag === "NonEmpty")) {
 $f1 = $__case_0;
-$a = ($__case_1)->values[0];
-$fa = ($__case_1)->values[1];
+$a = ($__case_1)->v0;
+$fa = ($__case_1)->v1;
 return ($foldl)($f1, $a, $fa);
 } else {
 throw new \Exception("Pattern match failure");
@@ -840,10 +849,10 @@ $eq11 = ($eq1)($dictEq);
     $__case_0 = $x;
     $__case_1 = $y;
     if (((($__case_0)->tag === "NonEmpty") && (($__case_1)->tag === "NonEmpty"))) {
-$l = ($__case_0)->values[0];
-$l1 = ($__case_0)->values[1];
-$r = ($__case_1)->values[0];
-$r1 = ($__case_1)->values[1];
+$l = ($__case_0)->v0;
+$l1 = ($__case_0)->v1;
+$r = ($__case_1)->v0;
+$r1 = ($__case_1)->v1;
 return ($GLOBALS['Data_NonEmpty_conj'])(($eq)($l, $r), ($eq11)($l1, $r1));
 } else {
 throw new \Exception("Pattern match failure");
@@ -885,10 +894,10 @@ $eqNonEmpty2 = ($eqNonEmpty1)((($dictOrd)->Eq0)($GLOBALS['Prim_undefined']));
     $__case_0 = $x;
     $__case_1 = $y;
     if (((($__case_0)->tag === "NonEmpty") && (($__case_1)->tag === "NonEmpty"))) {
-$l = ($__case_0)->values[0];
-$l1 = ($__case_0)->values[1];
-$r = ($__case_1)->values[0];
-$r1 = ($__case_1)->values[1];
+$l = ($__case_0)->v0;
+$l1 = ($__case_0)->v1;
+$r = ($__case_1)->v0;
+$r1 = ($__case_1)->v1;
 $v = ($compare)($l, $r);
 $__case_0 = $v;
 if ((($__case_0)->tag === "LT")) {

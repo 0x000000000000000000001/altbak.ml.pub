@@ -19,6 +19,15 @@ require_once __DIR__ . '/../Data.Traversable/index.php';
 require_once __DIR__ . '/../Data.Tuple/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -194,8 +203,8 @@ $map = ($GLOBALS['Data_Functor_map'])((($Apply0)->Functor0)($GLOBALS['Prim_undef
     if ((($__case_2)->tag === "Tuple")) {
 $f1 = $__case_0;
 $g1 = $__case_1;
-$a = ($__case_2)->values[0];
-$b = ($__case_2)->values[1];
+$a = ($__case_2)->v0;
+$b = ($__case_2)->v1;
 return ($apply)(($map)($GLOBALS['Data_Tuple_Tuple'], ($f1)($a)), ($g1)($b));
 } else {
 throw new \Exception("Pattern match failure");
@@ -223,8 +232,8 @@ $map = ($GLOBALS['Data_Functor_map'])((($Apply0)->Functor0)($GLOBALS['Prim_undef
   $__body = function($v) use ($apply, $map) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Tuple")) {
-$a = ($__case_0)->values[0];
-$b = ($__case_0)->values[1];
+$a = ($__case_0)->v0;
+$b = ($__case_0)->v1;
 return ($apply)(($map)($GLOBALS['Data_Tuple_Tuple'], $a), $b);
 } else {
 throw new \Exception("Pattern match failure");
@@ -360,12 +369,12 @@ $map = ($GLOBALS['Data_Functor_map'])((((($dictApplicative)->Apply0)($GLOBALS['P
     $__case_2 = $v2;
     if ((($__case_2)->tag === "Left")) {
 $f = $__case_0;
-$a = ($__case_2)->values[0];
+$a = ($__case_2)->v0;
 return ($map)($GLOBALS['Data_Either_Left'], ($f)($a));
 } else {
 if ((($__case_2)->tag === "Right")) {
 $g = $__case_1;
-$b = ($__case_2)->values[0];
+$b = ($__case_2)->v0;
 return ($map)($GLOBALS['Data_Either_Right'], ($g)($b));
 } else {
 throw new \Exception("Pattern match failure");
@@ -392,11 +401,11 @@ $map = ($GLOBALS['Data_Functor_map'])((((($dictApplicative)->Apply0)($GLOBALS['P
   $__body = function($v) use ($map) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Left")) {
-$a = ($__case_0)->values[0];
+$a = ($__case_0)->v0;
 return ($map)($GLOBALS['Data_Either_Left'], $a);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$b = ($__case_0)->values[0];
+$b = ($__case_0)->v0;
 return ($map)($GLOBALS['Data_Either_Right'], $b);
 } else {
 throw new \Exception("Pattern match failure");
@@ -757,8 +766,8 @@ $bitraverse4 = ($bitraverse2)($dictApplicative);
     if ((($__case_2)->tag === "Product2")) {
 $l1 = $__case_0;
 $r1 = $__case_1;
-$f = ($__case_2)->values[0];
-$g = ($__case_2)->values[1];
+$f = ($__case_2)->v0;
+$g = ($__case_2)->v1;
 return ($apply)(($map)($GLOBALS['Data_Functor_Product2_Product2'], ($bitraverse3)($l1, $r1, $f)), ($bitraverse4)($l1, $r1, $g));
 } else {
 throw new \Exception("Pattern match failure");
@@ -788,8 +797,8 @@ $bisequence4 = ($bisequence2)($dictApplicative);
   $__body = function($v) use ($apply, $map, $bisequence3, $bisequence4) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Product2")) {
-$f = ($__case_0)->values[0];
-$g = ($__case_0)->values[1];
+$f = ($__case_0)->v0;
+$g = ($__case_0)->v1;
 return ($apply)(($map)($GLOBALS['Data_Functor_Product2_Product2'], ($bisequence3)($f)), ($bisequence4)($g));
 } else {
 throw new \Exception("Pattern match failure");

@@ -30,6 +30,15 @@ require_once __DIR__ . '/../Data.Show/index.php';
 require_once __DIR__ . '/../Data.Tuple/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -126,17 +135,17 @@ $Data_Interval_Duration_Iso_IsoDuration = (function() {
 })();
 
 // Data_Interval_Duration_Iso_IsEmpty
-$Data_Interval_Duration_Iso_IsEmpty = (object)["tag" => "IsEmpty", "values" => []];
+$Data_Interval_Duration_Iso_IsEmpty = new Phpurs_Data0("IsEmpty");
 
 // Data_Interval_Duration_Iso_InvalidWeekComponentUsage
-$Data_Interval_Duration_Iso_InvalidWeekComponentUsage = (object)["tag" => "InvalidWeekComponentUsage", "values" => []];
+$Data_Interval_Duration_Iso_InvalidWeekComponentUsage = new Phpurs_Data0("InvalidWeekComponentUsage");
 
 // Data_Interval_Duration_Iso_ContainsNegativeValue
 $Data_Interval_Duration_Iso_ContainsNegativeValue = (function() {
   $__fn = function($value0) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
-    $__res = (object)["tag" => "ContainsNegativeValue", "values" => [$value0]];
+    $__res = new Phpurs_Data1("ContainsNegativeValue", $value0);
   return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
@@ -147,7 +156,7 @@ $Data_Interval_Duration_Iso_InvalidFractionalUse = (function() {
   $__fn = function($value0) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
-    $__res = (object)["tag" => "InvalidFractionalUse", "values" => [$value0]];
+    $__res = new Phpurs_Data1("InvalidFractionalUse", $value0);
   return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
@@ -204,11 +213,11 @@ if ((($__case_0)->tag === "InvalidWeekComponentUsage")) {
 return "(InvalidWeekComponentUsage)";
 } else {
 if ((($__case_0)->tag === "ContainsNegativeValue")) {
-$c = ($__case_0)->values[0];
+$c = ($__case_0)->v0;
 return ($GLOBALS['Data_Interval_Duration_Iso_append'])("(ContainsNegativeValue ", ($GLOBALS['Data_Interval_Duration_Iso_append'])(($GLOBALS['Data_Interval_Duration_Iso_show1'])($c), ")"));
 } else {
 if ((($__case_0)->tag === "InvalidFractionalUse")) {
-$c = ($__case_0)->values[0];
+$c = ($__case_0)->v0;
 return ($GLOBALS['Data_Interval_Duration_Iso_append'])("(InvalidFractionalUse ", ($GLOBALS['Data_Interval_Duration_Iso_append'])(($GLOBALS['Data_Interval_Duration_Iso_show1'])($c), ")"));
 } else {
 throw new \Exception("Pattern match failure");
@@ -237,11 +246,11 @@ if ((($__case_0)->tag === "InvalidWeekComponentUsage")) {
 return "Week component of Duration is used with other components";
 } else {
 if ((($__case_0)->tag === "ContainsNegativeValue")) {
-$c = ($__case_0)->values[0];
+$c = ($__case_0)->v0;
 return ($GLOBALS['Data_Interval_Duration_Iso_append'])("Component `", ($GLOBALS['Data_Interval_Duration_Iso_append'])(($GLOBALS['Data_Interval_Duration_Iso_show1'])($c), "` contains negative value"));
 } else {
 if ((($__case_0)->tag === "InvalidFractionalUse")) {
-$c = ($__case_0)->values[0];
+$c = ($__case_0)->v0;
 return ($GLOBALS['Data_Interval_Duration_Iso_append'])("Invalid usage of Fractional value at component `", ($GLOBALS['Data_Interval_Duration_Iso_append'])(($GLOBALS['Data_Interval_Duration_Iso_show1'])($c), "`"));
 } else {
 throw new \Exception("Pattern match failure");
@@ -323,13 +332,13 @@ if (((($__case_0)->tag === "InvalidWeekComponentUsage") && (($__case_1)->tag ===
 return true;
 } else {
 if (((($__case_0)->tag === "ContainsNegativeValue") && (($__case_1)->tag === "ContainsNegativeValue"))) {
-$l = ($__case_0)->values[0];
-$r = ($__case_1)->values[0];
+$l = ($__case_0)->v0;
+$r = ($__case_1)->v0;
 return ($GLOBALS['Data_Interval_Duration_Iso_eq1'])($l, $r);
 } else {
 if (((($__case_0)->tag === "InvalidFractionalUse") && (($__case_1)->tag === "InvalidFractionalUse"))) {
-$l = ($__case_0)->values[0];
-$r = ($__case_1)->values[0];
+$l = ($__case_0)->v0;
+$r = ($__case_1)->v0;
 return ($GLOBALS['Data_Interval_Duration_Iso_eq1'])($l, $r);
 } else {
 if (true) {
@@ -375,8 +384,8 @@ if ((($__case_1)->tag === "InvalidWeekComponentUsage")) {
 return $GLOBALS['Data_Ordering_GT'];
 } else {
 if (((($__case_0)->tag === "ContainsNegativeValue") && (($__case_1)->tag === "ContainsNegativeValue"))) {
-$l = ($__case_0)->values[0];
-$r = ($__case_1)->values[0];
+$l = ($__case_0)->v0;
+$r = ($__case_1)->v0;
 return ($GLOBALS['Data_Interval_Duration_Iso_compare1'])($l, $r);
 } else {
 if ((($__case_0)->tag === "ContainsNegativeValue")) {
@@ -386,8 +395,8 @@ if ((($__case_1)->tag === "ContainsNegativeValue")) {
 return $GLOBALS['Data_Ordering_GT'];
 } else {
 if (((($__case_0)->tag === "InvalidFractionalUse") && (($__case_1)->tag === "InvalidFractionalUse"))) {
-$l = ($__case_0)->values[0];
-$r = ($__case_1)->values[0];
+$l = ($__case_0)->v0;
+$r = ($__case_1)->v0;
 return ($GLOBALS['Data_Interval_Duration_Iso_compare1'])($l, $r);
 } else {
 throw new \Exception("Pattern match failure");
@@ -458,8 +467,8 @@ return ($GLOBALS['Data_Function_flip'])($GLOBALS['Data_Interval_Duration_Iso_fol
   $__body = function($v1) {
     $__case_0 = $v1;
     if ((($__case_0)->tag === "Tuple")) {
-$c = ($__case_0)->values[0];
-$num = ($__case_0)->values[1];
+$c = ($__case_0)->v0;
+$num = ($__case_0)->v1;
 $__case_0 = ($GLOBALS['Data_Interval_Duration_Iso_greaterThanOrEq'])($num, 0.0);
 if (($__case_0 === true)) {
 return $GLOBALS['Data_Interval_Duration_Iso_empty'];
@@ -529,9 +538,9 @@ $v1 = ((function() {
   return $__fn;
 })())(($GLOBALS['Data_List_span'])(($GLOBALS['Data_Interval_Duration_Iso_composeFlipped'])($GLOBALS['Data_Tuple_snd'], ($GLOBALS['Data_Interval_Duration_Iso_not'])($isFractional)), $asList));
 $__case_0 = $v1;
-if (((($__case_0)->tag === "Cons") && ((($__case_0)->values[0])->tag === "Tuple"))) {
-$c = (($__case_0)->values[0])->values[0];
-$rest = ($__case_0)->values[1];
+if (((($__case_0)->tag === "Cons") && ((($__case_0)->v0)->tag === "Tuple"))) {
+$c = (($__case_0)->v0)->v0;
+$rest = ($__case_0)->v1;
 return "/* Unsupported: Guards not supported */";
 } else {
 if (true) {
@@ -610,7 +619,7 @@ $Data_Interval_Duration_Iso_mkIsoDuration = (function() {
     $v = ($GLOBALS['Data_List_NonEmpty_fromList'])(($GLOBALS['Data_Interval_Duration_Iso_checkValidIsoDuration'])($d));
     $__case_0 = $v;
     if ((($__case_0)->tag === "Just")) {
-$errs = ($__case_0)->values[0];
+$errs = ($__case_0)->v0;
 return ($GLOBALS['Data_Either_Left'])($errs);
 } else {
 if ((($__case_0)->tag === "Nothing")) {

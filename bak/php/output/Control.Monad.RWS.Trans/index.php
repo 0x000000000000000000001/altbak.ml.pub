@@ -29,6 +29,15 @@ require_once __DIR__ . '/../Data.Unit/index.php';
 require_once __DIR__ . '/../Effect.Class/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -52,7 +61,7 @@ $Control_Monad_RWS_Trans_RWSResult = (function() {
   $__fn = function($value0, $value1 = null, $value2 = null) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 3) return phpurs_curry_fallback($__fn, func_get_args(), 3);
-    $__res = (object)["tag" => "RWSResult", "values" => [$value0, $value1, $value2]];
+    $__res = new Phpurs_Data3("RWSResult", $value0, $value1, $value2);
   return $__num > 3 ? $__res(...array_slice(func_get_args(), 3)) : $__res;
   };
   return $__fn;
@@ -253,9 +262,9 @@ return ($GLOBALS['Control_Monad_RWS_Trans_RWST'])((function() use ($map, $f1, $m
   $__body = function($v1) use ($f1) {
     $__case_0 = $v1;
     if ((($__case_0)->tag === "RWSResult")) {
-$state = ($__case_0)->values[0];
-$result = ($__case_0)->values[1];
-$writer = ($__case_0)->values[2];
+$state = ($__case_0)->v0;
+$result = ($__case_0)->v1;
+$writer = ($__case_0)->v2;
 return ($GLOBALS['Control_Monad_RWS_Trans_RWSResult'])($state, ($f1)($result), $writer);
 } else {
 throw new \Exception("Pattern match failure");
@@ -310,8 +319,8 @@ return ($bind)(($m)($r1, $s1), (function() use ($pure) {
   $__body = function($v1) use ($pure) {
     $__case_0 = $v1;
     if ((($__case_0)->tag === "RWSResult")) {
-$state = ($__case_0)->values[0];
-$writer = ($__case_0)->values[2];
+$state = ($__case_0)->v0;
+$writer = ($__case_0)->v2;
 return ($pure)(($GLOBALS['Data_Tuple_Tuple'])($state, $writer));
 } else {
 throw new \Exception("Pattern match failure");
@@ -362,8 +371,8 @@ return ($bind)(($m)($r1, $s1), (function() use ($pure) {
   $__body = function($v1) use ($pure) {
     $__case_0 = $v1;
     if ((($__case_0)->tag === "RWSResult")) {
-$result = ($__case_0)->values[1];
-$writer = ($__case_0)->values[2];
+$result = ($__case_0)->v1;
+$writer = ($__case_0)->v2;
 return ($pure)(($GLOBALS['Data_Tuple_Tuple'])($result, $writer));
 } else {
 throw new \Exception("Pattern match failure");
@@ -423,16 +432,16 @@ return ($GLOBALS['Control_Monad_RWS_Trans_RWST'])((function() use ($bind, $f, $m
   $__body = function($v2) use ($mapFlipped, $m, $r, $append) {
     $__case_0 = $v2;
     if ((($__case_0)->tag === "RWSResult")) {
-$s__prime__ = ($__case_0)->values[0];
-$f__prime__ = ($__case_0)->values[1];
-$w__prime__ = ($__case_0)->values[2];
+$s__prime__ = ($__case_0)->v0;
+$f__prime__ = ($__case_0)->v1;
+$w__prime__ = ($__case_0)->v2;
 return ($mapFlipped)(($m)($r, $s__prime__), (function() use ($f__prime__, $append, $w__prime__) {
   $__body = function($v3) use ($f__prime__, $append, $w__prime__) {
     $__case_0 = $v3;
     if ((($__case_0)->tag === "RWSResult")) {
-$s__prime____prime__ = ($__case_0)->values[0];
-$a__prime____prime__ = ($__case_0)->values[1];
-$w__prime____prime__ = ($__case_0)->values[2];
+$s__prime____prime__ = ($__case_0)->v0;
+$a__prime____prime__ = ($__case_0)->v1;
+$w__prime____prime__ = ($__case_0)->v2;
 return ($GLOBALS['Control_Monad_RWS_Trans_RWSResult'])($s__prime____prime__, ($f__prime__)($a__prime____prime__), ($append)($w__prime__, $w__prime____prime__));
 } else {
 throw new \Exception("Pattern match failure");
@@ -520,9 +529,9 @@ return ($GLOBALS['Control_Monad_RWS_Trans_RWST'])((function() use ($bind, $m, $f
   $__body = function($v1) use ($f1, $mapFlipped, $r, $append) {
     $__case_0 = $v1;
     if ((($__case_0)->tag === "RWSResult")) {
-$s__prime__ = ($__case_0)->values[0];
-$a = ($__case_0)->values[1];
-$w = ($__case_0)->values[2];
+$s__prime__ = ($__case_0)->v0;
+$a = ($__case_0)->v1;
+$w = ($__case_0)->v2;
 $v2 = ($f1)($a);
 $__case_0 = $v2;
 if (true) {
@@ -531,9 +540,9 @@ return ($mapFlipped)(($f__prime__)($r, $s__prime__), (function() use ($append, $
   $__body = function($v3) use ($append, $w) {
     $__case_0 = $v3;
     if ((($__case_0)->tag === "RWSResult")) {
-$state = ($__case_0)->values[0];
-$result = ($__case_0)->values[1];
-$writer = ($__case_0)->values[2];
+$state = ($__case_0)->v0;
+$result = ($__case_0)->v1;
+$writer = ($__case_0)->v2;
 return ($GLOBALS['Control_Monad_RWS_Trans_RWSResult'])($state, $result, ($append)($w, $writer));
 } else {
 throw new \Exception("Pattern match failure");
@@ -860,9 +869,9 @@ $k__prime__ = (function() use ($k, $bind, $pure, $append) {
     $__case_1 = $v;
     if ((($__case_1)->tag === "RWSResult")) {
 $r1 = $__case_0;
-$state = ($__case_1)->values[0];
-$result = ($__case_1)->values[1];
-$writer = ($__case_1)->values[2];
+$state = ($__case_1)->v0;
+$result = ($__case_1)->v1;
+$writer = ($__case_1)->v2;
 $v1 = ($k)($result);
 $__case_0 = $v1;
 if (true) {
@@ -871,17 +880,17 @@ return ($bind)(($m)($r1, $state), (function() use ($pure, $append, $writer) {
   $__body = function($v2) use ($pure, $append, $writer) {
     $__case_0 = $v2;
     if ((($__case_0)->tag === "RWSResult")) {
-$state__prime__ = ($__case_0)->values[0];
-$result__prime__ = ($__case_0)->values[1];
-$writer__prime__ = ($__case_0)->values[2];
+$state__prime__ = ($__case_0)->v0;
+$result__prime__ = ($__case_0)->v1;
+$writer__prime__ = ($__case_0)->v2;
 $__case_0 = $result__prime__;
 $__case_res_0 = null;
 if ((($__case_0)->tag === "Loop")) {
-$x = ($__case_0)->values[0];
+$x = ($__case_0)->v0;
 $__case_res_0 = ($GLOBALS['Control_Monad_Rec_Class_Loop'])(($GLOBALS['Control_Monad_RWS_Trans_RWSResult'])($state__prime__, $x, ($append)($writer, $writer__prime__)));
 } else {
 if ((($__case_0)->tag === "Done")) {
-$y = ($__case_0)->values[0];
+$y = ($__case_0)->v0;
 $__case_res_0 = ($GLOBALS['Control_Monad_Rec_Class_Done'])(($GLOBALS['Control_Monad_RWS_Trans_RWSResult'])($state__prime__, $y, ($append)($writer, $writer__prime__)));
 } else {
 throw new \Exception("Pattern match failure");
@@ -967,8 +976,8 @@ $monadRWST2 = ($monadRWST1)($dictMonoid);
     $v1 = ($f)($s);
     $__case_0 = $v1;
     if ((($__case_0)->tag === "Tuple")) {
-$a = ($__case_0)->values[0];
-$s__prime__ = ($__case_0)->values[1];
+$a = ($__case_0)->v0;
+$s__prime__ = ($__case_0)->v1;
 return ($pure)(($GLOBALS['Control_Monad_RWS_Trans_RWSResult'])($s__prime__, $a, $mempty));
 } else {
 throw new \Exception("Pattern match failure");
@@ -1084,9 +1093,9 @@ return ($bind)(($m__prime__)($r, $s), (function() use ($pure) {
   $__body = function($v) use ($pure) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "RWSResult")) {
-$s__prime__ = ($__case_0)->values[0];
-$a = ($__case_0)->values[1];
-$w = ($__case_0)->values[2];
+$s__prime__ = ($__case_0)->v0;
+$a = ($__case_0)->v1;
+$w = ($__case_0)->v2;
 return ($pure)(($GLOBALS['Control_Monad_RWS_Trans_RWSResult'])($s__prime__, ($GLOBALS['Data_Tuple_Tuple'])($a, $w), $w));
 } else {
 throw new \Exception("Pattern match failure");
@@ -1127,11 +1136,11 @@ $m__prime__ = $__case_0;
 return ($bind)(($m__prime__)($r, $s), (function() use ($pure) {
   $__body = function($v) use ($pure) {
     $__case_0 = $v;
-    if (((($__case_0)->tag === "RWSResult") && ((($__case_0)->values[1])->tag === "Tuple"))) {
-$s__prime__ = ($__case_0)->values[0];
-$a = (($__case_0)->values[1])->values[0];
-$f = (($__case_0)->values[1])->values[1];
-$w = ($__case_0)->values[2];
+    if (((($__case_0)->tag === "RWSResult") && ((($__case_0)->v1)->tag === "Tuple"))) {
+$s__prime__ = ($__case_0)->v0;
+$a = (($__case_0)->v1)->v0;
+$f = (($__case_0)->v1)->v1;
+$w = ($__case_0)->v2;
 return ($pure)(($GLOBALS['Control_Monad_RWS_Trans_RWSResult'])($s__prime__, $a, ($f)($w)));
 } else {
 throw new \Exception("Pattern match failure");

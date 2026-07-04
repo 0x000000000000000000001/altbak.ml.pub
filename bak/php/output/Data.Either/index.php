@@ -24,6 +24,15 @@ require_once __DIR__ . '/../Data.Show/index.php';
 require_once __DIR__ . '/../Data.Unit/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -50,7 +59,7 @@ $Data_Either_Left = (function() {
   $__fn = function($value0) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
-    $__res = (object)["tag" => "Left", "values" => [$value0]];
+    $__res = new Phpurs_Data1("Left", $value0);
   return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
@@ -61,7 +70,7 @@ $Data_Either_Right = (function() {
   $__fn = function($value0) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 1) return phpurs_curry_fallback($__fn, func_get_args(), 1);
-    $__res = (object)["tag" => "Right", "values" => [$value0]];
+    $__res = new Phpurs_Data1("Right", $value0);
   return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
   };
   return $__fn;
@@ -82,11 +91,11 @@ $show1 = ($GLOBALS['Data_Show_show'])($dictShow1);
   $__body = function($v) use ($show, $show1) {
     $__case_0 = $v;
     if ((($__case_0)->tag === "Left")) {
-$x = ($__case_0)->values[0];
+$x = ($__case_0)->v0;
 return ($GLOBALS['Data_Either_append'])("(Left ", ($GLOBALS['Data_Either_append'])(($show)($x), ")"));
 } else {
 if ((($__case_0)->tag === "Right")) {
-$y = ($__case_0)->values[0];
+$y = ($__case_0)->v0;
 return ($GLOBALS['Data_Either_append'])("(Right ", ($GLOBALS['Data_Either_append'])(($show1)($y), ")"));
 } else {
 throw new \Exception("Pattern match failure");
@@ -137,11 +146,11 @@ $Data_Either_genericEither = ($GLOBALS['Data_Generic_Rep_Generic__dollar__Dict']
   $__body = function($x) {
     $__case_0 = $x;
     if ((($__case_0)->tag === "Inl")) {
-$arg = ($__case_0)->values[0];
+$arg = ($__case_0)->v0;
 return ($GLOBALS['Data_Either_Left'])($arg);
 } else {
 if ((($__case_0)->tag === "Inr")) {
-$arg = ($__case_0)->values[0];
+$arg = ($__case_0)->v0;
 return ($GLOBALS['Data_Either_Right'])($arg);
 } else {
 throw new \Exception("Pattern match failure");
@@ -159,11 +168,11 @@ throw new \Exception("Pattern match failure");
   $__body = function($x) {
     $__case_0 = $x;
     if ((($__case_0)->tag === "Left")) {
-$arg = ($__case_0)->values[0];
+$arg = ($__case_0)->v0;
 return ($GLOBALS['Data_Generic_Rep_Inl'])(($GLOBALS['Data_Generic_Rep_Constructor'])(($GLOBALS['Data_Generic_Rep_Argument'])($arg)));
 } else {
 if ((($__case_0)->tag === "Right")) {
-$arg = ($__case_0)->values[0];
+$arg = ($__case_0)->v0;
 return ($GLOBALS['Data_Generic_Rep_Inr'])(($GLOBALS['Data_Generic_Rep_Constructor'])(($GLOBALS['Data_Generic_Rep_Argument'])($arg)));
 } else {
 throw new \Exception("Pattern match failure");
@@ -184,11 +193,11 @@ $Data_Either_functorEither = ($GLOBALS['Data_Functor_Functor__dollar__Dict'])((o
   $__body = function($f, $m) {
     $__case_0 = $m;
     if ((($__case_0)->tag === "Left")) {
-$v = ($__case_0)->values[0];
+$v = ($__case_0)->v0;
 return ($GLOBALS['Data_Either_Left'])($v);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$v = ($__case_0)->values[0];
+$v = ($__case_0)->v0;
 return ($GLOBALS['Data_Either_Right'])(($f)($v));
 } else {
 throw new \Exception("Pattern match failure");
@@ -216,7 +225,7 @@ $Data_Either_fromRight__prime__ = (function() {
     $__case_0 = $v;
     $__case_1 = $v1;
     if ((($__case_1)->tag === "Right")) {
-$b = ($__case_1)->values[0];
+$b = ($__case_1)->v0;
 return $b;
 } else {
 if (true) {
@@ -242,7 +251,7 @@ $Data_Either_fromRight = (function() {
     $__case_0 = $v;
     $__case_1 = $v1;
     if ((($__case_1)->tag === "Right")) {
-$b = ($__case_1)->values[0];
+$b = ($__case_1)->v0;
 return $b;
 } else {
 if (true) {
@@ -268,7 +277,7 @@ $Data_Either_fromLeft__prime__ = (function() {
     $__case_0 = $v;
     $__case_1 = $v1;
     if ((($__case_1)->tag === "Left")) {
-$a = ($__case_1)->values[0];
+$a = ($__case_1)->v0;
 return $a;
 } else {
 if (true) {
@@ -294,7 +303,7 @@ $Data_Either_fromLeft = (function() {
     $__case_0 = $v;
     $__case_1 = $v1;
     if ((($__case_1)->tag === "Left")) {
-$a = ($__case_1)->values[0];
+$a = ($__case_1)->v0;
 return $a;
 } else {
 if (true) {
@@ -320,7 +329,7 @@ $Data_Either_extendEither = ($GLOBALS['Control_Extend_Extend__dollar__Dict'])((o
     $__case_0 = $v;
     $__case_1 = $v1;
     if ((($__case_1)->tag === "Left")) {
-$y = ($__case_1)->values[0];
+$y = ($__case_1)->v0;
 return ($GLOBALS['Data_Either_Left'])($y);
 } else {
 if (true) {
@@ -365,13 +374,13 @@ $eq1 = ($GLOBALS['Data_Eq_eq'])($dictEq1);
     $__case_0 = $x;
     $__case_1 = $y;
     if (((($__case_0)->tag === "Left") && (($__case_1)->tag === "Left"))) {
-$l = ($__case_0)->values[0];
-$r = ($__case_1)->values[0];
+$l = ($__case_0)->v0;
+$r = ($__case_1)->v0;
 return ($eq)($l, $r);
 } else {
 if (((($__case_0)->tag === "Right") && (($__case_1)->tag === "Right"))) {
-$l = ($__case_0)->values[0];
-$r = ($__case_1)->values[0];
+$l = ($__case_0)->v0;
+$r = ($__case_1)->v0;
 return ($eq1)($l, $r);
 } else {
 if (true) {
@@ -417,8 +426,8 @@ $eqEither2 = ($eqEither1)((($dictOrd1)->Eq0)($GLOBALS['Prim_undefined']));
     $__case_0 = $x;
     $__case_1 = $y;
     if (((($__case_0)->tag === "Left") && (($__case_1)->tag === "Left"))) {
-$l = ($__case_0)->values[0];
-$r = ($__case_1)->values[0];
+$l = ($__case_0)->v0;
+$r = ($__case_1)->v0;
 return ($compare)($l, $r);
 } else {
 if ((($__case_0)->tag === "Left")) {
@@ -428,8 +437,8 @@ if ((($__case_1)->tag === "Left")) {
 return $GLOBALS['Data_Ordering_GT'];
 } else {
 if (((($__case_0)->tag === "Right") && (($__case_1)->tag === "Right"))) {
-$l = ($__case_0)->values[0];
-$r = ($__case_1)->values[0];
+$l = ($__case_0)->v0;
+$r = ($__case_1)->v0;
 return ($compare1)($l, $r);
 } else {
 throw new \Exception("Pattern match failure");
@@ -520,12 +529,12 @@ $Data_Either_either = (function() {
     $__case_2 = $v2;
     if ((($__case_2)->tag === "Left")) {
 $f = $__case_0;
-$a = ($__case_2)->values[0];
+$a = ($__case_2)->v0;
 return ($f)($a);
 } else {
 if ((($__case_2)->tag === "Right")) {
 $g = $__case_1;
-$b = ($__case_2)->values[0];
+$b = ($__case_2)->v0;
 return ($g)($b);
 } else {
 throw new \Exception("Pattern match failure");
@@ -610,11 +619,11 @@ $Data_Either_applyEither = ($GLOBALS['Control_Apply_Apply__dollar__Dict'])((obje
     $__case_0 = $v;
     $__case_1 = $v1;
     if ((($__case_0)->tag === "Left")) {
-$e = ($__case_0)->values[0];
+$e = ($__case_0)->v0;
 return ($GLOBALS['Data_Either_Left'])($e);
 } else {
 if ((($__case_0)->tag === "Right")) {
-$f = ($__case_0)->values[0];
+$f = ($__case_0)->v0;
 $r = $__case_1;
 return ($GLOBALS['Data_Either_map'])($f, $r);
 } else {

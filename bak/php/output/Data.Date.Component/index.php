@@ -18,6 +18,15 @@ require_once __DIR__ . '/../Data.Semiring/index.php';
 require_once __DIR__ . '/../Data.Show/index.php';
 require_once __DIR__ . '/../Prelude/index.php';
 
+if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
+  class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
+  class Phpurs_Data1 { public $tag; public $v0; public function __construct($t, $v0) { $this->tag = $t; $this->v0 = $v0; } }
+  class Phpurs_Data2 { public $tag; public $v0, $v1; public function __construct($t, $v0, $v1) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; } }
+  class Phpurs_Data3 { public $tag; public $v0, $v1, $v2; public function __construct($t, $v0, $v1, $v2) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; } }
+  class Phpurs_Data4 { public $tag; public $v0, $v1, $v2, $v3; public function __construct($t, $v0, $v1, $v2, $v3) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; } }
+  class Phpurs_Data5 { public $tag; public $v0, $v1, $v2, $v3, $v4; public function __construct($t, $v0, $v1, $v2, $v3, $v4) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; } }
+  class Phpurs_Data6 { public $tag; public $v0, $v1, $v2, $v3, $v4, $v5; public function __construct($t, $v0, $v1, $v2, $v3, $v4, $v5) { $this->tag = $t; $this->v0 = $v0; $this->v1 = $v1; $this->v2 = $v2; $this->v3 = $v3; $this->v4 = $v4; $this->v5 = $v5; } }
+}
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
     return function(...$more) use ($fn, $args, $expected) {
@@ -72,61 +81,61 @@ $Data_Date_Component_Year = (function() {
 })();
 
 // Data_Date_Component_Monday
-$Data_Date_Component_Monday = (object)["tag" => "Monday", "values" => []];
+$Data_Date_Component_Monday = new Phpurs_Data0("Monday");
 
 // Data_Date_Component_Tuesday
-$Data_Date_Component_Tuesday = (object)["tag" => "Tuesday", "values" => []];
+$Data_Date_Component_Tuesday = new Phpurs_Data0("Tuesday");
 
 // Data_Date_Component_Wednesday
-$Data_Date_Component_Wednesday = (object)["tag" => "Wednesday", "values" => []];
+$Data_Date_Component_Wednesday = new Phpurs_Data0("Wednesday");
 
 // Data_Date_Component_Thursday
-$Data_Date_Component_Thursday = (object)["tag" => "Thursday", "values" => []];
+$Data_Date_Component_Thursday = new Phpurs_Data0("Thursday");
 
 // Data_Date_Component_Friday
-$Data_Date_Component_Friday = (object)["tag" => "Friday", "values" => []];
+$Data_Date_Component_Friday = new Phpurs_Data0("Friday");
 
 // Data_Date_Component_Saturday
-$Data_Date_Component_Saturday = (object)["tag" => "Saturday", "values" => []];
+$Data_Date_Component_Saturday = new Phpurs_Data0("Saturday");
 
 // Data_Date_Component_Sunday
-$Data_Date_Component_Sunday = (object)["tag" => "Sunday", "values" => []];
+$Data_Date_Component_Sunday = new Phpurs_Data0("Sunday");
 
 // Data_Date_Component_January
-$Data_Date_Component_January = (object)["tag" => "January", "values" => []];
+$Data_Date_Component_January = new Phpurs_Data0("January");
 
 // Data_Date_Component_February
-$Data_Date_Component_February = (object)["tag" => "February", "values" => []];
+$Data_Date_Component_February = new Phpurs_Data0("February");
 
 // Data_Date_Component_March
-$Data_Date_Component_March = (object)["tag" => "March", "values" => []];
+$Data_Date_Component_March = new Phpurs_Data0("March");
 
 // Data_Date_Component_April
-$Data_Date_Component_April = (object)["tag" => "April", "values" => []];
+$Data_Date_Component_April = new Phpurs_Data0("April");
 
 // Data_Date_Component_May
-$Data_Date_Component_May = (object)["tag" => "May", "values" => []];
+$Data_Date_Component_May = new Phpurs_Data0("May");
 
 // Data_Date_Component_June
-$Data_Date_Component_June = (object)["tag" => "June", "values" => []];
+$Data_Date_Component_June = new Phpurs_Data0("June");
 
 // Data_Date_Component_July
-$Data_Date_Component_July = (object)["tag" => "July", "values" => []];
+$Data_Date_Component_July = new Phpurs_Data0("July");
 
 // Data_Date_Component_August
-$Data_Date_Component_August = (object)["tag" => "August", "values" => []];
+$Data_Date_Component_August = new Phpurs_Data0("August");
 
 // Data_Date_Component_September
-$Data_Date_Component_September = (object)["tag" => "September", "values" => []];
+$Data_Date_Component_September = new Phpurs_Data0("September");
 
 // Data_Date_Component_October
-$Data_Date_Component_October = (object)["tag" => "October", "values" => []];
+$Data_Date_Component_October = new Phpurs_Data0("October");
 
 // Data_Date_Component_November
-$Data_Date_Component_November = (object)["tag" => "November", "values" => []];
+$Data_Date_Component_November = new Phpurs_Data0("November");
 
 // Data_Date_Component_December
-$Data_Date_Component_December = (object)["tag" => "December", "values" => []];
+$Data_Date_Component_December = new Phpurs_Data0("December");
 
 // Data_Date_Component_Day
 $Data_Date_Component_Day = (function() {
