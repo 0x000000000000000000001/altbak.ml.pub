@@ -2,13 +2,11 @@
 
 namespace Test\Polymorphism;
 
-require_once __DIR__ . '/../Data.Function/index.php';
 require_once __DIR__ . '/../Data.Ring/index.php';
 require_once __DIR__ . '/../Data.Semiring/index.php';
 require_once __DIR__ . '/../Data.Show/index.php';
 require_once __DIR__ . '/../Effect/index.php';
 require_once __DIR__ . '/../Effect.Console/index.php';
-require_once __DIR__ . '/../Prelude/index.php';
 require_once __DIR__ . '/../Test.Polymorphism/index.php';
 
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
@@ -22,10 +20,65 @@ if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
 }
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
+    $missing = $expected - count($args);
+    if ($missing === 1) {
+      return function($a) use ($fn, $args, $expected) {
+        $num = func_num_args();
+        if ($num > 1) {
+          $merged = array_merge($args, func_get_args());
+          $res = $fn(...array_slice($merged, 0, $expected));
+          return $res(...array_slice($merged, $expected));
+        }
+        $args[] = $a;
+        return $fn(...$args);
+      };
+    }
+    if ($missing === 2) {
+      return function($a, $b = null) use ($fn, $args, $expected) {
+        $num = func_num_args();
+        if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num > 2) {
+          $merged = array_merge($args, func_get_args());
+          $res = $fn(...array_slice($merged, 0, $expected));
+          return $res(...array_slice($merged, $expected));
+        }
+        $args[] = $a; $args[] = $b;
+        return $fn(...$args);
+      };
+    }
+    if ($missing === 3) {
+      return function($a, $b = null, $c = null) use ($fn, $args, $expected) {
+        $num = func_num_args();
+        if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num > 3) {
+          $merged = array_merge($args, func_get_args());
+          $res = $fn(...array_slice($merged, 0, $expected));
+          return $res(...array_slice($merged, $expected));
+        }
+        $args[] = $a; $args[] = $b; $args[] = $c;
+        return $fn(...$args);
+      };
+    }
+    if ($missing === 4) {
+      return function($a, $b = null, $c = null, $d = null) use ($fn, $args, $expected) {
+        $num = func_num_args();
+        if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num === 3) { $args[] = $a; $args[] = $b; $args[] = $c; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num > 4) {
+          $merged = array_merge($args, func_get_args());
+          $res = $fn(...array_slice($merged, 0, $expected));
+          return $res(...array_slice($merged, $expected));
+        }
+        $args[] = $a; $args[] = $b; $args[] = $c; $args[] = $d;
+        return $fn(...$args);
+      };
+    }
     return function(...$more) use ($fn, $args, $expected) {
       $merged = array_merge($args, $more);
       if (count($merged) >= $expected) {
-        $res = $fn(...$merged);
+        $res = $fn(...array_slice($merged, 0, $expected));
         return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
       }
       return phpurs_curry_fallback($fn, $merged, $expected);
@@ -39,7 +92,7 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
     switch ($id) {
       case 'Test_Polymorphism_sub': $v = ($GLOBALS['Data_Ring_intSub'] ?? \Data\Ring\phpurs_eval_thunk('Data_Ring_intSub')); break;
       case 'Test_Polymorphism_add': $v = ($GLOBALS['Data_Semiring_intAdd'] ?? \Data\Semiring\phpurs_eval_thunk('Data_Semiring_intAdd')); break;
-      case 'Test_Polymorphism_intMonoidish': $v = (($GLOBALS['Test_Polymorphism_Monoidish__dollar__Dict'] ?? \Test\Polymorphism\phpurs_eval_thunk('Test_Polymorphism_Monoidish__dollar__Dict')))((object)["mempty_" => 1, "mappend_" => (function() {
+      case 'Test_Polymorphism_intMonoidish': $v = (object)["mempty_" => 1, "mappend_" => (function() {
   $__fn = function($x, $y = null) use (&$__fn) {
   $__num = func_num_args();
   if ($__num < 2) {
@@ -50,7 +103,7 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
   return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
   };
   return $__fn;
-})()]); break;
+})()]; break;
       case 'Test_Polymorphism_describe': $v = (($GLOBALS['Effect_Console_log'] ?? \Effect\Console\phpurs_eval_thunk('Effect_Console_log')))("Polymorphism (10M Type Class Dict Lookups):"); break;
       case 'Test_Polymorphism_act': $v = (($GLOBALS['Effect_Console_logShow'] ?? \Effect\Console\phpurs_eval_thunk('Effect_Console_logShow')))(($GLOBALS['Data_Show_showInt'] ?? \Data\Show\phpurs_eval_thunk('Data_Show_showInt')), (($GLOBALS['Test_Polymorphism_polyLoop'] ?? \Test\Polymorphism\phpurs_eval_thunk('Test_Polymorphism_polyLoop')))(($GLOBALS['Test_Polymorphism_intMonoidish'] ?? \Test\Polymorphism\phpurs_eval_thunk('Test_Polymorphism_intMonoidish')), 10000000, 0)); break;
       default: throw new \Exception("Unknown thunk " . $id);
@@ -144,21 +197,20 @@ $go = (function() use (&$go, $mappend_1, $mempty_1) {
 while (true) {
 $__case_0 = $v;
 $__case_1 = $v1;
-if (($__case_0 === 0)) {
+switch ($__case_0) {
+case 0:
 $acc = $__case_1;
 return $acc;
-} else {
-if (true) {
+break;
+default:
 $n = $__case_0;
 $acc = $__case_1;
 $__tco_tmp_0 = ($n - 1);
 $__tco_tmp_1 = ($mappend_1)($acc, $mempty_1);
 $v = $__tco_tmp_0;
 $v1 = $__tco_tmp_1;
-continue;
-} else {
-throw new \Exception("Pattern match failure");
-};
+continue 2;
+break;
 };
 };
     $__res = null;

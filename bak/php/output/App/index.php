@@ -6,7 +6,6 @@ require_once __DIR__ . '/../Control.Applicative/index.php';
 require_once __DIR__ . '/../Control.Bind/index.php';
 require_once __DIR__ . '/../Data.Unit/index.php';
 require_once __DIR__ . '/../Effect/index.php';
-require_once __DIR__ . '/../Prelude/index.php';
 require_once __DIR__ . '/../Test.Ackermann/index.php';
 require_once __DIR__ . '/../Test.AstTree/index.php';
 require_once __DIR__ . '/../Test.Church/index.php';
@@ -32,10 +31,65 @@ if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
 }
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
+    $missing = $expected - count($args);
+    if ($missing === 1) {
+      return function($a) use ($fn, $args, $expected) {
+        $num = func_num_args();
+        if ($num > 1) {
+          $merged = array_merge($args, func_get_args());
+          $res = $fn(...array_slice($merged, 0, $expected));
+          return $res(...array_slice($merged, $expected));
+        }
+        $args[] = $a;
+        return $fn(...$args);
+      };
+    }
+    if ($missing === 2) {
+      return function($a, $b = null) use ($fn, $args, $expected) {
+        $num = func_num_args();
+        if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num > 2) {
+          $merged = array_merge($args, func_get_args());
+          $res = $fn(...array_slice($merged, 0, $expected));
+          return $res(...array_slice($merged, $expected));
+        }
+        $args[] = $a; $args[] = $b;
+        return $fn(...$args);
+      };
+    }
+    if ($missing === 3) {
+      return function($a, $b = null, $c = null) use ($fn, $args, $expected) {
+        $num = func_num_args();
+        if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num > 3) {
+          $merged = array_merge($args, func_get_args());
+          $res = $fn(...array_slice($merged, 0, $expected));
+          return $res(...array_slice($merged, $expected));
+        }
+        $args[] = $a; $args[] = $b; $args[] = $c;
+        return $fn(...$args);
+      };
+    }
+    if ($missing === 4) {
+      return function($a, $b = null, $c = null, $d = null) use ($fn, $args, $expected) {
+        $num = func_num_args();
+        if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num === 3) { $args[] = $a; $args[] = $b; $args[] = $c; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num > 4) {
+          $merged = array_merge($args, func_get_args());
+          $res = $fn(...array_slice($merged, 0, $expected));
+          return $res(...array_slice($merged, $expected));
+        }
+        $args[] = $a; $args[] = $b; $args[] = $c; $args[] = $d;
+        return $fn(...$args);
+      };
+    }
     return function(...$more) use ($fn, $args, $expected) {
       $merged = array_merge($args, $more);
       if (count($merged) >= $expected) {
-        $res = $fn(...$merged);
+        $res = $fn(...array_slice($merged, 0, $expected));
         return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
       }
       return phpurs_curry_fallback($fn, $merged, $expected);
@@ -47,18 +101,7 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
     static $cache = [];
     if (array_key_exists($id, $cache)) return $cache[$id];
     switch ($id) {
-      case 'App_discard': $v = ((function() {
-  $__fn = function($dictBind) use (&$__fn) {
-  $__num = func_num_args();
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-$__global_Control_Bind_bind = ($GLOBALS['Control_Bind_bind'] ?? \Control\Bind\phpurs_eval_thunk('Control_Bind_bind'));
-    $__res = ($__global_Control_Bind_bind)($dictBind);
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-  };
-  return $__fn;
-})())(($GLOBALS['Effect_bindEffect'] ?? \Effect\phpurs_eval_thunk('Effect_bindEffect'))); break;
+      case 'App_discard': $v = ((($GLOBALS['Control_Bind_discardUnit'] ?? \Control\Bind\phpurs_eval_thunk('Control_Bind_discardUnit')))->discard)(($GLOBALS['Effect_bindEffect'] ?? \Effect\phpurs_eval_thunk('Effect_bindEffect'))); break;
       case 'App_pure': $v = ($GLOBALS['Effect_pureE'] ?? \Effect\phpurs_eval_thunk('Effect_pureE')); break;
       case 'App_main': $v = (($GLOBALS['App_discard'] ?? \App\phpurs_eval_thunk('App_discard')))(($GLOBALS['Test_AstTree_describe'] ?? \Test\AstTree\phpurs_eval_thunk('Test_AstTree_describe')), (function() {
   $__fn = function($__dollar____unused) use (&$__fn) {

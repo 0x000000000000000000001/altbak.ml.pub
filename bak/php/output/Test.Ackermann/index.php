@@ -2,13 +2,11 @@
 
 namespace Test\Ackermann;
 
-require_once __DIR__ . '/../Data.Function/index.php';
 require_once __DIR__ . '/../Data.Ring/index.php';
 require_once __DIR__ . '/../Data.Semiring/index.php';
 require_once __DIR__ . '/../Data.Show/index.php';
 require_once __DIR__ . '/../Effect/index.php';
 require_once __DIR__ . '/../Effect.Console/index.php';
-require_once __DIR__ . '/../Prelude/index.php';
 require_once __DIR__ . '/../Test.Ackermann/index.php';
 
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
@@ -22,10 +20,65 @@ if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
 }
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
+    $missing = $expected - count($args);
+    if ($missing === 1) {
+      return function($a) use ($fn, $args, $expected) {
+        $num = func_num_args();
+        if ($num > 1) {
+          $merged = array_merge($args, func_get_args());
+          $res = $fn(...array_slice($merged, 0, $expected));
+          return $res(...array_slice($merged, $expected));
+        }
+        $args[] = $a;
+        return $fn(...$args);
+      };
+    }
+    if ($missing === 2) {
+      return function($a, $b = null) use ($fn, $args, $expected) {
+        $num = func_num_args();
+        if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num > 2) {
+          $merged = array_merge($args, func_get_args());
+          $res = $fn(...array_slice($merged, 0, $expected));
+          return $res(...array_slice($merged, $expected));
+        }
+        $args[] = $a; $args[] = $b;
+        return $fn(...$args);
+      };
+    }
+    if ($missing === 3) {
+      return function($a, $b = null, $c = null) use ($fn, $args, $expected) {
+        $num = func_num_args();
+        if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num > 3) {
+          $merged = array_merge($args, func_get_args());
+          $res = $fn(...array_slice($merged, 0, $expected));
+          return $res(...array_slice($merged, $expected));
+        }
+        $args[] = $a; $args[] = $b; $args[] = $c;
+        return $fn(...$args);
+      };
+    }
+    if ($missing === 4) {
+      return function($a, $b = null, $c = null, $d = null) use ($fn, $args, $expected) {
+        $num = func_num_args();
+        if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num === 3) { $args[] = $a; $args[] = $b; $args[] = $c; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num > 4) {
+          $merged = array_merge($args, func_get_args());
+          $res = $fn(...array_slice($merged, 0, $expected));
+          return $res(...array_slice($merged, $expected));
+        }
+        $args[] = $a; $args[] = $b; $args[] = $c; $args[] = $d;
+        return $fn(...$args);
+      };
+    }
     return function(...$more) use ($fn, $args, $expected) {
       $merged = array_merge($args, $more);
       if (count($merged) >= $expected) {
-        $res = $fn(...$merged);
+        $res = $fn(...array_slice($merged, 0, $expected));
         return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
       }
       return phpurs_curry_fallback($fn, $merged, $expected);
@@ -68,25 +121,24 @@ if (($__case_0 === 0)) {
 $n = $__case_1;
 return ($n + 1);
 } else {
-if (($__case_1 === 0)) {
+switch ($__case_1) {
+case 0:
 $m = $__case_0;
 $__tco_tmp_0 = ($m - 1);
 $__tco_tmp_1 = 1;
 $v = $__tco_tmp_0;
 $v1 = $__tco_tmp_1;
-continue;
-} else {
-if (true) {
+continue 2;
+break;
+default:
 $m = $__case_0;
 $n = $__case_1;
 $__tco_tmp_0 = ($m - 1);
 $__tco_tmp_1 = (($GLOBALS['Test_Ackermann_ackermann'] ?? \Test\Ackermann\phpurs_eval_thunk('Test_Ackermann_ackermann')))($m, ($n - 1));
 $v = $__tco_tmp_0;
 $v1 = $__tco_tmp_1;
-continue;
-} else {
-throw new \Exception("Pattern match failure");
-};
+continue 2;
+break;
 };
 };
 };

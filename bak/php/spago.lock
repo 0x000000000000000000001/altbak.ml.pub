@@ -664,24 +664,65 @@
         "zipperarray": "2.0.0"
       }
     },
-    "extra_packages": {}
+    "extra_packages": {
+      "aff": {
+        "path": "../phpurs-aff"
+      },
+      "console": {
+        "path": "../phpurs-console"
+      },
+      "effect": {
+        "path": "../phpurs-effect"
+      },
+      "exceptions": {
+        "path": "../phpurs-exceptions"
+      },
+      "foldable-traversable": {
+        "path": "../phpurs-foldable-traversable"
+      },
+      "functions": {
+        "path": "../phpurs-functions"
+      },
+      "partial": {
+        "path": "../phpurs-partial"
+      },
+      "prelude": {
+        "path": "../phpurs-prelude"
+      },
+      "refs": {
+        "path": "../phpurs-refs"
+      },
+      "st": {
+        "path": "../phpurs-st"
+      },
+      "unsafe-coerce": {
+        "path": "../phpurs-unsafe-coerce"
+      }
+    }
   },
   "packages": {
     "aff": {
-      "type": "registry",
-      "version": "8.0.0",
-      "integrity": "sha256-9BRIrSdRoYybfiUmBqgKJ66cPqxYHb277bVWQMn/9sg=",
+      "type": "local",
+      "path": "../phpurs-aff",
       "dependencies": [
+        "arrays",
+        "assert",
+        "bifunctors",
+        "console",
         "control",
         "datetime",
         "effect",
         "either",
         "exceptions",
+        "foldable-traversable",
         "functions",
+        "maybe",
+        "minibench",
         "newtype",
         "parallel",
         "partial",
         "prelude",
+        "refs",
         "st",
         "tailrec",
         "transformers",
@@ -709,6 +750,16 @@
         "unsafe-coerce"
       ]
     },
+    "assert": {
+      "type": "registry",
+      "version": "6.0.0",
+      "integrity": "sha256-hCZ1J8/71nQiRwsSV2j7iicppScOegBFZrLI6sPf9F8=",
+      "dependencies": [
+        "console",
+        "effect",
+        "prelude"
+      ]
+    },
     "bifunctors": {
       "type": "registry",
       "version": "6.1.0",
@@ -722,9 +773,8 @@
       ]
     },
     "console": {
-      "type": "registry",
-      "version": "6.1.0",
-      "integrity": "sha256-3T5PPz1mATZmV0C4GzkCkpLlCa5xG7u8ZNgnLrrrI1Q=",
+      "type": "local",
+      "path": "../phpurs-console",
       "dependencies": [
         "effect",
         "prelude"
@@ -797,9 +847,8 @@
       ]
     },
     "effect": {
-      "type": "registry",
-      "version": "4.0.0",
-      "integrity": "sha256-DdqU3bncRTjgMVPPRlAuGHVeajSPEcRaRhNuio7if6s=",
+      "type": "local",
+      "path": "../phpurs-effect",
       "dependencies": [
         "prelude"
       ]
@@ -833,9 +882,8 @@
       ]
     },
     "exceptions": {
-      "type": "registry",
-      "version": "6.1.0",
-      "integrity": "sha256-nRrr+N0wk0TUFOWLR7e1n1oxcXo/X345bQUtoY9lW6A=",
+      "type": "local",
+      "path": "../phpurs-exceptions",
       "dependencies": [
         "effect",
         "either",
@@ -852,9 +900,8 @@
       ]
     },
     "foldable-traversable": {
-      "type": "registry",
-      "version": "6.0.0",
-      "integrity": "sha256-NGGWyCio/xjce6fPP7y3wwg7CheqllID6aJudDxbWhA=",
+      "type": "local",
+      "path": "../phpurs-foldable-traversable",
       "dependencies": [
         "bifunctors",
         "const",
@@ -870,9 +917,8 @@
       ]
     },
     "functions": {
-      "type": "registry",
-      "version": "6.0.0",
-      "integrity": "sha256-0jgtOr+SFO4UScKc40oA/9Vdcf2rLn3h3vZlY0KfqVo=",
+      "type": "local",
+      "path": "../phpurs-functions",
       "dependencies": [
         "prelude"
       ]
@@ -985,6 +1031,19 @@
         "prelude"
       ]
     },
+    "minibench": {
+      "type": "registry",
+      "version": "4.0.1",
+      "integrity": "sha256-zd/YnOqnzz/ers1umv5rgJOyPntF2zFpcLVbPWQIbYU=",
+      "dependencies": [
+        "console",
+        "effect",
+        "integers",
+        "numbers",
+        "prelude",
+        "refs"
+      ]
+    },
     "newtype": {
       "type": "registry",
       "version": "5.0.0",
@@ -1066,15 +1125,13 @@
       ]
     },
     "partial": {
-      "type": "registry",
-      "version": "4.0.0",
-      "integrity": "sha256-mdrlJBAgFMh79hNRW39uv7c+BwnnaOrAMmdh7+VhEhs=",
+      "type": "local",
+      "path": "../phpurs-partial",
       "dependencies": []
     },
     "prelude": {
-      "type": "registry",
-      "version": "6.0.2",
-      "integrity": "sha256-IqykrDRquGUD/LRSad7y75hZv3bUsGQ4knc8tdez8Qw=",
+      "type": "local",
+      "path": "../phpurs-prelude",
       "dependencies": []
     },
     "profunctor": {
@@ -1093,9 +1150,8 @@
       ]
     },
     "refs": {
-      "type": "registry",
-      "version": "6.0.0",
-      "integrity": "sha256-KKD5G9dR2SauuDGULUJsxjqDOEi1Jqm+2Sq5U2mY8YU=",
+      "type": "local",
+      "path": "../phpurs-refs",
       "dependencies": [
         "effect",
         "prelude"
@@ -1110,11 +1166,9 @@
       ]
     },
     "st": {
-      "type": "registry",
-      "version": "6.2.0",
-      "integrity": "sha256-WI4MEkkwUd4pnwZQ3G8VKWgX5t1RSNJludm5e9boaRo=",
+      "type": "local",
+      "path": "../phpurs-st",
       "dependencies": [
-        "effect",
         "partial",
         "prelude",
         "tailrec",
@@ -1187,9 +1241,8 @@
       ]
     },
     "unsafe-coerce": {
-      "type": "registry",
-      "version": "6.0.0",
-      "integrity": "sha256-0L1QsaY20OILjfU5TV72d3U/tSjhmL9hJ32WMp857Lk=",
+      "type": "local",
+      "path": "../phpurs-unsafe-coerce",
       "dependencies": []
     }
   }

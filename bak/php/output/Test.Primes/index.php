@@ -4,14 +4,12 @@ namespace Test\Primes;
 
 require_once __DIR__ . '/../Data.Eq/index.php';
 require_once __DIR__ . '/../Data.EuclideanRing/index.php';
-require_once __DIR__ . '/../Data.Function/index.php';
 require_once __DIR__ . '/../Data.Ord/index.php';
 require_once __DIR__ . '/../Data.Ring/index.php';
 require_once __DIR__ . '/../Data.Semiring/index.php';
 require_once __DIR__ . '/../Data.Show/index.php';
 require_once __DIR__ . '/../Effect/index.php';
 require_once __DIR__ . '/../Effect.Console/index.php';
-require_once __DIR__ . '/../Prelude/index.php';
 require_once __DIR__ . '/../Test.Primes/index.php';
 
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
@@ -25,10 +23,65 @@ if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
 }
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
+    $missing = $expected - count($args);
+    if ($missing === 1) {
+      return function($a) use ($fn, $args, $expected) {
+        $num = func_num_args();
+        if ($num > 1) {
+          $merged = array_merge($args, func_get_args());
+          $res = $fn(...array_slice($merged, 0, $expected));
+          return $res(...array_slice($merged, $expected));
+        }
+        $args[] = $a;
+        return $fn(...$args);
+      };
+    }
+    if ($missing === 2) {
+      return function($a, $b = null) use ($fn, $args, $expected) {
+        $num = func_num_args();
+        if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num > 2) {
+          $merged = array_merge($args, func_get_args());
+          $res = $fn(...array_slice($merged, 0, $expected));
+          return $res(...array_slice($merged, $expected));
+        }
+        $args[] = $a; $args[] = $b;
+        return $fn(...$args);
+      };
+    }
+    if ($missing === 3) {
+      return function($a, $b = null, $c = null) use ($fn, $args, $expected) {
+        $num = func_num_args();
+        if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num > 3) {
+          $merged = array_merge($args, func_get_args());
+          $res = $fn(...array_slice($merged, 0, $expected));
+          return $res(...array_slice($merged, $expected));
+        }
+        $args[] = $a; $args[] = $b; $args[] = $c;
+        return $fn(...$args);
+      };
+    }
+    if ($missing === 4) {
+      return function($a, $b = null, $c = null, $d = null) use ($fn, $args, $expected) {
+        $num = func_num_args();
+        if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num === 3) { $args[] = $a; $args[] = $b; $args[] = $c; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num > 4) {
+          $merged = array_merge($args, func_get_args());
+          $res = $fn(...array_slice($merged, 0, $expected));
+          return $res(...array_slice($merged, $expected));
+        }
+        $args[] = $a; $args[] = $b; $args[] = $c; $args[] = $d;
+        return $fn(...$args);
+      };
+    }
     return function(...$more) use ($fn, $args, $expected) {
       $merged = array_merge($args, $more);
       if (count($merged) >= $expected) {
-        $res = $fn(...$merged);
+        $res = $fn(...array_slice($merged, 0, $expected));
         return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
       }
       return phpurs_curry_fallback($fn, $merged, $expected);
@@ -130,10 +183,8 @@ function Test_Primes_reverse($lst) {
   if ($__num < 1) {
     return phpurs_curry_fallback($__fn, func_get_args(), 1);
   }
-$__global_Test_Primes_Cons = ($GLOBALS['Test_Primes_Cons'] ?? \Test\Primes\phpurs_eval_thunk('Test_Primes_Cons'));
-$__global_Test_Primes_Nil = ($GLOBALS['Test_Primes_Nil'] ?? \Test\Primes\phpurs_eval_thunk('Test_Primes_Nil'));
-$go = (function() use (&$go, $__global_Test_Primes_Cons) {
-  $__fn = function($v, $v1 = null) use (&$go, $__global_Test_Primes_Cons, &$__fn) {
+$go = (function() use (&$go) {
+  $__fn = function($v, $v1 = null) use (&$go, &$__fn) {
   $__num = func_num_args();
   if ($__num < 2) {
     if ($__num === 1) return function($v1) use ($v, &$__fn) { return $__fn($v, $v1); };
@@ -152,7 +203,18 @@ $x = ($__case_0)->v0;
 $xs = ($__case_0)->v1;
 $acc = $__case_1;
 $__tco_tmp_0 = $xs;
-$__tco_tmp_1 = ($__global_Test_Primes_Cons)($x, $acc);
+$__tco_tmp_1 = ((function() {
+  $__fn = function($value0, $value1 = null) use (&$__fn) {
+  $__num = func_num_args();
+  if ($__num < 2) {
+    if ($__num === 1) return function($value1) use ($value0, &$__fn) { return $__fn($value0, $value1); };
+    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+  }
+    $__res = new Phpurs_Data2("Cons", $value0, $value1);
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})())($x, $acc);
 $v = $__tco_tmp_0;
 $v1 = $__tco_tmp_1;
 continue 2;
@@ -167,7 +229,7 @@ break;
   };
   return $__fn;
 })();
-    $__res = ($go)($lst, $__global_Test_Primes_Nil);
+    $__res = ($go)($lst, ($GLOBALS['__phpurs_data0_Nil'] ??= new Phpurs_Data0("Nil")));
     return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
 }
 $GLOBALS['Test_Primes_reverse'] = __NAMESPACE__ . '\\Test_Primes_reverse';
@@ -181,10 +243,8 @@ function Test_Primes_range($start, $end = null) {
     return phpurs_curry_fallback($__fn, func_get_args(), 2);
   }
 $__global_Test_Primes_lessThan = ($GLOBALS['Test_Primes_lessThan'] ?? \Test\Primes\phpurs_eval_thunk('Test_Primes_lessThan'));
-$__global_Test_Primes_Cons = ($GLOBALS['Test_Primes_Cons'] ?? \Test\Primes\phpurs_eval_thunk('Test_Primes_Cons'));
-$__global_Test_Primes_Nil = ($GLOBALS['Test_Primes_Nil'] ?? \Test\Primes\phpurs_eval_thunk('Test_Primes_Nil'));
-$go = (function() use ($__global_Test_Primes_lessThan, $start, &$go, $__global_Test_Primes_Cons) {
-  $__fn = function($curr, $acc = null) use ($__global_Test_Primes_lessThan, $start, &$go, $__global_Test_Primes_Cons, &$__fn) {
+$go = (function() use ($__global_Test_Primes_lessThan, $start, &$go) {
+  $__fn = function($curr, $acc = null) use ($__global_Test_Primes_lessThan, $start, &$go, &$__fn) {
   $__num = func_num_args();
   if ($__num < 2) {
     if ($__num === 1) return function($acc) use ($curr, &$__fn) { return $__fn($curr, $acc); };
@@ -192,18 +252,28 @@ $go = (function() use ($__global_Test_Primes_lessThan, $start, &$go, $__global_T
   }
 while (true) {
 $__case_0 = ($__global_Test_Primes_lessThan)($curr, $start);
-if (($__case_0 === true)) {
+switch ($__case_0) {
+case true:
 return $acc;
-} else {
-if (true) {
+break;
+default:
 $__tco_tmp_0 = ($curr - 1);
-$__tco_tmp_1 = ($__global_Test_Primes_Cons)($curr, $acc);
+$__tco_tmp_1 = ((function() {
+  $__fn = function($value0, $value1 = null) use (&$__fn) {
+  $__num = func_num_args();
+  if ($__num < 2) {
+    if ($__num === 1) return function($value1) use ($value0, &$__fn) { return $__fn($value0, $value1); };
+    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+  }
+    $__res = new Phpurs_Data2("Cons", $value0, $value1);
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})())($curr, $acc);
 $curr = $__tco_tmp_0;
 $acc = $__tco_tmp_1;
-continue;
-} else {
-throw new \Exception("Pattern match failure");
-};
+continue 2;
+break;
 };
 };
     $__res = null;
@@ -211,7 +281,7 @@ throw new \Exception("Pattern match failure");
   };
   return $__fn;
 })();
-    $__res = ($go)($end, $__global_Test_Primes_Nil);
+    $__res = ($go)($end, ($GLOBALS['__phpurs_data0_Nil'] ??= new Phpurs_Data0("Nil")));
     return 2 < $__num ? $__res(...array_slice(func_get_args(), 2)) : $__res;
 }
 $GLOBALS['Test_Primes_range'] = __NAMESPACE__ . '\\Test_Primes_range';
@@ -225,10 +295,8 @@ function Test_Primes_filter($p, $lst = null) {
     return phpurs_curry_fallback($__fn, func_get_args(), 2);
   }
 $__global_Test_Primes_reverse = ($GLOBALS['Test_Primes_reverse'] ?? \Test\Primes\phpurs_eval_thunk('Test_Primes_reverse'));
-$__global_Test_Primes_Cons = ($GLOBALS['Test_Primes_Cons'] ?? \Test\Primes\phpurs_eval_thunk('Test_Primes_Cons'));
-$__global_Test_Primes_Nil = ($GLOBALS['Test_Primes_Nil'] ?? \Test\Primes\phpurs_eval_thunk('Test_Primes_Nil'));
-$go = (function() use ($__global_Test_Primes_reverse, $p, &$go, $__global_Test_Primes_Cons) {
-  $__fn = function($v, $v1 = null) use ($__global_Test_Primes_reverse, $p, &$go, $__global_Test_Primes_Cons, &$__fn) {
+$go = (function() use ($__global_Test_Primes_reverse, $p, &$go) {
+  $__fn = function($v, $v1 = null) use ($__global_Test_Primes_reverse, $p, &$go, &$__fn) {
   $__num = func_num_args();
   if ($__num < 2) {
     if ($__num === 1) return function($v1) use ($v, &$__fn) { return $__fn($v, $v1); };
@@ -247,22 +315,32 @@ $x = ($__case_0)->v0;
 $xs = ($__case_0)->v1;
 $acc = $__case_1;
 $__case_0 = ($p)($x);
-if (($__case_0 === true)) {
+switch ($__case_0) {
+case true:
 $__tco_tmp_0 = $xs;
-$__tco_tmp_1 = ($__global_Test_Primes_Cons)($x, $acc);
+$__tco_tmp_1 = ((function() {
+  $__fn = function($value0, $value1 = null) use (&$__fn) {
+  $__num = func_num_args();
+  if ($__num < 2) {
+    if ($__num === 1) return function($value1) use ($value0, &$__fn) { return $__fn($value0, $value1); };
+    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+  }
+    $__res = new Phpurs_Data2("Cons", $value0, $value1);
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})())($x, $acc);
 $v = $__tco_tmp_0;
 $v1 = $__tco_tmp_1;
-continue 2;
-} else {
-if (true) {
+continue 3;
+break;
+default:
 $__tco_tmp_0 = $xs;
 $__tco_tmp_1 = $acc;
 $v = $__tco_tmp_0;
 $v1 = $__tco_tmp_1;
-continue 2;
-} else {
-throw new \Exception("Pattern match failure");
-};
+continue 3;
+break;
 };
 break;
 default:
@@ -275,7 +353,7 @@ break;
   };
   return $__fn;
 })();
-    $__res = ($go)($lst, $__global_Test_Primes_Nil);
+    $__res = ($go)($lst, ($GLOBALS['__phpurs_data0_Nil'] ??= new Phpurs_Data0("Nil")));
     return 2 < $__num ? $__res(...array_slice(func_get_args(), 2)) : $__res;
 }
 $GLOBALS['Test_Primes_filter'] = __NAMESPACE__ . '\\Test_Primes_filter';
@@ -287,8 +365,6 @@ function Test_Primes_sieve($v) {
   if ($__num < 1) {
     return phpurs_curry_fallback($__fn, func_get_args(), 1);
   }
-$__global_Test_Primes_Nil = ($GLOBALS['Test_Primes_Nil'] ?? \Test\Primes\phpurs_eval_thunk('Test_Primes_Nil'));
-$__global_Test_Primes_Cons = ($GLOBALS['Test_Primes_Cons'] ?? \Test\Primes\phpurs_eval_thunk('Test_Primes_Cons'));
 $__global_Test_Primes_filter = ($GLOBALS['Test_Primes_filter'] ?? \Test\Primes\phpurs_eval_thunk('Test_Primes_filter'));
 $__global_Test_Primes_notEq = ($GLOBALS['Test_Primes_notEq'] ?? \Test\Primes\phpurs_eval_thunk('Test_Primes_notEq'));
 $__global_Data_EuclideanRing_intMod = ($GLOBALS['Data_EuclideanRing_intMod'] ?? \Data\EuclideanRing\phpurs_eval_thunk('Data_EuclideanRing_intMod'));
@@ -296,12 +372,23 @@ while (true) {
 $__case_0 = $v;
 switch (($__case_0)->tag) {
 case "Nil":
-return $__global_Test_Primes_Nil;
+return ($GLOBALS['__phpurs_data0_Nil'] ??= new Phpurs_Data0("Nil"));
 break;
 case "Cons":
 $p = ($__case_0)->v0;
 $xs = ($__case_0)->v1;
-return ($__global_Test_Primes_Cons)($p, (($GLOBALS['Test_Primes_sieve'] ?? \Test\Primes\phpurs_eval_thunk('Test_Primes_sieve')))(($__global_Test_Primes_filter)((function() use ($__global_Test_Primes_notEq, $__global_Data_EuclideanRing_intMod, $p) {
+return ((function() {
+  $__fn = function($value0, $value1 = null) use (&$__fn) {
+  $__num = func_num_args();
+  if ($__num < 2) {
+    if ($__num === 1) return function($value1) use ($value0, &$__fn) { return $__fn($value0, $value1); };
+    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+  }
+    $__res = new Phpurs_Data2("Cons", $value0, $value1);
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})())($p, (($GLOBALS['Test_Primes_sieve'] ?? \Test\Primes\phpurs_eval_thunk('Test_Primes_sieve')))(($__global_Test_Primes_filter)((function() use ($__global_Test_Primes_notEq, $__global_Data_EuclideanRing_intMod, $p) {
   $__fn = function($x) use ($__global_Test_Primes_notEq, $__global_Data_EuclideanRing_intMod, $p, &$__fn) {
   $__num = func_num_args();
   if ($__num < 1) {

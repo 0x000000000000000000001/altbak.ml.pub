@@ -2,13 +2,11 @@
 
 namespace Test\AstTree;
 
-require_once __DIR__ . '/../Data.Function/index.php';
 require_once __DIR__ . '/../Data.Ring/index.php';
 require_once __DIR__ . '/../Data.Semiring/index.php';
 require_once __DIR__ . '/../Data.Show/index.php';
 require_once __DIR__ . '/../Effect/index.php';
 require_once __DIR__ . '/../Effect.Console/index.php';
-require_once __DIR__ . '/../Prelude/index.php';
 require_once __DIR__ . '/../Test.AstTree/index.php';
 
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
@@ -22,10 +20,65 @@ if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
 }
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
+    $missing = $expected - count($args);
+    if ($missing === 1) {
+      return function($a) use ($fn, $args, $expected) {
+        $num = func_num_args();
+        if ($num > 1) {
+          $merged = array_merge($args, func_get_args());
+          $res = $fn(...array_slice($merged, 0, $expected));
+          return $res(...array_slice($merged, $expected));
+        }
+        $args[] = $a;
+        return $fn(...$args);
+      };
+    }
+    if ($missing === 2) {
+      return function($a, $b = null) use ($fn, $args, $expected) {
+        $num = func_num_args();
+        if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num > 2) {
+          $merged = array_merge($args, func_get_args());
+          $res = $fn(...array_slice($merged, 0, $expected));
+          return $res(...array_slice($merged, $expected));
+        }
+        $args[] = $a; $args[] = $b;
+        return $fn(...$args);
+      };
+    }
+    if ($missing === 3) {
+      return function($a, $b = null, $c = null) use ($fn, $args, $expected) {
+        $num = func_num_args();
+        if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num > 3) {
+          $merged = array_merge($args, func_get_args());
+          $res = $fn(...array_slice($merged, 0, $expected));
+          return $res(...array_slice($merged, $expected));
+        }
+        $args[] = $a; $args[] = $b; $args[] = $c;
+        return $fn(...$args);
+      };
+    }
+    if ($missing === 4) {
+      return function($a, $b = null, $c = null, $d = null) use ($fn, $args, $expected) {
+        $num = func_num_args();
+        if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num === 3) { $args[] = $a; $args[] = $b; $args[] = $c; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num > 4) {
+          $merged = array_merge($args, func_get_args());
+          $res = $fn(...array_slice($merged, 0, $expected));
+          return $res(...array_slice($merged, $expected));
+        }
+        $args[] = $a; $args[] = $b; $args[] = $c; $args[] = $d;
+        return $fn(...$args);
+      };
+    }
     return function(...$more) use ($fn, $args, $expected) {
       $merged = array_merge($args, $more);
       if (count($merged) >= $expected) {
-        $res = $fn(...$merged);
+        $res = $fn(...array_slice($merged, 0, $expected));
         return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
       }
       return phpurs_curry_fallback($fn, $merged, $expected);
@@ -152,21 +205,79 @@ function Test_AstTree_buildTree($v) {
   if ($__num < 1) {
     return phpurs_curry_fallback($__fn, func_get_args(), 1);
   }
-$__global_Test_AstTree_Val = ($GLOBALS['Test_AstTree_Val'] ?? \Test\AstTree\phpurs_eval_thunk('Test_AstTree_Val'));
-$__global_Test_AstTree_Add = ($GLOBALS['Test_AstTree_Add'] ?? \Test\AstTree\phpurs_eval_thunk('Test_AstTree_Add'));
-$__global_Test_AstTree_Mul = ($GLOBALS['Test_AstTree_Mul'] ?? \Test\AstTree\phpurs_eval_thunk('Test_AstTree_Mul'));
-$__global_Test_AstTree_Sub = ($GLOBALS['Test_AstTree_Sub'] ?? \Test\AstTree\phpurs_eval_thunk('Test_AstTree_Sub'));
 while (true) {
 $__case_0 = $v;
-if (($__case_0 === 0)) {
-return ($__global_Test_AstTree_Val)(1);
-} else {
-if (true) {
+switch ($__case_0) {
+case 0:
+return ((function() {
+  $__fn = function($value0) use (&$__fn) {
+  $__num = func_num_args();
+  if ($__num < 1) {
+    return phpurs_curry_fallback($__fn, func_get_args(), 1);
+  }
+    $__res = new Phpurs_Data1("Val", $value0);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  };
+  return $__fn;
+})())(1);
+break;
+default:
 $n = $__case_0;
-return ($__global_Test_AstTree_Add)(($__global_Test_AstTree_Mul)(($__global_Test_AstTree_Val)($n), (($GLOBALS['Test_AstTree_buildTree'] ?? \Test\AstTree\phpurs_eval_thunk('Test_AstTree_buildTree')))(($n - 1))), ($__global_Test_AstTree_Sub)((($GLOBALS['Test_AstTree_buildTree'] ?? \Test\AstTree\phpurs_eval_thunk('Test_AstTree_buildTree')))(($n - 1)), ($__global_Test_AstTree_Val)(1)));
-} else {
-throw new \Exception("Pattern match failure");
-};
+return ((function() {
+  $__fn = function($value0, $value1 = null) use (&$__fn) {
+  $__num = func_num_args();
+  if ($__num < 2) {
+    if ($__num === 1) return function($value1) use ($value0, &$__fn) { return $__fn($value0, $value1); };
+    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+  }
+    $__res = new Phpurs_Data2("Add", $value0, $value1);
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})())(((function() {
+  $__fn = function($value0, $value1 = null) use (&$__fn) {
+  $__num = func_num_args();
+  if ($__num < 2) {
+    if ($__num === 1) return function($value1) use ($value0, &$__fn) { return $__fn($value0, $value1); };
+    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+  }
+    $__res = new Phpurs_Data2("Mul", $value0, $value1);
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})())(((function() {
+  $__fn = function($value0) use (&$__fn) {
+  $__num = func_num_args();
+  if ($__num < 1) {
+    return phpurs_curry_fallback($__fn, func_get_args(), 1);
+  }
+    $__res = new Phpurs_Data1("Val", $value0);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  };
+  return $__fn;
+})())($n), (($GLOBALS['Test_AstTree_buildTree'] ?? \Test\AstTree\phpurs_eval_thunk('Test_AstTree_buildTree')))(($n - 1))), ((function() {
+  $__fn = function($value0, $value1 = null) use (&$__fn) {
+  $__num = func_num_args();
+  if ($__num < 2) {
+    if ($__num === 1) return function($value1) use ($value0, &$__fn) { return $__fn($value0, $value1); };
+    return phpurs_curry_fallback($__fn, func_get_args(), 2);
+  }
+    $__res = new Phpurs_Data2("Sub", $value0, $value1);
+  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
+  };
+  return $__fn;
+})())((($GLOBALS['Test_AstTree_buildTree'] ?? \Test\AstTree\phpurs_eval_thunk('Test_AstTree_buildTree')))(($n - 1)), ((function() {
+  $__fn = function($value0) use (&$__fn) {
+  $__num = func_num_args();
+  if ($__num < 1) {
+    return phpurs_curry_fallback($__fn, func_get_args(), 1);
+  }
+    $__res = new Phpurs_Data1("Val", $value0);
+  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
+  };
+  return $__fn;
+})())(1)));
+break;
 };
 };
     $__res = null;

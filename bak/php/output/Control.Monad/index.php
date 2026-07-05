@@ -8,7 +8,6 @@ require_once __DIR__ . '/../Control.Bind/index.php';
 require_once __DIR__ . '/../Control.Monad/index.php';
 require_once __DIR__ . '/../Data.Functor/index.php';
 require_once __DIR__ . '/../Data.Unit/index.php';
-require_once __DIR__ . '/../Type.Proxy/index.php';
 
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
   class Phpurs_Data0 { public $tag; public function __construct($t) { $this->tag = $t; } }
@@ -21,10 +20,65 @@ if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
 }
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
+    $missing = $expected - count($args);
+    if ($missing === 1) {
+      return function($a) use ($fn, $args, $expected) {
+        $num = func_num_args();
+        if ($num > 1) {
+          $merged = array_merge($args, func_get_args());
+          $res = $fn(...array_slice($merged, 0, $expected));
+          return $res(...array_slice($merged, $expected));
+        }
+        $args[] = $a;
+        return $fn(...$args);
+      };
+    }
+    if ($missing === 2) {
+      return function($a, $b = null) use ($fn, $args, $expected) {
+        $num = func_num_args();
+        if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num > 2) {
+          $merged = array_merge($args, func_get_args());
+          $res = $fn(...array_slice($merged, 0, $expected));
+          return $res(...array_slice($merged, $expected));
+        }
+        $args[] = $a; $args[] = $b;
+        return $fn(...$args);
+      };
+    }
+    if ($missing === 3) {
+      return function($a, $b = null, $c = null) use ($fn, $args, $expected) {
+        $num = func_num_args();
+        if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num > 3) {
+          $merged = array_merge($args, func_get_args());
+          $res = $fn(...array_slice($merged, 0, $expected));
+          return $res(...array_slice($merged, $expected));
+        }
+        $args[] = $a; $args[] = $b; $args[] = $c;
+        return $fn(...$args);
+      };
+    }
+    if ($missing === 4) {
+      return function($a, $b = null, $c = null, $d = null) use ($fn, $args, $expected) {
+        $num = func_num_args();
+        if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num === 3) { $args[] = $a; $args[] = $b; $args[] = $c; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num > 4) {
+          $merged = array_merge($args, func_get_args());
+          $res = $fn(...array_slice($merged, 0, $expected));
+          return $res(...array_slice($merged, $expected));
+        }
+        $args[] = $a; $args[] = $b; $args[] = $c; $args[] = $d;
+        return $fn(...$args);
+      };
+    }
     return function(...$more) use ($fn, $args, $expected) {
       $merged = array_merge($args, $more);
       if (count($merged) >= $expected) {
-        $res = $fn(...$merged);
+        $res = $fn(...array_slice($merged, 0, $expected));
         return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
       }
       return phpurs_curry_fallback($fn, $merged, $expected);
@@ -36,75 +90,7 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
     static $cache = [];
     if (array_key_exists($id, $cache)) return $cache[$id];
     switch ($id) {
-      case 'Control_Monad_monadProxy': $v = (($GLOBALS['Control_Monad_Monad__dollar__Dict'] ?? \Control\Monad\phpurs_eval_thunk('Control_Monad_Monad__dollar__Dict')))((object)["Applicative0" => (function() {
-  $__fn = function($__dollar____unused) use (&$__fn) {
-  $__num = func_num_args();
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-$__global_Control_Applicative_applicativeProxy = ($GLOBALS['Control_Applicative_applicativeProxy'] ?? \Control\Applicative\phpurs_eval_thunk('Control_Applicative_applicativeProxy'));
-    $__res = $__global_Control_Applicative_applicativeProxy;
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-  };
-  return $__fn;
-})(), "Bind1" => (function() {
-  $__fn = function($__dollar____unused) use (&$__fn) {
-  $__num = func_num_args();
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-$__global_Control_Bind_bindProxy = ($GLOBALS['Control_Bind_bindProxy'] ?? \Control\Bind\phpurs_eval_thunk('Control_Bind_bindProxy'));
-    $__res = $__global_Control_Bind_bindProxy;
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-  };
-  return $__fn;
-})()]); break;
-      case 'Control_Monad_monadFn': $v = (($GLOBALS['Control_Monad_Monad__dollar__Dict'] ?? \Control\Monad\phpurs_eval_thunk('Control_Monad_Monad__dollar__Dict')))((object)["Applicative0" => (function() {
-  $__fn = function($__dollar____unused) use (&$__fn) {
-  $__num = func_num_args();
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-$__global_Control_Applicative_applicativeFn = ($GLOBALS['Control_Applicative_applicativeFn'] ?? \Control\Applicative\phpurs_eval_thunk('Control_Applicative_applicativeFn'));
-    $__res = $__global_Control_Applicative_applicativeFn;
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-  };
-  return $__fn;
-})(), "Bind1" => (function() {
-  $__fn = function($__dollar____unused) use (&$__fn) {
-  $__num = func_num_args();
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-$__global_Control_Bind_bindFn = ($GLOBALS['Control_Bind_bindFn'] ?? \Control\Bind\phpurs_eval_thunk('Control_Bind_bindFn'));
-    $__res = $__global_Control_Bind_bindFn;
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-  };
-  return $__fn;
-})()]); break;
-      case 'Control_Monad_monadArray': $v = (($GLOBALS['Control_Monad_Monad__dollar__Dict'] ?? \Control\Monad\phpurs_eval_thunk('Control_Monad_Monad__dollar__Dict')))((object)["Applicative0" => (function() {
-  $__fn = function($__dollar____unused) use (&$__fn) {
-  $__num = func_num_args();
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-$__global_Control_Applicative_applicativeArray = ($GLOBALS['Control_Applicative_applicativeArray'] ?? \Control\Applicative\phpurs_eval_thunk('Control_Applicative_applicativeArray'));
-    $__res = $__global_Control_Applicative_applicativeArray;
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-  };
-  return $__fn;
-})(), "Bind1" => (function() {
-  $__fn = function($__dollar____unused) use (&$__fn) {
-  $__num = func_num_args();
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-$__global_Control_Bind_bindArray = ($GLOBALS['Control_Bind_bindArray'] ?? \Control\Bind\phpurs_eval_thunk('Control_Bind_bindArray'));
-    $__res = $__global_Control_Bind_bindArray;
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-  };
-  return $__fn;
-})()]); break;
+
       default: throw new \Exception("Unknown thunk " . $id);
     }
     $GLOBALS[$id] = $v;
@@ -125,119 +111,6 @@ function Control_Monad_Monad__dollar__Dict($x) {
     return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
 }
 $GLOBALS['Control_Monad_Monad__dollar__Dict'] = __NAMESPACE__ . '\\Control_Monad_Monad__dollar__Dict';
-
-// Control_Monad_whenM
-function Control_Monad_whenM($dictMonad) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_whenM';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-$__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-$__global_Control_Applicative_when = ($GLOBALS['Control_Applicative_when'] ?? \Control\Applicative\phpurs_eval_thunk('Control_Applicative_when'));
-$bind = ((($dictMonad)->Bind1)($__global_Prim_undefined))->bind;
-$when = ($__global_Control_Applicative_when)((($dictMonad)->Applicative0)($__global_Prim_undefined));
-    $__res = (function() use ($bind, $when) {
-  $__fn = function($mb, $m = null) use ($bind, $when, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($m) use ($mb, &$__fn) { return $__fn($mb, $m); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-    $__res = ($bind)($mb, (function() use ($when, $m) {
-  $__fn = function($b) use ($when, $m, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-    $__res = ($when)($b, $m);
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-  };
-  return $__fn;
-})());
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})();
-    return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_whenM'] = __NAMESPACE__ . '\\Control_Monad_whenM';
-
-// Control_Monad_unlessM
-function Control_Monad_unlessM($dictMonad) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_unlessM';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-$__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-$__global_Control_Applicative_unless = ($GLOBALS['Control_Applicative_unless'] ?? \Control\Applicative\phpurs_eval_thunk('Control_Applicative_unless'));
-$bind = ((($dictMonad)->Bind1)($__global_Prim_undefined))->bind;
-$unless = ($__global_Control_Applicative_unless)((($dictMonad)->Applicative0)($__global_Prim_undefined));
-    $__res = (function() use ($bind, $unless) {
-  $__fn = function($mb, $m = null) use ($bind, $unless, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($m) use ($mb, &$__fn) { return $__fn($mb, $m); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-    $__res = ($bind)($mb, (function() use ($unless, $m) {
-  $__fn = function($b) use ($unless, $m, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-    $__res = ($unless)($b, $m);
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-  };
-  return $__fn;
-})());
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})();
-    return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_unlessM'] = __NAMESPACE__ . '\\Control_Monad_unlessM';
-
-
-
-
-// Control_Monad_liftM1
-function Control_Monad_liftM1($dictMonad) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Monad_liftM1';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-$__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-$bind = ((($dictMonad)->Bind1)($__global_Prim_undefined))->bind;
-$pure = ((($dictMonad)->Applicative0)($__global_Prim_undefined))->pure;
-    $__res = (function() use ($bind, $pure) {
-  $__fn = function($f, $a = null) use ($bind, $pure, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($a) use ($f, &$__fn) { return $__fn($f, $a); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-    $__res = ($bind)($a, (function() use ($pure, $f) {
-  $__fn = function($a__prime__) use ($pure, $f, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-    $__res = ($pure)(($f)($a__prime__));
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-  };
-  return $__fn;
-})());
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})();
-    return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Monad_liftM1'] = __NAMESPACE__ . '\\Control_Monad_liftM1';
 
 // Control_Monad_ap
 function Control_Monad_ap($dictMonad) {

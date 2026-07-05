@@ -20,10 +20,65 @@ if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
 }
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
+    $missing = $expected - count($args);
+    if ($missing === 1) {
+      return function($a) use ($fn, $args, $expected) {
+        $num = func_num_args();
+        if ($num > 1) {
+          $merged = array_merge($args, func_get_args());
+          $res = $fn(...array_slice($merged, 0, $expected));
+          return $res(...array_slice($merged, $expected));
+        }
+        $args[] = $a;
+        return $fn(...$args);
+      };
+    }
+    if ($missing === 2) {
+      return function($a, $b = null) use ($fn, $args, $expected) {
+        $num = func_num_args();
+        if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num > 2) {
+          $merged = array_merge($args, func_get_args());
+          $res = $fn(...array_slice($merged, 0, $expected));
+          return $res(...array_slice($merged, $expected));
+        }
+        $args[] = $a; $args[] = $b;
+        return $fn(...$args);
+      };
+    }
+    if ($missing === 3) {
+      return function($a, $b = null, $c = null) use ($fn, $args, $expected) {
+        $num = func_num_args();
+        if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num > 3) {
+          $merged = array_merge($args, func_get_args());
+          $res = $fn(...array_slice($merged, 0, $expected));
+          return $res(...array_slice($merged, $expected));
+        }
+        $args[] = $a; $args[] = $b; $args[] = $c;
+        return $fn(...$args);
+      };
+    }
+    if ($missing === 4) {
+      return function($a, $b = null, $c = null, $d = null) use ($fn, $args, $expected) {
+        $num = func_num_args();
+        if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num === 3) { $args[] = $a; $args[] = $b; $args[] = $c; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num > 4) {
+          $merged = array_merge($args, func_get_args());
+          $res = $fn(...array_slice($merged, 0, $expected));
+          return $res(...array_slice($merged, $expected));
+        }
+        $args[] = $a; $args[] = $b; $args[] = $c; $args[] = $d;
+        return $fn(...$args);
+      };
+    }
     return function(...$more) use ($fn, $args, $expected) {
       $merged = array_merge($args, $more);
       if (count($merged) >= $expected) {
-        $res = $fn(...$merged);
+        $res = $fn(...array_slice($merged, 0, $expected));
         return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
       }
       return phpurs_curry_fallback($fn, $merged, $expected);
@@ -35,20 +90,7 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
     static $cache = [];
     if (array_key_exists($id, $cache)) return $cache[$id];
     switch ($id) {
-      case 'Effect_Console_discard': $v = ((function() {
-  $__fn = function($dictBind) use (&$__fn) {
-  $__num = func_num_args();
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-$__global_Control_Bind_bind = ($GLOBALS['Control_Bind_bind'] ?? \Control\Bind\phpurs_eval_thunk('Control_Bind_bind'));
-    $__res = ($__global_Control_Bind_bind)($dictBind);
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-  };
-  return $__fn;
-})())(($GLOBALS['Effect_bindEffect'] ?? \Effect\phpurs_eval_thunk('Effect_bindEffect'))); break;
-      case 'Effect_Console_bind': $v = ($GLOBALS['Effect_bindE'] ?? \Effect\phpurs_eval_thunk('Effect_bindE')); break;
-      case 'Effect_Console_pure': $v = ($GLOBALS['Effect_pureE'] ?? \Effect\phpurs_eval_thunk('Effect_pureE')); break;
+
       default: throw new \Exception("Unknown thunk " . $id);
     }
     $GLOBALS[$id] = $v;
@@ -56,34 +98,7 @@ $__global_Control_Bind_bind = ($GLOBALS['Control_Bind_bind'] ?? \Control\Bind\ph
   }
 }
 $Prim_undefined = function() { throw new \Exception("undefined"); };
-
-
-
-
-
-// Effect_Console_warnShow
-function Effect_Console_warnShow($dictShow) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Effect_Console_warnShow';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-$__global_Effect_Console_warn = ($GLOBALS['Effect_Console_warn'] ?? \Effect\Console\phpurs_eval_thunk('Effect_Console_warn'));
-$show = ($dictShow)->show;
-    $__res = (function() use ($__global_Effect_Console_warn, $show) {
-  $__fn = function($a) use ($__global_Effect_Console_warn, $show, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-    $__res = ($__global_Effect_Console_warn)(($show)($a));
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-  };
-  return $__fn;
-})();
-    return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Effect_Console_warnShow'] = __NAMESPACE__ . '\\Effect_Console_warnShow';
+$Effect_Console_log = function($s) { return function() use(&$s) { print($s . "\n"); }; };
 
 // Effect_Console_logShow
 function Effect_Console_logShow($dictShow) {
@@ -108,124 +123,4 @@ $show = ($dictShow)->show;
     return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
 }
 $GLOBALS['Effect_Console_logShow'] = __NAMESPACE__ . '\\Effect_Console_logShow';
-
-// Effect_Console_infoShow
-function Effect_Console_infoShow($dictShow) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Effect_Console_infoShow';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-$__global_Effect_Console_info = ($GLOBALS['Effect_Console_info'] ?? \Effect\Console\phpurs_eval_thunk('Effect_Console_info'));
-$show = ($dictShow)->show;
-    $__res = (function() use ($__global_Effect_Console_info, $show) {
-  $__fn = function($a) use ($__global_Effect_Console_info, $show, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-    $__res = ($__global_Effect_Console_info)(($show)($a));
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-  };
-  return $__fn;
-})();
-    return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Effect_Console_infoShow'] = __NAMESPACE__ . '\\Effect_Console_infoShow';
-
-// Effect_Console_grouped
-function Effect_Console_grouped($name, $inner = null) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Effect_Console_grouped';
-  if ($__num < 2) {
-    if ($__num === 1) return function($inner) use ($name, $__fn) { return $__fn($name, $inner); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-$__global_Effect_Console_discard = ($GLOBALS['Effect_Console_discard'] ?? \Effect\Console\phpurs_eval_thunk('Effect_Console_discard'));
-$__global_Effect_Console_group = ($GLOBALS['Effect_Console_group'] ?? \Effect\Console\phpurs_eval_thunk('Effect_Console_group'));
-$__global_Effect_bindE = ($GLOBALS['Effect_bindE'] ?? \Effect\phpurs_eval_thunk('Effect_bindE'));
-$__global_Effect_Console_groupEnd = ($GLOBALS['Effect_Console_groupEnd'] ?? \Effect\Console\phpurs_eval_thunk('Effect_Console_groupEnd'));
-$__global_Effect_pureE = ($GLOBALS['Effect_pureE'] ?? \Effect\phpurs_eval_thunk('Effect_pureE'));
-    $__res = ($__global_Effect_Console_discard)(($__global_Effect_Console_group)($name), (function() use ($__global_Effect_bindE, $inner, $__global_Effect_Console_discard, $__global_Effect_Console_groupEnd, $__global_Effect_pureE) {
-  $__fn = function($__dollar____unused) use ($__global_Effect_bindE, $inner, $__global_Effect_Console_discard, $__global_Effect_Console_groupEnd, $__global_Effect_pureE, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-    $__res = ($__global_Effect_bindE)($inner, (function() use ($__global_Effect_Console_discard, $__global_Effect_Console_groupEnd, $__global_Effect_pureE) {
-  $__fn = function($result) use ($__global_Effect_Console_discard, $__global_Effect_Console_groupEnd, $__global_Effect_pureE, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-    $__res = ($__global_Effect_Console_discard)($__global_Effect_Console_groupEnd, (function() use ($__global_Effect_pureE, $result) {
-  $__fn = function($__dollar____unused) use ($__global_Effect_pureE, $result, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-    $__res = ($__global_Effect_pureE)($result);
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-  };
-  return $__fn;
-})());
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-  };
-  return $__fn;
-})());
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-  };
-  return $__fn;
-})());
-    return 2 < $__num ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-}
-$GLOBALS['Effect_Console_grouped'] = __NAMESPACE__ . '\\Effect_Console_grouped';
-
-// Effect_Console_errorShow
-function Effect_Console_errorShow($dictShow) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Effect_Console_errorShow';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-$__global_Effect_Console_error = ($GLOBALS['Effect_Console_error'] ?? \Effect\Console\phpurs_eval_thunk('Effect_Console_error'));
-$show = ($dictShow)->show;
-    $__res = (function() use ($__global_Effect_Console_error, $show) {
-  $__fn = function($a) use ($__global_Effect_Console_error, $show, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-    $__res = ($__global_Effect_Console_error)(($show)($a));
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-  };
-  return $__fn;
-})();
-    return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Effect_Console_errorShow'] = __NAMESPACE__ . '\\Effect_Console_errorShow';
-
-// Effect_Console_debugShow
-function Effect_Console_debugShow($dictShow) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Effect_Console_debugShow';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-$__global_Effect_Console_debug = ($GLOBALS['Effect_Console_debug'] ?? \Effect\Console\phpurs_eval_thunk('Effect_Console_debug'));
-$show = ($dictShow)->show;
-    $__res = (function() use ($__global_Effect_Console_debug, $show) {
-  $__fn = function($a) use ($__global_Effect_Console_debug, $show, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-    $__res = ($__global_Effect_Console_debug)(($show)($a));
-  return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-  };
-  return $__fn;
-})();
-    return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Effect_Console_debugShow'] = __NAMESPACE__ . '\\Effect_Console_debugShow';
 

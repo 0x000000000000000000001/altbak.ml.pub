@@ -2,13 +2,11 @@
 
 namespace Test\Church;
 
-require_once __DIR__ . '/../Data.Function/index.php';
 require_once __DIR__ . '/../Data.Ring/index.php';
 require_once __DIR__ . '/../Data.Semiring/index.php';
 require_once __DIR__ . '/../Data.Show/index.php';
 require_once __DIR__ . '/../Effect/index.php';
 require_once __DIR__ . '/../Effect.Console/index.php';
-require_once __DIR__ . '/../Prelude/index.php';
 require_once __DIR__ . '/../Test.Church/index.php';
 
 if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
@@ -22,10 +20,65 @@ if (!class_exists(__NAMESPACE__ . '\\Phpurs_Data0')) {
 }
 if (!function_exists(__NAMESPACE__ . '\\phpurs_curry_fallback')) {
   function phpurs_curry_fallback($fn, $args, $expected) {
+    $missing = $expected - count($args);
+    if ($missing === 1) {
+      return function($a) use ($fn, $args, $expected) {
+        $num = func_num_args();
+        if ($num > 1) {
+          $merged = array_merge($args, func_get_args());
+          $res = $fn(...array_slice($merged, 0, $expected));
+          return $res(...array_slice($merged, $expected));
+        }
+        $args[] = $a;
+        return $fn(...$args);
+      };
+    }
+    if ($missing === 2) {
+      return function($a, $b = null) use ($fn, $args, $expected) {
+        $num = func_num_args();
+        if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num > 2) {
+          $merged = array_merge($args, func_get_args());
+          $res = $fn(...array_slice($merged, 0, $expected));
+          return $res(...array_slice($merged, $expected));
+        }
+        $args[] = $a; $args[] = $b;
+        return $fn(...$args);
+      };
+    }
+    if ($missing === 3) {
+      return function($a, $b = null, $c = null) use ($fn, $args, $expected) {
+        $num = func_num_args();
+        if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num > 3) {
+          $merged = array_merge($args, func_get_args());
+          $res = $fn(...array_slice($merged, 0, $expected));
+          return $res(...array_slice($merged, $expected));
+        }
+        $args[] = $a; $args[] = $b; $args[] = $c;
+        return $fn(...$args);
+      };
+    }
+    if ($missing === 4) {
+      return function($a, $b = null, $c = null, $d = null) use ($fn, $args, $expected) {
+        $num = func_num_args();
+        if ($num === 1) { $args[] = $a; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num === 2) { $args[] = $a; $args[] = $b; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num === 3) { $args[] = $a; $args[] = $b; $args[] = $c; return phpurs_curry_fallback($fn, $args, $expected); }
+        if ($num > 4) {
+          $merged = array_merge($args, func_get_args());
+          $res = $fn(...array_slice($merged, 0, $expected));
+          return $res(...array_slice($merged, $expected));
+        }
+        $args[] = $a; $args[] = $b; $args[] = $c; $args[] = $d;
+        return $fn(...$args);
+      };
+    }
     return function(...$more) use ($fn, $args, $expected) {
       $merged = array_merge($args, $more);
       if (count($merged) >= $expected) {
-        $res = $fn(...$merged);
+        $res = $fn(...array_slice($merged, 0, $expected));
         return count($merged) > $expected ? $res(...array_slice($merged, $expected)) : $res;
       }
       return phpurs_curry_fallback($fn, $merged, $expected);
@@ -152,15 +205,14 @@ $__global_Test_Church_zeroC = ($GLOBALS['Test_Church_zeroC'] ?? \Test\Church\php
 $__global_Test_Church_succC = ($GLOBALS['Test_Church_succC'] ?? \Test\Church\phpurs_eval_thunk('Test_Church_succC'));
 while (true) {
 $__case_0 = $v;
-if (($__case_0 === 0)) {
+switch ($__case_0) {
+case 0:
 return $__global_Test_Church_zeroC;
-} else {
-if (true) {
+break;
+default:
 $n = $__case_0;
 return ($__global_Test_Church_succC)((($GLOBALS['Test_Church_fromInt'] ?? \Test\Church\phpurs_eval_thunk('Test_Church_fromInt')))(($n - 1)));
-} else {
-throw new \Exception("Pattern match failure");
-};
+break;
 };
 };
     $__res = null;
@@ -172,36 +224,5 @@ $GLOBALS['Test_Church_fromInt'] = __NAMESPACE__ . '\\Test_Church_fromInt';
 
 
 
-
-// Test_Church_addC
-function Test_Church_addC($m, $n = null, $f = null, $x = null) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Test_Church_addC';
-  if ($__num < 4) {
-    if ($__num === 3) return function($x) use ($m, $n, $f, $__fn) { return $__fn($m, $n, $f, $x); };
-    if ($__num === 2) return function($f, $x = null) use ($m, $n, $__fn) {
-      $__num2 = func_num_args();
-      if ($__num2 === 2) return $__fn($m, $n, $f, $x);
-      if ($__num2 === 1) return function($x) use ($m, $n, $f, $__fn) { return $__fn($m, $n, $f, $x); };
-      return phpurs_curry_fallback($__fn, [$m, $n], 4);
-    };
-    if ($__num === 1) return function($n, $f = null, $x = null) use ($m, $__fn) {
-      $__num2 = func_num_args();
-      if ($__num2 === 3) return $__fn($m, $n, $f, $x);
-      if ($__num2 === 2) return function($x) use ($m, $n, $f, $__fn) { return $__fn($m, $n, $f, $x); };
-      if ($__num2 === 1) return function($f, $x = null) use ($m, $n, $__fn) {
-        $__num3 = func_num_args();
-        if ($__num3 === 2) return $__fn($m, $n, $f, $x);
-        if ($__num3 === 1) return function($x) use ($m, $n, $f, $__fn) { return $__fn($m, $n, $f, $x); };
-        return phpurs_curry_fallback($__fn, [$m, $n], 4);
-      };
-      return phpurs_curry_fallback($__fn, [$m], 4);
-    };
-    return phpurs_curry_fallback($__fn, func_get_args(), 4);
-  }
-    $__res = ($m)($f, ($n)($f, $x));
-    return 4 < $__num ? $__res(...array_slice(func_get_args(), 4)) : $__res;
-}
-$GLOBALS['Test_Church_addC'] = __NAMESPACE__ . '\\Test_Church_addC';
 
 
