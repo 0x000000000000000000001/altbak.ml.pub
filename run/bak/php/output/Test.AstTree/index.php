@@ -174,6 +174,9 @@ function Test_AstTree_eval($v) {
   if ($__num < 1) {
     return phpurs_curry_fallback($__fn, func_get_args(), 1);
   }
+  $__global_Test_AstTree_add = ($GLOBALS['Test_AstTree_add'] ?? \Test\AstTree\phpurs_eval_thunk('Test_AstTree_add'));
+  $__global_Test_AstTree_mul = ($GLOBALS['Test_AstTree_mul'] ?? \Test\AstTree\phpurs_eval_thunk('Test_AstTree_mul'));
+  $__global_Test_AstTree_sub = ($GLOBALS['Test_AstTree_sub'] ?? \Test\AstTree\phpurs_eval_thunk('Test_AstTree_sub'));
   while (true) {
 $__case_0 = $v;
 switch (($__case_0)->tag) {
@@ -185,19 +188,19 @@ break;
 case "Add":
 $a = ($__case_0)->v0;
 $b = ($__case_0)->v1;
-$__res = (\Test\AstTree\Test_AstTree_eval($a) + \Test\AstTree\Test_AstTree_eval($b));
+$__res = ($__global_Test_AstTree_add)(\Test\AstTree\Test_AstTree_eval($a), \Test\AstTree\Test_AstTree_eval($b));
 goto __end;;
 break;
 case "Mul":
 $a = ($__case_0)->v0;
 $b = ($__case_0)->v1;
-$__res = (\Test\AstTree\Test_AstTree_eval($a) * \Test\AstTree\Test_AstTree_eval($b));
+$__res = ($__global_Test_AstTree_mul)(\Test\AstTree\Test_AstTree_eval($a), \Test\AstTree\Test_AstTree_eval($b));
 goto __end;;
 break;
 case "Sub":
 $a = ($__case_0)->v0;
 $b = ($__case_0)->v1;
-$__res = (\Test\AstTree\Test_AstTree_eval($a) - \Test\AstTree\Test_AstTree_eval($b));
+$__res = ($__global_Test_AstTree_sub)(\Test\AstTree\Test_AstTree_eval($a), \Test\AstTree\Test_AstTree_eval($b));
 goto __end;;
 break;
 default:
@@ -220,6 +223,7 @@ function Test_AstTree_buildTree($v) {
   if ($__num < 1) {
     return phpurs_curry_fallback($__fn, func_get_args(), 1);
   }
+  $__global_Test_AstTree_sub = ($GLOBALS['Test_AstTree_sub'] ?? \Test\AstTree\phpurs_eval_thunk('Test_AstTree_sub'));
   while (true) {
 $__case_0 = $v;
 switch ($__case_0) {
@@ -229,7 +233,7 @@ goto __end;;
 break;
 default:
 $n = $__case_0;
-$__res = new Phpurs_Data2("Add", new Phpurs_Data2("Mul", new Phpurs_Data1("Val", $n), \Test\AstTree\Test_AstTree_buildTree(($n - 1))), new Phpurs_Data2("Sub", \Test\AstTree\Test_AstTree_buildTree(($n - 1)), new Phpurs_Data1("Val", 1)));
+$__res = new Phpurs_Data2("Add", new Phpurs_Data2("Mul", new Phpurs_Data1("Val", $n), \Test\AstTree\Test_AstTree_buildTree(($__global_Test_AstTree_sub)($n, 1))), new Phpurs_Data2("Sub", \Test\AstTree\Test_AstTree_buildTree(($__global_Test_AstTree_sub)($n, 1)), new Phpurs_Data1("Val", 1)));
 goto __end;;
 break;
 };

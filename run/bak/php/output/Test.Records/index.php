@@ -96,7 +96,7 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
       case 'Test_Records_mod': $v = ($GLOBALS['Data_EuclideanRing_intMod'] ?? \Data\EuclideanRing\phpurs_eval_thunk('Data_EuclideanRing_intMod')); break;
       case 'Test_Records_initial': $v = (object)["a" => 0, "b" => (object)["c" => 0, "d" => (object)["e" => 0, "f" => 0]]]; break;
       case 'Test_Records_describe': $v = (($GLOBALS['Effect_Console_log'] ?? \Effect\Console\phpurs_eval_thunk('Effect_Console_log')))("Deep Record Updates (10k iterations):"); break;
-      case 'Test_Records_act': $v = \Effect\Console\Effect_Console_logShow(($GLOBALS['Data_Show_showInt'] ?? \Data\Show\phpurs_eval_thunk('Data_Show_showInt')), (((\Test\Records\Test_Records_updateRec(10000, ($GLOBALS['Test_Records_initial'] ?? \Test\Records\phpurs_eval_thunk('Test_Records_initial'))))->b)->d)->f); break;
+      case 'Test_Records_act': $v = \Effect\Console\Effect_Console_logShow(($GLOBALS['Data_Show_showInt'] ?? \Data\Show\phpurs_eval_thunk('Data_Show_showInt')), (((\Test\Records\Test_Records_updateRec(10000, (object)["a" => 0, "b" => (object)["c" => 0, "d" => (object)["e" => 0, "f" => 0]]]))->b)->d)->f); break;
       default: throw new \Exception("Unknown thunk " . $id);
     }
     $GLOBALS[$id] = $v;
@@ -117,7 +117,9 @@ function Test_Records_updateRec($v, $v1 = null) {
     if ($__num === 1) return function($v1) use ($v, $__fn) { return $__fn($v, $v1); };
     return phpurs_curry_fallback($__fn, func_get_args(), 2);
   }
-  $__global_Data_EuclideanRing_intMod = ($GLOBALS['Data_EuclideanRing_intMod'] ?? \Data\EuclideanRing\phpurs_eval_thunk('Data_EuclideanRing_intMod'));
+  $__global_Test_Records_sub = ($GLOBALS['Test_Records_sub'] ?? \Test\Records\phpurs_eval_thunk('Test_Records_sub'));
+  $__global_Test_Records_add = ($GLOBALS['Test_Records_add'] ?? \Test\Records\phpurs_eval_thunk('Test_Records_add'));
+  $__global_Test_Records_mod = ($GLOBALS['Test_Records_mod'] ?? \Test\Records\phpurs_eval_thunk('Test_Records_mod'));
   while (true) {
 $__case_0 = $v;
 $__case_1 = $v1;
@@ -130,18 +132,18 @@ break;
 default:
 $n = $__case_0;
 $r = $__case_1;
-$__tco_tmp_0 = ($n - 1);
+$__tco_tmp_0 = ($__global_Test_Records_sub)($n, 1);
 $v2 = $r;
 $v3 = ($r)->b;
 $v4 = (($r)->b)->d;
 $__update_tmp_0 = clone $v4;
-$__update_tmp_0->e = (((($r)->b)->d)->e + 3);
-$__update_tmp_0->f = (((($r)->b)->d)->f + ($__global_Data_EuclideanRing_intMod)($n, 5));
+$__update_tmp_0->e = ($__global_Test_Records_add)(((($r)->b)->d)->e, 3);
+$__update_tmp_0->f = ($__global_Test_Records_add)(((($r)->b)->d)->f, ($__global_Test_Records_mod)($n, 5));
 $__update_tmp_1 = clone $v3;
-$__update_tmp_1->c = ((($r)->b)->c + 2);
+$__update_tmp_1->c = ($__global_Test_Records_add)((($r)->b)->c, 2);
 $__update_tmp_1->d = $__update_tmp_0;
 $__update_tmp_2 = clone $v2;
-$__update_tmp_2->a = (($r)->a + 1);
+$__update_tmp_2->a = ($__global_Test_Records_add)(($r)->a, 1);
 $__update_tmp_2->b = $__update_tmp_1;
 $__tco_tmp_1 = $__update_tmp_2;
 $v = $__tco_tmp_0;

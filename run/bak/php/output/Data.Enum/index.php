@@ -116,7 +116,7 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
   __end:
   return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
 }]; break;
-      case 'Data_Enum_boundedEnumChar': $v = (object)["cardinality" => ((($GLOBALS['Data_Enum_toCharCode'] ?? \Data\Enum\phpurs_eval_thunk('Data_Enum_toCharCode')))(($GLOBALS['Data_Bounded_topChar'] ?? \Data\Bounded\phpurs_eval_thunk('Data_Bounded_topChar'))) - (($GLOBALS['Data_Enum_toCharCode'] ?? \Data\Enum\phpurs_eval_thunk('Data_Enum_toCharCode')))(($GLOBALS['Data_Bounded_bottomChar'] ?? \Data\Bounded\phpurs_eval_thunk('Data_Bounded_bottomChar')))), "toEnum" => "\\Data\\Enum\\Data_Enum_charToEnum", "fromEnum" => ($GLOBALS['Data_Enum_toCharCode'] ?? \Data\Enum\phpurs_eval_thunk('Data_Enum_toCharCode')), "Bounded0" => function($__dollar____unused) {
+      case 'Data_Enum_boundedEnumChar': $v = (object)["cardinality" => (($GLOBALS['Data_Enum_sub'] ?? \Data\Enum\phpurs_eval_thunk('Data_Enum_sub')))((($GLOBALS['Data_Enum_toCharCode'] ?? \Data\Enum\phpurs_eval_thunk('Data_Enum_toCharCode')))(($GLOBALS['Data_Enum_top1'] ?? \Data\Enum\phpurs_eval_thunk('Data_Enum_top1'))), (($GLOBALS['Data_Enum_toCharCode'] ?? \Data\Enum\phpurs_eval_thunk('Data_Enum_toCharCode')))(($GLOBALS['Data_Enum_bottom1'] ?? \Data\Enum\phpurs_eval_thunk('Data_Enum_bottom1')))), "toEnum" => "\\Data\\Enum\\Data_Enum_charToEnum", "fromEnum" => ($GLOBALS['Data_Enum_toCharCode'] ?? \Data\Enum\phpurs_eval_thunk('Data_Enum_toCharCode')), "Bounded0" => function($__dollar____unused) {
   $__num = func_num_args();
   $__global_Data_Bounded_boundedChar = ($GLOBALS['Data_Bounded_boundedChar'] ?? \Data\Bounded\phpurs_eval_thunk('Data_Bounded_boundedChar'));
   $__res = $__global_Data_Bounded_boundedChar;
@@ -302,7 +302,8 @@ function Data_Enum_defaultSucc($toEnum__prime__, $fromEnum__prime__ = null, $a =
     };
     return phpurs_curry_fallback($__fn, func_get_args(), 3);
   }
-  $__res = ($toEnum__prime__)((($fromEnum__prime__)($a) + 1));
+  $__global_Data_Enum_add = ($GLOBALS['Data_Enum_add'] ?? \Data\Enum\phpurs_eval_thunk('Data_Enum_add'));
+  $__res = ($toEnum__prime__)(($__global_Data_Enum_add)(($fromEnum__prime__)($a), 1));
   goto __end;;
   __end:
   return 3 < $__num ? $__res(...array_slice(func_get_args(), 3)) : $__res;
@@ -323,7 +324,8 @@ function Data_Enum_defaultPred($toEnum__prime__, $fromEnum__prime__ = null, $a =
     };
     return phpurs_curry_fallback($__fn, func_get_args(), 3);
   }
-  $__res = ($toEnum__prime__)((($fromEnum__prime__)($a) - 1));
+  $__global_Data_Enum_sub = ($GLOBALS['Data_Enum_sub'] ?? \Data\Enum\phpurs_eval_thunk('Data_Enum_sub'));
+  $__res = ($toEnum__prime__)(($__global_Data_Enum_sub)(($fromEnum__prime__)($a), 1));
   goto __end;;
   __end:
   return 3 < $__num ? $__res(...array_slice(func_get_args(), 3)) : $__res;

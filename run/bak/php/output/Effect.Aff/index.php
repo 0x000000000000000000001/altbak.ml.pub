@@ -393,11 +393,11 @@ function Effect_Aff_launchAff($aff) {
   if ($__num < 1) {
     return phpurs_curry_fallback($__fn, func_get_args(), 1);
   }
-  $__global_Effect_bindE = ($GLOBALS['Effect_bindE'] ?? \Effect\phpurs_eval_thunk('Effect_bindE'));
+  $__global_Effect_Aff_bind = ($GLOBALS['Effect_Aff_bind'] ?? \Effect\Aff\phpurs_eval_thunk('Effect_Aff_bind'));
   $__global_Effect_Aff_makeFiber = ($GLOBALS['Effect_Aff_makeFiber'] ?? \Effect\Aff\phpurs_eval_thunk('Effect_Aff_makeFiber'));
   $__global_Effect_Aff_discard = ($GLOBALS['Effect_Aff_discard'] ?? \Effect\Aff\phpurs_eval_thunk('Effect_Aff_discard'));
-  $__global_Effect_pureE = ($GLOBALS['Effect_pureE'] ?? \Effect\phpurs_eval_thunk('Effect_pureE'));
-  $__res = ($__global_Effect_bindE)(($__global_Effect_Aff_makeFiber)($aff), function($fiber) use ($__global_Effect_Aff_discard, $__global_Effect_pureE) {
+  $__global_Effect_Aff_pure = ($GLOBALS['Effect_Aff_pure'] ?? \Effect\Aff\phpurs_eval_thunk('Effect_Aff_pure'));
+  $__res = ($__global_Effect_Aff_bind)(($__global_Effect_Aff_makeFiber)($aff), function($fiber) use ($__global_Effect_Aff_discard, $__global_Effect_Aff_pure) {
   $__num = func_num_args();
   $__case_0 = $fiber;
   $__case_res_0 = null;
@@ -407,9 +407,9 @@ $__case_res_0 = ($f)->run;
 } else {
 throw new \Exception("Pattern match failure");
 };
-  $__res = ($__global_Effect_Aff_discard)($__case_res_0, function($__dollar____unused) use ($__global_Effect_pureE, $fiber) {
+  $__res = ($__global_Effect_Aff_discard)($__case_res_0, function($__dollar____unused) use ($__global_Effect_Aff_pure, $fiber) {
   $__num = func_num_args();
-  $__res = ($__global_Effect_pureE)($fiber);
+  $__res = ($__global_Effect_Aff_pure)($fiber);
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;

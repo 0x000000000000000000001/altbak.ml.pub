@@ -113,6 +113,8 @@ function Test_Fib_fib($v) {
   if ($__num < 1) {
     return phpurs_curry_fallback($__fn, func_get_args(), 1);
   }
+  $__global_Test_Fib_add = ($GLOBALS['Test_Fib_add'] ?? \Test\Fib\phpurs_eval_thunk('Test_Fib_add'));
+  $__global_Test_Fib_sub = ($GLOBALS['Test_Fib_sub'] ?? \Test\Fib\phpurs_eval_thunk('Test_Fib_sub'));
   while (true) {
 $__case_0 = $v;
 switch ($__case_0) {
@@ -126,7 +128,7 @@ goto __end;;
 break;
 default:
 $n = $__case_0;
-$__res = (\Test\Fib\Test_Fib_fib(($n - 1)) + \Test\Fib\Test_Fib_fib(($n - 2)));
+$__res = ($__global_Test_Fib_add)(\Test\Fib\Test_Fib_fib(($__global_Test_Fib_sub)($n, 1)), \Test\Fib\Test_Fib_fib(($__global_Test_Fib_sub)($n, 2)));
 goto __end;;
 break;
 };

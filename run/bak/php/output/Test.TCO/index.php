@@ -118,7 +118,9 @@ function Test_TCO_deepTailRec($v, $v1 = null) {
     if ($__num === 1) return function($v1) use ($v, $__fn) { return $__fn($v, $v1); };
     return phpurs_curry_fallback($__fn, func_get_args(), 2);
   }
-  $__global_Data_EuclideanRing_intMod = ($GLOBALS['Data_EuclideanRing_intMod'] ?? \Data\EuclideanRing\phpurs_eval_thunk('Data_EuclideanRing_intMod'));
+  $__global_Test_TCO_sub = ($GLOBALS['Test_TCO_sub'] ?? \Test\TCO\phpurs_eval_thunk('Test_TCO_sub'));
+  $__global_Test_TCO_add = ($GLOBALS['Test_TCO_add'] ?? \Test\TCO\phpurs_eval_thunk('Test_TCO_add'));
+  $__global_Test_TCO_mod = ($GLOBALS['Test_TCO_mod'] ?? \Test\TCO\phpurs_eval_thunk('Test_TCO_mod'));
   while (true) {
 $__case_0 = $v;
 $__case_1 = $v1;
@@ -131,8 +133,8 @@ break;
 default:
 $n = $__case_0;
 $acc = $__case_1;
-$__tco_tmp_0 = ($n - 1);
-$__tco_tmp_1 = ($acc + ($__global_Data_EuclideanRing_intMod)($n, 3));
+$__tco_tmp_0 = ($__global_Test_TCO_sub)($n, 1);
+$__tco_tmp_1 = ($__global_Test_TCO_add)($acc, ($__global_Test_TCO_mod)($n, 3));
 $v = $__tco_tmp_0;
 $v1 = $__tco_tmp_1;
 continue 2;

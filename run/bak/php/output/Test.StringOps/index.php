@@ -154,14 +154,17 @@ function Test_StringOps_runStringOps($n) {
   if ($__num < 1) {
     return phpurs_curry_fallback($__fn, func_get_args(), 1);
   }
-  $__global_Data_Show_showIntImpl = ($GLOBALS['Data_Show_showIntImpl'] ?? \Data\Show\phpurs_eval_thunk('Data_Show_showIntImpl'));
+  $__global_Test_StringOps_append = ($GLOBALS['Test_StringOps_append'] ?? \Test\StringOps\phpurs_eval_thunk('Test_StringOps_append'));
+  $__global_Test_StringOps_show = ($GLOBALS['Test_StringOps_show'] ?? \Test\StringOps\phpurs_eval_thunk('Test_StringOps_show'));
+  $__global_Test_StringOps_add = ($GLOBALS['Test_StringOps_add'] ?? \Test\StringOps\phpurs_eval_thunk('Test_StringOps_add'));
   $__global_Data_String_Regex_replace = ($GLOBALS['Data_String_Regex_replace'] ?? \Data\String\Regex\phpurs_eval_thunk('Data_String_Regex_replace'));
   $__global_Test_StringOps_regexPattern = ($GLOBALS['Test_StringOps_regexPattern'] ?? \Test\StringOps\phpurs_eval_thunk('Test_StringOps_regexPattern'));
   $__global_Data_String_Common_split = ($GLOBALS['Data_String_Common_split'] ?? \Data\String\Common\phpurs_eval_thunk('Data_String_Common_split'));
+  $__global_Test_StringOps_sub = ($GLOBALS['Test_StringOps_sub'] ?? \Test\StringOps\phpurs_eval_thunk('Test_StringOps_sub'));
   $__global_Data_String_CodePoints_take = ($GLOBALS['Data_String_CodePoints_take'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_take'));
   $__global_Data_Array_length = ($GLOBALS['Data_Array_length'] ?? \Data\Array\phpurs_eval_thunk('Data_Array_length'));
-  $loop = (function() use ($__global_Data_Show_showIntImpl, $__global_Data_String_Regex_replace, $__global_Test_StringOps_regexPattern, $__global_Data_String_Common_split, &$loop, $__global_Data_String_CodePoints_take, $__global_Data_Array_length, &$__fn) {
-  $__fn = function($v, $v1 = null, $v2 = null) use ($__global_Data_Show_showIntImpl, $__global_Data_String_Regex_replace, $__global_Test_StringOps_regexPattern, $__global_Data_String_Common_split, &$loop, $__global_Data_String_CodePoints_take, $__global_Data_Array_length, &$__fn) {
+  $loop = (function() use ($__global_Test_StringOps_append, $__global_Test_StringOps_show, $__global_Test_StringOps_add, $__global_Data_String_Regex_replace, $__global_Test_StringOps_regexPattern, $__global_Data_String_Common_split, &$loop, $__global_Test_StringOps_sub, $__global_Data_String_CodePoints_take, $__global_Data_Array_length, &$__fn) {
+  $__fn = function($v, $v1 = null, $v2 = null) use ($__global_Test_StringOps_append, $__global_Test_StringOps_show, $__global_Test_StringOps_add, $__global_Data_String_Regex_replace, $__global_Test_StringOps_regexPattern, $__global_Data_String_Common_split, &$loop, $__global_Test_StringOps_sub, $__global_Data_String_CodePoints_take, $__global_Data_Array_length, &$__fn) {
   $__num = func_num_args();
   if ($__num < 3) {
     if ($__num === 2) return function($v2) use ($v, $v1, &$__fn) { return $__fn($v, $v1, $v2); };
@@ -187,12 +190,12 @@ default:
 $i = $__case_0;
 $s = $__case_1;
 $acc = $__case_2;
-$concatted = ($s . (($__global_Data_Show_showIntImpl)($i) . ("world" . ($__global_Data_Show_showIntImpl)(($i + 1)))));
+$concatted = ($__global_Test_StringOps_append)($s, ($__global_Test_StringOps_append)(($__global_Test_StringOps_show)($i), ($__global_Test_StringOps_append)("world", ($__global_Test_StringOps_show)(($__global_Test_StringOps_add)($i, 1)))));
 $replaced = ($__global_Data_String_Regex_replace)($__global_Test_StringOps_regexPattern, "matched", $concatted);
 $splitted = ($__global_Data_String_Common_split)("e", $replaced);
-$__tco_tmp_0 = ($i - 1);
+$__tco_tmp_0 = ($__global_Test_StringOps_sub)($i, 1);
 $__tco_tmp_1 = ($__global_Data_String_CodePoints_take)(10, $concatted);
-$__tco_tmp_2 = ($acc + ($__global_Data_Array_length)($splitted));
+$__tco_tmp_2 = ($__global_Test_StringOps_add)($acc, ($__global_Data_Array_length)($splitted));
 $v = $__tco_tmp_0;
 $v1 = $__tco_tmp_1;
 $v2 = $__tco_tmp_2;

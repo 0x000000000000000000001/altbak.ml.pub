@@ -95,9 +95,9 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
       case 'Test_AffOperations_describe': $v = (($GLOBALS['Effect_Console_log'] ?? \Effect\Console\phpurs_eval_thunk('Effect_Console_log')))("Aff Operations (Asynchronous Delays):"); break;
       case 'Test_AffOperations_act': $v = (($GLOBALS['Effect_Aff_launchAff_'] ?? \Effect\Aff\phpurs_eval_thunk('Effect_Aff_launchAff_')))((($GLOBALS['Effect_Aff__bind'] ?? \Effect\Aff\phpurs_eval_thunk('Effect_Aff__bind')))(\Effect\Aff\Effect_Aff_delay(10.0), function($__dollar____unused) {
   $__num = func_num_args();
-  $__global_Effect_Aff__liftEffect = ($GLOBALS['Effect_Aff__liftEffect'] ?? \Effect\Aff\phpurs_eval_thunk('Effect_Aff__liftEffect'));
+  $__global_Test_AffOperations_liftEffect = ($GLOBALS['Test_AffOperations_liftEffect'] ?? \Test\AffOperations\phpurs_eval_thunk('Test_AffOperations_liftEffect'));
   $__global_Effect_Console_log = ($GLOBALS['Effect_Console_log'] ?? \Effect\Console\phpurs_eval_thunk('Effect_Console_log'));
-  $__res = ($__global_Effect_Aff__liftEffect)(($__global_Effect_Console_log)("10"));
+  $__res = ($__global_Test_AffOperations_liftEffect)(($__global_Effect_Console_log)("10"));
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;

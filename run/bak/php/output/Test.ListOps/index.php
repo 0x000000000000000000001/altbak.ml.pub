@@ -139,8 +139,9 @@ function Test_ListOps_range($start, $end = null) {
     return phpurs_curry_fallback($__fn, func_get_args(), 2);
   }
   $__global_Test_ListOps_lessThan = ($GLOBALS['Test_ListOps_lessThan'] ?? \Test\ListOps\phpurs_eval_thunk('Test_ListOps_lessThan'));
-  $go = (function() use ($__global_Test_ListOps_lessThan, $start, &$go, &$__fn) {
-  $__fn = function($curr, $acc = null) use ($__global_Test_ListOps_lessThan, $start, &$go, &$__fn) {
+  $__global_Test_ListOps_sub = ($GLOBALS['Test_ListOps_sub'] ?? \Test\ListOps\phpurs_eval_thunk('Test_ListOps_sub'));
+  $go = (function() use ($__global_Test_ListOps_lessThan, $start, &$go, $__global_Test_ListOps_sub, &$__fn) {
+  $__fn = function($curr, $acc = null) use ($__global_Test_ListOps_lessThan, $start, &$go, $__global_Test_ListOps_sub, &$__fn) {
   $__num = func_num_args();
   if ($__num < 2) {
     if ($__num === 1) return function($acc) use ($curr, &$__fn) { return $__fn($curr, $acc); };
@@ -154,7 +155,7 @@ $__res = $acc;
 goto __end;;
 break;
 default:
-$__tco_tmp_0 = ($curr - 1);
+$__tco_tmp_0 = ($__global_Test_ListOps_sub)($curr, 1);
 $__tco_tmp_1 = new Phpurs_Data2("Cons", $curr, $acc);
 $curr = $__tco_tmp_0;
 $acc = $__tco_tmp_1;
@@ -232,9 +233,10 @@ function Test_ListOps_filterEvens($lst) {
   if ($__num < 1) {
     return phpurs_curry_fallback($__fn, func_get_args(), 1);
   }
-  $__global_Data_EuclideanRing_intMod = ($GLOBALS['Data_EuclideanRing_intMod'] ?? \Data\EuclideanRing\phpurs_eval_thunk('Data_EuclideanRing_intMod'));
-  $go = (function() use ($__global_Data_EuclideanRing_intMod, &$go, &$__fn) {
-  $__fn = function($v, $v1 = null) use ($__global_Data_EuclideanRing_intMod, &$go, &$__fn) {
+  $__global_Test_ListOps_eq = ($GLOBALS['Test_ListOps_eq'] ?? \Test\ListOps\phpurs_eval_thunk('Test_ListOps_eq'));
+  $__global_Test_ListOps_mod = ($GLOBALS['Test_ListOps_mod'] ?? \Test\ListOps\phpurs_eval_thunk('Test_ListOps_mod'));
+  $go = (function() use ($__global_Test_ListOps_eq, $__global_Test_ListOps_mod, &$go, &$__fn) {
+  $__fn = function($v, $v1 = null) use ($__global_Test_ListOps_eq, $__global_Test_ListOps_mod, &$go, &$__fn) {
   $__num = func_num_args();
   if ($__num < 2) {
     if ($__num === 1) return function($v1) use ($v, &$__fn) { return $__fn($v, $v1); };
@@ -253,7 +255,7 @@ case "Cons":
 $x = ($__case_0)->v0;
 $xs = ($__case_0)->v1;
 $acc = $__case_1;
-$__case_0 = (($__global_Data_EuclideanRing_intMod)($x, 2) === 0);
+$__case_0 = ($__global_Test_ListOps_eq)(($__global_Test_ListOps_mod)($x, 2), 0);
 switch ($__case_0) {
 case true:
 $__tco_tmp_0 = $xs;

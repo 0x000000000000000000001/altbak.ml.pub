@@ -183,6 +183,7 @@ function Test_RBTree_depth($v) {
   if ($__num < 1) {
     return phpurs_curry_fallback($__fn, func_get_args(), 1);
   }
+  $__global_Test_RBTree_add = ($GLOBALS['Test_RBTree_add'] ?? \Test\RBTree\phpurs_eval_thunk('Test_RBTree_add'));
   $__global_Test_RBTree_max = ($GLOBALS['Test_RBTree_max'] ?? \Test\RBTree\phpurs_eval_thunk('Test_RBTree_max'));
   while (true) {
 $__case_0 = $v;
@@ -194,7 +195,7 @@ break;
 case "T":
 $a = ($__case_0)->v1;
 $b = ($__case_0)->v3;
-$__res = (1 + ($__global_Test_RBTree_max)(\Test\RBTree\Test_RBTree_depth($a), \Test\RBTree\Test_RBTree_depth($b)));
+$__res = ($__global_Test_RBTree_add)(1, ($__global_Test_RBTree_max)(\Test\RBTree\Test_RBTree_depth($a), \Test\RBTree\Test_RBTree_depth($b)));
 goto __end;;
 break;
 default:
@@ -395,6 +396,7 @@ function Test_RBTree_buildTree($v, $v1 = null) {
     if ($__num === 1) return function($v1) use ($v, $__fn) { return $__fn($v, $v1); };
     return phpurs_curry_fallback($__fn, func_get_args(), 2);
   }
+  $__global_Test_RBTree_sub = ($GLOBALS['Test_RBTree_sub'] ?? \Test\RBTree\phpurs_eval_thunk('Test_RBTree_sub'));
   $__global_Test_RBTree_insert = ($GLOBALS['Test_RBTree_insert'] ?? \Test\RBTree\phpurs_eval_thunk('Test_RBTree_insert'));
   while (true) {
 $__case_0 = $v;
@@ -408,7 +410,7 @@ break;
 default:
 $n = $__case_0;
 $acc = $__case_1;
-$__tco_tmp_0 = ($n - 1);
+$__tco_tmp_0 = ($__global_Test_RBTree_sub)($n, 1);
 $__tco_tmp_1 = ($__global_Test_RBTree_insert)($n, $acc);
 $v = $__tco_tmp_0;
 $v1 = $__tco_tmp_1;

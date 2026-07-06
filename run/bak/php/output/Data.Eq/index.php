@@ -174,15 +174,16 @@ function Data_Eq_notEq($dictEq) {
   if ($__num < 1) {
     return phpurs_curry_fallback($__fn, func_get_args(), 1);
   }
+  $__global_Data_Eq_eq2 = ($GLOBALS['Data_Eq_eq2'] ?? \Data\Eq\phpurs_eval_thunk('Data_Eq_eq2'));
   $eq3 = ($dictEq)->eq;
-  $__res = (function() use ($eq3, &$__fn) {
-  $__fn = function($x, $y = null) use ($eq3, &$__fn) {
+  $__res = (function() use ($__global_Data_Eq_eq2, $eq3, &$__fn) {
+  $__fn = function($x, $y = null) use ($__global_Data_Eq_eq2, $eq3, &$__fn) {
   $__num = func_num_args();
   if ($__num < 2) {
     if ($__num === 1) return function($y) use ($x, &$__fn) { return $__fn($x, $y); };
     return phpurs_curry_fallback($__fn, func_get_args(), 2);
   }
-  $__res = (($eq3)($x, $y) === false);
+  $__res = ($__global_Data_Eq_eq2)(($eq3)($x, $y), false);
   goto __end;;
   __end:
   return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;

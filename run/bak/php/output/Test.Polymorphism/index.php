@@ -100,7 +100,8 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
     if ($__num === 1) return function($y) use ($x, &$__fn) { return $__fn($x, $y); };
     return phpurs_curry_fallback($__fn, func_get_args(), 2);
   }
-  $__res = ($x + $y);
+  $__global_Test_Polymorphism_add = ($GLOBALS['Test_Polymorphism_add'] ?? \Test\Polymorphism\phpurs_eval_thunk('Test_Polymorphism_add'));
+  $__res = ($__global_Test_Polymorphism_add)($x, $y);
   goto __end;;
   __end:
   return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
@@ -181,17 +182,18 @@ function Test_Polymorphism_polyLoop($dictMonoidish) {
   if ($__num < 1) {
     return phpurs_curry_fallback($__fn, func_get_args(), 1);
   }
+  $__global_Test_Polymorphism_sub = ($GLOBALS['Test_Polymorphism_sub'] ?? \Test\Polymorphism\phpurs_eval_thunk('Test_Polymorphism_sub'));
   $mappend_1 = ($dictMonoidish)->mappend_;
   $mempty_1 = ($dictMonoidish)->mempty_;
-  $__res = (function() use ($mappend_1, $mempty_1, &$__fn) {
-  $__fn = function($n_init, $acc_init = null) use ($mappend_1, $mempty_1, &$__fn) {
+  $__res = (function() use ($__global_Test_Polymorphism_sub, $mappend_1, $mempty_1, &$__fn) {
+  $__fn = function($n_init, $acc_init = null) use ($__global_Test_Polymorphism_sub, $mappend_1, $mempty_1, &$__fn) {
   $__num = func_num_args();
   if ($__num < 2) {
     if ($__num === 1) return function($acc_init) use ($n_init, &$__fn) { return $__fn($n_init, $acc_init); };
     return phpurs_curry_fallback($__fn, func_get_args(), 2);
   }
-  $go = (function() use (&$go, $mappend_1, $mempty_1, &$__fn) {
-  $__fn = function($v, $v1 = null) use (&$go, $mappend_1, $mempty_1, &$__fn) {
+  $go = (function() use (&$go, $__global_Test_Polymorphism_sub, $mappend_1, $mempty_1, &$__fn) {
+  $__fn = function($v, $v1 = null) use (&$go, $__global_Test_Polymorphism_sub, $mappend_1, $mempty_1, &$__fn) {
   $__num = func_num_args();
   if ($__num < 2) {
     if ($__num === 1) return function($v1) use ($v, &$__fn) { return $__fn($v, $v1); };
@@ -209,7 +211,7 @@ break;
 default:
 $n = $__case_0;
 $acc = $__case_1;
-$__tco_tmp_0 = ($n - 1);
+$__tco_tmp_0 = ($__global_Test_Polymorphism_sub)($n, 1);
 $__tco_tmp_1 = ($mappend_1)($acc, $mempty_1);
 $v = $__tco_tmp_0;
 $v1 = $__tco_tmp_1;

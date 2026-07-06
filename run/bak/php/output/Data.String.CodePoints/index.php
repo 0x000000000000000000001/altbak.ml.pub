@@ -268,7 +268,10 @@ function Data_String_CodePoints_unsurrogate($lead, $trail = null) {
     if ($__num === 1) return function($trail) use ($lead, $__fn) { return $__fn($lead, $trail); };
     return phpurs_curry_fallback($__fn, func_get_args(), 2);
   }
-  $__res = (((($lead - 55296) * 1024) + ($trail - 56320)) + 65536);
+  $__global_Data_String_CodePoints_add = ($GLOBALS['Data_String_CodePoints_add'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_add'));
+  $__global_Data_String_CodePoints_mul = ($GLOBALS['Data_String_CodePoints_mul'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_mul'));
+  $__global_Data_String_CodePoints_sub = ($GLOBALS['Data_String_CodePoints_sub'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_sub'));
+  $__res = ($__global_Data_String_CodePoints_add)(($__global_Data_String_CodePoints_add)(($__global_Data_String_CodePoints_mul)(($__global_Data_String_CodePoints_sub)($lead, 55296), 1024), ($__global_Data_String_CodePoints_sub)($trail, 56320)), 65536);
   goto __end;;
   __end:
   return 2 < $__num ? $__res(...array_slice(func_get_args(), 2)) : $__res;
@@ -282,9 +285,9 @@ function Data_String_CodePoints_isTrail($cu) {
   if ($__num < 1) {
     return phpurs_curry_fallback($__fn, func_get_args(), 1);
   }
-  $__global_Data_HeytingAlgebra_boolConj = ($GLOBALS['Data_HeytingAlgebra_boolConj'] ?? \Data\HeytingAlgebra\phpurs_eval_thunk('Data_HeytingAlgebra_boolConj'));
+  $__global_Data_String_CodePoints_conj = ($GLOBALS['Data_String_CodePoints_conj'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_conj'));
   $__global_Data_String_CodePoints_lessThanOrEq = ($GLOBALS['Data_String_CodePoints_lessThanOrEq'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_lessThanOrEq'));
-  $__res = ($__global_Data_HeytingAlgebra_boolConj)(($__global_Data_String_CodePoints_lessThanOrEq)(56320, $cu), ($__global_Data_String_CodePoints_lessThanOrEq)($cu, 57343));
+  $__res = ($__global_Data_String_CodePoints_conj)(($__global_Data_String_CodePoints_lessThanOrEq)(56320, $cu), ($__global_Data_String_CodePoints_lessThanOrEq)($cu, 57343));
   goto __end;;
   __end:
   return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
@@ -298,9 +301,9 @@ function Data_String_CodePoints_isLead($cu) {
   if ($__num < 1) {
     return phpurs_curry_fallback($__fn, func_get_args(), 1);
   }
-  $__global_Data_HeytingAlgebra_boolConj = ($GLOBALS['Data_HeytingAlgebra_boolConj'] ?? \Data\HeytingAlgebra\phpurs_eval_thunk('Data_HeytingAlgebra_boolConj'));
+  $__global_Data_String_CodePoints_conj = ($GLOBALS['Data_String_CodePoints_conj'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_conj'));
   $__global_Data_String_CodePoints_lessThanOrEq = ($GLOBALS['Data_String_CodePoints_lessThanOrEq'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_lessThanOrEq'));
-  $__res = ($__global_Data_HeytingAlgebra_boolConj)(($__global_Data_String_CodePoints_lessThanOrEq)(55296, $cu), ($__global_Data_String_CodePoints_lessThanOrEq)($cu, 56319));
+  $__res = ($__global_Data_String_CodePoints_conj)(($__global_Data_String_CodePoints_lessThanOrEq)(55296, $cu), ($__global_Data_String_CodePoints_lessThanOrEq)($cu, 56319));
   goto __end;;
   __end:
   return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
@@ -315,9 +318,9 @@ function Data_String_CodePoints_uncons($s) {
     return phpurs_curry_fallback($__fn, func_get_args(), 1);
   }
   $__global_Data_String_CodeUnits_length = ($GLOBALS['Data_String_CodeUnits_length'] ?? \Data\String\CodeUnits\phpurs_eval_thunk('Data_String_CodeUnits_length'));
-  $__global_Data_Enum_toCharCode = ($GLOBALS['Data_Enum_toCharCode'] ?? \Data\Enum\phpurs_eval_thunk('Data_Enum_toCharCode'));
+  $__global_Data_String_CodePoints_fromEnum = ($GLOBALS['Data_String_CodePoints_fromEnum'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_fromEnum'));
   $__global_Data_String_Unsafe_charAt = ($GLOBALS['Data_String_Unsafe_charAt'] ?? \Data\String\Unsafe\phpurs_eval_thunk('Data_String_Unsafe_charAt'));
-  $__global_Data_HeytingAlgebra_boolConj = ($GLOBALS['Data_HeytingAlgebra_boolConj'] ?? \Data\HeytingAlgebra\phpurs_eval_thunk('Data_HeytingAlgebra_boolConj'));
+  $__global_Data_String_CodePoints_conj = ($GLOBALS['Data_String_CodePoints_conj'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_conj'));
   $__global_Data_String_CodePoints_isLead = ($GLOBALS['Data_String_CodePoints_isLead'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_isLead'));
   $__global_Data_String_CodePoints_isTrail = ($GLOBALS['Data_String_CodePoints_isTrail'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_isTrail'));
   $__global_Data_String_CodePoints_unsurrogate = ($GLOBALS['Data_String_CodePoints_unsurrogate'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_unsurrogate'));
@@ -330,13 +333,13 @@ $__res = ($GLOBALS['__phpurs_data0_Nothing'] ??= new Phpurs_Data0("Nothing"));
 goto __end;;
 break;
 case 1:
-$__res = new Phpurs_Data1("Just", (object)["head" => ($__global_Data_Enum_toCharCode)(($__global_Data_String_Unsafe_charAt)(0, $s)), "tail" => ""]);
+$__res = new Phpurs_Data1("Just", (object)["head" => ($__global_Data_String_CodePoints_fromEnum)(($__global_Data_String_Unsafe_charAt)(0, $s)), "tail" => ""]);
 goto __end;;
 break;
 default:
-$cu1 = ($__global_Data_Enum_toCharCode)(($__global_Data_String_Unsafe_charAt)(1, $s));
-$cu0 = ($__global_Data_Enum_toCharCode)(($__global_Data_String_Unsafe_charAt)(0, $s));
-$__case_0 = ($__global_Data_HeytingAlgebra_boolConj)(($__global_Data_String_CodePoints_isLead)($cu0), ($__global_Data_String_CodePoints_isTrail)($cu1));
+$cu1 = ($__global_Data_String_CodePoints_fromEnum)(($__global_Data_String_Unsafe_charAt)(1, $s));
+$cu0 = ($__global_Data_String_CodePoints_fromEnum)(($__global_Data_String_Unsafe_charAt)(0, $s));
+$__case_0 = ($__global_Data_String_CodePoints_conj)(($__global_Data_String_CodePoints_isLead)($cu0), ($__global_Data_String_CodePoints_isTrail)($cu1));
 switch ($__case_0) {
 case true:
 $__res = new Phpurs_Data1("Just", (object)["head" => ($__global_Data_String_CodePoints_unsurrogate)($cu0, $cu1), "tail" => ($__global_Data_String_CodeUnits_drop)(2, $s)]);
@@ -362,7 +365,11 @@ function Data_String_CodePoints_singletonFallback($v) {
   if ($__num < 1) {
     return phpurs_curry_fallback($__fn, func_get_args(), 1);
   }
-  $__global_Data_EuclideanRing_intMod = ($GLOBALS['Data_EuclideanRing_intMod'] ?? \Data\EuclideanRing\phpurs_eval_thunk('Data_EuclideanRing_intMod'));
+  $__global_Data_String_CodePoints_add = ($GLOBALS['Data_String_CodePoints_add'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_add'));
+  $__global_Data_String_CodePoints_div = ($GLOBALS['Data_String_CodePoints_div'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_div'));
+  $__global_Data_String_CodePoints_sub = ($GLOBALS['Data_String_CodePoints_sub'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_sub'));
+  $__global_Data_String_CodePoints_mod = ($GLOBALS['Data_String_CodePoints_mod'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_mod'));
+  $__global_Data_String_CodePoints_append = ($GLOBALS['Data_String_CodePoints_append'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_append'));
   $__global_Data_String_CodePoints_fromCharCode = ($GLOBALS['Data_String_CodePoints_fromCharCode'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_fromCharCode'));
   $__case_0 = $v;
   if (true) {
@@ -372,9 +379,9 @@ goto __end;;
 } else {
 if (true) {
 $cp = $__case_0;
-$lead = ((($cp - 65536) / 1024) + 55296);
-$trail = (($__global_Data_EuclideanRing_intMod)(($cp - 65536), 1024) + 56320);
-$__res = (($__global_Data_String_CodePoints_fromCharCode)($lead) . ($__global_Data_String_CodePoints_fromCharCode)($trail));
+$lead = ($__global_Data_String_CodePoints_add)(($__global_Data_String_CodePoints_div)(($__global_Data_String_CodePoints_sub)($cp, 65536), 1024), 55296);
+$trail = ($__global_Data_String_CodePoints_add)(($__global_Data_String_CodePoints_mod)(($__global_Data_String_CodePoints_sub)($cp, 65536), 1024), 56320);
+$__res = ($__global_Data_String_CodePoints_append)(($__global_Data_String_CodePoints_fromCharCode)($lead), ($__global_Data_String_CodePoints_fromCharCode)($trail));
 goto __end;;
 } else {
 throw new \Exception("Pattern match failure");
@@ -395,7 +402,9 @@ function Data_String_CodePoints_takeFallback($v, $v1 = null) {
     return phpurs_curry_fallback($__fn, func_get_args(), 2);
   }
   $__global_Data_String_CodePoints_uncons = ($GLOBALS['Data_String_CodePoints_uncons'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_uncons'));
+  $__global_Data_String_CodePoints_append = ($GLOBALS['Data_String_CodePoints_append'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_append'));
   $__global_Data_String_CodePoints_singleton = ($GLOBALS['Data_String_CodePoints_singleton'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_singleton'));
+  $__global_Data_String_CodePoints_sub = ($GLOBALS['Data_String_CodePoints_sub'] ?? \Data\String\CodePoints\phpurs_eval_thunk('Data_String_CodePoints_sub'));
   while (true) {
 $__case_0 = $v;
 $__case_1 = $v1;
@@ -412,7 +421,7 @@ $__case_0 = $v2;
 if (((($__case_0)->tag === "Just") && is_object(($__case_0)->v0))) {
 $head = (($__case_0)->v0)->head;
 $tail = (($__case_0)->v0)->tail;
-$__res = (($__global_Data_String_CodePoints_singleton)($head) . \Data\String\CodePoints\Data_String_CodePoints_takeFallback(($n - 1), $tail));
+$__res = ($__global_Data_String_CodePoints_append)(($__global_Data_String_CodePoints_singleton)($head), \Data\String\CodePoints\Data_String_CodePoints_takeFallback(($__global_Data_String_CodePoints_sub)($n, 1), $tail));
 goto __end;;
 } else {
 if (true) {

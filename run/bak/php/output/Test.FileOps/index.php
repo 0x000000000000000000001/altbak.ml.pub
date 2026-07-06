@@ -159,15 +159,15 @@ function Test_FileOps_loopIO($n) {
   $__global_Test_FileOps_loopE = ($GLOBALS['Test_FileOps_loopE'] ?? \Test\FileOps\phpurs_eval_thunk('Test_FileOps_loopE'));
   $__global_Test_FileOps_discard = ($GLOBALS['Test_FileOps_discard'] ?? \Test\FileOps\phpurs_eval_thunk('Test_FileOps_discard'));
   $__global_Test_FileOps_writeFileSync = ($GLOBALS['Test_FileOps_writeFileSync'] ?? \Test\FileOps\phpurs_eval_thunk('Test_FileOps_writeFileSync'));
-  $__global_Effect_bindE = ($GLOBALS['Effect_bindE'] ?? \Effect\phpurs_eval_thunk('Effect_bindE'));
+  $__global_Test_FileOps_bind = ($GLOBALS['Test_FileOps_bind'] ?? \Test\FileOps\phpurs_eval_thunk('Test_FileOps_bind'));
   $__global_Test_FileOps_readFileSync = ($GLOBALS['Test_FileOps_readFileSync'] ?? \Test\FileOps\phpurs_eval_thunk('Test_FileOps_readFileSync'));
-  $__global_Effect_pureE = ($GLOBALS['Effect_pureE'] ?? \Effect\phpurs_eval_thunk('Effect_pureE'));
+  $__global_Test_FileOps_pure = ($GLOBALS['Test_FileOps_pure'] ?? \Test\FileOps\phpurs_eval_thunk('Test_FileOps_pure'));
   $__global_Data_Unit_unit = ($GLOBALS['Data_Unit_unit'] ?? \Data\Unit\phpurs_eval_thunk('Data_Unit_unit'));
-  $__res = ($__global_Test_FileOps_loopE)($n, ($__global_Test_FileOps_discard)(($__global_Test_FileOps_writeFileSync)("var/iotest.txt", "Hello IO Benchmarks!"), function($__dollar____unused) use ($__global_Effect_bindE, $__global_Test_FileOps_readFileSync, $__global_Effect_pureE, $__global_Data_Unit_unit) {
+  $__res = ($__global_Test_FileOps_loopE)($n, ($__global_Test_FileOps_discard)(($__global_Test_FileOps_writeFileSync)("var/iotest.txt", "Hello IO Benchmarks!"), function($__dollar____unused) use ($__global_Test_FileOps_bind, $__global_Test_FileOps_readFileSync, $__global_Test_FileOps_pure, $__global_Data_Unit_unit) {
   $__num = func_num_args();
-  $__res = ($__global_Effect_bindE)(($__global_Test_FileOps_readFileSync)("var/iotest.txt"), function($__dollar____unused) use ($__global_Effect_pureE, $__global_Data_Unit_unit) {
+  $__res = ($__global_Test_FileOps_bind)(($__global_Test_FileOps_readFileSync)("var/iotest.txt"), function($__dollar____unused) use ($__global_Test_FileOps_pure, $__global_Data_Unit_unit) {
   $__num = func_num_args();
-  $__res = ($__global_Effect_pureE)($__global_Data_Unit_unit);
+  $__res = ($__global_Test_FileOps_pure)($__global_Data_Unit_unit);
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;

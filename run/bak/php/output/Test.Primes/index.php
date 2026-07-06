@@ -139,8 +139,9 @@ function Test_Primes_sumList($lst) {
   if ($__num < 1) {
     return phpurs_curry_fallback($__fn, func_get_args(), 1);
   }
-  $go = (function() use (&$go, &$__fn) {
-  $__fn = function($v, $v1 = null) use (&$go, &$__fn) {
+  $__global_Test_Primes_add = ($GLOBALS['Test_Primes_add'] ?? \Test\Primes\phpurs_eval_thunk('Test_Primes_add'));
+  $go = (function() use (&$go, $__global_Test_Primes_add, &$__fn) {
+  $__fn = function($v, $v1 = null) use (&$go, $__global_Test_Primes_add, &$__fn) {
   $__num = func_num_args();
   if ($__num < 2) {
     if ($__num === 1) return function($v1) use ($v, &$__fn) { return $__fn($v, $v1); };
@@ -160,7 +161,7 @@ $x = ($__case_0)->v0;
 $xs = ($__case_0)->v1;
 $acc = $__case_1;
 $__tco_tmp_0 = $xs;
-$__tco_tmp_1 = ($acc + $x);
+$__tco_tmp_1 = ($__global_Test_Primes_add)($acc, $x);
 $v = $__tco_tmp_0;
 $v1 = $__tco_tmp_1;
 continue 2;
@@ -245,8 +246,9 @@ function Test_Primes_range($start, $end = null) {
     return phpurs_curry_fallback($__fn, func_get_args(), 2);
   }
   $__global_Test_Primes_lessThan = ($GLOBALS['Test_Primes_lessThan'] ?? \Test\Primes\phpurs_eval_thunk('Test_Primes_lessThan'));
-  $go = (function() use ($__global_Test_Primes_lessThan, $start, &$go, &$__fn) {
-  $__fn = function($curr, $acc = null) use ($__global_Test_Primes_lessThan, $start, &$go, &$__fn) {
+  $__global_Test_Primes_sub = ($GLOBALS['Test_Primes_sub'] ?? \Test\Primes\phpurs_eval_thunk('Test_Primes_sub'));
+  $go = (function() use ($__global_Test_Primes_lessThan, $start, &$go, $__global_Test_Primes_sub, &$__fn) {
+  $__fn = function($curr, $acc = null) use ($__global_Test_Primes_lessThan, $start, &$go, $__global_Test_Primes_sub, &$__fn) {
   $__num = func_num_args();
   if ($__num < 2) {
     if ($__num === 1) return function($acc) use ($curr, &$__fn) { return $__fn($curr, $acc); };
@@ -260,7 +262,7 @@ $__res = $acc;
 goto __end;;
 break;
 default:
-$__tco_tmp_0 = ($curr - 1);
+$__tco_tmp_0 = ($__global_Test_Primes_sub)($curr, 1);
 $__tco_tmp_1 = new Phpurs_Data2("Cons", $curr, $acc);
 $curr = $__tco_tmp_0;
 $acc = $__tco_tmp_1;
@@ -357,7 +359,7 @@ function Test_Primes_sieve($v) {
   }
   $__global_Test_Primes_filter = ($GLOBALS['Test_Primes_filter'] ?? \Test\Primes\phpurs_eval_thunk('Test_Primes_filter'));
   $__global_Test_Primes_notEq = ($GLOBALS['Test_Primes_notEq'] ?? \Test\Primes\phpurs_eval_thunk('Test_Primes_notEq'));
-  $__global_Data_EuclideanRing_intMod = ($GLOBALS['Data_EuclideanRing_intMod'] ?? \Data\EuclideanRing\phpurs_eval_thunk('Data_EuclideanRing_intMod'));
+  $__global_Test_Primes_mod = ($GLOBALS['Test_Primes_mod'] ?? \Test\Primes\phpurs_eval_thunk('Test_Primes_mod'));
   while (true) {
 $__case_0 = $v;
 switch (($__case_0)->tag) {
@@ -368,9 +370,9 @@ break;
 case "Cons":
 $p = ($__case_0)->v0;
 $xs = ($__case_0)->v1;
-$__res = new Phpurs_Data2("Cons", $p, \Test\Primes\Test_Primes_sieve(($__global_Test_Primes_filter)(function($x) use ($__global_Test_Primes_notEq, $__global_Data_EuclideanRing_intMod, $p) {
+$__res = new Phpurs_Data2("Cons", $p, \Test\Primes\Test_Primes_sieve(($__global_Test_Primes_filter)(function($x) use ($__global_Test_Primes_notEq, $__global_Test_Primes_mod, $p) {
   $__num = func_num_args();
-  $__res = ($__global_Test_Primes_notEq)(($__global_Data_EuclideanRing_intMod)($x, $p), 0);
+  $__res = ($__global_Test_Primes_notEq)(($__global_Test_Primes_mod)($x, $p), 0);
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;

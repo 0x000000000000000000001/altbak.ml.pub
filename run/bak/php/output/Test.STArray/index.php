@@ -95,25 +95,25 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
     switch ($id) {
       case 'Test_STArray_bind': $v = ($GLOBALS['Control_Monad_ST_Internal_bind_'] ?? \Control\Monad\ST\Internal\phpurs_eval_thunk('Control_Monad_ST_Internal_bind_')); break;
       case 'Test_STArray_pure': $v = ($GLOBALS['Control_Monad_ST_Internal_pure_'] ?? \Control\Monad\ST\Internal\phpurs_eval_thunk('Control_Monad_ST_Internal_pure_')); break;
-      case 'Test_STArray_sumArray': $v = (($GLOBALS['Control_Monad_ST_Internal_run'] ?? \Control\Monad\ST\Internal\phpurs_eval_thunk('Control_Monad_ST_Internal_run')))((($GLOBALS['Control_Monad_ST_Internal_bind_'] ?? \Control\Monad\ST\Internal\phpurs_eval_thunk('Control_Monad_ST_Internal_bind_')))(($GLOBALS['Data_Array_ST_new'] ?? \Data\Array\ST\phpurs_eval_thunk('Data_Array_ST_new')), function($arr) {
+      case 'Test_STArray_sumArray': $v = (($GLOBALS['Control_Monad_ST_Internal_run'] ?? \Control\Monad\ST\Internal\phpurs_eval_thunk('Control_Monad_ST_Internal_run')))((($GLOBALS['Test_STArray_bind'] ?? \Test\STArray\phpurs_eval_thunk('Test_STArray_bind')))(($GLOBALS['Data_Array_ST_new'] ?? \Data\Array\ST\phpurs_eval_thunk('Data_Array_ST_new')), function($arr) {
   $__num = func_num_args();
-  $__global_Control_Monad_ST_Internal_bind_ = ($GLOBALS['Control_Monad_ST_Internal_bind_'] ?? \Control\Monad\ST\Internal\phpurs_eval_thunk('Control_Monad_ST_Internal_bind_'));
+  $__global_Test_STArray_bind = ($GLOBALS['Test_STArray_bind'] ?? \Test\STArray\phpurs_eval_thunk('Test_STArray_bind'));
   $__global_Data_Array_ST_pushAll = ($GLOBALS['Data_Array_ST_pushAll'] ?? \Data\Array\ST\phpurs_eval_thunk('Data_Array_ST_pushAll'));
   $__global_Data_Array_ST_pop = ($GLOBALS['Data_Array_ST_pop'] ?? \Data\Array\ST\phpurs_eval_thunk('Data_Array_ST_pop'));
-  $__global_Control_Monad_ST_Internal_pure_ = ($GLOBALS['Control_Monad_ST_Internal_pure_'] ?? \Control\Monad\ST\Internal\phpurs_eval_thunk('Control_Monad_ST_Internal_pure_'));
-  $__res = ($__global_Control_Monad_ST_Internal_bind_)(($__global_Data_Array_ST_pushAll)([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], $arr), function($__dollar____unused) use ($__global_Control_Monad_ST_Internal_bind_, $__global_Data_Array_ST_pop, $arr, $__global_Control_Monad_ST_Internal_pure_) {
+  $__global_Test_STArray_pure = ($GLOBALS['Test_STArray_pure'] ?? \Test\STArray\phpurs_eval_thunk('Test_STArray_pure'));
+  $__res = ($__global_Test_STArray_bind)(($__global_Data_Array_ST_pushAll)([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], $arr), function($__dollar____unused) use ($__global_Test_STArray_bind, $__global_Data_Array_ST_pop, $arr, $__global_Test_STArray_pure) {
   $__num = func_num_args();
-  $__res = ($__global_Control_Monad_ST_Internal_bind_)(($__global_Data_Array_ST_pop)($arr), function($x) use ($__global_Control_Monad_ST_Internal_pure_) {
+  $__res = ($__global_Test_STArray_bind)(($__global_Data_Array_ST_pop)($arr), function($x) use ($__global_Test_STArray_pure) {
   $__num = func_num_args();
   $__case_0 = $x;
   switch (($__case_0)->tag) {
 case "Just":
 $v = ($__case_0)->v0;
-$__res = ($__global_Control_Monad_ST_Internal_pure_)($v);
+$__res = ($__global_Test_STArray_pure)($v);
 goto __end;;
 break;
 case "Nothing":
-$__res = ($__global_Control_Monad_ST_Internal_pure_)(0);
+$__res = ($__global_Test_STArray_pure)(0);
 goto __end;;
 break;
 default:

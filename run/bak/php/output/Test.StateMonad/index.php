@@ -261,6 +261,8 @@ function Test_StateMonad_chainModifications($v) {
   $__global_Data_Unit_unit = ($GLOBALS['Data_Unit_unit'] ?? \Data\Unit\phpurs_eval_thunk('Data_Unit_unit'));
   $__global_Test_StateMonad_bindState = ($GLOBALS['Test_StateMonad_bindState'] ?? \Test\StateMonad\phpurs_eval_thunk('Test_StateMonad_bindState'));
   $__global_Test_StateMonad_modify = ($GLOBALS['Test_StateMonad_modify'] ?? \Test\StateMonad\phpurs_eval_thunk('Test_StateMonad_modify'));
+  $__global_Test_StateMonad_add = ($GLOBALS['Test_StateMonad_add'] ?? \Test\StateMonad\phpurs_eval_thunk('Test_StateMonad_add'));
+  $__global_Test_StateMonad_sub = ($GLOBALS['Test_StateMonad_sub'] ?? \Test\StateMonad\phpurs_eval_thunk('Test_StateMonad_sub'));
   while (true) {
 $__case_0 = $v;
 switch ($__case_0) {
@@ -270,16 +272,16 @@ goto __end;;
 break;
 default:
 $n = $__case_0;
-$__res = ($__global_Test_StateMonad_bindState)(($__global_Test_StateMonad_modify)(function($x) {
+$__res = ($__global_Test_StateMonad_bindState)(($__global_Test_StateMonad_modify)(function($x) use ($__global_Test_StateMonad_add) {
   $__num = func_num_args();
-  $__res = ($x + 1);
+  $__res = ($__global_Test_StateMonad_add)($x, 1);
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}), function($v1) use ($n) {
+}), function($v1) use ($__global_Test_StateMonad_sub, $n) {
   $__num = func_num_args();
   $__global_Test_StateMonad_chainModifications = ($GLOBALS['Test_StateMonad_chainModifications'] ?? \Test\StateMonad\phpurs_eval_thunk('Test_StateMonad_chainModifications'));
-  $__res = ($__global_Test_StateMonad_chainModifications)(($n - 1));
+  $__res = ($__global_Test_StateMonad_chainModifications)(($__global_Test_StateMonad_sub)($n, 1));
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
@@ -303,6 +305,8 @@ function Test_StateMonad_runManyTimes($v, $v1 = null) {
     if ($__num === 1) return function($v1) use ($v, $__fn) { return $__fn($v, $v1); };
     return phpurs_curry_fallback($__fn, func_get_args(), 2);
   }
+  $__global_Test_StateMonad_sub = ($GLOBALS['Test_StateMonad_sub'] ?? \Test\StateMonad\phpurs_eval_thunk('Test_StateMonad_sub'));
+  $__global_Test_StateMonad_add = ($GLOBALS['Test_StateMonad_add'] ?? \Test\StateMonad\phpurs_eval_thunk('Test_StateMonad_add'));
   $__global_Test_StateMonad_runState = ($GLOBALS['Test_StateMonad_runState'] ?? \Test\StateMonad\phpurs_eval_thunk('Test_StateMonad_runState'));
   $__global_Test_StateMonad_chainModifications = ($GLOBALS['Test_StateMonad_chainModifications'] ?? \Test\StateMonad\phpurs_eval_thunk('Test_StateMonad_chainModifications'));
   while (true) {
@@ -317,8 +321,8 @@ break;
 default:
 $n = $__case_0;
 $acc = $__case_1;
-$__tco_tmp_0 = ($n - 1);
-$__tco_tmp_1 = ($acc + (($__global_Test_StateMonad_runState)(($__global_Test_StateMonad_chainModifications)(60), 0))->state);
+$__tco_tmp_0 = ($__global_Test_StateMonad_sub)($n, 1);
+$__tco_tmp_1 = ($__global_Test_StateMonad_add)($acc, (($__global_Test_StateMonad_runState)(($__global_Test_StateMonad_chainModifications)(60), 0))->state);
 $v = $__tco_tmp_0;
 $v1 = $__tco_tmp_1;
 continue 2;

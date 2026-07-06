@@ -268,6 +268,7 @@ function Data_String_Regex_renderFlags($v) {
   if ($__num < 1) {
     return phpurs_curry_fallback($__fn, func_get_args(), 1);
   }
+  $__global_Data_String_Regex_append = ($GLOBALS['Data_String_Regex_append'] ?? \Data\String\Regex\phpurs_eval_thunk('Data_String_Regex_append'));
   $__case_0 = $v;
   if (true) {
 $f = $__case_0;
@@ -331,7 +332,7 @@ default:
 $__case_res_5 = "";
 break;
 };
-$__res = ($__case_res_0 . ($__case_res_1 . ($__case_res_2 . ($__case_res_3 . ($__case_res_4 . $__case_res_5)))));
+$__res = ($__global_Data_String_Regex_append)($__case_res_0, ($__global_Data_String_Regex_append)($__case_res_1, ($__global_Data_String_Regex_append)($__case_res_2, ($__global_Data_String_Regex_append)($__case_res_3, ($__global_Data_String_Regex_append)($__case_res_4, $__case_res_5)))));
 goto __end;;
 } else {
 throw new \Exception("Pattern match failure");

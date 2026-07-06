@@ -165,7 +165,9 @@ function Test_LazyEvaluation_buildThunks($v, $v1 = null) {
     if ($__num === 1) return function($v1) use ($v, $__fn) { return $__fn($v, $v1); };
     return phpurs_curry_fallback($__fn, func_get_args(), 2);
   }
+  $__global_Test_LazyEvaluation_sub = ($GLOBALS['Test_LazyEvaluation_sub'] ?? \Test\LazyEvaluation\phpurs_eval_thunk('Test_LazyEvaluation_sub'));
   $__global_Test_LazyEvaluation_defer = ($GLOBALS['Test_LazyEvaluation_defer'] ?? \Test\LazyEvaluation\phpurs_eval_thunk('Test_LazyEvaluation_defer'));
+  $__global_Test_LazyEvaluation_add = ($GLOBALS['Test_LazyEvaluation_add'] ?? \Test\LazyEvaluation\phpurs_eval_thunk('Test_LazyEvaluation_add'));
   $__global_Test_LazyEvaluation_force = ($GLOBALS['Test_LazyEvaluation_force'] ?? \Test\LazyEvaluation\phpurs_eval_thunk('Test_LazyEvaluation_force'));
   while (true) {
 $__case_0 = $v;
@@ -179,10 +181,10 @@ break;
 default:
 $n = $__case_0;
 $acc = $__case_1;
-$__tco_tmp_0 = ($n - 1);
-$__tco_tmp_1 = ($__global_Test_LazyEvaluation_defer)(function($v2) use ($__global_Test_LazyEvaluation_force, $acc) {
+$__tco_tmp_0 = ($__global_Test_LazyEvaluation_sub)($n, 1);
+$__tco_tmp_1 = ($__global_Test_LazyEvaluation_defer)(function($v2) use ($__global_Test_LazyEvaluation_add, $__global_Test_LazyEvaluation_force, $acc) {
   $__num = func_num_args();
-  $__res = (($__global_Test_LazyEvaluation_force)($acc) + 1);
+  $__res = ($__global_Test_LazyEvaluation_add)(($__global_Test_LazyEvaluation_force)($acc), 1);
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
@@ -208,6 +210,8 @@ function Test_LazyEvaluation_runManyTimes($v, $v1 = null) {
     if ($__num === 1) return function($v1) use ($v, $__fn) { return $__fn($v, $v1); };
     return phpurs_curry_fallback($__fn, func_get_args(), 2);
   }
+  $__global_Test_LazyEvaluation_sub = ($GLOBALS['Test_LazyEvaluation_sub'] ?? \Test\LazyEvaluation\phpurs_eval_thunk('Test_LazyEvaluation_sub'));
+  $__global_Test_LazyEvaluation_add = ($GLOBALS['Test_LazyEvaluation_add'] ?? \Test\LazyEvaluation\phpurs_eval_thunk('Test_LazyEvaluation_add'));
   $__global_Test_LazyEvaluation_force = ($GLOBALS['Test_LazyEvaluation_force'] ?? \Test\LazyEvaluation\phpurs_eval_thunk('Test_LazyEvaluation_force'));
   $__global_Test_LazyEvaluation_buildThunks = ($GLOBALS['Test_LazyEvaluation_buildThunks'] ?? \Test\LazyEvaluation\phpurs_eval_thunk('Test_LazyEvaluation_buildThunks'));
   $__global_Test_LazyEvaluation_defer = ($GLOBALS['Test_LazyEvaluation_defer'] ?? \Test\LazyEvaluation\phpurs_eval_thunk('Test_LazyEvaluation_defer'));
@@ -223,8 +227,8 @@ break;
 default:
 $n = $__case_0;
 $acc = $__case_1;
-$__tco_tmp_0 = ($n - 1);
-$__tco_tmp_1 = ($acc + ($__global_Test_LazyEvaluation_force)(($__global_Test_LazyEvaluation_buildThunks)(1000, ($__global_Test_LazyEvaluation_defer)(function($v2) {
+$__tco_tmp_0 = ($__global_Test_LazyEvaluation_sub)($n, 1);
+$__tco_tmp_1 = ($__global_Test_LazyEvaluation_add)($acc, ($__global_Test_LazyEvaluation_force)(($__global_Test_LazyEvaluation_buildThunks)(1000, ($__global_Test_LazyEvaluation_defer)(function($v2) {
   $__num = func_num_args();
   $__res = 0;
   goto __end;;

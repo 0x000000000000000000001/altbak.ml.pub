@@ -132,9 +132,10 @@ function Test_Church_toInt($n) {
   if ($__num < 1) {
     return phpurs_curry_fallback($__fn, func_get_args(), 1);
   }
-  $__res = ($n)(function($x) {
+  $__global_Test_Church_add = ($GLOBALS['Test_Church_add'] ?? \Test\Church\phpurs_eval_thunk('Test_Church_add'));
+  $__res = ($n)(function($x) use ($__global_Test_Church_add) {
   $__num = func_num_args();
-  $__res = ($x + 1);
+  $__res = ($__global_Test_Church_add)($x, 1);
   goto __end;;
   __end:
   return $__num > 1 ? $__res(...array_slice(func_get_args(), 1)) : $__res;
@@ -208,6 +209,7 @@ function Test_Church_fromInt($v) {
   }
   $__global_Test_Church_zeroC = ($GLOBALS['Test_Church_zeroC'] ?? \Test\Church\phpurs_eval_thunk('Test_Church_zeroC'));
   $__global_Test_Church_succC = ($GLOBALS['Test_Church_succC'] ?? \Test\Church\phpurs_eval_thunk('Test_Church_succC'));
+  $__global_Test_Church_sub = ($GLOBALS['Test_Church_sub'] ?? \Test\Church\phpurs_eval_thunk('Test_Church_sub'));
   while (true) {
 $__case_0 = $v;
 switch ($__case_0) {
@@ -217,7 +219,7 @@ goto __end;;
 break;
 default:
 $n = $__case_0;
-$__res = ($__global_Test_Church_succC)(\Test\Church\Test_Church_fromInt(($n - 1)));
+$__res = ($__global_Test_Church_succC)(\Test\Church\Test_Church_fromInt(($__global_Test_Church_sub)($n, 1)));
 goto __end;;
 break;
 };

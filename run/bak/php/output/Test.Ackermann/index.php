@@ -115,18 +115,20 @@ function Test_Ackermann_ackermann($v, $v1 = null) {
     if ($__num === 1) return function($v1) use ($v, $__fn) { return $__fn($v, $v1); };
     return phpurs_curry_fallback($__fn, func_get_args(), 2);
   }
+  $__global_Test_Ackermann_add = ($GLOBALS['Test_Ackermann_add'] ?? \Test\Ackermann\phpurs_eval_thunk('Test_Ackermann_add'));
+  $__global_Test_Ackermann_sub = ($GLOBALS['Test_Ackermann_sub'] ?? \Test\Ackermann\phpurs_eval_thunk('Test_Ackermann_sub'));
   while (true) {
 $__case_0 = $v;
 $__case_1 = $v1;
 if (($__case_0 === 0)) {
 $n = $__case_1;
-$__res = ($n + 1);
+$__res = ($__global_Test_Ackermann_add)($n, 1);
 goto __end;;
 } else {
 switch ($__case_1) {
 case 0:
 $m = $__case_0;
-$__tco_tmp_0 = ($m - 1);
+$__tco_tmp_0 = ($__global_Test_Ackermann_sub)($m, 1);
 $__tco_tmp_1 = 1;
 $v = $__tco_tmp_0;
 $v1 = $__tco_tmp_1;
@@ -135,8 +137,8 @@ break;
 default:
 $m = $__case_0;
 $n = $__case_1;
-$__tco_tmp_0 = ($m - 1);
-$__tco_tmp_1 = \Test\Ackermann\Test_Ackermann_ackermann($m, ($n - 1));
+$__tco_tmp_0 = ($__global_Test_Ackermann_sub)($m, 1);
+$__tco_tmp_1 = \Test\Ackermann\Test_Ackermann_ackermann($m, ($__global_Test_Ackermann_sub)($n, 1));
 $v = $__tco_tmp_0;
 $v1 = $__tco_tmp_1;
 continue 2;
