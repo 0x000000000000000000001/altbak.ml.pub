@@ -10,7 +10,7 @@ This project is a proof of concept demonstrating the power of abstraction and po
 5. **PHP**: Generating modern PHP 7.4+ syntax (via the experimental local `phpurs` backend). PureScript that transpiles to PHP, and targets 70% of the web (e.g. containerless VPS).
 
 ## Comprehensive Benchmarks
-The benchmark suite runs a wide variety of computationally intensive tasks: AST evaluation, purely recursive Fibonacci, massive List processing, Tail Call Optimization, deep record updates, Ackermann function, Church numerals, Prime sieves, Red-Black tree insertions, heavy Polymorphism (Type Class dictionary lookups), State Monad operations, deep Lazy Evaluation, and heavy File I/O (10,000 synchronous writes and reads). These tests apply massive pressure on the call stack, garbage collector, disk I/O, and runtime execution engine to measure the raw ability of the compiler and the underlying virtual machine.
+The benchmark suite runs a wide variety of computationally intensive tasks: AST evaluation, purely recursive Fibonacci, massive List processing, Tail Call Optimization, deep record updates, Ackermann function, Church numerals, Prime sieves, Red-Black tree insertions, heavy Polymorphism (Type Class dictionary lookups), State Monad operations, deep Lazy Evaluation, heavy File I/O (10,000 synchronous writes and reads), and asynchronous `Aff` operations (via the native Event Loop). These tests apply massive pressure on the call stack, garbage collector, disk I/O, event loop, and runtime execution engine to measure the raw ability of the compiler and the underlying virtual machine.
 
 > [!IMPORTANT]
 > **The benchmark is just an excuse**
