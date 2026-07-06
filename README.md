@@ -16,17 +16,37 @@ The benchmark suite runs a wide variety of computationally intensive tasks: AST 
 > **The benchmark is just an excuse**
 > The primary objective here is **not** to pit these technologies against each other to declare a performance "winner". In fact, the benchmark itself is just a pretext. The real goal is to prove that we can seamlessly compile and run the exact same, unmodified PureScript code across **5 completely different runtimes** (V8 standard, V8 optimized, BEAM, Lisp, and PHP). The true victory is achieving universal abstraction without sacrificing execution viability.
 
-### Results
+### Core vs Extended Tests (`srx/`)
+To ensure fair and executable comparisons across all backends, the test suite is split into two parts:
+1. **Core Tests (`src/`)**: Pure computational tasks (AST, Fibonacci, Recursion) that run seamlessly on all 5 backends. Executed via `./bin/run`.
+2. **Extended Tests (`srx/`)**: Tests relying heavily on Javascript/PHP FFI bindings (like `Effect.Aff`, mutable `STArray`, and Regex). Since Scheme and Erlang lack FFI implementations for these specific libraries in their package sets, they are isolated in the `srx/` directory. **Note that this is completely normal and expected:** Scheme is targeted here for raw computation, and Erlang's BEAM already natively handles concurrency and multithreading at the VM level (making JS-style `Aff` workarounds irrelevant). Executed via `./bin/run --x` (which dynamically injects `srx/` into the compilation step and skips Scheme/Erlang).
+
+### Core Benchmark Results (Pure computational)
+Command: `./bin/run` (Runs on all 5 backends)
 
 ```text
 ========================================================================================
-BENCHMARK RESULTS                                                                        
+CORE BENCHMARK RESULTS (Fibonacci, AST, Tail Calls, Church, Primes, etc.)                                                                      
 ========================================================================================
 Node.js (V8)  | Arista ES (V8) | Chez Scheme (Native) | Erlang (BEAM) | PHP (experimental WIP)
 ------------------------------ | -------------------- | ------------- | ---------------
 real 0m0.576s | real 0m0.661s  | real 0m0.093s        | real 0m0.751s | real 0m1.692s
 user 0m0.191s | user 0m0.156s  | user 0m0.076s        | user 0m0.767s | user 0m1.135s
 sys  0m0.396s | sys  0m0.456s  | sys  0m0.014s        | sys  0m0.926s | sys  0m0.526s
+```
+
+### Extended Benchmark Results (I/O, Mutability, Async)
+Command: `./bin/run --x` (Skips runtimes lacking necessary FFI bindings like Scheme and Erlang)
+
+```text
+========================================================================================
+EXTENDED BENCHMARK RESULTS (File I/O, Regex, STArray, Asynchronous Aff)                                                                      
+========================================================================================
+Node.js (V8)  | Arista ES (V8) | PHP (experimental WIP)
+------------------------------ | ----------------------
+real 0m0.680s | real 0m0.607s  | real 0m2.389s
+user 0m0.266s | user 0m0.173s  | user 0m1.827s
+sys  0m0.419s | sys  0m0.403s  | sys  0m0.526s
 ```
 
 > [!WARNING]

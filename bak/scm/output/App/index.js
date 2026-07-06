@@ -4,7 +4,6 @@ import * as Test_Ackermann from "../Test.Ackermann/index.js";
 import * as Test_AstTree from "../Test.AstTree/index.js";
 import * as Test_Church from "../Test.Church/index.js";
 import * as Test_Fib from "../Test.Fib/index.js";
-import * as Test_FileOps from "../Test.FileOps/index.js";
 import * as Test_LazyEvaluation from "../Test.LazyEvaluation/index.js";
 import * as Test_ListOps from "../Test.ListOps/index.js";
 import * as Test_Polymorphism from "../Test.Polymorphism/index.js";
@@ -38,9 +37,6 @@ var main = function __do() {
     Test_StateMonad.act();
     Test_LazyEvaluation.describe();
     Test_LazyEvaluation.act();
-    Test_FileOps.describe();
-    Test_FileOps.act();
-    Data_Unit.unit;
     return Data_Unit.unit;
 };
 export {

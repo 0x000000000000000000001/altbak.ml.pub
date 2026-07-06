@@ -13,7 +13,7 @@
 -define(MEMOIZE, memoize).
 memoize(X) -> X.
 -endif.
-%-file("/Users/0x1/Documents/htdocs/altbak.pub/src/App.purs", 19).
+%-file("/Users/0x1/Documents/htdocs/altbak.pub/src/App.purs", 18).
 -spec main() -> fun(() -> any()).
 main() -> fun
   __do() -> 
@@ -41,8 +41,5 @@ main() -> fun
   ((test_stateMonad@ps:act())()),
   ((test_lazyEvaluation@ps:describe())()),
   ((test_lazyEvaluation@ps:act())()),
-  ((test_fileOps@ps:describe())()),
-  ((test_fileOps@ps:act())()),
-  unit,
   unit
 end.

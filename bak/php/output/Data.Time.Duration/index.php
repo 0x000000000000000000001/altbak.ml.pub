@@ -2,7 +2,6 @@
 
 namespace Data\Time\Duration;
 
-require_once __DIR__ . '/../Control.Category/index.php';
 require_once __DIR__ . '/../Control.Semigroupoid/index.php';
 require_once __DIR__ . '/../Data.Eq/index.php';
 require_once __DIR__ . '/../Data.EuclideanRing/index.php';

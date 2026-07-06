@@ -5,7 +5,6 @@ namespace Data\Maybe;
 require_once __DIR__ . '/../Control.Applicative/index.php';
 require_once __DIR__ . '/../Control.Apply/index.php';
 require_once __DIR__ . '/../Control.Bind/index.php';
-require_once __DIR__ . '/../Control.Category/index.php';
 require_once __DIR__ . '/../Control.Monad/index.php';
 require_once __DIR__ . '/../Data.Bounded/index.php';
 require_once __DIR__ . '/../Data.Eq/index.php';

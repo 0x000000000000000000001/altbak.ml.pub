@@ -8,6 +8,10 @@ package:
     - datetime
     - strings
     - arrays
+    - partial
+    - st
+    - maybe
+    - either
 workspace:
   packageSet:
     registry: 77.7.0
@@ -34,5 +38,9 @@ workspace:
       path: "../phpurs-functions"
     partial:
       path: "../phpurs-partial"
+    arrays:
+      path: "../phpurs-arrays"
+    strings:
+      path: "../phpurs-strings"
   backend:
     cmd: "phpurs"

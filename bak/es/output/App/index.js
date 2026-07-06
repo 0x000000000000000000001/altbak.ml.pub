@@ -2,7 +2,6 @@ import * as Test$dAckermann from "../Test.Ackermann/index.js";
 import * as Test$dAstTree from "../Test.AstTree/index.js";
 import * as Test$dChurch from "../Test.Church/index.js";
 import * as Test$dFib from "../Test.Fib/index.js";
-import * as Test$dFileOps from "../Test.FileOps/index.js";
 import * as Test$dLazyEvaluation from "../Test.LazyEvaluation/index.js";
 import * as Test$dListOps from "../Test.ListOps/index.js";
 import * as Test$dPolymorphism from "../Test.Polymorphism/index.js";
@@ -35,8 +34,6 @@ const main = () => {
   Test$dStateMonad.describe();
   Test$dStateMonad.act();
   Test$dLazyEvaluation.describe();
-  Test$dLazyEvaluation.act();
-  Test$dFileOps.describe();
-  Test$dFileOps.act();
+  return Test$dLazyEvaluation.act();
 };
 export {main};

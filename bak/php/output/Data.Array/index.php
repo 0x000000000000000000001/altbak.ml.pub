@@ -5,7 +5,6 @@ namespace Data\Array;
 require_once __DIR__ . '/../Control.Applicative/index.php';
 require_once __DIR__ . '/../Control.Apply/index.php';
 require_once __DIR__ . '/../Control.Bind/index.php';
-require_once __DIR__ . '/../Control.Category/index.php';
 require_once __DIR__ . '/../Control.Monad.ST.Internal/index.php';
 require_once __DIR__ . '/../Control.Semigroupoid/index.php';
 require_once __DIR__ . '/../Data.Array/index.php';

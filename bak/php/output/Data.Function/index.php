@@ -2,7 +2,6 @@
 
 namespace Data\Function;
 
-require_once __DIR__ . '/../Control.Category/index.php';
 require_once __DIR__ . '/../Data.Function/index.php';
 require_once __DIR__ . '/../Data.Ord/index.php';
 require_once __DIR__ . '/../Data.Ring/index.php';

@@ -2,7 +2,6 @@
 
 namespace Effect\Class;
 
-require_once __DIR__ . '/../Control.Category/index.php';
 require_once __DIR__ . '/../Control.Monad/index.php';
 require_once __DIR__ . '/../Effect/index.php';
 require_once __DIR__ . '/../Effect.Class/index.php';

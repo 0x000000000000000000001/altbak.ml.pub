@@ -8,6 +8,17 @@ ln -s bak/es/output-purs output
 ln -s bak/js/spago .spago
 ln -s bak/js/spago.yaml spago.yaml
 touch bak/es/spago.lock && ln -s bak/es/spago.lock spago.lock
+
+ENTRY_POINT="App"
+
+if [ "$1" == "--x" ]; then
+  ENTRY_POINT="AppX"
+  # Temporarily inject extended tests
+  cp -r srx/Test/* src/Test/
+  cp srx/AppX.purs src/
+  trap "rm -rf src/Test/STArray.purs src/Test/AffOperations.purs src/Test/StringOps.purs src/Test/FileOps src/AppX.purs" EXIT
+fi
+
 npx spago build > /dev/null 2>&1
 npx purs-backend-es build --output-dir bak/es/output > /dev/null 2>&1
 find bak/es/output-purs -name "foreign.js" | while read -r f; do
@@ -18,4 +29,4 @@ done
 
 
 echo "=== Arista ES ==="
-time node -e "import('./bak/es/output/App/index.js').then(m => m.main())"
+time node -e "import('./bak/es/output/' + '$ENTRY_POINT' + '/index.js').then(m => m.main())"

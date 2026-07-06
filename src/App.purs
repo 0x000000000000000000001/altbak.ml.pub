@@ -14,56 +14,41 @@ import Test.RBTree as RBTree
 import Test.Polymorphism as Polymorphism
 import Test.StateMonad as StateMonad
 import Test.LazyEvaluation as LazyEvaluation
-import Test.FileOps as FileOps
-import Test.STArray as STArray
-import Test.AffOperations as AffOperations
-import Test.StringOps as StringOps
 
 main :: Effect Unit
 main = do
   AstTree.describe
   AstTree.act
-  
+
   Fib.describe
   Fib.act
-  
+
   ListOps.describe
   ListOps.act
-  
+
   TCO.describe
   TCO.act
-  
+
   Records.describe
   Records.act
-  
+
   Ackermann.describe
   Ackermann.act
-  
+
   Church.describe
   Church.act
-  
+
   Primes.describe
   Primes.act
-  
+
   RBTree.describe
   RBTree.act
-  
+
   Polymorphism.describe
   Polymorphism.act
-  
+
   StateMonad.describe
   StateMonad.act
-  
+
   LazyEvaluation.describe
   LazyEvaluation.act
-  
-  FileOps.describe
-  FileOps.act
-  
-  STArray.describe
-  STArray.act
-  
-  StringOps.describe *> AffOperations.describe
-  StringOps.act *> AffOperations.act
-  
-  pure unit

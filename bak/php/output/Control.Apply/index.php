@@ -3,7 +3,6 @@
 namespace Control\Apply;
 
 require_once __DIR__ . '/../Control.Apply/index.php';
-require_once __DIR__ . '/../Control.Category/index.php';
 require_once __DIR__ . '/../Data.Function/index.php';
 require_once __DIR__ . '/../Data.Functor/index.php';
 
@@ -88,7 +87,7 @@ if (!function_exists(__NAMESPACE__ . '\\phpurs_eval_thunk')) {
     static $cache = [];
     if (array_key_exists($id, $cache)) return $cache[$id];
     switch ($id) {
-      case 'Control_Apply_identity': $v = (($GLOBALS['Control_Category_categoryFn'] ?? \Control\Category\phpurs_eval_thunk('Control_Category_categoryFn')))->identity; break;
+
       default: throw new \Exception("Unknown thunk " . $id);
     }
     $GLOBALS[$id] = $v;
@@ -106,7 +105,6 @@ $Control_Apply_arrayApply = function($fs, $xs = null) {
     }
     $r = []; foreach($fs as $f) { foreach($xs as $x) { $r[] = $f($x); } } return $r;
 };
-
 
 // Control_Apply_Apply$Dict
 function Control_Apply_Apply__dollar__Dict($x) {
@@ -141,36 +139,4 @@ throw new \Exception("Pattern match failure");
   return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
 }
 $GLOBALS['Control_Apply_apply'] = __NAMESPACE__ . '\\Control_Apply_apply';
-
-// Control_Apply_applySecond
-function Control_Apply_applySecond($dictApply) {
-  $__num = func_num_args();
-  $__fn = __NAMESPACE__ . '\\' . 'Control_Apply_applySecond';
-  if ($__num < 1) {
-    return phpurs_curry_fallback($__fn, func_get_args(), 1);
-  }
-  $__global_Prim_undefined = ($GLOBALS['Prim_undefined'] ?? \Prim\phpurs_eval_thunk('Prim_undefined'));
-  $__global_Data_Function_const = ($GLOBALS['Data_Function_const'] ?? \Data\Function\phpurs_eval_thunk('Data_Function_const'));
-  $__global_Control_Apply_identity = ($GLOBALS['Control_Apply_identity'] ?? \Control\Apply\phpurs_eval_thunk('Control_Apply_identity'));
-  $apply1 = ($dictApply)->apply;
-  $map = ((($dictApply)->Functor0)($__global_Prim_undefined))->map;
-  $__res = (function() use ($apply1, $map, $__global_Data_Function_const, $__global_Control_Apply_identity, &$__fn) {
-  $__fn = function($a, $b = null) use ($apply1, $map, $__global_Data_Function_const, $__global_Control_Apply_identity, &$__fn) {
-  $__num = func_num_args();
-  if ($__num < 2) {
-    if ($__num === 1) return function($b) use ($a, &$__fn) { return $__fn($a, $b); };
-    return phpurs_curry_fallback($__fn, func_get_args(), 2);
-  }
-  $__res = ($apply1)(($map)(($__global_Data_Function_const)($__global_Control_Apply_identity), $a), $b);
-  goto __end;;
-  __end:
-  return $__num > 2 ? $__res(...array_slice(func_get_args(), 2)) : $__res;
-  };
-  return $__fn;
-})();
-  goto __end;;
-  __end:
-  return 1 < $__num ? $__res(...array_slice(func_get_args(), 1)) : $__res;
-}
-$GLOBALS['Control_Apply_applySecond'] = __NAMESPACE__ . '\\Control_Apply_applySecond';
 

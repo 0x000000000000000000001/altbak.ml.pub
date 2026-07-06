@@ -2,21 +2,34 @@
 set -e
 cd "$(dirname "$0")/.."
 
-echo "================================"
-echo "    Running all backends...     "
-echo "================================"
-
-echo ""
-./bin/js/run || echo "=== JS failed ==="
-
-echo ""
-./bin/es/run || echo "=== ES failed ==="
-
-echo ""
-./bin/scm/run || echo "=== Scheme failed ==="
-
-echo ""
-./bin/erl/run || echo "=== Erlang failed ==="
-
-echo ""
-./bin/php/run || echo "=== PHP failed ==="
+if [ "$1" == "--x" ]; then
+  echo "================================"
+  echo "  Running extended backends...  "
+  echo "================================"
+  echo ""
+  ./bin/js/run --x || echo "=== JS failed ==="
+  
+  echo ""
+  ./bin/es/run --x || echo "=== ES failed ==="
+  
+  echo ""
+  ./bin/php/run --x || echo "=== PHP failed ==="
+else
+  echo "================================"
+  echo "    Running pure backends...    "
+  echo "================================"
+  echo ""
+  ./bin/js/run || echo "=== JS failed ==="
+  
+  echo ""
+  ./bin/es/run || echo "=== ES failed ==="
+  
+  echo ""
+  ./bin/scm/run || echo "=== Scheme failed ==="
+  
+  echo ""
+  ./bin/erl/run || echo "=== Erlang failed ==="
+  
+  echo ""
+  ./bin/php/run || echo "=== PHP failed ==="
+fi
