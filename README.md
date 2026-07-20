@@ -1,4 +1,4 @@
-# altbak.ml.pub
+# purml
 
 WIP: Currently working on a super-optimized PureScript compiler targeting OCaml.
 
